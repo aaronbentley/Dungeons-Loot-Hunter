@@ -45,6 +45,32 @@ module.exports = {
         },
         'gatsby-plugin-image',
         {
+            resolve: 'gatsby-plugin-sanity-image',
+            options: {
+                projectId: process.env.GATSBY_SANITY_PROJECT_ID,
+                dataset: process.env.GATSBY_SANITY_DATASET,
+                // fragmentName: 'Image',
+                // fragmentTypeName: 'MainImage',
+
+                // Provide the custom image type name used in Sanity data schemas
+                // customImageTypes: ['SanityMainImage'],
+                // Provide the alt text type name used in Sanity data schemas
+                // altFieldName: 'alt',
+                // Add 'alt' field to each fragment
+                // customFields: [
+                //     { 
+                //         name: 'alt', 
+                //         type: 'String' 
+                //     }
+                // ],
+                // defaultImageConfig: {
+                //     quality: 95, // use reasonable lossy compression level
+                //     fit: 'max', // like `object-fit: contain`, but never scaling up
+                //     auto: 'format' // automatically select next-gen image formats on supporting browsers
+                // }
+            }
+        },
+        {
             resolve: '@chakra-ui/gatsby-plugin',
             options: {
                 /**
