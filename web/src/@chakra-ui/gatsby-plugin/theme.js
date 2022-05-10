@@ -1,8 +1,15 @@
-import { extendTheme } from '@chakra-ui/react'
-const theme = {
-  colors: {
-    primary: 'rebeccapurple',
-  },
-}
+/**
+ * Dungeons Loot Hunter - Theme Style Factory
+ */
 
-export default extendTheme(theme)
+import { extendTheme } from '@chakra-ui/react'
+import colors from './colors'
+
+const theme = extendTheme( {
+    ...colors,
+    config: {
+        initialColorMode: 'dark'
+    }
+})
+
+export default theme
