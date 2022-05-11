@@ -17,9 +17,20 @@ export default {
             validation: (Rule) => Rule.required(),
         },
         {
-            name: 'Image',
-            type: 'image',
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            validation: (Rule) => Rule.required(),
+            description: 'Generate a slug from the Title',
+            options: {
+                source: 'title',
+                maxLength: 96
+            }
+        },
+        {
+            name: 'image',
             title: 'Image',
+            type: 'image',
             description: 'Provide Artifact image',
             validation: (Rule) => Rule.required()
         }

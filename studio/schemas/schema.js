@@ -4,9 +4,12 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import createSchema from 'part:@sanity/base/schema-creator'
 import armors from './documents/armor'
 import artifacts from './documents/artifact'
+import enchantments from './documents/enchantments'
 import meleeWeapons from './documents/melee-weapon'
 import rangedWeapons from './documents/ranged-weapon'
 import siteSettings from './documents/site-settings'
+import armorTraits from './objects/armor-traits'
+import weaponStats from './objects/weapon-stats'
 
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -17,10 +20,13 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     /* Your types here! */
+    enchantments,
     meleeWeapons,
     rangedWeapons,
     armors,
     artifacts,
-    siteSettings
+    siteSettings,
+    weaponStats,
+    armorTraits
   ]),
 })
