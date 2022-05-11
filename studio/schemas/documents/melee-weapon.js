@@ -75,7 +75,10 @@ export default {
                 type: 'reference',
                 to: [
                   { type: 'enchantments' }
-                ]
+                ],
+                options: {
+                    disableNew: true
+                }
               }
             ],
             hidden: ({ parent, document, value }) => {
