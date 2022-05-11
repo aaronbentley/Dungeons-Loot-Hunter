@@ -2,11 +2,13 @@
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 import createSchema from 'part:@sanity/base/schema-creator'
+import ancientMobs from './documents/ancient-mobs'
 import armors from './documents/armor'
 import artifacts from './documents/artifact'
 import enchantments from './documents/enchantments'
 import meleeWeapons from './documents/melee-weapon'
 import rangedWeapons from './documents/ranged-weapon'
+import runes from './documents/runes'
 import siteSettings from './documents/site-settings'
 import armorTraits from './objects/armor-traits'
 import weaponStats from './objects/weapon-stats'
@@ -27,6 +29,8 @@ export default createSchema({
     artifacts,
     siteSettings,
     weaponStats,
-    armorTraits
+    armorTraits,
+    runes,
+    ancientMobs
   ]),
 })
