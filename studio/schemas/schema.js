@@ -11,26 +11,31 @@ import rangedWeapons from './documents/ranged-weapon'
 import runes from './documents/runes'
 import siteSettings from './documents/site-settings'
 import armorTraits from './objects/armor-traits'
-import weaponStats from './objects/weapon-stats'
-
+import dlcItem from './objects/dlc-item'
+import eventItem from './objects/event-item'
+import meleeWeaponStats from './objects/melee-weapon-stats'
+import rangedWeaponStats from './objects/ranged-weapon-stats'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
-  // We name our schema
-  name: 'default',
-  // Then proceed to concatenate our document type
-  // to the ones provided by any plugins that are installed
-  types: schemaTypes.concat([
-    /* Your types here! */
-    enchantments,
-    meleeWeapons,
-    rangedWeapons,
-    armors,
-    artifacts,
-    siteSettings,
-    weaponStats,
-    armorTraits,
-    runes,
-    ancientMobs
-  ]),
+    // We name our schema
+    name: 'default',
+    // Then proceed to concatenate our document type
+    // to the ones provided by any plugins that are installed
+    types: schemaTypes.concat([
+        /* Your types here! */
+        ancientMobs,
+        armors,
+        armorTraits,
+        artifacts,
+        dlcItem,
+        enchantments,
+        eventItem,
+        meleeWeapons,
+        meleeWeaponStats,
+        rangedWeapons,
+        rangedWeaponStats,
+        runes,
+        siteSettings
+    ])
 })

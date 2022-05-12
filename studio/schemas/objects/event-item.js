@@ -1,0 +1,23 @@
+export default {
+    name: 'eventItem',
+    title: 'Event item',
+    type: 'object',
+    fields: [
+        {
+            name: 'isEventItem',
+            title: 'Is event item?',
+            type: 'boolean'
+        },
+        {
+            name: 'title',
+            title: 'Event Title',
+            type: 'string',
+            hidden: ({ parent }) => {
+                if ( parent === undefined || parent.isEventItem ) {
+                    return false
+                }
+                return true
+            }
+        }
+    ]
+}

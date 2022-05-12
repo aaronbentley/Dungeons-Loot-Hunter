@@ -14,6 +14,17 @@ export default {
     name: 'meleeWeapons',
     type: 'document',
     icon: Icon,
+    validation: Rule => Rule.custom( fields => {
+        if ( fields.stats === undefined || Object.keys(fields.stats).length === 0 ) {
+            return "Missing Stats"
+        }
+
+        if ( fields.runes === undefined || fields.runes.length === 0 ) {
+            return "Missing Runes"
+        }
+        
+        return true
+    }).warning(),
     fields: [
         {
             name: 'title',
@@ -43,7 +54,23 @@ export default {
         {
             name: 'stats',
             title: 'Stats',
-            type: 'weaponStats'
+            type: 'meleeWeaponStats'
+        },
+        {
+            name: 'builtInAbilities',
+            title: 'Built-in Abilities',
+            type: 'array',
+            of: [
+              {
+                type: 'reference',
+                to: [
+                  { type: 'enchantments' }
+                ],
+                options: {
+                    disableNew: true
+                }
+              }
+            ]
         },
         {
             name: 'isUnique',
@@ -108,5 +135,48 @@ export default {
                 }
             ]
         },
-    ]
+        {
+            name: 'isDlcItem',
+            title: 'Is DLC item?',
+            type: 'dlcItem'
+        },
+        {
+            name: 'isEventItem',
+            title: 'Is Event item?',
+            type: 'eventItem'
+        }
+    ],
+    preview: {
+        select: {
+            title: 'title',
+            image: 'image',
+            stats: 'stats',
+            runes:  'runes'
+        },
+        prepare( selection ) {
+            const {
+                title, 
+                image,
+                stats,
+                runes
+            } = selection
+
+            // Create subtitle string
+            let subtitle = ''
+
+            if ( Object.keys(stats).length === 0 ) {
+                subtitle += '📊'
+            }
+
+            if ( runes.length === 0 ) {
+                subtitle += '🔮'
+            }
+            
+            return {
+                title: title,
+                subtitle: subtitle,
+                media: image
+            }
+        }
+    }
 }

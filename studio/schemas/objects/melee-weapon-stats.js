@@ -1,5 +1,5 @@
 export default {
-    name: 'weaponStats',
+    name: 'meleeWeaponStats',
     title: 'Weapon Stats',
     type: 'object',
     fields: [

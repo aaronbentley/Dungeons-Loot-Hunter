@@ -66,6 +66,20 @@ export default {
             name: 'traits',
             title: 'Traits',
             type: 'armorTraits'
-        }
+        },
+        {
+            name: 'runes',
+            title: 'Runes',
+            type: 'array',
+            of: [
+                {
+                    type: 'reference',
+                    to: [{ type: 'runes' }],
+                    options: {
+                        disableNew: true
+                    }
+                }
+            ]
+        },
     ]
 }
