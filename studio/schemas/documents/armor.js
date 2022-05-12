@@ -55,7 +55,7 @@ export default {
                 filter: ( { document } ) => {
                     if (document.title) {
                         return {
-                            filter: 'title != $title',
+                            filter: 'title != $title && isUnique != true',
                             params: { title: document.title }
                         }
                     }

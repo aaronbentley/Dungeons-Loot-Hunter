@@ -92,7 +92,7 @@ export default {
                 filter: ( { document } ) => {
                     if (document.title) {
                         return {
-                            filter: 'title != $title',
+                            filter: 'title != $title && isUnique != true',
                             params: { title: document.title }
                         }
                     }
@@ -163,6 +163,10 @@ export default {
 
             // Create subtitle string
             let subtitle = ''
+
+            if ( stats._type !== 'meleeWeaponStats' ) {
+                subtitle += '⚠️'
+            }
 
             if ( stats === undefined || Object.keys(stats).length === 0 ) {
                 subtitle += '📊'
