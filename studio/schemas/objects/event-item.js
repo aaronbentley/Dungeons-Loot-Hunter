@@ -13,7 +13,7 @@ export default {
             title: 'Event Title',
             type: 'string',
             hidden: ({ parent }) => {
-                if ( parent === undefined || parent.isEventItem ) {
+                if ( parent !== undefined && parent.isEventItem ) {
                     return false
                 }
                 return true
