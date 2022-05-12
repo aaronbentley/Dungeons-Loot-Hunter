@@ -111,6 +111,30 @@ export default {
                 }
                 return true
             }
+        },
+        {
+            name: 'runes',
+            title: 'Runes',
+            type: 'array',
+            of: [
+                {
+                    type: 'reference',
+                    to: [{ type: 'runes' }],
+                    options: {
+                        disableNew: true
+                    }
+                }
+            ]
+        },
+        {
+            name: 'isDlcItem',
+            title: 'Is DLC item?',
+            type: 'dlcItem'
+        },
+        {
+            name: 'isEventItem',
+            title: 'Is Event item?',
+            type: 'eventItem'
         }
     ],
     preview: {
@@ -119,7 +143,9 @@ export default {
             image: 'image',
             isUnique: 'isUnique',
             stats: 'stats',
-            runes:  'runes.0.title'
+            runes:  'runes.0.title',
+            isDlcItem: 'isDlcItem',
+            isEventItem: 'isEventItem'
         },
         prepare( selection ) {
             const {
@@ -127,7 +153,9 @@ export default {
                 image,
                 isUnique,
                 stats,
-                runes
+                runes,
+                isDlcItem,
+                isEventItem
             } = selection
 
             // Create subtitle string
@@ -147,6 +175,14 @@ export default {
 
             if ( isUnique !== undefined & isUnique ) {
                 subtitle += '🟠'
+            }
+
+            if ( isDlcItem !== undefined && isDlcItem?.isDlcItem ) {
+                subtitle += '🟢'
+            }
+            
+            if ( isEventItem !== undefined && isEventItem?.isEventItem ) {
+                subtitle += '🟣'
             }
             
             return {
