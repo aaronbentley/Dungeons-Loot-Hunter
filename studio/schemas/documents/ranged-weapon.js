@@ -9,7 +9,6 @@ export default {
     type: 'document',
     icon: Icon,
     validation: Rule => Rule.custom( fields => {
-        console.log('🦄 ~ file: ranged-weapon.js ~ line 12 ~ fields', { fields })
         if ( fields.stats === undefined || Object.keys(fields.stats).length === 0 ) {
             return "Missing Stats"
         }
@@ -184,6 +183,18 @@ export default {
             
             if ( isEventItem !== undefined && isEventItem?.isEventItem ) {
                 subtitle += '🟣'
+            }
+
+            if ( stats !== undefined || Object.keys(stats).length !== 0 ) { 
+                const {
+                    ammo,
+                    power,
+                    speed
+                } = stats
+
+                if ( ammo === 1 && power === 1 & speed === 1 ) {
+                    subtitle = '🛑' + subtitle
+                }
             }
             
             return {

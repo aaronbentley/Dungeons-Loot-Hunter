@@ -188,6 +188,18 @@ export default {
                 subtitle += '🟣'
             }
             
+            if ( stats !== undefined || Object.keys(stats).length !== 0 ) { 
+                const {
+                    area,
+                    power,
+                    speed
+                } = stats
+
+                if ( area === 1 && power === 1 & speed === 1 ) {
+                    subtitle = '🛑' + subtitle
+                }
+            }
+            
             return {
                 title: title,
                 subtitle: subtitle,
