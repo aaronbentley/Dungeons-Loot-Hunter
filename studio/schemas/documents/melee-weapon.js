@@ -3,12 +3,6 @@ import React from 'react'
 
 const Icon = () => <Emoji style={{fontSize: '1.8em'}} symbol="⚔️" />
 
-/** TODO: Add wepon abilities?  (https://minecraft.fandom.com/wiki/Minecraft_Dungeons:Void_Touched_Blades) 
- * 
- * Maybe remove conditional on Built-in enchantments?
- * 
-*/
-
 export default {
     title: 'Melee Weapons',
     name: 'meleeWeapons',
@@ -170,7 +164,7 @@ export default {
             // Create subtitle string
             let subtitle = ''
 
-            if ( stats._type !== 'meleeWeaponStats' ) {
+            if ( stats?._type !== 'meleeWeaponStats' ) {
                 subtitle += '⚠️'
             }
 

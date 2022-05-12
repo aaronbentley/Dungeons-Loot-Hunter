@@ -9,11 +9,12 @@ export default {
     type: 'document',
     icon: Icon,
     validation: Rule => Rule.custom( fields => {
-        if ( fields.stats !== undefined || Object.keys(fields.stats).length === 0 ) {
+        console.log('🦄 ~ file: ranged-weapon.js ~ line 12 ~ fields', { fields })
+        if ( fields.stats === undefined || Object.keys(fields.stats).length === 0 ) {
             return "Missing Stats"
         }
 
-        if ( fields.runes !== undefined || fields.runes.length === 0 ) {
+        if ( fields.runes === undefined || fields.runes.length === 0 ) {
             return "Missing Runes"
         }
         
