@@ -17,6 +17,15 @@ export default {
                     return false
                 }
                 return true
+            },
+            options: {
+                list: [
+                    'Spooky Fall',
+                    'Chills and Thrills',
+                    'Anniversary Event',
+                    'Spookier Fall',
+                    'Festival of Frost'
+                ]
             }
         }
     ]

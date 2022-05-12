@@ -13,10 +13,19 @@ export default {
             title: 'DLC Title',
             type: 'string',
             hidden: ({ parent }) => {
-                if ( parent !== undefined && parent.isDlcItem ) {
+                if (parent !== undefined && parent.isDlcItem) {
                     return false
                 }
                 return true
+            },
+            options: {
+                list: [
+                    'Jungle Awakens',
+                    'Creeping Winter',
+                    'Howling Peaks',
+                    'Hidden Depths',
+                    'Echoing Void'
+                ]
             }
         }
     ]
