@@ -151,11 +151,11 @@ export default {
             title: 'title',
             image: 'image',
             stats: 'stats',
-            runes:  'runes'
+            runes:  'runes.0.title'
         },
         prepare( selection ) {
             const {
-                title, 
+                title,
                 image,
                 stats,
                 runes
@@ -164,11 +164,11 @@ export default {
             // Create subtitle string
             let subtitle = ''
 
-            if ( Object.keys(stats).length === 0 ) {
+            if ( stats === undefined || Object.keys(stats).length === 0 ) {
                 subtitle += '📊'
             }
 
-            if ( runes.length === 0 ) {
+            if ( runes === undefined || runes.length === 0 ) {
                 subtitle += '🔮'
             }
             

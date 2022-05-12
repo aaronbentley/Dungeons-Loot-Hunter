@@ -81,5 +81,38 @@ export default {
                 }
             ]
         },
-    ]
+    ],
+    preview: {
+        select: {
+            title: 'title',
+            image: 'image',
+            traits: 'traits',
+            runes:  'runes.0.title'
+        },
+        prepare( selection ) {
+            const {
+                title,
+                image,
+                traits,
+                runes
+            } = selection
+
+            // Create subtitle string
+            let subtitle = ''
+
+            if ( traits === undefined || Object.keys(traits).length === 0 ) {
+                subtitle += '📊'
+            }
+
+            if ( runes === undefined || runes.length === 0 ) {
+                subtitle += '🔮'
+            }
+            
+            return {
+                title: title,
+                subtitle: subtitle,
+                media: image
+            }
+        }
+    }
 }
