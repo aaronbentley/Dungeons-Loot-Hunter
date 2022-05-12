@@ -86,6 +86,7 @@ export default {
         select: {
             title: 'title',
             image: 'image',
+            isUnique: 'isUnique',
             traits: 'traits',
             runes:  'runes.0.title'
         },
@@ -93,6 +94,7 @@ export default {
             const {
                 title,
                 image,
+                isUnique,
                 traits,
                 runes
             } = selection
@@ -106,6 +108,10 @@ export default {
 
             if ( runes === undefined || runes.length === 0 ) {
                 subtitle += '🔮'
+            }
+
+            if ( isUnique !== undefined & isUnique ) {
+                subtitle += '🟠'
             }
             
             return {

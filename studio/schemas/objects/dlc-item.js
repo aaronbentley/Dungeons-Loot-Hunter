@@ -20,11 +20,12 @@ export default {
             },
             options: {
                 list: [
-                    'Jungle Awakens',
                     'Creeping Winter',
-                    'Howling Peaks',
+                    'Echoing Void',
+                    'Flames of the Nether',
                     'Hidden Depths',
-                    'Echoing Void'
+                    'Howling Peaks',
+                    'Jungle Awakens',
                 ]
             }
         }
