@@ -35,6 +35,22 @@ export default {
             validation: (Rule) => Rule.required()
         },
         {
+            name: 'builtInAbilities',
+            title: 'Built-in Abilities',
+            type: 'array',
+            of: [
+              {
+                type: 'reference',
+                to: [
+                  { type: 'enchantments' }
+                ],
+                options: {
+                    disableNew: true
+                }
+              }
+            ]
+        },
+        {
             name: 'isUnique',
             title: 'Is unique?',
             type: 'boolean'
@@ -60,6 +76,28 @@ export default {
                         }
                     }
                 }
+            }
+        },
+        {
+            name: 'builtInEnchantments',
+            title: 'Built-in Enchantments',
+            type: 'array',
+            of: [
+              {
+                type: 'reference',
+                to: [
+                  { type: 'enchantments' }
+                ],
+                options: {
+                    disableNew: true
+                }
+              }
+            ],
+            hidden: ({ parent, document, value }) => {
+                if ( document.isUnique ) {
+                    return false
+                }
+                return true
             }
         },
         {
