@@ -110,6 +110,10 @@ export default {
                 value: '30% chance to negate hits'
             },
             {
+                title: '30% chance to summon a bee when hit (max 3)',
+                value: '30% chance to summon a bee when hit (max 3)'
+            },
+            {
                 title: '35% damage reduction',
                 value: '35% damage reduction'
             },
@@ -124,6 +128,10 @@ export default {
             {
                 title: 'Brief invulnerability when rolling',
                 value: 'Brief invulnerability when rolling'
+            },
+            {
+                title: 'Briefly gain ghost form when rolling',
+                value: 'Briefly gain ghost form when rolling'
             },
             {
                 title: 'Burns nearby enemies',
