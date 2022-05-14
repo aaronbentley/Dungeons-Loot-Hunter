@@ -11,6 +11,7 @@ import rangedWeapons from './documents/ranged-weapon'
 import runes from './documents/runes'
 import siteSettings from './documents/site-settings'
 import armorTraits from './objects/armor-traits'
+import artifactTraits from './objects/artifact-traits'
 import dlcItem from './objects/dlc-item'
 import eventItem from './objects/event-item'
 import meleeWeaponStats from './objects/melee-weapon-stats'
@@ -27,6 +28,7 @@ export default createSchema({
         ancientMobs,
         armors,
         armorTraits,
+        artifactTraits,
         artifacts,
         dlcItem,
         enchantments,
