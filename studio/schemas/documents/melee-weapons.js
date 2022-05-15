@@ -157,11 +157,19 @@ export default {
                                     // filter: '*[_type=="levels" && references($_id)]',
                                     // filter: '*[_type=="levels" && references($_id)]',
                                     // filter: 'lootDrops references($_id)',
-                                    filter: '*[references($_id)]',
+                                    // filter: '*[references($_id)]',
+                                    // filter: '$_id in lootDrops[]._ref',
+                                    // filter: 'lootDrops references($_id)',
+                                    // filter: 'lootDrops references(^._id)',
+                                    // filter: 'meleeWeapons[]->',
+                                    // filter: 'references($_id).{_ref}',
+                                    filter: 'references($_id)',
                                     params: { _id: document._id }
                                 }
                             }
                         }
+                        // filter: ' references($_id)',
+                        // params: { _id: document._id }
                     }
                 }
             ]
