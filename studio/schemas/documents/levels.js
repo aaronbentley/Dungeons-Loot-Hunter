@@ -1,7 +1,7 @@
 import Emoji from 'a11y-react-emoji'
 import React from 'react'
 
-const Icon = () => <Emoji style={{fontSize: '1.8em'}} symbol="🗺" />
+const Icon = () => <Emoji style={{ fontSize: '1.8em' }} symbol='🗺' />
 
 export default {
     title: 'Levels',
@@ -14,7 +14,7 @@ export default {
             title: 'Title',
             type: 'string',
             description: 'Specify Level name',
-            validation: (Rule) => Rule.required(),
+            validation: (Rule) => Rule.required()
         },
         {
             name: 'slug',
@@ -53,6 +53,31 @@ export default {
             type: 'boolean'
         },
         {
+            name: 'lootDrops',
+            title: 'Loot drops',
+            type: 'array',
+            of: [
+                {
+                    type: 'reference',
+                    to: [
+                        { type: 'meleeWeapons' },
+                        { type: 'rangedWeapons' },
+                        { type: 'armor' },
+                        { type: 'artifacts' }
+                    ],
+                    options: {
+                        disableNew: true,
+                        filter: () => {
+                            return {
+                                filter: 'isUnique != true'
+                            }
+                        }
+                    }
+                }
+            ],
+
+        },
+        {
             name: 'dlcTitle',
             title: 'DLC Title',
             type: 'string',
@@ -69,7 +94,7 @@ export default {
                     'Flames of the Nether',
                     'Hidden Depths',
                     'Howling Peaks',
-                    'Jungle Awakens',
+                    'Jungle Awakens'
                 ]
             }
         }

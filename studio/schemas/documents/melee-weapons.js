@@ -130,20 +130,6 @@ export default {
             ]
         },
         {
-            name: 'obtainableOn',
-            title: 'Obtainable on',
-            type: 'array',
-            of: [
-                {
-                    type: 'reference',
-                    to: [{ type: 'levels' }],
-                    options: {
-                        disableNew: true
-                    }
-                }
-            ]
-        },
-        {
             name: 'isDlcItem',
             title: 'Is DLC item?',
             type: 'dlcItem'
@@ -152,6 +138,33 @@ export default {
             name: 'isEventItem',
             title: 'Is Event item?',
             type: 'eventItem'
+        },
+        {
+            name: 'obtainableOn',
+            title: 'Obtainable on',
+            type: 'array',
+            // readOnly: true,
+            of: [
+                {
+                    type: 'reference',
+                    to: [{ type: 'levels' }],
+                    options: {
+                        disableNew: true,
+                        filter: ( { document } ) => {
+                            if (document._id) {
+                                // console.log('🦄 ~ file: melee-weapons.js ~ line 155 ~ document._id', document._id)
+                                return {
+                                    // filter: '*[_type=="levels" && references($_id)]',
+                                    // filter: '*[_type=="levels" && references($_id)]',
+                                    // filter: 'lootDrops references($_id)',
+                                    filter: '*[references($_id)]',
+                                    params: { _id: document._id }
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
         }
     ],
     preview: {
