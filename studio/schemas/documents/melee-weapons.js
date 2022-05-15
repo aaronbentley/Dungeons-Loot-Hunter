@@ -130,6 +130,20 @@ export default {
             ]
         },
         {
+            name: 'obtainableOn',
+            title: 'Obtainable on',
+            type: 'array',
+            of: [
+                {
+                    type: 'reference',
+                    to: [{ type: 'levels' }],
+                    options: {
+                        disableNew: true
+                    }
+                }
+            ]
+        },
+        {
             name: 'isDlcItem',
             title: 'Is DLC item?',
             type: 'dlcItem'

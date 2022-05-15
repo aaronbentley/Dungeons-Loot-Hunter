@@ -84,6 +84,16 @@ export default () =>
                         .defaultOrdering( [ { field: 'title', direction: 'asc'} ] )
                 ),
             S.listItem()
+                .title('Levels')
+                .schemaType('levels')
+                .child(
+                    S.documentList('levels')
+                        .title('Levels')
+                        .menuItems(S.documentTypeList('levels').getMenuItems())
+                        .filter('_type == "levels"')
+                        .defaultOrdering( [ { field: '_createdAt', direction: 'asc'} ] )
+                ),
+            S.listItem()
                 .title('Settings')
                 .icon(SettingsIcon)
                 .child(

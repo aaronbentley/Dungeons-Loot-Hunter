@@ -3,11 +3,12 @@
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 import createSchema from 'part:@sanity/base/schema-creator'
 import ancientMobs from './documents/ancient-mobs'
-import armors from './documents/armor'
-import artifacts from './documents/artifact'
+import armors from './documents/armors'
+import artifacts from './documents/artifacts'
 import enchantments from './documents/enchantments'
-import meleeWeapons from './documents/melee-weapon'
-import rangedWeapons from './documents/ranged-weapon'
+import levels from './documents/levels'
+import meleeWeapons from './documents/melee-weapons'
+import rangedWeapons from './documents/ranged-weapons'
 import runes from './documents/runes'
 import siteSettings from './documents/site-settings'
 import armorTraits from './objects/armor-traits'
@@ -28,11 +29,12 @@ export default createSchema({
         ancientMobs,
         armors,
         armorTraits,
-        artifactTraits,
         artifacts,
+        artifactTraits,
         dlcItem,
         enchantments,
         eventItem,
+        levels,
         meleeWeapons,
         meleeWeaponStats,
         rangedWeapons,
