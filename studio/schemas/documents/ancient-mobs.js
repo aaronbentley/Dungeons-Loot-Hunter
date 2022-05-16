@@ -38,22 +38,29 @@ export default {
             ]
         },
         {
-            title: 'Loot drops',
             name: 'lootDrops',
+            title: 'Loot drops',
             type: 'array',
             of: [
                 {
                     type: 'reference',
                     to: [
-                        { type: 'meleeWeapons' }, 
+                        { type: 'meleeWeapons' },
                         { type: 'rangedWeapons' },
-                        { type: 'armor' }
+                        { type: 'armor' },
+                        { type: 'artifacts' }
                     ],
                     options: {
-                        disableNew: true
+                        disableNew: true,
+                        filter: () => {
+                            return {
+                                filter: 'isUnique != true'
+                            }
+                        }
                     }
                 }
-            ]
-        }
+            ],
+
+        },
     ]
 }
