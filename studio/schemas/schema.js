@@ -15,7 +15,7 @@ import armorTraits from './objects/armor-traits'
 import artifactTraits from './objects/artifact-traits'
 import dlcItem from './objects/dlc-item'
 import eventItem from './objects/event-item'
-// import lootDrops from './objects/loot-drops'
+import lootDrops from './objects/loot-drops'
 import meleeWeaponStats from './objects/melee-weapon-stats'
 import rangedWeaponStats from './objects/ranged-weapon-stats'
 
@@ -36,7 +36,7 @@ export default createSchema({
         enchantments,
         eventItem,
         levels,
-        // lootDrops,
+        lootDrops,
         meleeWeapons,
         meleeWeaponStats,
         rangedWeapons,
