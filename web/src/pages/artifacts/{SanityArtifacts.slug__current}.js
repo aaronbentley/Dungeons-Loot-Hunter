@@ -144,12 +144,14 @@ const Artifact = ({ data = {} }) => {
 
                     <SimpleGrid columns={[1, 2]} spacing={10}>
                         <Box>
-                            <Stack direction='column' spacing={4}>
-                                <Heading as='h3' fontSize='xl'>
-                                    Locations
-                                </Heading>
-                                <Locations data={obtainableOn} />
-                            </Stack>
+                            {obtainableOn && (
+                                <Stack direction='column' spacing={4}>
+                                    <Heading as='h3' fontSize='xl'>
+                                        Locations
+                                    </Heading>
+                                    <Locations data={obtainableOn} />
+                                </Stack>
+                            )}
                         </Box>
                     </SimpleGrid>
                 </Stack>
