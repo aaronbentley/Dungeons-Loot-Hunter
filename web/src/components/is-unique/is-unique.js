@@ -12,7 +12,7 @@ const IsUnique = ({
     isUnique = false,
     variationOf = {}
 }) => {
-    if (!isUnique) {
+    if (!isUnique || !variationOf ) {
         return null
     }
 

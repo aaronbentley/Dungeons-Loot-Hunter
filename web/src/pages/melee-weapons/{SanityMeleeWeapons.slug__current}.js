@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react'
 import { graphql } from 'gatsby'
 import React from 'react'
+import AncientMobs from '../../components/ancient-mobs/ancient-mobs'
 import BuiltInAbilities from '../../components/built-in-abilities/built-in-abilities'
 import BuiltInEnchantments from '../../components/built-in-enchantments/built-in-enchantments'
 import DlcItem from '../../components/dlc-item/dlc-item'
@@ -19,6 +20,7 @@ import EventItem from '../../components/event-item/event-item'
 import Image from '../../components/image/image'
 import IsUnique from '../../components/is-unique/is-unique'
 import { Layout } from '../../components/layouts'
+import Locations from '../../components/locations/locations'
 import Runes from '../../components/runes/runes'
 import Stats from '../../components/stats/stats'
 import { humanReadableTypeName } from '../../utils/generate-slug'
@@ -43,6 +45,8 @@ export const query = graphql`
             runes: _rawRunes(resolveReferences: { maxDepth: 10 })
             isDlcItem: _rawIsDlcItem(resolveReferences: { maxDepth: 10 })
             isEventItem: _rawIsEventItem(resolveReferences: { maxDepth: 10 })
+            obtainableOn: _rawObtainableOn(resolveReferences:{maxDepth: 10})
+            droppedBy: _rawDroppedBy(resolveReferences:{maxDepth: 10})
         }
     }
 `
@@ -60,7 +64,9 @@ const MeleeWeapon = ({ data = {} }) => {
             builtInEnchantments = [],
             runes = [],
             isDlcItem = null,
-            isEventItem = null
+            isEventItem = null,
+            obtainableOn = [],
+            droppedBy = []
         }
     } = data
 
@@ -90,7 +96,7 @@ const MeleeWeapon = ({ data = {} }) => {
                             )}
                         </Stack>
                     </Stack>
-                    <SimpleGrid columns={[1,2]}>
+                    <SimpleGrid columns={[1,2]} spacing={10}>
                         <Box>
                             <Image
                                 imageData={image}
@@ -141,7 +147,7 @@ const MeleeWeapon = ({ data = {} }) => {
                                         />
                                     </Stack>
                                 )}
-                                {isDlcItem && (
+                                {isDlcItem?.isDlcItem && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>
                                             DLC
@@ -156,6 +162,29 @@ const MeleeWeapon = ({ data = {} }) => {
                                         </Heading>
                                         <EventItem data={isEventItem} />
                                     </Stack>
+                                )}
+                            </Stack>
+                        </Box>
+                    </SimpleGrid>
+
+                    <SimpleGrid columns={[1,2]} spacing={10}>
+                        <Box>
+                            <Stack direction='column' spacing={4}>
+                                <Heading as='h3' fontSize='xl'>
+                                    Locations
+                                </Heading>
+                                {obtainableOn && (
+                                    <Locations data={ (isUnique ? variationOf : obtainableOn )} />
+                                )}
+                            </Stack>
+                        </Box>
+                        <Box>
+                            <Stack direction='column' spacing={4}>
+                                <Heading as='h3' fontSize='xl'>
+                                    Ancient Mobs
+                                </Heading>
+                                {droppedBy && (
+                                    <AncientMobs data={( isUnique ? variationOf : droppedBy )} />
                                 )}
                             </Stack>
                         </Box>
