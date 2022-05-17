@@ -38,6 +38,23 @@ export default {
             }
         },
         {
+            name: 'enchantments',
+            title: 'Enchantments',
+            type: 'array',
+            of: [
+              {
+                type: 'reference',
+                to: [
+                  { type: 'enchantments' }
+                ],
+                options: {
+                    disableNew: true
+                }
+              }
+            ],
+            validation: (Rule) => Rule.min(1)
+        },
+        {
             name: 'runeRequirements',
             title: 'Rune requirements',
             type: 'array',
