@@ -3,7 +3,9 @@
  */
  import { Stack, Tooltip } from '@chakra-ui/react'
 import React from 'react'
+import { generateSlug } from '../../utils/helpers'
 import Image from '../image/image'
+import Link from '../link/link'
  
  const AncientMobs = ({ data = {} }) => {
      if (!data) {
@@ -22,12 +24,14 @@ import Image from '../image/image'
                      placement='top'
                      colorScheme='purple'
                      shouldWrapChildren>
-                     <Image
-                         imageData={mob.image}
-                         alt={mob.title}
-                         width={84}
-                         height={84}
-                     />
+                     <Link to={`/${generateSlug(mob._type)}/${mob.slug.current}/`}>
+                        <Image
+                            imageData={mob.image}
+                            alt={mob.title}
+                            width={84}
+                            height={84}
+                        />
+                     </Link>
                  </Tooltip>
              ))}
          </Stack>

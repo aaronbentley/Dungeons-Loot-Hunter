@@ -7,6 +7,7 @@ import { graphql } from 'gatsby'
 import React from 'react'
 import AncientMobs from '../../components/ancient-mobs/ancient-mobs'
 import ArmorTraits from '../../components/armor-traits/armor-traits'
+import BackButton from '../../components/back-button/back-button'
 import BuiltInAbilities from '../../components/built-in-abilities/built-in-abilities'
 import BuiltInEnchantments from '../../components/built-in-enchantments/built-in-enchantments'
 import DlcItem from '../../components/dlc-item/dlc-item'
@@ -68,6 +69,7 @@ const Armor = ({ data = {} }) => {
             <Container maxWidth='6xl' py={24}>
                 <Stack direction='column' spacing={12}>
                     <Stack direction='column' spacing={2}>
+                        <BackButton />
                         <Heading as='h1' fontSize='6xl' noOfLines={1} mb={0}>
                             {title}
                         </Heading>
