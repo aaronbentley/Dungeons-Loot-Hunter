@@ -5,7 +5,6 @@ import { Tag } from '@chakra-ui/react'
 import React from 'react'
 
 const DlcItem = ({ data = {} }) => {
-
     if (!data) {
         return null
     }
@@ -17,7 +16,7 @@ const DlcItem = ({ data = {} }) => {
     }
 
     return (
-        <Tag variant='solid' colorScheme='green' width='max'>
+        <Tag colorScheme='green' width='max'>
             {title}
         </Tag>
     )

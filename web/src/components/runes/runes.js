@@ -1,28 +1,34 @@
 /**
  * Dungeons Loot Hunter Runes
  */
-import { Heading, Stack } from '@chakra-ui/react'
+import { Stack, Tooltip } from '@chakra-ui/react'
 import React from 'react'
 import Image from '../image/image'
 
 const Runes = ({ data = {} }) => {
+    if (!data) {
+        return null
+    }
+
     return (
-        <Stack direction='column' spacing={12}>
-            <Heading as='h2'>Runes</Heading>
-            <Stack direction='row' spacing={2}>
-                {data &&
-                    data.map((rune) => (
+        <Stack direction='row' spacing={2}>
+            {data &&
+                data.map((rune) => (
+                    <Tooltip
+                        key={rune.id}
+                        label={rune.title}
+                        placement='top'
+                        colorScheme='purple'
+                        shouldWrapChildren>
                         <Image
-                            key={rune.id}
                             imageData={rune.image}
                             alt={rune.title}
-                            width={50}
+                            width={42}
                         />
-                    ))}
-            </Stack>
+                    </Tooltip>
+                ))}
         </Stack>
     )
 }
-
 
 export default Runes

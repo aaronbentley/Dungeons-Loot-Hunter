@@ -1,12 +1,19 @@
 /**
  * Dungeons Loot Hunter generate slug
  */
-import slugify from 'slugify'
+import slugify from 'slugify';
 
-const generateSlug = ( string ='' ) => {
+export const generateSlug = ( string ='' ) => {
     return slugify(string.replace(/[A-Z]/g, '-$&'), {
         lower: true
     })
 }
 
-export default generateSlug
+export const humanReadableTypeName = ( string = '' ) => {
+    const words = string.match(/[A-Za-z][a-z]*/g) || [];
+    return words.map(capitalize).join(" ");
+}
+
+export const capitalize = (word) => {
+    return word.charAt(0).toUpperCase() + word.substring(1);
+}

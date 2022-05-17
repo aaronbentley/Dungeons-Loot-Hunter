@@ -21,7 +21,10 @@ export default {
             title: 'Image',
             type: 'image',
             description: 'Provide Ancient Mob image',
-            validation: (Rule) => Rule.required()
+            validation: (Rule) => Rule.required(),
+            options: {
+                hotspot: true
+            }
         },
         {
             name: 'runeRequirements',
@@ -36,11 +39,6 @@ export default {
                     }
                 }
             ]
-        },
-        {
-            name: 'lootDrops',
-            title: 'Loot drops',
-            type: 'lootDrops'
         }
     ]
 }

@@ -32,7 +32,10 @@ export default {
             title: 'Image',
             type: 'image',
             description: 'Provide Level image',
-            validation: (Rule) => Rule.required()
+            validation: (Rule) => Rule.required(),
+            options: {
+                hotspot: true
+            }
         },
         {
             name: 'location',
@@ -51,11 +54,6 @@ export default {
             name: 'isDlc',
             title: 'DLC content?',
             type: 'boolean'
-        },
-        {
-            name: 'lootDrops',
-            title: 'Loot drops',
-            type: 'lootDrops'
         },
         {
             name: 'dlcTitle',

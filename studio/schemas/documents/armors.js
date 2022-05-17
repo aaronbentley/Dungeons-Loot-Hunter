@@ -32,7 +32,10 @@ export default {
             title: 'Image',
             type: 'image',
             description: 'Provide Armor image',
-            validation: (Rule) => Rule.required()
+            validation: (Rule) => Rule.required(),
+            options: {
+                hotspot: true
+            }
         },
         {
             name: 'builtInAbilities',
@@ -60,6 +63,7 @@ export default {
             title: 'Unique variation of',
             type: 'reference',
             to: [ { type: 'armor' } ],
+            validation: (Rule) => Rule.max(1),
             hidden: ({ parent, document, value }) => {
                 if ( document.isUnique ) {
                     return false
@@ -128,6 +132,36 @@ export default {
             name: 'isEventItem',
             title: 'Is Event item?',
             type: 'eventItem'
+        },
+        {
+            name: 'obtainableOn',
+            title: 'Obtainable on',
+            type: 'array',
+            of: [
+                {
+                    type: 'reference',
+                    to: [{ type: 'levels' }],
+                    options: {
+                        disableNew: true,
+                    }
+                }
+            ],
+            validation: (Rule) => Rule.unique()
+        },
+        {
+            name: 'droppedBy',
+            title: 'Dropped by',
+            type: 'array',
+            of: [
+                {
+                    type: 'reference',
+                    to: [{ type: 'ancientMobs' }],
+                    options: {
+                        disableNew: true,
+                    }
+                }
+            ],
+            validation: (Rule) => Rule.max(1)
         }
     ],
     preview: {

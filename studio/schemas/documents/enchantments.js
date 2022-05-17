@@ -32,7 +32,10 @@ export default {
             title: 'Image',
             type: 'image',
             description: 'Provide Enchantment image',
-            validation: (Rule) => Rule.required()
+            validation: (Rule) => Rule.required(),
+            options: {
+                hotspot: true
+            }
         },
         {
             name: 'applicableTo',

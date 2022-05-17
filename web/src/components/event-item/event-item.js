@@ -17,7 +17,7 @@ const EventItem = ({ data = {} }) => {
     }
 
     return (
-        <Tag variant='solid' colorScheme='purple' width='max'>
+        <Tag colorScheme='purple' width='max'>
             {title}
         </Tag>
     )

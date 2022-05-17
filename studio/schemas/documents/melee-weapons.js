@@ -43,7 +43,10 @@ export default {
             title: 'Image',
             type: 'image',
             description: 'Provide Melee Weapon image',
-            validation: (Rule) => Rule.required()
+            validation: (Rule) => Rule.required(),
+            options: {
+                hotspot: true
+            }
         },
         {
             name: 'stats',
@@ -76,6 +79,7 @@ export default {
             title: 'Unique variation of',
             type: 'reference',
             to: [ { type: 'meleeWeapons' } ],
+            validation: (Rule) => Rule.max(1),
             hidden: ({ parent, document, value }) => {
                 if ( document.isUnique ) {
                     return false
@@ -143,36 +147,31 @@ export default {
             name: 'obtainableOn',
             title: 'Obtainable on',
             type: 'array',
-            // readOnly: true,
             of: [
                 {
                     type: 'reference',
                     to: [{ type: 'levels' }],
                     options: {
                         disableNew: true,
-                        filter: ( { document } ) => {
-                            if (document._id) {
-                                // console.log('🦄 ~ file: melee-weapons.js ~ line 155 ~ document._id', document._id)
-                                return {
-                                    // filter: '*[_type=="levels" && references($_id)]',
-                                    // filter: '*[_type=="levels" && references($_id)]',
-                                    // filter: 'lootDrops references($_id)',
-                                    // filter: '*[references($_id)]',
-                                    // filter: '$_id in lootDrops[]._ref',
-                                    // filter: 'lootDrops references($_id)',
-                                    // filter: 'lootDrops references(^._id)',
-                                    // filter: 'meleeWeapons[]->',
-                                    // filter: 'references($_id).{_ref}',
-                                    filter: 'references($_id)',
-                                    params: { _id: document._id }
-                                }
-                            }
-                        }
-                        // filter: ' references($_id)',
-                        // params: { _id: document._id }
                     }
                 }
-            ]
+            ],
+            validation: (Rule) => Rule.unique()
+        },
+        {
+            name: 'droppedBy',
+            title: 'Dropped by',
+            type: 'array',
+            of: [
+                {
+                    type: 'reference',
+                    to: [{ type: 'ancientMobs' }],
+                    options: {
+                        disableNew: true,
+                    }
+                }
+            ],
+            validation: (Rule) => Rule.max(1)
         }
     ],
     preview: {
