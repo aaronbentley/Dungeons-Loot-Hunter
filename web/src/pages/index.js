@@ -192,7 +192,6 @@ const Index = ({ data = {} }) => {
                                                 <Heading
                                                     as='h4'
                                                     fontSize='lg'
-                                                    // textAlign='center'
                                                     noOfLines={1}
                                                     pt={2}
                                                     pb={4}>
