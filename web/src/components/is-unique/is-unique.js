@@ -3,7 +3,7 @@
  */
 import { Text } from '@chakra-ui/react'
 import React from 'react'
-import { generateSlug } from '../../utils/generate-slug'
+import { generateSlug } from '../../utils/helpers'
 import Link from '../link/link'
 
 const IsUnique = ({

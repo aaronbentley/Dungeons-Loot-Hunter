@@ -19,8 +19,9 @@ require('dotenv').config({
 
 module.exports = {
     siteMetadata: {
-        title: `Dungeons Loot Hunter`,
-        siteUrl: `https://www.yourdomain.tld`
+        siteUrl: process.env.GATSBY_SITE_URL,
+        title: process.env.GATSBY_SITE_TITLE,
+        author: '@aaronbentley'
     },
     plugins: [
         {

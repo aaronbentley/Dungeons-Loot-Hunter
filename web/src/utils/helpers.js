@@ -1,7 +1,14 @@
 /**
  * Dungeons Loot Hunter generate slug
  */
-import slugify from 'slugify';
+import slugify from 'slugify'
+
+export const mapEdgesToNodes = ( data = [] ) => {
+   if ( !data.edges ) {
+       return []
+   }
+   return data.edges.map( ( node ) => node )
+}
 
 export const generateSlug = ( string ='' ) => {
     return slugify(string.replace(/[A-Z]/g, '-$&'), {

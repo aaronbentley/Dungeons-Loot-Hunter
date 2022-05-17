@@ -22,7 +22,7 @@ import { Layout } from '../../components/layouts'
 import Locations from '../../components/locations/locations'
 import Runes from '../../components/runes/runes'
 import Stats from '../../components/stats/stats'
-import { humanReadableTypeName } from '../../utils/generate-slug'
+import { humanReadableTypeName } from '../../utils/helpers'
 
 export const query = graphql`
     query ($id: String!) {
@@ -44,8 +44,8 @@ export const query = graphql`
             runes: _rawRunes(resolveReferences: { maxDepth: 10 })
             isDlcItem: _rawIsDlcItem(resolveReferences: { maxDepth: 10 })
             isEventItem: _rawIsEventItem(resolveReferences: { maxDepth: 10 })
-            obtainableOn: _rawObtainableOn(resolveReferences:{maxDepth: 10})
-            droppedBy: _rawDroppedBy(resolveReferences:{maxDepth: 10})
+            obtainableOn: _rawObtainableOn(resolveReferences: { maxDepth: 10 })
+            droppedBy: _rawDroppedBy(resolveReferences: { maxDepth: 10 })
         }
     }
 `
@@ -68,7 +68,7 @@ const RangedWeapon = ({ data = {} }) => {
             droppedBy = []
         }
     } = data
-    
+
     return (
         <Layout>
             <Container maxWidth='6xl' py={24}>
@@ -93,16 +93,32 @@ const RangedWeapon = ({ data = {} }) => {
                                     </Tag>
                                 </React.Fragment>
                             )}
+                            {isDlcItem?.isDlcItem && (
+                                <Tag width='max' colorScheme='green'>
+                                    DLC
+                                </Tag>
+                            )}
+                            {isEventItem && (
+                                <Tag width='max' colorScheme='purple'>
+                                    Event
+                                </Tag>
+                            )}
                         </Stack>
                     </Stack>
                     <SimpleGrid columns={[1, 2]} spacing={10}>
                         <Box>
                             <Image
+                                p={6}
                                 imageData={image}
                                 alt={title}
                                 width={350}
                                 height={350}
                                 backgroundColor={isUnique ? 'orange.500' : null}
+                                bgGradient={
+                                    isUnique
+                                        ? 'linear(to-tr, orange.500, orange.300)'
+                                        : 'linear(to-tr, gray.600, green.700)'
+                                }
                                 borderRadius={2}
                             />
                         </Box>
@@ -166,13 +182,15 @@ const RangedWeapon = ({ data = {} }) => {
                         </Box>
                     </SimpleGrid>
 
-                    <SimpleGrid columns={[1,2]} spacing={10}>
+                    <SimpleGrid columns={[1, 2]} spacing={10}>
                         <Box>
                             <Stack direction='column' spacing={4}>
                                 <Heading as='h3' fontSize='xl'>
                                     Locations
                                 </Heading>
-                                <Locations data={( isUnique ? variationOf : obtainableOn )} />
+                                <Locations
+                                    data={isUnique ? variationOf : obtainableOn}
+                                />
                             </Stack>
                         </Box>
                         <Box>
@@ -180,7 +198,9 @@ const RangedWeapon = ({ data = {} }) => {
                                 <Heading as='h3' fontSize='xl'>
                                     Ancient Mobs
                                 </Heading>
-                                <AncientMobs data={( isUnique ? variationOf : droppedBy )} />
+                                <AncientMobs
+                                    data={isUnique ? variationOf : droppedBy}
+                                />
                             </Stack>
                         </Box>
                     </SimpleGrid>

@@ -16,7 +16,7 @@ import IsUnique from '../../components/is-unique/is-unique'
 import { Layout } from '../../components/layouts'
 import Locations from '../../components/locations/locations'
 import Runes from '../../components/runes/runes'
-import { humanReadableTypeName } from '../../utils/generate-slug'
+import { humanReadableTypeName } from '../../utils/helpers'
 
 export const query = graphql`
     query ($id: String!) {
@@ -87,17 +87,28 @@ const Armor = ({ data = {} }) => {
                                     </Tag>
                                 </React.Fragment>
                             )}
+                            {isDlcItem?.isDlcItem && (
+                                <Tag width='max' colorScheme='green'>
+                                    DLC
+                                </Tag>
+                            )}
+                            {isEventItem && (
+                                <Tag width='max' colorScheme='purple'>
+                                    Event
+                                </Tag>
+                            )}
                         </Stack>
                     </Stack>
                     <SimpleGrid columns={[1, 2]} spacing={10}>
                         <Box>
                             <Image
+                                p={6}
                                 imageData={image}
                                 alt={title}
                                 width={350}
                                 height={350}
                                 backgroundColor={isUnique ? 'orange.500' : null}
-                                bgGradient={!isUnique ?'linear(to-tr, gray.600, green.600)' : null }
+                                bgGradient={isUnique ? 'linear(to-tr, orange.500, orange.300)' : 'linear(to-tr, gray.600, green.700)'}
                                 borderRadius={2}
                             />
                         </Box>
