@@ -79,7 +79,6 @@ export default {
             title: 'Unique variation of',
             type: 'reference',
             to: [ { type: 'meleeWeapons' } ],
-            validation: (Rule) => Rule.max(1),
             hidden: ({ parent, document, value }) => {
                 if ( document.isUnique ) {
                     return false
@@ -156,7 +155,13 @@ export default {
                     }
                 }
             ],
-            validation: (Rule) => Rule.unique()
+            validation: (Rule) => Rule.unique(),
+            hidden: ({ parent, document, value }) => {
+                if ( document.isUnique ) {
+                    return true
+                }
+                return false
+            }
         },
         {
             name: 'droppedBy',
@@ -171,7 +176,13 @@ export default {
                     }
                 }
             ],
-            validation: (Rule) => Rule.max(1)
+            validation: (Rule) => Rule.max(1),
+            hidden: ({ parent, document, value }) => {
+                if ( document.isUnique ) {
+                    return true
+                }
+                return false
+            }
         }
     ],
     preview: {

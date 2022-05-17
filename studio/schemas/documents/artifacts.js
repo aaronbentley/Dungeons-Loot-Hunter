@@ -90,21 +90,6 @@ export default {
                 }
             ],
             validation: (Rule) => Rule.unique()
-        },
-        {
-            name: 'droppedBy',
-            title: 'Dropped by',
-            type: 'array',
-            of: [
-                {
-                    type: 'reference',
-                    to: [{ type: 'ancientMobs' }],
-                    options: {
-                        disableNew: true,
-                    }
-                }
-            ],
-            validation: (Rule) => Rule.max(1)
         }
     ],
     preview: {
