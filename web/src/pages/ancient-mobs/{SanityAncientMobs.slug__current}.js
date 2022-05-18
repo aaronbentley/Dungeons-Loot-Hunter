@@ -33,7 +33,7 @@ export const query = graphql`
                 resolveReferences: { maxDepth: 10 }
             )
         }
-        allSanityMeleeWeapons(
+        meleeWeapons: allSanityMeleeWeapons(
             filter: { droppedBy: { elemMatch: { id: { eq: $id } } } }
         ) {
             edges {
@@ -50,7 +50,26 @@ export const query = graphql`
                 }
             }
         }
-        allSanityRangedWeapons(
+        uniqueMeleeWeapons: allSanityMeleeWeapons(
+            filter: {
+                variationOf: { droppedBy: { elemMatch: { id: { eq: $id } } } }
+            }
+        ) {
+            edges {
+                node {
+                    _type
+                    id
+                    title
+                    image {
+                        ...ImageWithPreview
+                    }
+                    slug {
+                        current
+                    }
+                }
+            }
+        }
+        rangedWeapons: allSanityRangedWeapons(
             filter: { droppedBy: { elemMatch: { id: { eq: $id } } } }
         ) {
             edges {
@@ -67,8 +86,46 @@ export const query = graphql`
                 }
             }
         }
-        allSanityArmor(
+        uniqueRangedWeapons: allSanityRangedWeapons(
+            filter: {
+                variationOf: { droppedBy: { elemMatch: { id: { eq: $id } } } }
+            }
+        ) {
+            edges {
+                node {
+                    _type
+                    id
+                    title
+                    image {
+                        ...ImageWithPreview
+                    }
+                    slug {
+                        current
+                    }
+                }
+            }
+        }
+        armor: allSanityArmor(
             filter: { droppedBy: { elemMatch: { id: { eq: $id } } } }
+        ) {
+            edges {
+                node {
+                    _type
+                    id
+                    title
+                    image {
+                        ...ImageWithPreview
+                    }
+                    slug {
+                        current
+                    }
+                }
+            }
+        }
+        uniqueArmor: allSanityArmor(
+            filter: {
+                variationOf: { droppedBy: { elemMatch: { id: { eq: $id } } } }
+            }
         ) {
             edges {
                 node {
@@ -87,7 +144,6 @@ export const query = graphql`
     }
 `
 
-// TODO: Include unique item references in loot drops list
 const AncientMob = ({ data = {} }) => {
     const {
         sanityAncientMobs: {
@@ -97,16 +153,22 @@ const AncientMob = ({ data = {} }) => {
             enchantments = [],
             runeRequirements = []
         },
-        allSanityMeleeWeapons = {},
-        allSanityRangedWeapons = {},
-        allSanityArmor = {}
+        meleeWeapons = {},
+        uniqueMeleeWeapons = {},
+        rangedWeapons = {},
+        uniqueRangedWeapons = {},
+        armor = {},
+        uniqueArmor = {}
     } = data
 
     // Merge loot drops into collection & map edges to nodes
     const lootDrops = [
-        ...mapEdgesToNodes(allSanityMeleeWeapons),
-        ...mapEdgesToNodes(allSanityRangedWeapons),
-        ...mapEdgesToNodes(allSanityArmor)
+        ...mapEdgesToNodes(meleeWeapons),
+        ...mapEdgesToNodes(uniqueMeleeWeapons),
+        ...mapEdgesToNodes(rangedWeapons),
+        ...mapEdgesToNodes(uniqueRangedWeapons),
+        ...mapEdgesToNodes(armor),
+        ...mapEdgesToNodes(uniqueArmor)
     ]
 
     return (
