@@ -79,4 +79,3 @@ studio/dist/*
 web/node_modules/
 web/.cache/
 web/public/
-studio/schemas/documents/melee-weapon.js
