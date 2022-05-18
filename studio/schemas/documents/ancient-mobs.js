@@ -8,13 +8,39 @@ export default {
     name: 'ancientMobs',
     type: 'document',
     icon: Icon,
+    validation: Rule => Rule.custom( fields => {
+        if ( fields.runeRequirements === undefined || fields.runeRequirements.length === 0 ) {
+            return "Missing Rune requirements"
+        }
+        
+        return true
+    }).warning(),
+    groups: [
+        {
+            name: 'content',
+            title: 'Content',
+            icon: <Emoji style={{ fontSize: '0.75em' }} symbol='📄' />,
+            default: true
+        },
+        {
+            name: 'enchantments',
+            title: 'Enchantments',
+            icon: <Emoji style={{ fontSize: '0.75em' }} symbol='💎' />
+        },
+        {
+            name: 'runes',
+            title: 'Runes',
+            icon: <Emoji style={{ fontSize: '0.75em' }} symbol='🔮' />
+        }
+    ],
     fields: [
         {
             name: 'title',
             title: 'Title',
             type: 'string',
             description: 'Specify Ancient Mob name',
-            validation: (Rule) => Rule.required()
+            validation: (Rule) => Rule.required(),
+            group: 'content'
         },
         {
             name: 'slug',
@@ -25,7 +51,8 @@ export default {
             options: {
                 source: 'title',
                 maxLength: 96
-            }
+            },
+            group: 'content'
         },
         {
             name: 'image',
@@ -35,7 +62,8 @@ export default {
             validation: (Rule) => Rule.required(),
             options: {
                 hotspot: true
-            }
+            },
+            group: 'content'
         },
         {
             name: 'enchantments',
@@ -52,7 +80,8 @@ export default {
                 }
               }
             ],
-            validation: (Rule) => Rule.min(1)
+            validation: (Rule) => Rule.min(1),
+            group: 'enchantments'
         },
         {
             name: 'runeRequirements',
@@ -66,7 +95,8 @@ export default {
                         disableNew: true
                     }
                 }
-            ]
+            ],
+            group: 'runes'
         }
     ]
 }

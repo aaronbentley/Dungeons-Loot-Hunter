@@ -8,6 +8,31 @@ export default {
     name: 'armor',
     type: 'document',
     icon: Icon,
+    validation: Rule => Rule.custom( fields => {
+        if ( fields.runes === undefined || fields.runes.length === 0 ) {
+            return "Missing Runes"
+        }
+        
+        return true
+    }).warning(),
+    groups: [
+        {
+            name: 'content',
+            title: 'Content',
+            icon: <Emoji style={{ fontSize: '0.75em' }} symbol='📄' />,
+            default: true
+        },
+        {
+            name: 'properties',
+            title: 'Properties',
+            icon: <Emoji style={{ fontSize: '0.75em' }} symbol='📊' />
+        },
+        {
+            name: 'runes',
+            title: 'Runes',
+            icon: <Emoji style={{ fontSize: '0.75em' }} symbol='🔮' />
+        }
+    ],
     fields: [
         {
             name: 'title',
@@ -15,13 +40,15 @@ export default {
             type: 'string',
             description: 'Specify Armor name',
             validation: (Rule) => Rule.required(),
+            group: 'content'
         },
         {
             name: 'slug',
             title: 'Slug',
             type: 'slug',
-            validation: (Rule) => Rule.required(),
             description: 'Generate a slug from the Title',
+            validation: (Rule) => Rule.required(),
+            group: 'content',
             options: {
                 source: 'title',
                 maxLength: 96
@@ -33,6 +60,7 @@ export default {
             type: 'image',
             description: 'Provide Armor image',
             validation: (Rule) => Rule.required(),
+            group: 'content',
             options: {
                 hotspot: true
             }
@@ -51,12 +79,14 @@ export default {
                     disableNew: true
                 }
               }
-            ]
+            ],
+            group: 'properties'
         },
         {
             name: 'isUnique',
             title: 'Is unique?',
-            type: 'boolean'
+            type: 'boolean',
+            group: 'properties'
         },
         {
             name: 'variationOf',
@@ -79,7 +109,8 @@ export default {
                         }
                     }
                 }
-            }
+            },
+            group: 'properties'
         },
         {
             name: 'builtInEnchantments',
@@ -101,12 +132,14 @@ export default {
                     return false
                 }
                 return true
-            }
+            },
+            group: 'properties'
         },
         {
             name: 'traits',
             title: 'Traits',
-            type: 'armorTraits'
+            type: 'armorTraits',
+            group: 'properties'
         },
         {
             name: 'runes',
@@ -120,17 +153,20 @@ export default {
                         disableNew: true
                     }
                 }
-            ]
+            ],
+            group: 'runes'
         },
         {
             name: 'isDlcItem',
             title: 'Is DLC item?',
-            type: 'dlcItem'
+            type: 'dlcItem',
+            group: 'content'
         },
         {
             name: 'isEventItem',
             title: 'Is Event item?',
-            type: 'eventItem'
+            type: 'eventItem',
+            group: 'content'
         },
         {
             name: 'obtainableOn',
@@ -151,7 +187,8 @@ export default {
                     return true
                 }
                 return false
-            }
+            },
+            group: 'content'
         },
         {
             name: 'droppedBy',
@@ -172,7 +209,8 @@ export default {
                     return true
                 }
                 return false
-            }
+            },
+            group: 'content'
         }
     ],
     preview: {

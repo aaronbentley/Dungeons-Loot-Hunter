@@ -8,6 +8,31 @@ export default {
     name: 'artifacts',
     type: 'document',
     icon: Icon,
+    validation: Rule => Rule.custom( fields => {
+        if ( fields.runes === undefined || fields.runes.length === 0 ) {
+            return "Missing Runes"
+        }
+        
+        return true
+    }).warning(),
+    groups: [
+        {
+            name: 'content',
+            title: 'Content',
+            icon: <Emoji style={{ fontSize: '0.75em' }} symbol='📄' />,
+            default: true
+        },
+        {
+            name: 'properties',
+            title: 'Properties',
+            icon: <Emoji style={{ fontSize: '0.75em' }} symbol='📊' />
+        },
+        {
+            name: 'runes',
+            title: 'Runes',
+            icon: <Emoji style={{ fontSize: '0.75em' }} symbol='🔮' />
+        }
+    ],
     fields: [
         {
             name: 'title',
@@ -15,6 +40,7 @@ export default {
             type: 'string',
             description: 'Specify Artifact name',
             validation: (Rule) => Rule.required(),
+            group: 'content'
         },
         {
             name: 'slug',
@@ -25,7 +51,8 @@ export default {
             options: {
                 source: 'title',
                 maxLength: 96
-            }
+            },
+            group: 'content'
         },
         {
             name: 'image',
@@ -35,17 +62,20 @@ export default {
             validation: (Rule) => Rule.required(),
             options: {
                 hotspot: true
-            }
+            },
+            group: 'content'
         },
         {
             name: 'requiresSouls',
             title: 'Require souls?',
-            type: 'boolean'
+            type: 'boolean',
+            group: 'properties'
         },
         {
             name: 'isUnique',
             title: 'Is unique?',
-            type: 'boolean'
+            type: 'boolean',
+            group: 'properties'
         },
         {
             name: 'runes',
@@ -59,22 +89,26 @@ export default {
                         disableNew: true
                     }
                 }
-            ]
+            ],
+            group: 'runes'
         },
         {
             name: 'traits',
             title: 'Traits',
-            type: 'artifactTraits'
+            type: 'artifactTraits',
+            group: 'properties'
         },
         {
             name: 'isDlcItem',
             title: 'Is DLC item?',
-            type: 'dlcItem'
+            type: 'dlcItem',
+            group: 'content'
         },
         {
             name: 'isEventItem',
             title: 'Is Event item?',
-            type: 'eventItem'
+            type: 'eventItem',
+            group: 'content'
         },
         {
             name: 'obtainableOn',
@@ -89,7 +123,8 @@ export default {
                     }
                 }
             ],
-            validation: (Rule) => Rule.unique()
+            validation: (Rule) => Rule.unique(),
+            group: 'content'
         }
     ],
     preview: {
