@@ -98,3 +98,30 @@
 :global([data-ui='PaneItem'] *:not(svg) + span) {
     box-shadow: none !important;
 }
+
+/* Modal headers */
+div[data-ui="DialogCard"] > div[data-ui="Card"] > div[data-ui="Flex"] > div[data-ui="Card"]:first-child {
+    background-color: var(--brand-primary) !important;
+}
+
+div[data-ui="DialogCard"] > div[data-ui="Card"] > div[data-ui="Flex"] > div[data-ui="Card"]:first-child  div[data-ui="Text"] {
+    color: var(--brand-darkest) !important;
+}
+
+div[data-ui="DialogCard"] > div[data-ui="Card"] > div[data-ui="Flex"] > div[data-ui="Card"]:first-child button[data-ui="Button"][aria-label="Close dialog"] {
+    background-color: #eb7f93 !important;
+}
+
+/* TabList */
+div[data-ui="TabList"] button[aria-selected="true"] {
+    background-color: var(--brand-primary);
+}
+
+div[data-ui="TabList"] button[aria-selected="true"] div[data-ui="Text"] {
+    color: var(--brand-darkest);
+}
+
+a[data-pressed] {
+    background-color: var(--brand-primary) !important;
+    color: var(--brand-darkest) !important;
+}
