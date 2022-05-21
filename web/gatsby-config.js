@@ -70,20 +70,20 @@ module.exports = {
                 isUsingColorMode: true
             }
         },
-        {
-            resolve: `gatsby-plugin-algolia`,
-            options: {
-                appId: process.env.GATSBY_ALGOLIA_APP_ID,
-                apiKey: process.env.ALGOLIA_ADMIN_KEY,
-                queries: require('./src/search/algolia-queries')
-            }
-        },
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-sitemap',
         {
             resolve: 'gatsby-plugin-manifest',
             options: {
                 icon: 'src/assets/images/icon.png'
+            }
+        },
+        {
+            resolve: `gatsby-plugin-algolia`,
+            options: {
+                appId: process.env.GATSBY_ALGOLIA_APP_ID,
+                apiKey: process.env.ALGOLIA_ADMIN_KEY,
+                queries: require('./src/search/algolia-queries')
             }
         }
     ]
