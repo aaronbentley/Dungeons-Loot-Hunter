@@ -18,6 +18,12 @@ require('dotenv').config({
 })
 
 module.exports = {
+    trailingSlash: 'always',
+    flags: {
+        FAST_DEV: true,
+        PRESERVE_FILE_DOWNLOAD_CACHE: true,
+        PARALLEL_SOURCING: true
+    },
     siteMetadata: {
         siteUrl: process.env.GATSBY_SITE_URL,
         title: process.env.GATSBY_SITE_TITLE,

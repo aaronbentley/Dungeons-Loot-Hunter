@@ -19,6 +19,7 @@
         "@emotion/react": "^11.9.0",
         "@emotion/styled": "^11.8.1",
         "@sanity/client": "^3.3.0",
+        "@sanity/image-url": "^1.0.1",
         "framer-motion": "^6.3.3",
         "gatsby": "^4.14.1",
         "gatsby-plugin-algolia": "^0.26.0",
