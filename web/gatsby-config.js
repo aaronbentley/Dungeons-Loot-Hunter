@@ -1,5 +1,5 @@
 /**
- * Dungeons Loot Hunter Gatsby.js config
+ * MC Dungeons Loot Hunter Gatsby.js config
  *
  *  For my babies 🦄👩🏻‍🎤 Lexi 👩🏻‍🎤🦄 & 🧚‍♀️👩🏻‍🎤 Maddi 👩🏻‍🎤🧚‍♀️
  */
@@ -62,6 +62,14 @@ module.exports = {
                  * if false, this plugin will not use <ColorModeProvider />
                  */
                 isUsingColorMode: true
+            }
+        },
+        {
+            resolve: `gatsby-plugin-algolia`,
+            options: {
+                appId: process.env.GATSBY_ALGOLIA_APP_ID,
+                apiKey: process.env.ALGOLIA_ADMIN_KEY,
+                queries: require('./src/search/algolia-queries')
             }
         },
         'gatsby-plugin-react-helmet',

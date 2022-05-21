@@ -1,5 +1,5 @@
 /**
- * Dungeons Loot Hunter Built-in abilities
+ * MC Dungeons Loot Hunter Built-in abilities
  */
 
 import { Stack, Tooltip } from '@chakra-ui/react'

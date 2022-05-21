@@ -1,9 +1,10 @@
 /**
- * Dungeons Loot Hunter Melee Weapon
+ * MC Dungeons Loot Hunter Melee Weapon
  */
 
 import {
-    Box, Container,
+    Box,
+    Container,
     Heading,
     SimpleGrid,
     Stack,

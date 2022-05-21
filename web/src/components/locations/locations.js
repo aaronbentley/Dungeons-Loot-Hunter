@@ -1,5 +1,5 @@
 /**
- * Dungeons Loot Hunter Locations
+ * MC Dungeons Loot Hunter Locations
  */
 import { Stack, Tooltip } from '@chakra-ui/react'
 import React from 'react'
@@ -15,21 +15,22 @@ const Locations = ({ data = {} }) => {
 
     return (
         <Stack direction='row' spacing={2}>
-            {locations && locations.map((location) => (
-                <Tooltip
-                    key={location.id}
-                    label={location.title}
-                    placement='top'
-                    colorScheme='purple'
-                    shouldWrapChildren>
-                    <Image
-                        imageData={location.image}
-                        alt={location.title}
-                        width={84}
-                        height={84}
-                    />
-                </Tooltip>
-            ))}
+            {locations &&
+                locations.map((location) => (
+                    <Tooltip
+                        key={location.id}
+                        label={location.title}
+                        placement='top'
+                        colorScheme='purple'
+                        shouldWrapChildren>
+                        <Image
+                            imageData={location.image}
+                            alt={location.title}
+                            width={84}
+                            height={84}
+                        />
+                    </Tooltip>
+                ))}
         </Stack>
     )
 }

@@ -1,5 +1,5 @@
 /**
- * Dungeons Loot Hunter Built-in enchantments
+ * MC Dungeons Loot Hunter Built-in enchantments
  */
 
 import { Stack, Tooltip } from '@chakra-ui/react'
@@ -15,9 +15,9 @@ const BuiltInEnchantments = ({ data = {} }) => {
         <Stack direction='row' spacing={0}>
             {data &&
                 data.map((enchantment) => (
-                    <Tooltip 
-                        key={enchantment.id} 
-                        label={enchantment.title} 
+                    <Tooltip
+                        key={enchantment.id}
+                        label={enchantment.title}
                         placement='top'
                         colorScheme='purple'
                         shouldWrapChildren>

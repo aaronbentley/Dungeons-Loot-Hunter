@@ -1,5 +1,5 @@
 /**
- * Dungeons Loot Hunter Metadata Hook
+ * MC Dungeons Loot Hunter Metadata Hook
  *
  */
 import { graphql, useStaticQuery } from 'gatsby'

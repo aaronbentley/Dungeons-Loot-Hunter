@@ -1,8 +1,9 @@
 /**
- * Dungeons Loot Hunter Ranged Weapon
+ * MC Dungeons Loot Hunter Ranged Weapon
  */
 import {
-    Box, Container,
+    Box,
+    Container,
     Heading,
     SimpleGrid,
     Stack,

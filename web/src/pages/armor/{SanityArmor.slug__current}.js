@@ -1,8 +1,15 @@
 /**
- * Dungeons Loot Hunter Armor
+ * MC Dungeons Loot Hunter Armor
  */
 
-import { Box, Container, Heading, SimpleGrid, Stack, Tag } from '@chakra-ui/react'
+import {
+    Box,
+    Container,
+    Heading,
+    SimpleGrid,
+    Stack,
+    Tag
+} from '@chakra-ui/react'
 import { graphql } from 'gatsby'
 import React from 'react'
 import AncientMobs from '../../components/ancient-mobs/ancient-mobs'
@@ -110,7 +117,11 @@ const Armor = ({ data = {} }) => {
                                 width={350}
                                 height={350}
                                 backgroundColor={isUnique ? 'orange.500' : null}
-                                bgGradient={isUnique ? 'linear(to-tr, orange.500, orange.300)' : 'linear(to-tr, gray.600, green.700)'}
+                                bgGradient={
+                                    isUnique
+                                        ? 'linear(to-tr, orange.500, orange.300)'
+                                        : 'linear(to-tr, gray.600, green.700)'
+                                }
                                 borderRadius={2}
                             />
                         </Box>

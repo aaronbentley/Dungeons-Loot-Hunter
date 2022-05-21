@@ -1,5 +1,5 @@
 /**
- * Dungeons Loot Hunter Index
+ * MC Dungeons Loot Hunter Index
  */
 import {
     Container,

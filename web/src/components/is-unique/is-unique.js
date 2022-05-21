@@ -1,5 +1,5 @@
 /**
- * Dungeons Loot Hunter Is unique item
+ * MC Dungeons Loot Hunter Is unique item
  */
 import { Text } from '@chakra-ui/react'
 import React from 'react'
@@ -12,7 +12,7 @@ const IsUnique = ({
     isUnique = false,
     variationOf = {}
 }) => {
-    if (!isUnique || !variationOf ) {
+    if (!isUnique || !variationOf) {
         return null
     }
 

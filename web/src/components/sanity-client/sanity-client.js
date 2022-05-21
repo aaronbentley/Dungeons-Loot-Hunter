@@ -1,5 +1,5 @@
 /**
- * Dungeons Loot Hunter Sanity client
+ * MC Dungeons Loot Hunter Sanity client
  */
 
 import sanityClient from '@sanity/client'

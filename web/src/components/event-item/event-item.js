@@ -1,11 +1,10 @@
 /**
- * Dungeons Loot Hunter Event Item
+ * MC Dungeons Loot Hunter Event Item
  */
 import { Tag } from '@chakra-ui/react'
 import React from 'react'
 
 const EventItem = ({ data = {} }) => {
-
     if (!data) {
         return null
     }

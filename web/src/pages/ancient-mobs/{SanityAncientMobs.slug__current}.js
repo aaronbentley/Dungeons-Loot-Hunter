@@ -1,5 +1,5 @@
 /**
- * Dungeons Loot Hunter Ancient Mob
+ * MC Dungeons Loot Hunter Ancient Mob
  */
 
 import {

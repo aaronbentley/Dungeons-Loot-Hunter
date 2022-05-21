@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 /**
- * Dungeons Loot Hunter Chakra UI Theme Colors
+ * MC Dungeons Loot Hunter Chakra UI Theme Colors
  */
 export default {
     colors: {

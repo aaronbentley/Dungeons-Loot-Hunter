@@ -1,5 +1,5 @@
 /**
- * Dungeons Loot Hunter Link
+ * MC Dungeons Loot Hunter Link
  */
 import { chakra, Link as ChakraLink } from '@chakra-ui/react'
 import { Link as GatsbyLink } from 'gatsby'

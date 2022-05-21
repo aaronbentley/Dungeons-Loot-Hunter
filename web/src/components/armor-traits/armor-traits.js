@@ -1,5 +1,5 @@
 /**
- * Dungeons Loot Hunter Armor Traits
+ * MC Dungeons Loot Hunter Armor Traits
  */
 
 import { List, ListIcon, ListItem } from '@chakra-ui/react'

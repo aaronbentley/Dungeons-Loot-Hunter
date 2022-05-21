@@ -1,8 +1,9 @@
 /**
- * Dungeons Loot Hunter Artifacts
+ * MC Dungeons Loot Hunter Artifacts
  */
 import {
-    Box, Container,
+    Box,
+    Container,
     Heading,
     SimpleGrid,
     Stack,
