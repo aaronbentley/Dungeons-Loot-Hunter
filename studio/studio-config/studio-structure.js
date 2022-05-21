@@ -5,8 +5,34 @@
 import S from '@sanity/desk-tool/structure-builder'
 import Emoji from 'a11y-react-emoji'
 import React from 'react'
+import IFramePreview from '../schemas/previews/iframe'
 
-const SettingsIcon = () => <Emoji style={{fontSize: '1.8em'}} symbol="⚙️" />
+/**
+ * Create icon emojis for menu items
+ */
+const SettingsIcon = () => <Emoji style={{ fontSize: '1.8em' }} symbol='⚙️' />
+
+/**
+ * Add web preview to schema types
+ */
+export const getDefaultDocumentNode = ({ schemaType }) => {
+    // console.log('🦄 ~ file: sanity-structure.js ~ line 11 ~ getDefaultDocumentNode ~ schemaType', { schemaType })
+    const addPreviewToSchemaTypes = [
+        'meleeWeapons',
+        'rangedWeapons',
+        'armor',
+        'artifacts',
+        'ancientMobs'
+    ]
+    // Conditionally return a different configuration based on the schema type
+
+    if (addPreviewToSchemaTypes.includes(schemaType)) {
+        return S.document().views([
+            S.view.form(),
+            S.view.component(IFramePreview).title('Web')
+        ])
+    }
+}
 
 // Modify menu item for singleton site settings.
 export default () =>
@@ -19,9 +45,11 @@ export default () =>
                 .child(
                     S.documentList('meleeWeapons')
                         .title('Weapons')
-                        .menuItems(S.documentTypeList('meleeWeapons').getMenuItems())
+                        .menuItems(
+                            S.documentTypeList('meleeWeapons').getMenuItems()
+                        )
                         .filter('_type == "meleeWeapons"')
-                        .defaultOrdering( [ { field: 'title', direction: 'asc'} ] )
+                        .defaultOrdering([{ field: 'title', direction: 'asc' }])
                 ),
             S.listItem()
                 .title('Ranged Weapons')
@@ -29,9 +57,11 @@ export default () =>
                 .child(
                     S.documentList('rangedWeapons')
                         .title('Weapons')
-                        .menuItems(S.documentTypeList('rangedWeapons').getMenuItems())
+                        .menuItems(
+                            S.documentTypeList('rangedWeapons').getMenuItems()
+                        )
                         .filter('_type == "rangedWeapons"')
-                        .defaultOrdering( [ { field: 'title', direction: 'asc'} ] )
+                        .defaultOrdering([{ field: 'title', direction: 'asc' }])
                 ),
             S.listItem()
                 .title('Armor')
@@ -41,7 +71,7 @@ export default () =>
                         .title('Armor')
                         .menuItems(S.documentTypeList('armor').getMenuItems())
                         .filter('_type == "armor"')
-                        .defaultOrdering( [ { field: 'title', direction: 'asc'} ] )
+                        .defaultOrdering([{ field: 'title', direction: 'asc' }])
                 ),
             S.listItem()
                 .title('Artifacts')
@@ -49,9 +79,11 @@ export default () =>
                 .child(
                     S.documentList('artifacts')
                         .title('Artifacts')
-                        .menuItems(S.documentTypeList('artifacts').getMenuItems())
+                        .menuItems(
+                            S.documentTypeList('artifacts').getMenuItems()
+                        )
                         .filter('_type == "artifacts"')
-                        .defaultOrdering( [ { field: 'title', direction: 'asc'} ] )
+                        .defaultOrdering([{ field: 'title', direction: 'asc' }])
                 ),
             S.listItem()
                 .title('Enchantments')
@@ -59,9 +91,11 @@ export default () =>
                 .child(
                     S.documentList('enchantments')
                         .title('Enchantments')
-                        .menuItems(S.documentTypeList('enchantments').getMenuItems())
+                        .menuItems(
+                            S.documentTypeList('enchantments').getMenuItems()
+                        )
                         .filter('_type == "enchantments"')
-                        .defaultOrdering( [ { field: 'title', direction: 'asc'} ] )
+                        .defaultOrdering([{ field: 'title', direction: 'asc' }])
                 ),
             S.listItem()
                 .title('Runes')
@@ -71,7 +105,7 @@ export default () =>
                         .title('Runes')
                         .menuItems(S.documentTypeList('runes').getMenuItems())
                         .filter('_type == "runes"')
-                        .defaultOrdering( [ { field: 'title', direction: 'asc'} ] )
+                        .defaultOrdering([{ field: 'title', direction: 'asc' }])
                 ),
             S.listItem()
                 .title('Ancient Mobs')
@@ -79,9 +113,11 @@ export default () =>
                 .child(
                     S.documentList('ancientMobs')
                         .title('Ancient Mobs')
-                        .menuItems(S.documentTypeList('ancientMobs').getMenuItems())
+                        .menuItems(
+                            S.documentTypeList('ancientMobs').getMenuItems()
+                        )
                         .filter('_type == "ancientMobs"')
-                        .defaultOrdering( [ { field: 'title', direction: 'asc'} ] )
+                        .defaultOrdering([{ field: 'title', direction: 'asc' }])
                 ),
             S.listItem()
                 .title('Levels')
@@ -91,7 +127,9 @@ export default () =>
                         .title('Levels')
                         .menuItems(S.documentTypeList('levels').getMenuItems())
                         .filter('_type == "levels"')
-                        .defaultOrdering( [ { field: '_createdAt', direction: 'asc'} ] )
+                        .defaultOrdering([
+                            { field: '_createdAt', direction: 'asc' }
+                        ])
                 ),
             S.listItem()
                 .title('Settings')
