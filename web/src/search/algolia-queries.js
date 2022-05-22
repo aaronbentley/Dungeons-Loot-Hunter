@@ -8,7 +8,7 @@ const sanityClient = require('@sanity/client')
 const imageUrlBuilder = require('@sanity/image-url')
 
 // Set index name
-const INDEX_NAME = 'mcd-loot-index'
+// const INDEX_NAME = 'mcd-loot-index'
 
 // Create Sanity client
 const client = sanityClient({
@@ -202,24 +202,24 @@ const queries = [
         query: meleeWeaponsQuery,
         transformer: ({ data }) =>
             data.meleeWeapons.edges.map(nodeToAlgoliaRecord),
-        indexName: INDEX_NAME
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME
     },
     {
         query: rangedWeaponsQuery,
         transformer: ({ data }) =>
             data.rangedWeapons.edges.map(nodeToAlgoliaRecord),
-        indexName: INDEX_NAME
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME
     },
     {
         query: armorQuery,
         transformer: ({ data }) => data.armor.edges.map(nodeToAlgoliaRecord),
-        indexName: INDEX_NAME
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME
     },
     {
         query: artifactsQuery,
         transformer: ({ data }) =>
             data.artifacts.edges.map(nodeToAlgoliaRecord),
-        indexName: INDEX_NAME
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME
     }
 ]
 module.exports = queries

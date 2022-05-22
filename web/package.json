@@ -20,6 +20,7 @@
         "@emotion/styled": "^11.8.1",
         "@sanity/client": "^3.3.0",
         "@sanity/image-url": "^1.0.1",
+        "algoliasearch": "^4.13.1",
         "framer-motion": "^6.3.3",
         "gatsby": "^4.14.1",
         "gatsby-plugin-algolia": "^0.26.0",
@@ -33,6 +34,7 @@
         "react": "^18.1.0",
         "react-dom": "^18.1.0",
         "react-helmet": "^6.1.0",
+        "react-instantsearch-hooks-web": "^6.26.0",
         "slugify": "^1.6.5"
     }
 }
