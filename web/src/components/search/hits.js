@@ -45,7 +45,7 @@ const Hits = (props) => {
                                             alt={hit.title}
                                             width={280}
                                             bgGradient={
-                                                hit.isUnique
+                                                hit.unique
                                                     ? 'linear(to-tr, orange.500, orange.300)'
                                                     : 'linear(to-tr, gray.600, green.700)'
                                             }
