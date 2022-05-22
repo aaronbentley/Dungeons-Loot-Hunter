@@ -8,6 +8,7 @@ const SanityImageUrlBuilder = (
     image = null,
     width = 256,
     height = 256,
+    dpr = 2,
     format = 'webp'
 ) => {
     // Guard to bail early if no image assets supplied
@@ -17,7 +18,12 @@ const SanityImageUrlBuilder = (
 
     // Create builder using Sanity Client
     const builder = imageUrlBuilder(client)
-    return builder.image(image).size(width, height).format(format).url()
+    return builder
+        .image(image)
+        .size(width, height)
+        .dpr(dpr)
+        .format(format)
+        .url()
 }
 
 export default SanityImageUrlBuilder
