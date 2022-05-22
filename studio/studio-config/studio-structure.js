@@ -131,12 +131,13 @@ export default () =>
                             { field: '_createdAt', direction: 'asc' }
                         ])
                 ),
-            S.listItem()
+            S.documentListItem()
                 .title('Settings')
+                .schemaType('siteSettings')
                 .icon(SettingsIcon)
                 .child(
                     S.document()
                         .schemaType('siteSettings')
-                        .documentId('siteSettings')
+                        .documentId('settings')
                 )
         ])

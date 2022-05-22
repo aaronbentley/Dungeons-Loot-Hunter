@@ -25,21 +25,22 @@ export default {
             name: 'description',
             title: 'Site Description',
             type: 'text',
-            description: 'Describe your site for search engines and social media',
+            description:
+                'Describe your site for search engines and social media',
             rows: 4,
-            validation: (Rule) => Rule.required(),
+            validation: (Rule) => Rule.required()
         },
         {
             name: 'primaryColor',
             title: 'Primary brand color',
             type: 'color',
-            description: 'Select Primary Brand color',
+            description: 'Select Primary Brand color'
         },
         {
             name: 'secondaryColor',
             title: 'Secondary brand color',
             type: 'color',
-            description: 'Select Secondary Brand color',
+            description: 'Select Secondary Brand color'
         }
     ]
 }
