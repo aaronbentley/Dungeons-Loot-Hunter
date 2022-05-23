@@ -6,7 +6,8 @@ export default {
         {
             name: 'isDlcItem',
             title: 'Is DLC item?',
-            type: 'boolean'
+            type: 'boolean',
+            initialValue: false
         },
         {
             name: 'title',
@@ -25,7 +26,7 @@ export default {
                     'Flames of the Nether',
                     'Hidden Depths',
                     'Howling Peaks',
-                    'Jungle Awakens',
+                    'Jungle Awakens'
                 ]
             }
         }

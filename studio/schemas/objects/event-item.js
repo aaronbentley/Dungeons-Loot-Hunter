@@ -6,14 +6,15 @@ export default {
         {
             name: 'isEventItem',
             title: 'Is event item?',
-            type: 'boolean'
+            type: 'boolean',
+            initialValue: false
         },
         {
             name: 'title',
             title: 'Event Title',
             type: 'string',
             hidden: ({ parent }) => {
-                if ( parent !== undefined && parent.isEventItem ) {
+                if (parent !== undefined && parent.isEventItem) {
                     return false
                 }
                 return true
