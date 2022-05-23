@@ -206,7 +206,7 @@ export default {
                     }
                 }
             ],
-            validation: (Rule) => Rule.max(1),
+            validation: (Rule) => Rule.max(3),
             hidden: ({ parent, document, value }) => {
                 if (document.isUnique) {
                     return true
@@ -214,7 +214,7 @@ export default {
                 return false
             },
             group: 'content'
-        },
+        }
     ],
     preview: {
         select: {
