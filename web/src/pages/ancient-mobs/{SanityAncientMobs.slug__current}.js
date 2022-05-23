@@ -23,7 +23,7 @@ import { generateSlug, mapEdgesToNodes } from '../../utils/helpers'
 export const query = graphql`
     query ($id: String!) {
         sanityAncientMobs(id: { eq: $id }) {
-            type: _type
+            # type: _type
             title
             image {
                 ...ImageWithPreview
@@ -47,6 +47,7 @@ export const query = graphql`
                     slug {
                         current
                     }
+                    isUnique
                 }
             }
         }
@@ -66,6 +67,7 @@ export const query = graphql`
                     slug {
                         current
                     }
+                    isUnique
                 }
             }
         }
@@ -83,6 +85,7 @@ export const query = graphql`
                     slug {
                         current
                     }
+                    isUnique
                 }
             }
         }
@@ -102,6 +105,7 @@ export const query = graphql`
                     slug {
                         current
                     }
+                    isUnique
                 }
             }
         }
@@ -119,6 +123,7 @@ export const query = graphql`
                     slug {
                         current
                     }
+                    isUnique
                 }
             }
         }
@@ -138,6 +143,7 @@ export const query = graphql`
                     slug {
                         current
                     }
+                    isUnique
                 }
             }
         }
@@ -147,7 +153,7 @@ export const query = graphql`
 const AncientMob = ({ data = {} }) => {
     const {
         sanityAncientMobs: {
-            type = '',
+            // type = '',
             title = '',
             image = {},
             enchantments = [],
@@ -163,12 +169,12 @@ const AncientMob = ({ data = {} }) => {
 
     // Merge loot drops into collection & map edges to nodes
     const lootDrops = [
-        ...mapEdgesToNodes(meleeWeapons),
         ...mapEdgesToNodes(uniqueMeleeWeapons),
-        ...mapEdgesToNodes(rangedWeapons),
         ...mapEdgesToNodes(uniqueRangedWeapons),
-        ...mapEdgesToNodes(armor),
-        ...mapEdgesToNodes(uniqueArmor)
+        ...mapEdgesToNodes(uniqueArmor),
+        ...mapEdgesToNodes(meleeWeapons),
+        ...mapEdgesToNodes(rangedWeapons),
+        ...mapEdgesToNodes(armor)
     ]
 
     return (
@@ -211,44 +217,49 @@ const AncientMob = ({ data = {} }) => {
                                     </Heading>
                                     <Runes data={runeRequirements} />
                                 </Stack>
-                                {lootDrops && (
-                                    <Stack direction='column' spacing={4}>
-                                        <Heading as='h3' fontSize='xl'>
-                                            Loot drops
-                                        </Heading>
-                                        <Stack direction='row' spacing={2}>
-                                            {lootDrops.map(({ node }) => {
-                                                return (
-                                                    <Tooltip
-                                                        key={node.id}
-                                                        label={node.title}
-                                                        placement='top'
-                                                        colorScheme='purple'
-                                                        shouldWrapChildren>
-                                                        <Link
-                                                            to={`/${generateSlug(
-                                                                node._type
-                                                            )}/${
-                                                                node.slug
-                                                                    .current
-                                                            }/`}>
-                                                            <Image
-                                                                imageData={
-                                                                    node.image
-                                                                }
-                                                                alt={node.title}
-                                                                width={42}
-                                                            />
-                                                        </Link>
-                                                    </Tooltip>
-                                                )
-                                            })}
-                                        </Stack>
-                                    </Stack>
-                                )}
                             </Stack>
                         </Box>
                     </SimpleGrid>
+                    {lootDrops && (
+                        <Stack direction='column' spacing={4}>
+                            <Heading as='h3' fontSize='4xl'>
+                                Loot drops
+                            </Heading>
+                            <Stack
+                                direction='row'
+                                spacing={2}
+                                flexWrap='no-wrap'>
+                                {lootDrops.map(({ node }) => {
+                                    return (
+                                        <Tooltip
+                                            key={node.id}
+                                            label={node.title}
+                                            placement='top'
+                                            colorScheme='purple'
+                                            shouldWrapChildren>
+                                            <Link
+                                                to={`/${generateSlug(
+                                                    node._type
+                                                )}/${node.slug.current}/`}>
+                                                <Image
+                                                    imageData={node.image}
+                                                    alt={node.title}
+                                                    width={120}
+                                                    p={1}
+                                                    bgGradient={
+                                                        node.isUnique
+                                                            ? 'linear(to-tr, orange.500, orange.300)'
+                                                            : 'linear(to-tr, gray.600, green.700)'
+                                                    }
+                                                    borderRadius={2}
+                                                />
+                                            </Link>
+                                        </Tooltip>
+                                    )
+                                })}
+                            </Stack>
+                        </Stack>
+                    )}
                 </Stack>
             </Container>
         </Layout>
