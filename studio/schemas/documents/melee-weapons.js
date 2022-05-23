@@ -181,6 +181,17 @@ export default {
                     to: [{ type: 'levels' }],
                     options: {
                         disableNew: true
+                        // filter: '*[!($title in obtainableOn)]',
+                        // filter: '*[!(_id in path("drafts.**"))]',
+                        // params: { title: 'title' }
+                        // filter: ({ document }) => {
+                        //     if (document.title) {
+                        //         return {
+                        //             filter: 'title != $title && !defined(industryParent)',
+                        //             params: { title: document.title }
+                        //         }
+                        //     }
+                        // }
                     }
                 }
             ],
