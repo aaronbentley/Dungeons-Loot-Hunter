@@ -8,7 +8,8 @@ import {
     Heading,
     SimpleGrid,
     Stack,
-    Tooltip
+    Tooltip,
+    useBreakpointValue
 } from '@chakra-ui/react'
 import { graphql } from 'gatsby'
 import React from 'react'
@@ -177,6 +178,14 @@ const AncientMob = ({ data = {} }) => {
         ...mapEdgesToNodes(armor)
     ]
 
+    // Generate dynamic image thumbnail sizing relative to viewport
+    const imageWidthSizes = useBreakpointValue({
+        base: 478,
+        sm: 360,
+        md: 310,
+        lg: 175
+    })
+
     return (
         <Layout>
             <Container maxWidth='6xl' py={24}>
@@ -225,10 +234,7 @@ const AncientMob = ({ data = {} }) => {
                             <Heading as='h3' fontSize='4xl'>
                                 Loot drops
                             </Heading>
-                            <Stack
-                                direction='row'
-                                spacing={2}
-                                flexWrap='no-wrap'>
+                            <SimpleGrid columns={[1, 2, 3, 6]} spacing={4}>
                                 {lootDrops.map(({ node }) => {
                                     return (
                                         <Tooltip
@@ -244,8 +250,9 @@ const AncientMob = ({ data = {} }) => {
                                                 <Image
                                                     imageData={node.image}
                                                     alt={node.title}
-                                                    width={120}
-                                                    p={1}
+                                                    // width={175}
+                                                    width={imageWidthSizes}
+                                                    p={2}
                                                     bgGradient={
                                                         node.isUnique
                                                             ? 'linear(to-tr, orange.500, orange.300)'
@@ -257,7 +264,7 @@ const AncientMob = ({ data = {} }) => {
                                         </Tooltip>
                                     )
                                 })}
-                            </Stack>
+                            </SimpleGrid>
                         </Stack>
                     )}
                 </Stack>

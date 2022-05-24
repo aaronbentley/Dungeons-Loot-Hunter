@@ -64,8 +64,8 @@ const MeleeWeapon = ({ data = {} }) => {
             variationOf = {},
             builtInEnchantments = [],
             runes = [],
-            isDlcItem = null,
-            isEventItem = null,
+            isDlcItem: { isDlcItem = null },
+            isEventItem: { isEventItem = null },
             obtainableOn = [],
             droppedBy = []
         }
@@ -165,7 +165,7 @@ const MeleeWeapon = ({ data = {} }) => {
                                         />
                                     </Stack>
                                 )}
-                                {isDlcItem?.isDlcItem && (
+                                {isDlcItem.isDlcItem && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>
                                             DLC
@@ -191,15 +191,9 @@ const MeleeWeapon = ({ data = {} }) => {
                                 <Heading as='h3' fontSize='xl'>
                                     Locations
                                 </Heading>
-                                {obtainableOn && (
-                                    <Locations
-                                        data={
-                                            isUnique
-                                                ? variationOf
-                                                : obtainableOn
-                                        }
-                                    />
-                                )}
+                                <Locations
+                                    data={isUnique ? variationOf : obtainableOn}
+                                />
                             </Stack>
                         </Box>
                         <Box>
@@ -207,13 +201,9 @@ const MeleeWeapon = ({ data = {} }) => {
                                 <Heading as='h3' fontSize='xl'>
                                     Ancient Mobs
                                 </Heading>
-                                {droppedBy && (
-                                    <AncientMobs
-                                        data={
-                                            isUnique ? variationOf : droppedBy
-                                        }
-                                    />
-                                )}
+                                <AncientMobs
+                                    data={isUnique ? variationOf : droppedBy}
+                                />
                             </Stack>
                         </Box>
                     </SimpleGrid>
