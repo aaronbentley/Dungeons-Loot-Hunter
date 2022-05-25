@@ -101,7 +101,7 @@ const MeleeWeapon = ({ data = {} }) => {
                                     DLC
                                 </Tag>
                             )}
-                            {isEventItem && (
+                            {isEventItem?.isEventItem && (
                                 <Tag width='max' colorScheme='purple'>
                                     Event
                                 </Tag>

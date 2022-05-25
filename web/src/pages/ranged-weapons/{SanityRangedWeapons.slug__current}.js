@@ -100,7 +100,7 @@ const RangedWeapon = ({ data = {} }) => {
                                     DLC
                                 </Tag>
                             )}
-                            {isEventItem && (
+                            {isEventItem?.isEventItem && (
                                 <Tag width='max' colorScheme='purple'>
                                     Event
                                 </Tag>
@@ -164,7 +164,7 @@ const RangedWeapon = ({ data = {} }) => {
                                         />
                                     </Stack>
                                 )}
-                                {isDlcItem && (
+                                {isDlcItem?.isDlcItem && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>
                                             DLC
@@ -172,7 +172,7 @@ const RangedWeapon = ({ data = {} }) => {
                                         <DlcItem data={isDlcItem} />
                                     </Stack>
                                 )}
-                                {isEventItem && (
+                                {isEventItem?.isEventItem && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>
                                             Event

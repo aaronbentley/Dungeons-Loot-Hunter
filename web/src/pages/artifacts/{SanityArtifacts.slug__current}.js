@@ -7,7 +7,8 @@ import {
     Heading,
     SimpleGrid,
     Stack,
-    Tag
+    Tag,
+    Text
 } from '@chakra-ui/react'
 import { graphql } from 'gatsby'
 import React from 'react'
@@ -47,7 +48,7 @@ const Artifact = ({ data = {} }) => {
             type = '',
             title = '',
             image = {},
-            // requiresSouls = false,
+            requiresSouls = false,
             isUnique = false,
             runes = [],
             traits = [],
@@ -87,7 +88,7 @@ const Artifact = ({ data = {} }) => {
                                     DLC
                                 </Tag>
                             )}
-                            {isEventItem && (
+                            {isEventItem?.isEventItem && (
                                 <Tag width='max' colorScheme='purple'>
                                     Event
                                 </Tag>
@@ -119,7 +120,14 @@ const Artifact = ({ data = {} }) => {
                                     isUnique={isUnique}
                                     variationOf={null}
                                 />
-
+                                {requiresSouls && (
+                                    <Stack direction='column' spacing={4}>
+                                        <Heading as='h3' fontSize='xl'>
+                                            Usage
+                                        </Heading>
+                                        <Text>💀 Requires souls</Text>
+                                    </Stack>
+                                )}
                                 {traits.length !== 0 && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>
@@ -135,7 +143,7 @@ const Artifact = ({ data = {} }) => {
                                     <Runes data={runes} />
                                 </Stack>
 
-                                {isDlcItem && (
+                                {isDlcItem?.isDlcItem && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>
                                             DLC
@@ -143,7 +151,7 @@ const Artifact = ({ data = {} }) => {
                                         <DlcItem data={isDlcItem} />
                                     </Stack>
                                 )}
-                                {isEventItem && (
+                                {isEventItem?.isEventItem && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>
                                             Event

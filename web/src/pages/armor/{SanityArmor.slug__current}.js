@@ -101,7 +101,7 @@ const Armor = ({ data = {} }) => {
                                     DLC
                                 </Tag>
                             )}
-                            {isEventItem && (
+                            {isEventItem?.isEventItem && (
                                 <Tag width='max' colorScheme='purple'>
                                     Event
                                 </Tag>
@@ -168,7 +168,7 @@ const Armor = ({ data = {} }) => {
                                         />
                                     </Stack>
                                 )}
-                                {isDlcItem && (
+                                {isDlcItem?.isDlcItem && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>
                                             DLC
@@ -176,7 +176,7 @@ const Armor = ({ data = {} }) => {
                                         <DlcItem data={isDlcItem} />
                                     </Stack>
                                 )}
-                                {isEventItem && (
+                                {isEventItem?.isEventItem && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>
                                             Event
