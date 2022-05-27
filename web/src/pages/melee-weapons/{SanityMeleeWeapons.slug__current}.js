@@ -29,6 +29,7 @@ import { humanReadableTypeName } from '../../utils/helpers'
 export const query = graphql`
     query ($id: String!) {
         sanityMeleeWeapons(id: { eq: $id }) {
+            id
             type: _type
             title
             image {
@@ -49,12 +50,24 @@ export const query = graphql`
             obtainableOn: _rawObtainableOn(resolveReferences: { maxDepth: 10 })
             droppedBy: _rawDroppedBy(resolveReferences: { maxDepth: 10 })
         }
+        # uniqueVariants: allSanityMeleeWeapons(
+        #     filter: { variationOf: { id: { eq: $id } } }
+        # ) {
+        #     edges {
+        #         node {
+        #             id
+        #             title
+        #             isUnique
+        #         }
+        #     }
+        # }
     }
 `
 
 const MeleeWeapon = ({ data = {} }) => {
     const {
         sanityMeleeWeapons: {
+            id = '',
             type = '',
             title = '',
             image = {},
@@ -69,6 +82,7 @@ const MeleeWeapon = ({ data = {} }) => {
             obtainableOn = [],
             droppedBy = []
         }
+        // uniqueVariants = {}
     } = data
 
     return (
