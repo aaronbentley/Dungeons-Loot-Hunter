@@ -154,7 +154,7 @@ const Armor = ({ data = {} }) => {
                                 )}
                                 <Stack direction='column' spacing={4}>
                                     <Heading as='h3' fontSize='xl'>
-                                        Runes
+                                        Rune Value
                                     </Heading>
                                     <Runes data={runes} />
                                 </Stack>

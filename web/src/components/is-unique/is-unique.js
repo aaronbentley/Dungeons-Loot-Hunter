@@ -16,13 +16,17 @@ const IsUnique = ({
         return null
     }
 
-    const url = `/${generateSlug(type)}/${variationOf.slug.current}/`
-    return (
-        <Text>
-            The {title} is a unique variant of the{' '}
-            <Link to={url}>{variationOf.title}</Link>
-        </Text>
-    )
+    if (isUnique) {
+        const url = `/${generateSlug(type)}/${variationOf.slug.current}/`
+        return (
+            <Text>
+                The {title} is a unique variant of the{' '}
+                <Link to={url} fontWeight='700'>
+                    {variationOf.title}
+                </Link>
+            </Text>
+        )
+    }
 }
 
 export default IsUnique
