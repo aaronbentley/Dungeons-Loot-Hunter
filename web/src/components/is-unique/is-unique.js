@@ -20,7 +20,7 @@ const IsUnique = ({
         const url = `/${generateSlug(type)}/${variationOf.slug.current}/`
         return (
             <Text>
-                The {title} is a unique variant of the{' '}
+                {title} is a unique variant of the{' '}
                 <Link to={url} fontWeight='700'>
                     {variationOf.title}
                 </Link>

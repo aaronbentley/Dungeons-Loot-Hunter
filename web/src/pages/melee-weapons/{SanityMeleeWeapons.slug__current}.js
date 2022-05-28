@@ -19,6 +19,7 @@ import BuiltInEnchantments from '../../components/built-in-enchantments/built-in
 import DlcItem from '../../components/dlc-item/dlc-item'
 import EventItem from '../../components/event-item/event-item'
 import Image from '../../components/image/image'
+import IsCommonRare from '../../components/is-common-rare/is-common-rare'
 import IsUnique from '../../components/is-unique/is-unique'
 import { Layout } from '../../components/layouts'
 import Locations from '../../components/locations/locations'
@@ -50,17 +51,24 @@ export const query = graphql`
             obtainableOn: _rawObtainableOn(resolveReferences: { maxDepth: 10 })
             droppedBy: _rawDroppedBy(resolveReferences: { maxDepth: 10 })
         }
-        # uniqueVariants: allSanityMeleeWeapons(
-        #     filter: { variationOf: { id: { eq: $id } } }
-        # ) {
-        #     edges {
-        #         node {
-        #             id
-        #             title
-        #             isUnique
-        #         }
-        #     }
-        # }
+        uniqueVariants: allSanityMeleeWeapons(
+            filter: { variationOf: { id: { eq: $id } } }
+        ) {
+            edges {
+                node {
+                    id
+                    type: _type
+                    title
+                    isUnique
+                    slug {
+                        current
+                    }
+                    image {
+                        ...ImageWithPreview
+                    }
+                }
+            }
+        }
     }
 `
 
@@ -81,8 +89,8 @@ const MeleeWeapon = ({ data = {} }) => {
             isEventItem: { isEventItem = null },
             obtainableOn = [],
             droppedBy = []
-        }
-        // uniqueVariants = {}
+        },
+        uniqueVariants = {}
     } = data
 
     return (
@@ -130,7 +138,6 @@ const MeleeWeapon = ({ data = {} }) => {
                                 alt={title}
                                 width={350}
                                 height={350}
-                                // backgroundColor={isUnique ? 'orange.500' : null}
                                 bgGradient={
                                     isUnique
                                         ? 'linear(to-tr, orange.500, orange.300)'
@@ -141,12 +148,22 @@ const MeleeWeapon = ({ data = {} }) => {
                         </Box>
                         <Box>
                             <Stack direction='column' spacing={8}>
-                                <IsUnique
-                                    title={title}
-                                    type={type}
-                                    isUnique={isUnique}
-                                    variationOf={variationOf}
-                                />
+                                {isUnique && (
+                                    <IsUnique
+                                        title={title}
+                                        type={type}
+                                        isUnique={isUnique}
+                                        variationOf={variationOf}
+                                    />
+                                )}
+
+                                {!isUnique && (
+                                    <IsCommonRare
+                                        title={title}
+                                        type={type}
+                                        uniqueVariants={uniqueVariants}
+                                    />
+                                )}
                                 <Stack direction='column' spacing={4}>
                                     <Heading as='h3' fontSize='xl'>
                                         Stats
