@@ -74,7 +74,6 @@ export const query = graphql`
 const MeleeWeapon = ({ data = {} }) => {
     const {
         sanityMeleeWeapons: {
-            id = '',
             type = '',
             title = '',
             image = {},

@@ -18,7 +18,7 @@ const LootVariants = ({
         const url = `/${generateSlug(type)}/${variationOf.slug.current}/`
         return (
             <Stack direction='column' spacing={4}>
-                <Text lineHeight='none'>
+                <Text>
                     {title} is a unique variant of the{' '}
                     <Link to={url} fontWeight='700'>
                         {variationOf.title}
