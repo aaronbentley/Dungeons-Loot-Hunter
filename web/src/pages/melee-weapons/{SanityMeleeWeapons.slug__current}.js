@@ -19,10 +19,9 @@ import BuiltInEnchantments from '../../components/built-in-enchantments/built-in
 import DlcItem from '../../components/dlc-item/dlc-item'
 import EventItem from '../../components/event-item/event-item'
 import Image from '../../components/image/image'
-import IsCommonRare from '../../components/is-common-rare/is-common-rare'
-import IsUnique from '../../components/is-unique/is-unique'
 import { Layout } from '../../components/layouts'
 import Locations from '../../components/locations/locations'
+import LootVariants from '../../components/loot-variants/loot-variants'
 import Runes from '../../components/runes/runes'
 import Stats from '../../components/stats/stats'
 import { humanReadableTypeName } from '../../utils/helpers'
@@ -148,22 +147,13 @@ const MeleeWeapon = ({ data = {} }) => {
                         </Box>
                         <Box>
                             <Stack direction='column' spacing={8}>
-                                {isUnique && (
-                                    <IsUnique
-                                        title={title}
-                                        type={type}
-                                        isUnique={isUnique}
-                                        variationOf={variationOf}
-                                    />
-                                )}
-
-                                {!isUnique && (
-                                    <IsCommonRare
-                                        title={title}
-                                        type={type}
-                                        uniqueVariants={uniqueVariants}
-                                    />
-                                )}
+                                <LootVariants
+                                    title={title}
+                                    type={type}
+                                    isUnique={isUnique}
+                                    variationOf={variationOf}
+                                    uniqueVariants={uniqueVariants}
+                                />
                                 <Stack direction='column' spacing={4}>
                                     <Heading as='h3' fontSize='xl'>
                                         Stats

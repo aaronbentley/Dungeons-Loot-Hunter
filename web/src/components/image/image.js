@@ -1,7 +1,7 @@
 /**
  * MC Dungeons Loot Hunter Image
  */
-import { chakra } from '@chakra-ui/react'
+import { chakra, shouldForwardProp } from '@chakra-ui/react'
 import SanityImage from 'gatsby-plugin-sanity-image'
 import React from 'react'
 
@@ -14,7 +14,19 @@ const Image = ({
     ...rest
 }) => {
     const ChakraSanityImage = chakra(SanityImage, {
-        shouldForwardProp: (prop) => prop
+        shouldForwardProp: (prop) => {
+            /**
+             * Don't forward Chakra's props
+             * @link https://chakra-ui.com/docs/styled-system/features/chakra-factory#chakra-factory-function
+             */
+            const isChakraProp = !shouldForwardProp(prop)
+            if (isChakraProp) {
+                return false
+            }
+
+            // else forward props
+            return prop
+        }
     })
 
     // Bail early if no image asset supplied

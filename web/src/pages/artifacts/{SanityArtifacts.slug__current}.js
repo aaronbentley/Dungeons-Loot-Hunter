@@ -17,9 +17,9 @@ import BackButton from '../../components/back-button/back-button'
 import DlcItem from '../../components/dlc-item/dlc-item'
 import EventItem from '../../components/event-item/event-item'
 import Image from '../../components/image/image'
-import IsUnique from '../../components/is-unique/is-unique'
 import { Layout } from '../../components/layouts'
 import Locations from '../../components/locations/locations'
+import LootVariants from '../../components/loot-variants/loot-variants'
 import Runes from '../../components/runes/runes'
 import { humanReadableTypeName } from '../../utils/helpers'
 
@@ -33,11 +33,30 @@ export const query = graphql`
             }
             requiresSouls
             isUnique
+            variationOf: _rawVariationOf(resolveReferences: { maxDepth: 10 })
             runes: _rawRunes(resolveReferences: { maxDepth: 10 })
             traits
             isDlcItem: _rawIsDlcItem(resolveReferences: { maxDepth: 10 })
             isEventItem: _rawIsEventItem(resolveReferences: { maxDepth: 10 })
             obtainableOn: _rawObtainableOn(resolveReferences: { maxDepth: 10 })
+        }
+        uniqueVariants: allSanityArtifacts(
+            filter: { variationOf: { id: { eq: $id } } }
+        ) {
+            edges {
+                node {
+                    id
+                    type: _type
+                    title
+                    isUnique
+                    slug {
+                        current
+                    }
+                    image {
+                        ...ImageWithPreview
+                    }
+                }
+            }
         }
     }
 `
@@ -48,14 +67,16 @@ const Artifact = ({ data = {} }) => {
             type = '',
             title = '',
             image = {},
-            requiresSouls = false,
             isUnique = false,
+            variationOf = {},
+            requiresSouls = false,
             runes = [],
             traits = [],
             isDlcItem = null,
             isEventItem = null,
             obtainableOn = []
-        }
+        },
+        uniqueVariants = {}
     } = data
 
     return (
@@ -114,11 +135,12 @@ const Artifact = ({ data = {} }) => {
                         </Box>
                         <Box>
                             <Stack direction='column' spacing={8}>
-                                <IsUnique
+                                <LootVariants
                                     title={title}
                                     type={type}
                                     isUnique={isUnique}
-                                    variationOf={null}
+                                    variationOf={variationOf}
+                                    uniqueVariants={uniqueVariants}
                                 />
                                 {requiresSouls && (
                                     <Stack direction='column' spacing={4}>
