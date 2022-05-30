@@ -112,6 +112,7 @@ export default {
                 return true
             },
             options: {
+                disableNew: true,
                 filter: ({ document }) => {
                     if (document.title) {
                         return {

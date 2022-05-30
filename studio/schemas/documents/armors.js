@@ -1,20 +1,21 @@
 import Emoji from 'a11y-react-emoji'
 import React from 'react'
 
-const Icon = () => <Emoji style={{fontSize: '1.8em'}} symbol="🛡" />
+const Icon = () => <Emoji style={{ fontSize: '1.8em' }} symbol='🛡' />
 
 export default {
     title: 'Armor',
     name: 'armor',
     type: 'document',
     icon: Icon,
-    validation: Rule => Rule.custom( fields => {
-        if ( fields.runes === undefined || fields.runes.length === 0 ) {
-            return "Missing Runes"
-        }
-        
-        return true
-    }).warning(),
+    validation: (Rule) =>
+        Rule.custom((fields) => {
+            if (fields.runes === undefined || fields.runes.length === 0) {
+                return 'Missing Runes'
+            }
+
+            return true
+        }).warning(),
     groups: [
         {
             name: 'content',
@@ -70,15 +71,13 @@ export default {
             title: 'Built-in Abilities',
             type: 'array',
             of: [
-              {
-                type: 'reference',
-                to: [
-                  { type: 'enchantments' }
-                ],
-                options: {
-                    disableNew: true
+                {
+                    type: 'reference',
+                    to: [{ type: 'enchantments' }],
+                    options: {
+                        disableNew: true
+                    }
                 }
-              }
             ],
             group: 'properties'
         },
@@ -92,16 +91,16 @@ export default {
             name: 'variationOf',
             title: 'Unique variation of',
             type: 'reference',
-            to: [ { type: 'armor' } ],
+            to: [{ type: 'armor' }],
             hidden: ({ parent, document, value }) => {
-                if ( document.isUnique ) {
+                if (document.isUnique) {
                     return false
                 }
                 return true
             },
             options: {
                 disableNew: true,
-                filter: ( { document } ) => {
+                filter: ({ document }) => {
                     if (document.title) {
                         return {
                             filter: 'title != $title && isUnique != true',
@@ -117,18 +116,16 @@ export default {
             title: 'Built-in Enchantments',
             type: 'array',
             of: [
-              {
-                type: 'reference',
-                to: [
-                  { type: 'enchantments' }
-                ],
-                options: {
-                    disableNew: true
+                {
+                    type: 'reference',
+                    to: [{ type: 'enchantments' }],
+                    options: {
+                        disableNew: true
+                    }
                 }
-              }
             ],
             hidden: ({ parent, document, value }) => {
-                if ( document.isUnique ) {
+                if (document.isUnique) {
                     return false
                 }
                 return true
@@ -177,13 +174,13 @@ export default {
                     type: 'reference',
                     to: [{ type: 'levels' }],
                     options: {
-                        disableNew: true,
+                        disableNew: true
                     }
                 }
             ],
             validation: (Rule) => Rule.unique(),
             hidden: ({ parent, document, value }) => {
-                if ( document.isUnique ) {
+                if (document.isUnique) {
                     return true
                 }
                 return false
@@ -199,13 +196,13 @@ export default {
                     type: 'reference',
                     to: [{ type: 'ancientMobs' }],
                     options: {
-                        disableNew: true,
+                        disableNew: true
                     }
                 }
             ],
             validation: (Rule) => Rule.max(1),
             hidden: ({ parent, document, value }) => {
-                if ( document.isUnique ) {
+                if (document.isUnique) {
                     return true
                 }
                 return false
@@ -219,11 +216,11 @@ export default {
             image: 'image',
             isUnique: 'isUnique',
             traits: 'traits',
-            runes:  'runes.0.title',
+            runes: 'runes.0.title',
             isDlcItem: 'isDlcItem',
             isEventItem: 'isEventItem'
         },
-        prepare( selection ) {
+        prepare(selection) {
             const {
                 title,
                 image,
@@ -237,26 +234,26 @@ export default {
             // Create subtitle string
             let subtitle = ''
 
-            if ( traits === undefined || Object.keys(traits).length === 0 ) {
+            if (traits === undefined || Object.keys(traits).length === 0) {
                 subtitle += '📊'
             }
 
-            if ( runes === undefined || runes.length === 0 ) {
+            if (runes === undefined || runes.length === 0) {
                 subtitle += '🔮'
             }
 
-            if ( isUnique !== undefined & isUnique ) {
+            if ((isUnique !== undefined) & isUnique) {
                 subtitle += '🟠'
             }
 
-            if ( isDlcItem !== undefined && isDlcItem?.isDlcItem ) {
+            if (isDlcItem !== undefined && isDlcItem?.isDlcItem) {
                 subtitle += '🟢'
             }
-            
-            if ( isEventItem !== undefined && isEventItem?.isEventItem ) {
+
+            if (isEventItem !== undefined && isEventItem?.isEventItem) {
                 subtitle += '🟣'
             }
-            
+
             return {
                 title: title,
                 subtitle: subtitle,

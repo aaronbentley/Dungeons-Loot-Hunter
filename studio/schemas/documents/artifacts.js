@@ -1,20 +1,21 @@
 import Emoji from 'a11y-react-emoji'
 import React from 'react'
 
-const Icon = () => <Emoji style={{fontSize: '1.8em'}} symbol="🏺" />
+const Icon = () => <Emoji style={{ fontSize: '1.8em' }} symbol='🏺' />
 
 export default {
     title: 'Artifacts',
     name: 'artifacts',
     type: 'document',
     icon: Icon,
-    validation: Rule => Rule.custom( fields => {
-        if ( fields.runes === undefined || fields.runes.length === 0 ) {
-            return "Missing Runes"
-        }
-        
-        return true
-    }).warning(),
+    validation: (Rule) =>
+        Rule.custom((fields) => {
+            if (fields.runes === undefined || fields.runes.length === 0) {
+                return 'Missing Runes'
+            }
+
+            return true
+        }).warning(),
     groups: [
         {
             name: 'content',
@@ -66,14 +67,38 @@ export default {
             group: 'content'
         },
         {
-            name: 'requiresSouls',
-            title: 'Require souls?',
+            name: 'isUnique',
+            title: 'Is unique?',
             type: 'boolean',
             group: 'properties'
         },
         {
-            name: 'isUnique',
-            title: 'Is unique?',
+            name: 'variationOf',
+            title: 'Unique variation of',
+            type: 'reference',
+            to: [{ type: 'artifacts' }],
+            hidden: ({ parent, document, value }) => {
+                if (document.isUnique) {
+                    return false
+                }
+                return true
+            },
+            options: {
+                disableNew: true,
+                filter: ({ document }) => {
+                    if (document.title) {
+                        return {
+                            filter: 'title != $title && isUnique != true',
+                            params: { title: document.title }
+                        }
+                    }
+                }
+            },
+            group: 'properties'
+        },
+        {
+            name: 'requiresSouls',
+            title: 'Require souls?',
             type: 'boolean',
             group: 'properties'
         },
@@ -119,7 +144,7 @@ export default {
                     type: 'reference',
                     to: [{ type: 'levels' }],
                     options: {
-                        disableNew: true,
+                        disableNew: true
                     }
                 }
             ],
@@ -134,11 +159,11 @@ export default {
             requiresSouls: 'requiresSouls',
             isUnique: 'isUnique',
             traits: 'traits',
-            runes:  'runes.0.title',
+            runes: 'runes.0.title',
             isDlcItem: 'isDlcItem',
             isEventItem: 'isEventItem'
         },
-        prepare( selection ) {
+        prepare(selection) {
             const {
                 title,
                 image,
@@ -152,26 +177,26 @@ export default {
             // Create subtitle string
             let subtitle = ''
 
-            if ( requiresSouls !== undefined & requiresSouls ) {
+            if ((requiresSouls !== undefined) & requiresSouls) {
                 subtitle += '💀'
             }
 
-            if ( runes === undefined || runes.length === 0 ) {
+            if (runes === undefined || runes.length === 0) {
                 subtitle += '🔮'
             }
 
-            if ( isUnique !== undefined & isUnique ) {
+            if ((isUnique !== undefined) & isUnique) {
                 subtitle += '🟠'
             }
 
-            if ( isDlcItem !== undefined && isDlcItem?.isDlcItem ) {
+            if (isDlcItem !== undefined && isDlcItem?.isDlcItem) {
                 subtitle += '🟢'
             }
-            
-            if ( isEventItem !== undefined && isEventItem?.isEventItem ) {
+
+            if (isEventItem !== undefined && isEventItem?.isEventItem) {
                 subtitle += '🟣'
             }
-            
+
             return {
                 title: title,
                 subtitle: subtitle,

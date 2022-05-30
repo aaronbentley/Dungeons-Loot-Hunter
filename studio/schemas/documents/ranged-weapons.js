@@ -1,24 +1,28 @@
 import Emoji from 'a11y-react-emoji'
 import React from 'react'
 
-const Icon = () => <Emoji style={{fontSize: '1.8em'}} symbol="🏹" />
+const Icon = () => <Emoji style={{ fontSize: '1.8em' }} symbol='🏹' />
 
 export default {
     title: 'Ranged Weapons',
     name: 'rangedWeapons',
     type: 'document',
     icon: Icon,
-    validation: Rule => Rule.custom( fields => {
-        if ( fields.stats === undefined || Object.keys(fields.stats).length === 0 ) {
-            return "Missing Stats"
-        }
+    validation: (Rule) =>
+        Rule.custom((fields) => {
+            if (
+                fields.stats === undefined ||
+                Object.keys(fields.stats).length === 0
+            ) {
+                return 'Missing Stats'
+            }
 
-        if ( fields.runes === undefined || fields.runes.length === 0 ) {
-            return "Missing Runes"
-        }
-        
-        return true
-    }).warning(),
+            if (fields.runes === undefined || fields.runes.length === 0) {
+                return 'Missing Runes'
+            }
+
+            return true
+        }).warning(),
     groups: [
         {
             name: 'content',
@@ -80,15 +84,13 @@ export default {
             title: 'Built-in Abilities',
             type: 'array',
             of: [
-              {
-                type: 'reference',
-                to: [
-                  { type: 'enchantments' }
-                ],
-                options: {
-                    disableNew: true
+                {
+                    type: 'reference',
+                    to: [{ type: 'enchantments' }],
+                    options: {
+                        disableNew: true
+                    }
                 }
-              }
             ],
             group: 'properties'
         },
@@ -102,15 +104,16 @@ export default {
             name: 'variationOf',
             title: 'Unique variation of',
             type: 'reference',
-            to: [ { type: 'rangedWeapons' } ],
+            to: [{ type: 'rangedWeapons' }],
             hidden: ({ parent, document, value }) => {
-                if ( document.isUnique ) {
+                if (document.isUnique) {
                     return false
                 }
                 return true
             },
             options: {
-                filter: ( { document } ) => {
+                disableNew: true,
+                filter: ({ document }) => {
                     if (document.title) {
                         return {
                             filter: 'title != $title && isUnique != true',
@@ -126,15 +129,13 @@ export default {
             title: 'Built-in Enchantments',
             type: 'array',
             of: [
-              {
-                type: 'reference',
-                to: [
-                  { type: 'enchantments' }
-                ]
-              }
+                {
+                    type: 'reference',
+                    to: [{ type: 'enchantments' }]
+                }
             ],
             hidden: ({ parent, document, value }) => {
-                if ( document.isUnique ) {
+                if (document.isUnique) {
                     return false
                 }
                 return true
@@ -177,13 +178,13 @@ export default {
                     type: 'reference',
                     to: [{ type: 'levels' }],
                     options: {
-                        disableNew: true,
+                        disableNew: true
                     }
                 }
             ],
             validation: (Rule) => Rule.unique(),
             hidden: ({ parent, document, value }) => {
-                if ( document.isUnique ) {
+                if (document.isUnique) {
                     return true
                 }
                 return false
@@ -199,13 +200,13 @@ export default {
                     type: 'reference',
                     to: [{ type: 'ancientMobs' }],
                     options: {
-                        disableNew: true,
+                        disableNew: true
                     }
                 }
             ],
             validation: (Rule) => Rule.max(1),
             hidden: ({ parent, document, value }) => {
-                if ( document.isUnique ) {
+                if (document.isUnique) {
                     return true
                 }
                 return false
@@ -219,11 +220,11 @@ export default {
             image: 'image',
             isUnique: 'isUnique',
             stats: 'stats',
-            runes:  'runes.0.title',
+            runes: 'runes.0.title',
             isDlcItem: 'isDlcItem',
             isEventItem: 'isEventItem'
         },
-        prepare( selection ) {
+        prepare(selection) {
             const {
                 title,
                 image,
@@ -237,42 +238,38 @@ export default {
             // Create subtitle string
             let subtitle = ''
 
-            if ( stats._type !== 'rangedWeaponStats' ) {
+            if (stats._type !== 'rangedWeaponStats') {
                 subtitle += '⚠️'
             }
 
-            if ( stats === undefined || Object.keys(stats).length === 0 ) {
+            if (stats === undefined || Object.keys(stats).length === 0) {
                 subtitle += '📊'
             }
 
-            if ( runes === undefined || runes.length === 0 ) {
+            if (runes === undefined || runes.length === 0) {
                 subtitle += '🔮'
             }
 
-            if ( isUnique !== undefined & isUnique ) {
+            if ((isUnique !== undefined) & isUnique) {
                 subtitle += '🟠'
             }
 
-            if ( isDlcItem !== undefined && isDlcItem?.isDlcItem ) {
+            if (isDlcItem !== undefined && isDlcItem?.isDlcItem) {
                 subtitle += '🟢'
             }
-            
-            if ( isEventItem !== undefined && isEventItem?.isEventItem ) {
+
+            if (isEventItem !== undefined && isEventItem?.isEventItem) {
                 subtitle += '🟣'
             }
 
-            if ( stats !== undefined || Object.keys(stats).length !== 0 ) { 
-                const {
-                    ammo,
-                    power,
-                    speed
-                } = stats
+            if (stats !== undefined || Object.keys(stats).length !== 0) {
+                const { ammo, power, speed } = stats
 
-                if ( ammo === 1 && power === 1 & speed === 1 ) {
+                if (ammo === 1 && (power === 1) & (speed === 1)) {
                     subtitle = '🛑' + subtitle
                 }
             }
-            
+
             return {
                 title: title,
                 subtitle: subtitle,
