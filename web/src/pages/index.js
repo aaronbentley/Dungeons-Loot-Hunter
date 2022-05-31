@@ -19,7 +19,10 @@ const Index = () => {
         <Layout>
             <Container maxWidth='6xl' py={12} centerContent>
                 <Stack direction='column' spacing={12}>
-                    <Heading as='h1' fontSize='6xl' textAlign='center'>
+                    <Heading 
+                        as='h1' 
+                        // fontSize='6xl' 
+                        textAlign='center'>
                         {title}
                     </Heading>
                     <Search />

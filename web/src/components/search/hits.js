@@ -33,7 +33,14 @@ const Hits = (props) => {
                     </AlertDescription>
                 </Alert>
             )}
-            <Grid templateColumns='repeat(5, 1fr)' gap={6}>
+            <Grid 
+                templateColumns={[
+                    'repeat(1, 1fr)',
+                    'repeat(2, 1fr)',
+                    'repeat(3, 1fr)',
+                    'repeat(5, 1fr)'
+                ]} 
+                gap={6}>
                 {hits &&
                     hits.map((hit) => {
                         return (
