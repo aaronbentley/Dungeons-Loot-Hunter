@@ -3,6 +3,8 @@
  */
 import { Stack, Tooltip } from '@chakra-ui/react'
 import React from 'react'
+import Link from '../../components/link/link'
+import { generateSlug } from '../../utils/helpers'
 import Image from '../image/image'
 
 const Locations = ({ data = {} }) => {
@@ -21,14 +23,18 @@ const Locations = ({ data = {} }) => {
                         key={location.id}
                         label={location.title}
                         placement='top'
-                        colorScheme='purple'
                         shouldWrapChildren>
-                        <Image
-                            imageData={location.image}
-                            alt={location.title}
-                            width={84}
-                            height={84}
-                        />
+                        <Link
+                            to={`/${generateSlug(location._type)}/${
+                                location.slug.current
+                            }/`}>
+                            <Image
+                                imageData={location.image}
+                                alt={location.title}
+                                width={84}
+                                height={84}
+                            />
+                        </Link>
                     </Tooltip>
                 ))}
         </Stack>

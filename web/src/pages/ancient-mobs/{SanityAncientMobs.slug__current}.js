@@ -199,7 +199,6 @@ const AncientMob = ({ data = {} }) => {
                     <SimpleGrid columns={[1, 2]} spacing={10}>
                         <Box>
                             <Image
-                                p={6}
                                 imageData={image}
                                 alt={title}
                                 width={350}
