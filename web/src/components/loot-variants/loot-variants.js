@@ -29,7 +29,7 @@ const LootVariants = ({
                         key={variationOf.id}
                         label={variationOf.title}
                         placement='top'
-                        colorScheme='purple'
+                        
                         shouldWrapChildren>
                         <Link to={url}>
                             <Image
@@ -62,7 +62,7 @@ const LootVariants = ({
                             key={node.id}
                             label={node.title}
                             placement='top'
-                            colorScheme='purple'
+                            
                             shouldWrapChildren>
                             <Link to={url}>
                                 <Image

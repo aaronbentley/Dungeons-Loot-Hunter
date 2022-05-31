@@ -23,7 +23,7 @@ const AncientMobs = ({ data = {} }) => {
                         key={mob.id}
                         label={mob.title}
                         placement='top'
-                        colorScheme='purple'
+                        
                         shouldWrapChildren>
                         <Link
                             to={`/${generateSlug(mob._type)}/${

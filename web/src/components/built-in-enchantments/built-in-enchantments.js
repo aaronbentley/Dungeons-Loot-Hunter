@@ -19,7 +19,7 @@ const BuiltInEnchantments = ({ data = {} }) => {
                         key={enchantment.id}
                         label={enchantment.title}
                         placement='top'
-                        colorScheme='purple'
+                        
                         shouldWrapChildren>
                         <Image
                             imageData={enchantment.image}

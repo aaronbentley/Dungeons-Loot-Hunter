@@ -18,7 +18,7 @@ const Runes = ({ data = {} }) => {
                         key={rune.id}
                         label={rune.title}
                         placement='top'
-                        colorScheme='purple'
+                        
                         shouldWrapChildren>
                         <Image
                             imageData={rune.image}
