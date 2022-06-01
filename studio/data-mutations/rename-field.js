@@ -3,17 +3,41 @@ import sanityClient from 'part:@sanity/base/client'
 
 const client = sanityClient.withConfig({apiVersion: '2021-10-21'})
 
+/**
+ * Set values to find and replace here
+ */
+//  const DOCUMENT_TYPE = ''
+ const FIELD_TO_REPLACE = 'isEventItem'
+ const NEW_FIELD_NAME = 'eventItem'
+
 const fetchDocuments = () =>
     client.fetch(
-        `*[_type == 'meleeWeapons' && defined(stats)][0...100] {_id, _rev, stats}`
+        `*[
+            (
+                _type == 'meleeWeapons' ||
+                _type == 'rangedWeapons' ||
+                _type == 'armor' ||
+                _type == 'artifacts'
+            ) 
+          && 
+          (
+              defined(${FIELD_TO_REPLACE})
+          )
+        ]
+        [0...100] 
+        {
+            _id, 
+            _rev, 
+            ${FIELD_TO_REPLACE}
+        }`
     )
 
 const buildPatches = (docs) =>
     docs.map((doc) => ({
         id: doc._id,
         patch: {
-            set: { meleeWeaponStats: doc.stats },
-            unset: ['stats'],
+            set: { [NEW_FIELD_NAME]: doc[FIELD_TO_REPLACE] },
+            unset: [FIELD_TO_REPLACE],
             // this will cause the migration to fail if any of the documents has been
             // modified since it was fetched.
             ifRevisionID: doc._rev

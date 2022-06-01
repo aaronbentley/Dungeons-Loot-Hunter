@@ -161,14 +161,14 @@ export default {
             group: 'runes'
         },
         {
-            name: 'isDlcItem',
-            title: 'Is DLC item?',
+            name: 'dlcItem',
+            title: 'DLC item?',
             type: 'dlcItem',
             group: 'content'
         },
         {
-            name: 'isEventItem',
-            title: 'Is Event item?',
+            name: 'eventItem',
+            title: 'Event item?',
             type: 'eventItem',
             group: 'content'
         },
@@ -235,8 +235,8 @@ export default {
             isUnique: 'isUnique',
             stats: 'stats',
             runes: 'runes.0.title',
-            isDlcItem: 'isDlcItem',
-            isEventItem: 'isEventItem'
+            dlcItem: 'dlcItem',
+            eventItem: 'eventItem'
         },
         prepare(selection) {
             const {
@@ -245,8 +245,8 @@ export default {
                 isUnique,
                 stats,
                 runes,
-                isDlcItem,
-                isEventItem
+                dlcItem,
+                eventItem
             } = selection
 
             // Create subtitle string
@@ -268,11 +268,11 @@ export default {
                 subtitle += '🟠'
             }
 
-            if (isDlcItem !== undefined && isDlcItem?.isDlcItem) {
+            if (dlcItem !== undefined && dlcItem?.isDlcItem) {
                 subtitle += '🟢'
             }
 
-            if (isEventItem !== undefined && isEventItem?.isEventItem) {
+            if (eventItem !== undefined && eventItem?.isEventItem) {
                 subtitle += '🟣'
             }
 
