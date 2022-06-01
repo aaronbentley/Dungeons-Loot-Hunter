@@ -9,5 +9,71 @@
             "name": "Sanity"
         }
     ],
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "type": "node",
+                "request": "launch",
+                "name": "Gatsby",
+                "runtimeExecutable": "yarn",
+                "console": "integratedTerminal",
+                "cwd": "${workspaceFolder:Gatsby}",
+                "runtimeArgs": ["dev"],
+                "presentation": {
+                    "group": "Gatsby",
+                    "order": 2
+                }
+            },
+            {
+                "type": "node",
+                "request": "launch",
+                "name": "Sanity",
+                "runtimeExecutable": "yarn",
+                "console": "integratedTerminal",
+                "cwd": "${workspaceFolder:Sanity}",
+                "runtimeArgs": ["start"],
+                "presentation": {
+                    "group": "Sanity",
+                    "order": 3
+                }
+            }
+        ],
+        "compounds": [
+            {
+                "name": "🔥 Dev",
+                "configurations": ["Gatsby", "Sanity"],
+                "presentation": {
+                    "group": "Dev",
+                    "order": 1
+                }
+            }
+        ]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "type": "npm",
+                "script": "deploy-schema",
+                "problemMatcher": [],
+                "label": "npm: Sanity Deploy Schema",
+                "detail": "sanity graphql deploy --generation gen3",
+                "options": {
+                    "cwd": "${workspaceFolder:Sanity}"
+                }
+            },
+            {
+                "type": "npm",
+                "script": "deploy-studio",
+                "problemMatcher": [],
+                "label": "npm: Sanity Deploy Studio",
+                "detail": "sanity deploy",
+                "options": {
+                    "cwd": "${workspaceFolder:Sanity}"
+                }
+            }
+        ]
+    },
 	"settings": {}
 }
