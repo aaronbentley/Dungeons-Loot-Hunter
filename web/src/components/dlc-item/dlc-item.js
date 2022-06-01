@@ -9,9 +9,9 @@ const DlcItem = ({ data = {} }) => {
         return null
     }
 
-    const { isDlcItem = false, title = '' } = data
+    const { dlcItem = false, title = '' } = data
 
-    if (!isDlcItem) {
+    if (!dlcItem) {
         return null
     }
 

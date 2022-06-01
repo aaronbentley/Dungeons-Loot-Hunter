@@ -36,8 +36,8 @@ export const query = graphql`
             variationOf: _rawVariationOf(resolveReferences: { maxDepth: 10 })
             runes: _rawRunes(resolveReferences: { maxDepth: 10 })
             traits
-            isDlcItem: _rawIsDlcItem(resolveReferences: { maxDepth: 10 })
-            isEventItem: _rawIsEventItem(resolveReferences: { maxDepth: 10 })
+            dlcItem: _rawDlcItem(resolveReferences: { maxDepth: 10 })
+            eventItem: _rawEventItem(resolveReferences: { maxDepth: 10 })
             obtainableOn: _rawObtainableOn(resolveReferences: { maxDepth: 10 })
         }
         uniqueVariants: allSanityArtifacts(
@@ -72,8 +72,8 @@ const Artifact = ({ data = {} }) => {
             requiresSouls = false,
             runes = [],
             traits = [],
-            isDlcItem = null,
-            isEventItem = null,
+            dlcItem = null,
+            eventItem = null,
             obtainableOn = []
         },
         uniqueVariants = {}
@@ -104,12 +104,12 @@ const Artifact = ({ data = {} }) => {
                                     </Tag>
                                 </React.Fragment>
                             )}
-                            {isDlcItem?.isDlcItem && (
+                            {dlcItem?.isDlcItem && (
                                 <Tag width='max' colorScheme='green'>
                                     DLC
                                 </Tag>
                             )}
-                            {isEventItem?.isEventItem && (
+                            {eventItem?.isEventItem && (
                                 <Tag width='max' colorScheme='purple'>
                                     Event
                                 </Tag>
@@ -165,20 +165,20 @@ const Artifact = ({ data = {} }) => {
                                     <Runes data={runes} />
                                 </Stack>
 
-                                {isDlcItem?.isDlcItem && (
+                                {dlcItem?.isDlcItem && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>
                                             DLC
                                         </Heading>
-                                        <DlcItem data={isDlcItem} />
+                                        <DlcItem data={dlcItem} />
                                     </Stack>
                                 )}
-                                {isEventItem?.isEventItem && (
+                                {eventItem?.isEventItem && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>
                                             Event
                                         </Heading>
-                                        <EventItem data={isEventItem} />
+                                        <EventItem data={eventItem} />
                                     </Stack>
                                 )}
                             </Stack>

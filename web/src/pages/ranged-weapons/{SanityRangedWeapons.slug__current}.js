@@ -43,8 +43,8 @@ export const query = graphql`
                 resolveReferences: { maxDepth: 10 }
             )
             runes: _rawRunes(resolveReferences: { maxDepth: 10 })
-            isDlcItem: _rawIsDlcItem(resolveReferences: { maxDepth: 10 })
-            isEventItem: _rawIsEventItem(resolveReferences: { maxDepth: 10 })
+            dlcItem: _rawDlcItem(resolveReferences: { maxDepth: 10 })
+            eventItem: _rawEventItem(resolveReferences: { maxDepth: 10 })
             obtainableOn: _rawObtainableOn(resolveReferences: { maxDepth: 10 })
             droppedBy: _rawDroppedBy(resolveReferences: { maxDepth: 10 })
         }
@@ -81,8 +81,8 @@ const RangedWeapon = ({ data = {} }) => {
             variationOf = {},
             builtInEnchantments = [],
             runes = [],
-            isDlcItem = null,
-            isEventItem = null,
+            dlcItem = null,
+            eventItem = null,
             obtainableOn = [],
             droppedBy = []
         },
@@ -114,12 +114,12 @@ const RangedWeapon = ({ data = {} }) => {
                                     </Tag>
                                 </React.Fragment>
                             )}
-                            {isDlcItem?.isDlcItem && (
+                            {dlcItem?.isDlcItem && (
                                 <Tag width='max' colorScheme='green'>
                                     DLC
                                 </Tag>
                             )}
-                            {isEventItem?.isEventItem && (
+                            {eventItem?.isEventItem && (
                                 <Tag width='max' colorScheme='purple'>
                                     Event
                                 </Tag>
@@ -184,20 +184,20 @@ const RangedWeapon = ({ data = {} }) => {
                                         />
                                     </Stack>
                                 )}
-                                {isDlcItem?.isDlcItem && (
+                                {dlcItem?.isDlcItem && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>
                                             DLC
                                         </Heading>
-                                        <DlcItem data={isDlcItem} />
+                                        <DlcItem data={dlcItem} />
                                     </Stack>
                                 )}
-                                {isEventItem?.isEventItem && (
+                                {eventItem?.isEventItem && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>
                                             Event
                                         </Heading>
-                                        <EventItem data={isEventItem} />
+                                        <EventItem data={eventItem} />
                                     </Stack>
                                 )}
                             </Stack>
