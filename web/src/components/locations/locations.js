@@ -8,7 +8,6 @@ import { generateSlug } from '../../utils/helpers'
 import Image from '../image/image'
 
 const Locations = ( { data = {} } ) => {
-    console.log( '🦄 ~ file: locations.js ~ line 11 ~ Locations ~ data', data )
     // If no data, bail early    
     if ( !data ) {
         return null
