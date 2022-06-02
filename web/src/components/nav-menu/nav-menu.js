@@ -17,7 +17,7 @@ import {
 } from '@chakra-ui/react'
 import React, { useRef } from 'react'
 
-const NavMenu = ({ isOpen, onClose }) => {
+const NavMenu = ( { isOpen, onClose } ) => {
     // Create ref for close button
     const closeButton = useRef()
 
@@ -40,13 +40,12 @@ const NavMenu = ({ isOpen, onClose }) => {
                     py={0}
                     px={4}>
                     <IconButton
-                    size='xs'
+                        size='xs'
                         ref={closeButton}
                         aria-label='Navigation menu'
                         icon={<CloseIcon />}
                         onClick={onClose}
-                        zIndex={1}
-                    />
+                        zIndex={1} />
                 </DrawerHeader>
                 <DrawerBody pt={12} overflowX='hidden'>
                     <Stack

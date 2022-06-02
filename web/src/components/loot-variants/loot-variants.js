@@ -7,15 +7,15 @@ import { generateSlug, mapEdgesToNodes } from '../../utils/helpers'
 import Image from '../image/image'
 import Link from '../link/link'
 
-const LootVariants = ({
+const LootVariants = ( {
     title,
     type,
     isUnique,
     variationOf,
     uniqueVariants
-}) => {
-    if (isUnique) {
-        const url = `/${generateSlug(type)}/${variationOf.slug.current}/`
+} ) => {
+    if ( isUnique ) {
+        const url = `/${generateSlug( type )}/${variationOf.slug.current}/`
         return (
             <Stack direction='column' spacing={4}>
                 <Text>
@@ -37,8 +37,7 @@ const LootVariants = ({
                                 width={60}
                                 bgGradient='linear(to-tr, gray.600, green.700)'
                                 borderRadius={2}
-                                padding={2}
-                            />
+                                padding={2} />
                         </Link>
                     </Tooltip>
                 </SimpleGrid>
@@ -46,10 +45,10 @@ const LootVariants = ({
         )
     }
 
-    const uniques = mapEdgesToNodes(uniqueVariants)
+    const uniques = mapEdgesToNodes( uniqueVariants )
 
     // If no unique variants, bail early
-    if (!uniques.length) {
+    if ( !uniques.length ) {
         return null
     }
 
@@ -60,8 +59,8 @@ const LootVariants = ({
                 {uniques.length === 1 ? 'variant' : 'variants'}
             </Text>
             <SimpleGrid columns={4} spacing={2}>
-                {uniques.map(({ node }) => {
-                    const url = `/${generateSlug(type)}/${node.slug.current}/`
+                {uniques.map( ( { node } ) => {
+                    const url = `/${generateSlug( type )}/${node.slug.current}/`
                     return (
                         <Tooltip
                             key={node.id}
@@ -75,12 +74,11 @@ const LootVariants = ({
                                     width={60}
                                     bgGradient='linear(to-tr, orange.500, orange.300)'
                                     borderRadius={2}
-                                    padding={2}
-                                />
+                                    padding={2} />
                             </Link>
                         </Tooltip>
                     )
-                })}
+                } )}
             </SimpleGrid>
         </Stack>
     )

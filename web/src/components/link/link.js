@@ -6,14 +6,14 @@ import { Link as GatsbyLink } from 'gatsby'
 import React from 'react'
 
 const Link = React.forwardRef(
-    ({ children, to, activeClassName, partiallyActive, ...rest }, ref) => {
+    ( { children, to, activeClassName, partiallyActive, ...rest }, ref ) => {
         // Tailor the following test to your environment.
         // This example assumes that any internal link (intended for Gatsby)
         // will start with exactly one slash, and that anything else is external.
-        const internal = /^\/(?!\/)/.test(to)
+        const internal = /^\/(?!\/)/.test( to )
 
         // Use Chakra UI Link as Gatsby Link for internal links, and <a> for others
-        if (internal) {
+        if ( internal ) {
             return (
                 <ChakraLink
                     ref={ref}

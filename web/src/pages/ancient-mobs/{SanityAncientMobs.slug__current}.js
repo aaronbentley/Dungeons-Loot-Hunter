@@ -22,7 +22,7 @@ import Runes from '../../components/runes/runes'
 import { generateSlug, mapEdgesToNodes } from '../../utils/helpers'
 
 export const query = graphql`
-    query ($id: String!) {
+    query ANCIENT_MOB_COLLECTION ($id: String!) {
         sanityAncientMobs(id: { eq: $id }) {
             # type: _type
             title
@@ -151,7 +151,7 @@ export const query = graphql`
     }
 `
 
-const AncientMob = ({ data = {} }) => {
+const AncientMob = ( { data = {} } ) => {
     const {
         sanityAncientMobs: {
             // type = '',
@@ -170,21 +170,21 @@ const AncientMob = ({ data = {} }) => {
 
     // Merge loot drops into collection & map edges to nodes
     const lootDrops = [
-        ...mapEdgesToNodes(uniqueMeleeWeapons),
-        ...mapEdgesToNodes(uniqueRangedWeapons),
-        ...mapEdgesToNodes(uniqueArmor),
-        ...mapEdgesToNodes(meleeWeapons),
-        ...mapEdgesToNodes(rangedWeapons),
-        ...mapEdgesToNodes(armor)
+        ...mapEdgesToNodes( uniqueMeleeWeapons ),
+        ...mapEdgesToNodes( uniqueRangedWeapons ),
+        ...mapEdgesToNodes( uniqueArmor ),
+        ...mapEdgesToNodes( meleeWeapons ),
+        ...mapEdgesToNodes( rangedWeapons ),
+        ...mapEdgesToNodes( armor )
     ]
 
     // Generate dynamic image thumbnail sizing relative to viewport
-    const imageWidthSizes = useBreakpointValue({
+    const imageWidthSizes = useBreakpointValue( {
         base: 478,
         sm: 360,
         md: 310,
         lg: 175
-    })
+    } )
 
     return (
         <Layout>
@@ -203,8 +203,7 @@ const AncientMob = ({ data = {} }) => {
                                 alt={title}
                                 width={350}
                                 height={350}
-                                borderRadius={2}
-                            />
+                                borderRadius={2} />
                         </Box>
 
                         <Box>
@@ -215,8 +214,7 @@ const AncientMob = ({ data = {} }) => {
                                             Enchantments
                                         </Heading>
                                         <BuiltInEnchantments
-                                            data={enchantments}
-                                        />
+                                            data={enchantments} />
                                     </Stack>
                                 )}
                                 <Stack direction='column' spacing={4}>
@@ -234,7 +232,7 @@ const AncientMob = ({ data = {} }) => {
                                 Loot drops
                             </Heading>
                             <SimpleGrid columns={[1, 2, 3, 6]} spacing={4}>
-                                {lootDrops.map(({ node }) => {
+                                {lootDrops.map( ( { node } ) => {
                                     return (
                                         <Tooltip
                                             key={node.id}
@@ -257,12 +255,11 @@ const AncientMob = ({ data = {} }) => {
                                                             ? 'linear(to-tr, orange.500, orange.300)'
                                                             : 'linear(to-tr, gray.600, green.700)'
                                                     }
-                                                    borderRadius={2}
-                                                />
+                                                    borderRadius={2} />
                                             </Link>
                                         </Tooltip>
                                     )
-                                })}
+                                } )}
                             </SimpleGrid>
                         </Stack>
                     )}

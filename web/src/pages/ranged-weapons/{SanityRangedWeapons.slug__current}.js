@@ -26,7 +26,7 @@ import Stats from '../../components/stats/stats'
 import { humanReadableTypeName } from '../../utils/helpers'
 
 export const query = graphql`
-    query ($id: String!) {
+    query RANGED_WEAPON_COLLECTION ($id: String!) {
         sanityRangedWeapons(id: { eq: $id }) {
             type: _type
             title
@@ -69,7 +69,7 @@ export const query = graphql`
     }
 `
 
-const RangedWeapon = ({ data = {} }) => {
+const RangedWeapon = ( { data = {} } ) => {
     const {
         sanityRangedWeapons: {
             type = '',
@@ -100,7 +100,7 @@ const RangedWeapon = ({ data = {} }) => {
                         </Heading>
                         <Stack direction='row' spacing={2}>
                             <Tag width='max' variant='solid'>
-                                {humanReadableTypeName(type)}
+                                {humanReadableTypeName( type )}
                             </Tag>
                             {isUnique ? (
                                 <Tag width='max' colorScheme='orange'>
@@ -140,8 +140,7 @@ const RangedWeapon = ({ data = {} }) => {
                                         ? 'linear(to-tr, orange.500, orange.300)'
                                         : 'linear(to-tr, gray.600, green.700)'
                                 }
-                                borderRadius={2}
-                            />
+                                borderRadius={2} />
                         </Box>
                         <Box>
                             <Stack direction='column' spacing={8}>
@@ -150,8 +149,7 @@ const RangedWeapon = ({ data = {} }) => {
                                     type={type}
                                     isUnique={isUnique}
                                     variationOf={variationOf}
-                                    uniqueVariants={uniqueVariants}
-                                />
+                                    uniqueVariants={uniqueVariants} />
                                 <Stack direction='column' spacing={4}>
                                     <Heading as='h3' fontSize='xl'>
                                         Stats
@@ -164,8 +162,7 @@ const RangedWeapon = ({ data = {} }) => {
                                             Enchantments
                                         </Heading>
                                         <BuiltInEnchantments
-                                            data={builtInEnchantments}
-                                        />
+                                            data={builtInEnchantments} />
                                     </Stack>
                                 )}
                                 <Stack direction='column' spacing={4}>
@@ -180,8 +177,7 @@ const RangedWeapon = ({ data = {} }) => {
                                             Built-in Abilities
                                         </Heading>
                                         <BuiltInAbilities
-                                            data={builtInAbilities}
-                                        />
+                                            data={builtInAbilities} />
                                     </Stack>
                                 )}
                                 {dlcItem.isDlcItem && (
@@ -215,8 +211,7 @@ const RangedWeapon = ({ data = {} }) => {
                                             isUnique
                                                 ? variationOf
                                                 : obtainableOn
-                                        }
-                                    />
+                                        } />
                                 </Stack>
                             </Box>
                             <Box>
@@ -227,8 +222,7 @@ const RangedWeapon = ({ data = {} }) => {
                                     <AncientMobs
                                         data={
                                             isUnique ? variationOf : droppedBy
-                                        }
-                                    />
+                                        } />
                                 </Stack>
                             </Box>
                         </SimpleGrid>

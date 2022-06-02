@@ -24,7 +24,7 @@ import Runes from '../../components/runes/runes'
 import { humanReadableTypeName } from '../../utils/helpers'
 
 export const query = graphql`
-    query ($id: String!) {
+    query ARTIFACT_COLLECTION ($id: String!) {
         sanityArtifacts(id: { eq: $id }) {
             type: _type
             title
@@ -61,7 +61,7 @@ export const query = graphql`
     }
 `
 
-const Artifact = ({ data = {} }) => {
+const Artifact = ( { data = {} } ) => {
     const {
         sanityArtifacts: {
             type = '',
@@ -90,7 +90,7 @@ const Artifact = ({ data = {} }) => {
                         </Heading>
                         <Stack direction='row' spacing={2}>
                             <Tag width='max' variant='solid'>
-                                {humanReadableTypeName(type)}
+                                {humanReadableTypeName( type )}
                             </Tag>
                             {isUnique ? (
                                 <Tag width='max' colorScheme='orange'>
@@ -130,8 +130,7 @@ const Artifact = ({ data = {} }) => {
                                         ? 'linear(to-tr, orange.500, orange.300)'
                                         : 'linear(to-tr, gray.600, green.700)'
                                 }
-                                borderRadius={2}
-                            />
+                                borderRadius={2} />
                         </Box>
                         <Box>
                             <Stack direction='column' spacing={8}>
@@ -140,8 +139,7 @@ const Artifact = ({ data = {} }) => {
                                     type={type}
                                     isUnique={isUnique}
                                     variationOf={variationOf}
-                                    uniqueVariants={uniqueVariants}
-                                />
+                                    uniqueVariants={uniqueVariants} />
                                 {requiresSouls && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>

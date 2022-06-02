@@ -21,7 +21,7 @@ import Link from '../../components/link/link'
 import { generateSlug, mapEdgesToNodes } from '../../utils/helpers'
 
 export const query = graphql`
-    query ($id: String!) {
+    query LEVEL_COLLECTION ($id: String!) {
         sanityLevels(id: { eq: $id }) {
             # type: _type
             title
@@ -173,7 +173,7 @@ export const query = graphql`
     }
 `
 
-const Level = ({ data = {} }) => {
+const Level = ( { data = {} } ) => {
     const {
         sanityLevels: {
             // type = '',
@@ -192,22 +192,22 @@ const Level = ({ data = {} }) => {
 
     // Merge loot drops into collection & map edges to nodes
     const lootDrops = [
-        ...mapEdgesToNodes(uniqueMeleeWeapons),
-        ...mapEdgesToNodes(uniqueRangedWeapons),
-        ...mapEdgesToNodes(uniqueArmor),
-        ...mapEdgesToNodes(meleeWeapons),
-        ...mapEdgesToNodes(rangedWeapons),
-        ...mapEdgesToNodes(armor),
-        ...mapEdgesToNodes(artifacts)
+        ...mapEdgesToNodes( uniqueMeleeWeapons ),
+        ...mapEdgesToNodes( uniqueRangedWeapons ),
+        ...mapEdgesToNodes( uniqueArmor ),
+        ...mapEdgesToNodes( meleeWeapons ),
+        ...mapEdgesToNodes( rangedWeapons ),
+        ...mapEdgesToNodes( armor ),
+        ...mapEdgesToNodes( artifacts )
     ]
 
     // Generate dynamic image thumbnail sizing relative to viewport
-    const imageWidthSizes = useBreakpointValue({
+    const imageWidthSizes = useBreakpointValue( {
         base: 478,
         sm: 360,
         md: 310,
         lg: 175
-    })
+    } )
 
     return (
         <Layout>
@@ -226,23 +226,22 @@ const Level = ({ data = {} }) => {
                                 alt={title}
                                 width={350}
                                 height={350}
-                                borderRadius={2}
-                            />
+                                borderRadius={2} />
                         </Box>
                         <Box>
                             <Stack direction='column' spacing={8}>
-                            {location && (
-                                <Stack direction='column' spacing={4}>
-                                    <Heading as='h3' fontSize='xl'>
+                                {location && (
+                                    <Stack direction='column' spacing={4}>
+                                        <Heading as='h3' fontSize='xl'>
                                         Location
-                                    </Heading>
-                                    {location.map(location => {
-                                        return (
-                                            <Text textTransform='capitalize'>{location}</Text>
-                                        )
-                                    })}
-                                </Stack>
-                            )}
+                                        </Heading>
+                                        {location.map( location => {
+                                            return (
+                                                <Text textTransform='capitalize'>{location}</Text>
+                                            )
+                                        } )}
+                                    </Stack>
+                                )}
                             </Stack>
                         </Box>
                     </SimpleGrid>
@@ -252,7 +251,7 @@ const Level = ({ data = {} }) => {
                                 Loot drops
                             </Heading>
                             <SimpleGrid columns={[1, 2, 3, 6]} spacing={4}>
-                                {lootDrops.map(({ node }) => {
+                                {lootDrops.map( ( { node } ) => {
                                     return (
                                         <Tooltip
                                             key={node.id}
@@ -274,12 +273,11 @@ const Level = ({ data = {} }) => {
                                                             ? 'linear(to-tr, orange.500, orange.300)'
                                                             : 'linear(to-tr, gray.600, green.700)'
                                                     }
-                                                    borderRadius={2}
-                                                />
+                                                    borderRadius={2} />
                                             </Link>
                                         </Tooltip>
                                     )
-                                })}
+                                } )}
                             </SimpleGrid>
                         </Stack>
                     )}

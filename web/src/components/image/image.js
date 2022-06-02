@@ -5,15 +5,15 @@ import { chakra } from '@chakra-ui/react'
 import SanityImage from 'gatsby-plugin-sanity-image'
 import React from 'react'
 
-const Image = ({
+const Image = ( {
     imageData,
     width,
     height,
     objectFit = 'cover',
     loading = 'lazy',
     ...rest
-}) => {
-    const ChakraSanityImage = chakra(SanityImage, {
+} ) => {
+    const ChakraSanityImage = chakra( SanityImage, {
         // shouldForwardProp: (prop) => {
         //     /**
         //      * Don't forward Chakra's props
@@ -44,10 +44,10 @@ const Image = ({
                 // 'sx'
             ].includes( prop )
         }
-    })
+    } )
 
     // Bail early if no image asset supplied
-    if (!imageData || !imageData.asset) {
+    if ( !imageData || !imageData.asset ) {
         return null
     }
 
@@ -63,8 +63,7 @@ const Image = ({
             options={{
                 __experimentalAspectRatio: true
             }}
-            {...rest}
-        />
+            {...rest} />
     )
 }
 

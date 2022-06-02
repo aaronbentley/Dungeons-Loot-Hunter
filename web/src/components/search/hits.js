@@ -19,8 +19,8 @@ import { useHits } from 'react-instantsearch-hooks-web'
 import Image from '../image/image'
 import Link from '../link/link'
 
-const Hits = (props) => {
-    const { hits } = useHits(props)
+const Hits = ( props ) => {
+    const { hits } = useHits( props )
 
     return (
         <Container maxWidth='6xl' centerContent>
@@ -42,12 +42,13 @@ const Hits = (props) => {
                 ]} 
                 gap={6}>
                 {hits &&
-                    hits.map((hit) => {
+                    hits.map( ( hit ) => {
                         return (
                             <GridItem key={hit.objectID}>
                                 <LinkBox>
                                     <Stack direction='column' spacing={2}>
                                         <Image
+                                            padding={2}
                                             imageData={hit.imageData}
                                             alt={hit.title}
                                             width={280}
@@ -56,8 +57,7 @@ const Hits = (props) => {
                                                     ? 'linear(to-tr, orange.500, orange.300)'
                                                     : 'linear(to-tr, gray.600, green.700)'
                                             }
-                                            borderRadius={2}
-                                        />
+                                            borderRadius={2} />
                                         <LinkOverlay
                                             as={Link}
                                             to={hit.url}
@@ -77,7 +77,7 @@ const Hits = (props) => {
                                 </LinkBox>
                             </GridItem>
                         )
-                    })}
+                    } )}
             </Grid>
         </Container>
     )

@@ -4,14 +4,14 @@
 import { Tag } from '@chakra-ui/react'
 import React from 'react'
 
-const EventItem = ({ data = {} }) => {
-    if (!data) {
+const EventItem = ( { data = {} } ) => {
+    if ( !data ) {
         return null
     }
 
     const { isEventItem = false, title = '' } = data
 
-    if (!isEventItem) {
+    if ( !isEventItem ) {
         return null
     }
 

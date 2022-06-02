@@ -5,11 +5,11 @@
 import { extendTheme } from '@chakra-ui/react'
 import colors from './colors'
 
-const theme = extendTheme({
+const theme = extendTheme( {
     ...colors,
     config: {
         initialColorMode: 'system'
     }
-})
+} )
 
 export default theme

@@ -7,18 +7,18 @@ import { generateSlug } from '../../utils/helpers'
 import Image from '../image/image'
 import Link from '../link/link'
 
-const AncientMobs = ({ data = {} }) => {
-    if (!data) {
+const AncientMobs = ( { data = {} } ) => {
+    if ( !data ) {
         return null
     }
 
     // Check if standard (array) or unqiue (nested array)
-    const ancientMobs = Array.isArray(data) ? data : data.droppedBy
+    const ancientMobs = Array.isArray( data ) ? data : data.droppedBy
 
     return (
         <Stack direction='row' spacing={2}>
             {ancientMobs &&
-                ancientMobs.map((mob) => (
+                ancientMobs.map( ( mob ) => (
                     <Tooltip
                         key={mob.id}
                         label={mob.title}
@@ -26,18 +26,17 @@ const AncientMobs = ({ data = {} }) => {
                         
                         shouldWrapChildren>
                         <Link
-                            to={`/${generateSlug(mob._type)}/${
+                            to={`/${generateSlug( mob._type )}/${
                                 mob.slug.current
                             }/`}>
                             <Image
                                 imageData={mob.image}
                                 alt={mob.title}
                                 width={84}
-                                height={84}
-                            />
+                                height={84} />
                         </Link>
                     </Tooltip>
-                ))}
+                ) )}
         </Stack>
     )
 }

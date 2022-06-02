@@ -14,8 +14,7 @@ const ThemeToggleButton = () => {
             aria-label='Navigtaion menu'
             icon={colorMode === 'dark' ? <SunIcon fontSize='2xl' /> : <MoonIcon fontSize='2xl' />}
             onClick={toggleColorMode}
-            zIndex={1}
-        />
+            zIndex={1} />
     )
 }
 

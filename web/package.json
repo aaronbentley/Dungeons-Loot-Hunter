@@ -37,5 +37,13 @@
         "react-helmet": "^6.1.0",
         "react-instantsearch-hooks-web": "^6.26.0",
         "slugify": "^1.6.5"
+    },
+    "devDependencies": {
+        "dotenv": "^16.0.1",
+        "eslint-config-prettier": "^8.4.0",
+        "eslint-config-react-app": "^7.0.1",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-promise": "^6.0.0",
+        "prettier": "2.6.2"
     }
 }

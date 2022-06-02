@@ -27,7 +27,7 @@ import Runes from '../../components/runes/runes'
 import { humanReadableTypeName } from '../../utils/helpers'
 
 export const query = graphql`
-    query ($id: String!) {
+    query ARMOR_COLLECTION ($id: String!) {
         sanityArmor(id: { eq: $id }) {
             type: _type
             title
@@ -70,7 +70,7 @@ export const query = graphql`
     }
 `
 
-const Armor = ({ data = {} }) => {
+const Armor = ( { data = {} } ) => {
     const {
         sanityArmor: {
             type = '',
@@ -101,7 +101,7 @@ const Armor = ({ data = {} }) => {
                         </Heading>
                         <Stack direction='row' spacing={2}>
                             <Tag width='max' variant='solid'>
-                                {humanReadableTypeName(type)}
+                                {humanReadableTypeName( type )}
                             </Tag>
                             {isUnique ? (
                                 <Tag width='max' colorScheme='orange'>
@@ -141,8 +141,7 @@ const Armor = ({ data = {} }) => {
                                         ? 'linear(to-tr, orange.500, orange.300)'
                                         : 'linear(to-tr, gray.600, green.700)'
                                 }
-                                borderRadius={2}
-                            />
+                                borderRadius={2} />
                         </Box>
                         <Box>
                             <Stack direction='column' spacing={8}>
@@ -151,8 +150,7 @@ const Armor = ({ data = {} }) => {
                                     type={type}
                                     isUnique={isUnique}
                                     variationOf={variationOf}
-                                    uniqueVariants={uniqueVariants}
-                                />
+                                    uniqueVariants={uniqueVariants} />
 
                                 <BuiltInAbilities data={builtInAbilities} />
 
@@ -169,8 +167,7 @@ const Armor = ({ data = {} }) => {
                                             Enchantments
                                         </Heading>
                                         <BuiltInEnchantments
-                                            data={builtInEnchantments}
-                                        />
+                                            data={builtInEnchantments} />
                                     </Stack>
                                 )}
                                 <Stack direction='column' spacing={4}>
@@ -185,8 +182,7 @@ const Armor = ({ data = {} }) => {
                                             Built-in Abilities
                                         </Heading>
                                         <BuiltInAbilities
-                                            data={builtInAbilities}
-                                        />
+                                            data={builtInAbilities} />
                                     </Stack>
                                 )}
                                 {dlcItem.isDlcItem && (
@@ -220,8 +216,7 @@ const Armor = ({ data = {} }) => {
                                             isUnique
                                                 ? variationOf
                                                 : obtainableOn
-                                        }
-                                    />
+                                        } />
                                 </Stack>
                             </Box>
                             <Box>
@@ -232,8 +227,7 @@ const Armor = ({ data = {} }) => {
                                     <AncientMobs
                                         data={
                                             isUnique ? variationOf : droppedBy
-                                        }
-                                    />
+                                        } />
                                 </Stack>
                             </Box>
                         </SimpleGrid>

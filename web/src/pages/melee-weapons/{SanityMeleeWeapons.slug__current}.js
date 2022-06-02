@@ -27,7 +27,7 @@ import Stats from '../../components/stats/stats'
 import { humanReadableTypeName } from '../../utils/helpers'
 
 export const query = graphql`
-    query ($id: String!) {
+    query MELEE_WEAPON_COLLECTION ($id: String!) {
         sanityMeleeWeapons(id: { eq: $id }) {
             id
             type: _type
@@ -71,7 +71,7 @@ export const query = graphql`
     }
 `
 
-const MeleeWeapon = ({ data = {} }) => {
+const MeleeWeapon = ( { data = {} } ) => {
     const {
         sanityMeleeWeapons: {
             type = '',
@@ -90,8 +90,8 @@ const MeleeWeapon = ({ data = {} }) => {
         },
         uniqueVariants = {}
     } = data
-    console.log('🦄 ~ file: {SanityMeleeWeapons.slug__current}.js ~ line 87 ~ MeleeWeapon ~ dlcItem', dlcItem)
-    console.log('🦄 ~ file: {SanityMeleeWeapons.slug__current}.js ~ line 88 ~ MeleeWeapon ~ eventItem', eventItem)
+    console.log( '🦄 ~ file: {SanityMeleeWeapons.slug__current}.js ~ line 87 ~ MeleeWeapon ~ dlcItem', dlcItem )
+    console.log( '🦄 ~ file: {SanityMeleeWeapons.slug__current}.js ~ line 88 ~ MeleeWeapon ~ eventItem', eventItem )
 
     return (
         <Layout>
@@ -104,7 +104,7 @@ const MeleeWeapon = ({ data = {} }) => {
                         </Heading>
                         <Stack direction='row' spacing={2}>
                             <Tag width='max' variant='solid'>
-                                {humanReadableTypeName(type)}
+                                {humanReadableTypeName( type )}
                             </Tag>
                             {isUnique ? (
                                 <Tag width='max' colorScheme='orange'>
@@ -143,8 +143,7 @@ const MeleeWeapon = ({ data = {} }) => {
                                         ? 'linear(to-tr, orange.500, orange.300)'
                                         : 'linear(to-tr, gray.600, green.700)'
                                 }
-                                borderRadius={2}
-                            />
+                                borderRadius={2} />
                         </Box>
                         <Box>
                             <Stack direction='column' spacing={8}>
@@ -153,8 +152,7 @@ const MeleeWeapon = ({ data = {} }) => {
                                     type={type}
                                     isUnique={isUnique}
                                     variationOf={variationOf}
-                                    uniqueVariants={uniqueVariants}
-                                />
+                                    uniqueVariants={uniqueVariants} />
                                 <Stack direction='column' spacing={4}>
                                     <Heading as='h3' fontSize='xl'>
                                         Stats
@@ -167,8 +165,7 @@ const MeleeWeapon = ({ data = {} }) => {
                                             Enchantments
                                         </Heading>
                                         <BuiltInEnchantments
-                                            data={builtInEnchantments}
-                                        />
+                                            data={builtInEnchantments} />
                                     </Stack>
                                 )}
                                 <Stack direction='column' spacing={4}>
@@ -183,8 +180,7 @@ const MeleeWeapon = ({ data = {} }) => {
                                             Built-in Abilities
                                         </Heading>
                                         <BuiltInAbilities
-                                            data={builtInAbilities}
-                                        />
+                                            data={builtInAbilities} />
                                     </Stack>
                                 )}
                                 {dlcItem.isDlcItem && (
@@ -215,8 +211,7 @@ const MeleeWeapon = ({ data = {} }) => {
                                         Locations
                                     </Heading>
                                     <Locations
-                                        data={isUnique ? variationOf : obtainableOn}
-                                    />
+                                        data={isUnique ? variationOf : obtainableOn} />
                                 </Stack>
                             </Box>
                             <Box>
@@ -225,8 +220,7 @@ const MeleeWeapon = ({ data = {} }) => {
                                         Ancient Mobs
                                     </Heading>
                                     <AncientMobs
-                                        data={isUnique ? variationOf : droppedBy}
-                                    />
+                                        data={isUnique ? variationOf : droppedBy} />
                                 </Stack>
                             </Box>
                         </SimpleGrid>

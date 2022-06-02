@@ -5,15 +5,15 @@ import { Stack, Tooltip } from '@chakra-ui/react'
 import React from 'react'
 import Image from '../image/image'
 
-const Runes = ({ data = {} }) => {
-    if (!data) {
+const Runes = ( { data = {} } ) => {
+    if ( !data ) {
         return null
     }
 
     return (
         <Stack direction='row' spacing={2}>
             {data &&
-                data.map((rune) => (
+                data.map( ( rune ) => (
                     <Tooltip
                         key={rune.id}
                         label={rune.title}
@@ -23,10 +23,9 @@ const Runes = ({ data = {} }) => {
                         <Image
                             imageData={rune.image}
                             alt={rune.title}
-                            width={42}
-                        />
+                            width={42} />
                     </Tooltip>
-                ))}
+                ) )}
         </Stack>
     )
 }

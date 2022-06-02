@@ -12,17 +12,17 @@ const SanityImageUrlBuilder = (
     format = 'webp'
 ) => {
     // Guard to bail early if no image assets supplied
-    if (!image) {
+    if ( !image ) {
         return null
     }
 
     // Create builder using Sanity Client
-    const builder = imageUrlBuilder(client)
+    const builder = imageUrlBuilder( client )
     return builder
-        .image(image)
-        .size(width, height)
-        .dpr(dpr)
-        .format(format)
+        .image( image )
+        .size( width, height )
+        .dpr( dpr )
+        .format( format )
         .url()
 }
 

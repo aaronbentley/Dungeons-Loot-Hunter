@@ -6,15 +6,15 @@ import { Stack, Tooltip } from '@chakra-ui/react'
 import React from 'react'
 import Image from '../image/image'
 
-const BuiltInAbilities = ({ data = {} }) => {
-    if (!data) {
+const BuiltInAbilities = ( { data = {} } ) => {
+    if ( !data ) {
         return null
     }
 
     return (
         <Stack direction='row' spacing={2}>
             {data &&
-                data.map((enchantment) => (
+                data.map( ( enchantment ) => (
                     <Tooltip
                         key={enchantment.id}
                         label={enchantment.title}
@@ -24,10 +24,9 @@ const BuiltInAbilities = ({ data = {} }) => {
                         <Image
                             imageData={enchantment.image}
                             alt={enchantment.title}
-                            width={50}
-                        />
+                            width={50} />
                     </Tooltip>
-                ))}
+                ) )}
         </Stack>
     )
 }

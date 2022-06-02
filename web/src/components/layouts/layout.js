@@ -5,7 +5,7 @@ import { Flex, Stack } from '@chakra-ui/react'
 import React from 'react'
 import Header from '../header/header'
 
-const Layout = ({ children }) => {
+const Layout = ( { children } ) => {
     return (
         <Stack spacing={0} minHeight='100vh' direction='column'>
             <Header />
