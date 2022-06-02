@@ -31,7 +31,7 @@ const NavMenu = ({ isOpen, onClose }) => {
             zIndex='auto'>
             <DrawerOverlay />
             <DrawerContent
-                backgroundColor='purple.700'
+                // backgroundColor='purple.700'
                 py={6}
                 height='full'>
                 <DrawerHeader

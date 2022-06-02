@@ -18,7 +18,7 @@ const Header = () => {
                     justifyContent='space-between'
                     paddingY={[3, 6]}>
                     <NavToggleButton />
-                    <Link to='/' aria-label='Home'>
+                    <Link to='/' aria-label='Home' _hover={{ textDecoration: 'none'}}>
                         <Heading as='h1' size={['md', 'lg', 'xl']}>
                             {title}
                         </Heading>

@@ -8,7 +8,7 @@ import colors from './colors'
 const theme = extendTheme({
     ...colors,
     config: {
-        initialColorMode: 'dark'
+        initialColorMode: 'system'
     }
 })
 
