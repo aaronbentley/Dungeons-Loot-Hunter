@@ -48,6 +48,11 @@ const LootVariants = ({
 
     const uniques = mapEdgesToNodes(uniqueVariants)
 
+    // If no unique variants, bail early
+    if (!uniques.length) {
+        return null
+    }
+
     return (
         <Stack direction='column' spacing={4}>
             <Text>

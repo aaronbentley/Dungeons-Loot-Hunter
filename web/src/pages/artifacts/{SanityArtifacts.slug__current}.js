@@ -104,12 +104,12 @@ const Artifact = ({ data = {} }) => {
                                     </Tag>
                                 </React.Fragment>
                             )}
-                            {dlcItem?.isDlcItem && (
+                            {dlcItem.isDlcItem && (
                                 <Tag width='max' colorScheme='green'>
                                     DLC
                                 </Tag>
                             )}
-                            {eventItem?.isEventItem && (
+                            {eventItem.isEventItem && (
                                 <Tag width='max' colorScheme='purple'>
                                     Event
                                 </Tag>
@@ -165,7 +165,7 @@ const Artifact = ({ data = {} }) => {
                                     <Runes data={runes} />
                                 </Stack>
 
-                                {dlcItem?.isDlcItem && (
+                                {dlcItem.isDlcItem && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>
                                             DLC
@@ -173,7 +173,7 @@ const Artifact = ({ data = {} }) => {
                                         <DlcItem data={dlcItem} />
                                     </Stack>
                                 )}
-                                {eventItem?.isEventItem && (
+                                {eventItem.isEventItem && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>
                                             Event
@@ -185,18 +185,20 @@ const Artifact = ({ data = {} }) => {
                         </Box>
                     </SimpleGrid>
 
-                    <SimpleGrid columns={[1, 2]} spacing={10}>
-                        {obtainableOn && (
-                            <Box>
-                                <Stack direction='column' spacing={4}>
-                                    <Heading as='h3' fontSize='xl'>
-                                        Locations
-                                    </Heading>
-                                    <Locations data={obtainableOn} />
-                                </Stack>
-                            </Box>
-                        )}
-                    </SimpleGrid>
+                    {!eventItem.isEventItem && (
+                        <SimpleGrid columns={[1, 2]} spacing={10}>
+                            {obtainableOn && (
+                                <Box>
+                                    <Stack direction='column' spacing={4}>
+                                        <Heading as='h3' fontSize='xl'>
+                                            Locations
+                                        </Heading>
+                                        <Locations data={obtainableOn} />
+                                    </Stack>
+                                </Box>
+                            )}
+                        </SimpleGrid>
+                    )}
                 </Stack>
             </Container>
         </Layout>

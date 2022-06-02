@@ -114,12 +114,12 @@ const RangedWeapon = ({ data = {} }) => {
                                     </Tag>
                                 </React.Fragment>
                             )}
-                            {dlcItem?.isDlcItem && (
+                            {dlcItem.isDlcItem && (
                                 <Tag width='max' colorScheme='green'>
                                     DLC
                                 </Tag>
                             )}
-                            {eventItem?.isEventItem && (
+                            {eventItem.isEventItem && (
                                 <Tag width='max' colorScheme='purple'>
                                     Event
                                 </Tag>
@@ -184,7 +184,7 @@ const RangedWeapon = ({ data = {} }) => {
                                         />
                                     </Stack>
                                 )}
-                                {dlcItem?.isDlcItem && (
+                                {dlcItem.isDlcItem && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>
                                             DLC
@@ -192,7 +192,7 @@ const RangedWeapon = ({ data = {} }) => {
                                         <DlcItem data={dlcItem} />
                                     </Stack>
                                 )}
-                                {eventItem?.isEventItem && (
+                                {eventItem.isEventItem && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>
                                             Event
@@ -203,29 +203,36 @@ const RangedWeapon = ({ data = {} }) => {
                             </Stack>
                         </Box>
                     </SimpleGrid>
-
-                    <SimpleGrid columns={[1, 2]} spacing={10}>
-                        <Box>
-                            <Stack direction='column' spacing={4}>
-                                <Heading as='h3' fontSize='xl'>
-                                    Locations
-                                </Heading>
-                                <Locations
-                                    data={isUnique ? variationOf : obtainableOn}
-                                />
-                            </Stack>
-                        </Box>
-                        <Box>
-                            <Stack direction='column' spacing={4}>
-                                <Heading as='h3' fontSize='xl'>
-                                    Ancient Mobs
-                                </Heading>
-                                <AncientMobs
-                                    data={isUnique ? variationOf : droppedBy}
-                                />
-                            </Stack>
-                        </Box>
-                    </SimpleGrid>
+                    {!eventItem.isEventItem && (
+                        <SimpleGrid columns={[1, 2]} spacing={10}>
+                            <Box>
+                                <Stack direction='column' spacing={4}>
+                                    <Heading as='h3' fontSize='xl'>
+                                        Locations
+                                    </Heading>
+                                    <Locations
+                                        data={
+                                            isUnique
+                                                ? variationOf
+                                                : obtainableOn
+                                        }
+                                    />
+                                </Stack>
+                            </Box>
+                            <Box>
+                                <Stack direction='column' spacing={4}>
+                                    <Heading as='h3' fontSize='xl'>
+                                        Ancient Mobs
+                                    </Heading>
+                                    <AncientMobs
+                                        data={
+                                            isUnique ? variationOf : droppedBy
+                                        }
+                                    />
+                                </Stack>
+                            </Box>
+                        </SimpleGrid>
+                    )}
                 </Stack>
             </Container>
         </Layout>
