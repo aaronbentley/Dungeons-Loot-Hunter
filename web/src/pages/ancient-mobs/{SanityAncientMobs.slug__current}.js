@@ -7,7 +7,8 @@ import {
     Container,
     Heading,
     SimpleGrid,
-    Stack, Tooltip,
+    Stack,
+    Tooltip,
     useBreakpointValue
 } from '@chakra-ui/react'
 import { graphql } from 'gatsby'
@@ -266,18 +267,18 @@ const AncientMob = ( { data = {} } ) => {
     ]
 
     // 1. Loops through all loot items
-    const itemsWithRunes = allLootItems.filter( ( { node: { title = '', runeValues = [] } } ) => {
-        // 2. Check each items rune value(s) by id
-        return runeValues.some( ( { id: runeValueID } ) => {
-            // 3. Check if items rune value appears in rune requirements
-            return runeRequirements.some( ( { id: runeRequirementID } ) => {
-                // 4. Return true if IDs match
-                return runeValueID === runeRequirementID
+    const itemsWithRunes = allLootItems.filter(
+        ( { node: { title = '', runeValues = [] } } ) => {
+            // 2. Check each items rune value(s) by id
+            return runeValues.some( ( { id: runeValueID } ) => {
+                // 3. Check if items rune value appears in rune requirements
+                return runeRequirements.some( ( { id: runeRequirementID } ) => {
+                    // 4. Return true if IDs match
+                    return runeValueID === runeRequirementID
+                } )
             } )
-        } )
-    } )
-
-    // console.log( '🦄 ~ itemsWithRunes', itemsWithRunes )
+        }
+    )
 
     // Generate dynamic image thumbnail sizing relative to viewport
     const imageWidthSizes = useBreakpointValue( {
@@ -286,6 +287,9 @@ const AncientMob = ( { data = {} } ) => {
         md: 310,
         lg: 175
     } )
+
+    // Map runes Requirements to flat array
+    const runeRequirementIds = runeRequirements.map( ( { id } ) => id )
 
     return (
         <Layout>
@@ -335,20 +339,56 @@ const AncientMob = ( { data = {} } ) => {
                                                 label={node.title}
                                                 placement='top'
                                                 shouldWrapChildren>
-                                                <Link
-                                                    to={`/${generateSlug( node._type )}/${node.slug.current}/`}>
-                                                    <Image
-                                                        imageData={node.image}
-                                                        alt={node.title}
-                                                        width={102}
-                                                        p={2}
-                                                        bgGradient={
-                                                            node.isUnique
-                                                                ? 'linear(to-tr, orange.500, orange.300)'
-                                                                : 'linear(to-tr, gray.600, green.700)'
-                                                        }
-                                                        borderRadius={2} />
-                                                </Link>
+                                                <Box position='relative'>
+                                                    <Link
+                                                        to={`/${generateSlug(
+                                                            node._type
+                                                        )}/${
+                                                            node.slug.current
+                                                        }/`}>
+                                                        <Image
+                                                            imageData={
+                                                                node.image
+                                                            }
+                                                            alt={node.title}
+                                                            width={102}
+                                                            p={2}
+                                                            bgGradient={
+                                                                node.isUnique
+                                                                    ? 'linear(to-tr, orange.500, orange.300)'
+                                                                    : 'linear(to-tr, gray.600, green.700)'
+                                                            }
+                                                            borderRadius={2} />
+                                                    </Link>
+                                                    <SimpleGrid
+                                                        p={1}
+                                                        columns={3}
+                                                        spacing={1}
+                                                        position='absolute'
+                                                        bottom={0}
+                                                        pointerEvents='none'>
+                                                        {node.runeValues.map(
+                                                            ( rune ) => {
+                                                                if (
+                                                                    runeRequirementIds.includes(
+                                                                        rune.id
+                                                                    )
+                                                                ) {
+                                                                    return (
+                                                                        <Image
+                                                                            imageData={rune.image}
+                                                                            alt={rune.title}
+                                                                            width={46}
+                                                                            p={0}
+                                                                            borderRadius={2} />
+                                                                    )
+                                                                }
+
+                                                                return null
+                                                            }
+                                                        )}
+                                                    </SimpleGrid>
+                                                </Box>
                                             </Tooltip>
                                         ) )}
                                     </SimpleGrid>
@@ -377,7 +417,6 @@ const AncientMob = ( { data = {} } ) => {
                                                 <Image
                                                     imageData={node.image}
                                                     alt={node.title}
-                                                    // width={175}
                                                     width={imageWidthSizes}
                                                     p={2}
                                                     bgGradient={
