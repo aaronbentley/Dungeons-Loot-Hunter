@@ -255,7 +255,7 @@ export default {
             }
 
             if (dlcItem !== undefined && dlcItem?.isDlcItem) {
-                subtitle += '🟢'
+                subtitle += '🔵'
             }
 
             if (eventItem !== undefined && eventItem?.isEventItem) {
