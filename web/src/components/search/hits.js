@@ -15,16 +15,22 @@ import {
     Stack
 } from '@chakra-ui/react'
 import React from 'react'
-import { useHits } from 'react-instantsearch-hooks-web'
+import { useHits, useSearchBox } from 'react-instantsearch-hooks-web'
 import Image from '../image/image'
 import Link from '../link/link'
 
 const Hits = ( props ) => {
     const { hits } = useHits( props )
+    const { query } = useSearchBox( )
+
+    // // If no query, bail early
+    if ( !query ) {
+        return null
+    }
 
     return (
-        <Container maxWidth='6xl' centerContent>
-            {hits.length === 0 && (
+        <Container maxWidth='6xl' centerContent px={0}>
+            {query && hits.length === 0 && (
                 <Alert status='warning' variant='left-accent'>
                     <AlertIcon />
                     <AlertTitle>This ain't it Chief</AlertTitle>

@@ -49,7 +49,10 @@ const SearchBox = ( props ) => {
                 variant='filled'
                 focusBorderColor='purple.400'
                 textAlign='center'
+                minWidth='lg'
                 maxWidth='xl'
+                autocomplete='off'
+                spellcheck='false'
                 {...props} />
         </FormControl>
     )
