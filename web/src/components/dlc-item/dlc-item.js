@@ -17,7 +17,7 @@ const DlcItem = ( { data = {} } ) => {
     }
 
     return (
-        <Tag colorScheme='green' width='max'>
+        <Tag colorScheme='blue' width='max'>
             {title}
         </Tag>
     )

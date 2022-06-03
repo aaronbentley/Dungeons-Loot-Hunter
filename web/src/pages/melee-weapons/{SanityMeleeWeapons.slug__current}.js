@@ -90,8 +90,6 @@ const MeleeWeapon = ( { data = {} } ) => {
         },
         uniqueVariants = {}
     } = data
-    console.log( '🦄 ~ file: {SanityMeleeWeapons.slug__current}.js ~ line 87 ~ MeleeWeapon ~ dlcItem', dlcItem )
-    console.log( '🦄 ~ file: {SanityMeleeWeapons.slug__current}.js ~ line 88 ~ MeleeWeapon ~ eventItem', eventItem )
 
     return (
         <Layout>
@@ -119,7 +117,7 @@ const MeleeWeapon = ( { data = {} } ) => {
                                 </React.Fragment>
                             )}
                             {dlcItem.isDlcItem && (
-                                <Tag width='max' colorScheme='green'>
+                                <Tag width='max' colorScheme='blue'>
                                     DLC
                                 </Tag>
                             )}

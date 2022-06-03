@@ -116,7 +116,7 @@ const Armor = ( { data = {} } ) => {
                                 </React.Fragment>
                             )}
                             {dlcItem.isDlcItem && (
-                                <Tag width='max' colorScheme='green'>
+                                <Tag width='max' colorScheme='blue'>
                                     DLC
                                 </Tag>
                             )}
