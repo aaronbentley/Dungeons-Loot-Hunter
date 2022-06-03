@@ -24,6 +24,7 @@ import { generateSlug, mapEdgesToNodes } from '../../utils/helpers'
 export const query = graphql`
     query ANCIENT_MOB_COLLECTION ($id: String!) {
         sanityAncientMobs(id: { eq: $id }) {
+            id
             # type: _type
             title
             image {
@@ -55,6 +56,7 @@ export const query = graphql`
         uniqueMeleeWeapons: allSanityMeleeWeapons(
             filter: {
                 variationOf: { droppedBy: { elemMatch: { id: { eq: $id } } } }
+                eventItem: { isEventItem: { ne: true } }
             }
         ) {
             edges {
@@ -93,6 +95,7 @@ export const query = graphql`
         uniqueRangedWeapons: allSanityRangedWeapons(
             filter: {
                 variationOf: { droppedBy: { elemMatch: { id: { eq: $id } } } }
+                eventItem: { isEventItem: { ne: true } }
             }
         ) {
             edges {
@@ -130,7 +133,8 @@ export const query = graphql`
         }
         uniqueArmor: allSanityArmor(
             filter: {
-                variationOf: { droppedBy: { elemMatch: { id: { eq: $id } } } }
+                variationOf: { droppedBy: { elemMatch: { id: { eq: $id } } } },
+                eventItem: { isEventItem: { ne: true } }
             }
         ) {
             edges {
@@ -154,6 +158,7 @@ export const query = graphql`
 const AncientMob = ( { data = {} } ) => {
     const {
         sanityAncientMobs: {
+            id ='',
             // type = '',
             title = '',
             image = {},
@@ -167,7 +172,9 @@ const AncientMob = ( { data = {} } ) => {
         armor = {},
         uniqueArmor = {}
     } = data
-
+    
+    console.log( '🦄 ~ file: {SanityAncientMobs.slug__current}.js ~ line 159 ~ AncientMob ~ id', id )
+    
     // Merge loot drops into collection & map edges to nodes
     const lootDrops = [
         ...mapEdgesToNodes( uniqueMeleeWeapons ),

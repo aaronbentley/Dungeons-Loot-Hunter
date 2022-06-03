@@ -55,6 +55,7 @@ export const query = graphql`
                 variationOf: {
                     obtainableOn: { elemMatch: { id: { eq: $id } } }
                 }
+                eventItem: { isEventItem: { ne: true } }
             }
         ) {
             edges {
@@ -95,6 +96,7 @@ export const query = graphql`
                 variationOf: {
                     obtainableOn: { elemMatch: { id: { eq: $id } } }
                 }
+                eventItem: { isEventItem: { ne: true } }
             }
         ) {
             edges {
@@ -135,6 +137,7 @@ export const query = graphql`
                 variationOf: {
                     obtainableOn: { elemMatch: { id: { eq: $id } } }
                 }
+                eventItem: { isEventItem: { ne: true } }
             }
         ) {
             edges {
