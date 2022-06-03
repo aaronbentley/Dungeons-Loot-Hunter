@@ -6,6 +6,8 @@ import {
     Box,
     Container,
     Heading,
+    LinkBox,
+    LinkOverlay,
     SimpleGrid,
     Stack,
     Tooltip,
@@ -266,9 +268,12 @@ const AncientMob = ( { data = {} } ) => {
         ...mapEdgesToNodes( allArtifacts )
     ]
 
+    // Map runes Requirements to flat array
+    const runeRequirementIds = runeRequirements.map( ( { id } ) => id )
+
     // 1. Loops through all loot items
     const itemsWithRunes = allLootItems.filter(
-        ( { node: { title = '', runeValues = [] } } ) => {
+        ( { node: { runeValues = [] } } ) => {
             // 2. Check each items rune value(s) by id
             return runeValues.some( ( { id: runeValueID } ) => {
                 // 3. Check if items rune value appears in rune requirements
@@ -287,9 +292,6 @@ const AncientMob = ( { data = {} } ) => {
         md: 310,
         lg: 175
     } )
-
-    // Map runes Requirements to flat array
-    const runeRequirementIds = runeRequirements.map( ( { id } ) => id )
 
     return (
         <Layout>
@@ -339,8 +341,9 @@ const AncientMob = ( { data = {} } ) => {
                                                 label={node.title}
                                                 placement='top'
                                                 shouldWrapChildren>
-                                                <Box position='relative'>
-                                                    <Link
+                                                <LinkBox position='relative'>
+                                                    <LinkOverlay
+                                                        as={Link}
                                                         to={`/${generateSlug(
                                                             node._type
                                                         )}/${
@@ -359,7 +362,7 @@ const AncientMob = ( { data = {} } ) => {
                                                                     : 'linear(to-tr, gray.600, green.700)'
                                                             }
                                                             borderRadius={2} />
-                                                    </Link>
+                                                    </LinkOverlay>
                                                     <SimpleGrid
                                                         p={1}
                                                         columns={3}
@@ -388,7 +391,7 @@ const AncientMob = ( { data = {} } ) => {
                                                             }
                                                         )}
                                                     </SimpleGrid>
-                                                </Box>
+                                                </LinkBox>
                                             </Tooltip>
                                         ) )}
                                     </SimpleGrid>
