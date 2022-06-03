@@ -11,10 +11,6 @@ const IFramePreview = ({ document }) => {
 
     // Resolve the url by checking the document type
     const previewUrl = resolvePreviewUrl(displayed)
-    console.log(
-        '🦄 ~ file: iframe.js ~ line 14 ~ IFramePreview ~ previewUrl',
-        previewUrl
-    )
 
     return (
         <React.Fragment>
@@ -53,7 +49,7 @@ const IFramePreview = ({ document }) => {
                         textDecoration: 'none'
                     }}
                     rel='noreferrer'>
-                    Preview: {previewUrl}
+                    Preview
                 </a>
             </div>
         </React.Fragment>
