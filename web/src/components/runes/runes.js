@@ -13,12 +13,11 @@ const Runes = ( { data = {} } ) => {
     return (
         <Stack direction='row' spacing={2}>
             {data &&
-                data.map( ( rune ) => (
+                data.map( ( rune, index ) => (
                     <Tooltip
-                        key={rune.id}
+                        key={`${rune.id}-${index}`}
                         label={rune.title}
                         placement='top'
-                        
                         shouldWrapChildren>
                         <Image
                             imageData={rune.image}
