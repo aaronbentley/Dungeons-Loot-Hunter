@@ -1,11 +1,10 @@
 /**
  * MC Dungeons Loot Hunter DLC Item
  */
-import { Tag } from '@chakra-ui/react'
+import { Heading, Stack, Tag } from '@chakra-ui/react'
 import React from 'react'
 
 const DlcItem = ( { data = {} } ) => {
-    console.log( '🦄 ~ file: dlc-item.js ~ line 8 ~ DlcItem ~ data', data )
     if ( !data ) {
         return null
     }
@@ -17,9 +16,14 @@ const DlcItem = ( { data = {} } ) => {
     }
 
     return (
-        <Tag colorScheme='blue' width='max'>
-            {title}
-        </Tag>
+        <Stack direction='column' spacing={4}>
+            <Heading as='h3' fontSize='xl'>
+                DLC
+            </Heading>
+            <Tag colorScheme='blue' width='max'>
+                {title}
+            </Tag>
+        </Stack>
     )
 }
 

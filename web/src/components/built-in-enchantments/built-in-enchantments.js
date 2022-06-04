@@ -2,7 +2,7 @@
  * MC Dungeons Loot Hunter Built-in enchantments
  */
 
-import { Stack, Tooltip } from '@chakra-ui/react'
+import { Heading, Stack, Tooltip } from '@chakra-ui/react'
 import React from 'react'
 import Image from '../image/image'
 
@@ -12,8 +12,12 @@ const BuiltInEnchantments = ( { data = {} } ) => {
     }
 
     return (
-        <Stack direction='row' spacing={0}>
-            {data &&
+        <Stack direction='column' spacing={4}>
+            <Heading as='h3' fontSize='xl'>
+                Enchantments
+            </Heading>
+            <Stack direction='row' spacing={0}>
+                {data &&
                 data.map( ( enchantment ) => (
                     <Tooltip
                         key={enchantment.id}
@@ -27,6 +31,7 @@ const BuiltInEnchantments = ( { data = {} } ) => {
                             width={75} />
                     </Tooltip>
                 ) )}
+            </Stack>
         </Stack>
     )
 }

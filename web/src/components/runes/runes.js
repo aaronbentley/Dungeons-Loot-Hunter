@@ -1,18 +1,20 @@
 /**
  * MC Dungeons Loot Hunter Runes
  */
-import { Stack, Tooltip } from '@chakra-ui/react'
+import { Heading, Stack, Tooltip } from '@chakra-ui/react'
 import React from 'react'
 import Image from '../image/image'
 
-const Runes = ( { data = {} } ) => {
+const Runes = ( { title= 'Runes', data = {} } ) => {
     if ( !data ) {
         return null
     }
 
     return (
-        <Stack direction='row' spacing={2}>
-            {data &&
+        <Stack direction='column' spacing={4}>
+            <Heading as='h3' fontSize='xl'>{title}</Heading>
+            <Stack direction='row' spacing={2}>
+                {data &&
                 data.map( ( rune, index ) => (
                     <Tooltip
                         key={`${rune.id}-${index}`}
@@ -25,6 +27,7 @@ const Runes = ( { data = {} } ) => {
                             width={42} />
                     </Tooltip>
                 ) )}
+            </Stack>
         </Stack>
     )
 }

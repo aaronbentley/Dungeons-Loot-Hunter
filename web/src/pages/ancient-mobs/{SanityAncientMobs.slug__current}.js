@@ -295,11 +295,11 @@ const AncientMob = ( { data = {} } ) => {
 
     return (
         <Layout>
-            <Container maxWidth='6xl' py={24}>
+            <Container maxWidth='6xl' py={12}>
                 <Stack direction='column' spacing={12}>
                     <Stack direction='column' spacing={2}>
                         <BackButton />
-                        <Heading as='h1' fontSize='6xl' noOfLines={1} mb={0}>
+                        <Heading as='h1' fontSize={['4xl', '6xl']} noOfLines={2} mb={0}>
                             {title}
                         </Heading>
                     </Stack>
@@ -330,111 +330,111 @@ const AncientMob = ( { data = {} } ) => {
                                     </Heading>
                                     <Runes data={runeRequirements} />
                                 </Stack>
-                                <Stack direction='column' spacing={4}>
-                                    <Heading as='h3' fontSize='xl'>
-                                        Items with required runes
-                                    </Heading>
-                                    <SimpleGrid columns={5} spacing={2}>
-                                        {itemsWithRunes.map( ( { node } ) => (
-                                            <Tooltip
-                                                key={node.id}
-                                                label={node.title}
-                                                placement='top'
-                                                shouldWrapChildren>
-                                                <LinkBox position='relative'>
-                                                    <LinkOverlay
-                                                        as={Link}
-                                                        to={`/${generateSlug(
-                                                            node._type
-                                                        )}/${
-                                                            node.slug.current
-                                                        }/`}>
-                                                        <Image
-                                                            imageData={
-                                                                node.image
-                                                            }
-                                                            alt={node.title}
-                                                            width={102}
-                                                            p={2}
-                                                            bgGradient={
-                                                                node.isUnique
-                                                                    ? 'linear(to-tr, orange.500, orange.300)'
-                                                                    : 'linear(to-tr, gray.600, green.700)'
-                                                            }
-                                                            borderRadius={2} />
-                                                    </LinkOverlay>
-                                                    <SimpleGrid
-                                                        p={1}
-                                                        columns={3}
-                                                        spacing={1}
-                                                        position='absolute'
-                                                        bottom={0}
-                                                        pointerEvents='none'>
-                                                        {node.runeValues.map(
-                                                            ( rune ) => {
-                                                                if (
-                                                                    runeRequirementIds.includes(
-                                                                        rune.id
-                                                                    )
-                                                                ) {
-                                                                    return (
-                                                                        <Image
-                                                                            imageData={rune.image}
-                                                                            alt={rune.title}
-                                                                            width={46}
-                                                                            p={0}
-                                                                            borderRadius={2} />
-                                                                    )
+                                {lootDrops && (
+                                    <Stack direction='column' spacing={4}>
+                                        <Heading as='h3' fontSize='xl'>
+                                            Guilded Loot drops
+                                        </Heading>
+                                        <SimpleGrid columns={[1, 2, 3, 6]} spacing={4}>
+                                            {lootDrops.map( ( { node } ) => {
+                                                return (
+                                                    <Tooltip
+                                                        key={node.id}
+                                                        label={node.title}
+                                                        placement='top'
+                                                        colorScheme='purple'
+                                                        shouldWrapChildren>
+                                                        <Link
+                                                            to={`/${generateSlug(
+                                                                node._type
+                                                            )}/${node.slug.current}/`}>
+                                                            <Image
+                                                                imageData={node.image}
+                                                                alt={node.title}
+                                                                width={imageWidthSizes}
+                                                                p={2}
+                                                                bgGradient={
+                                                                    node.isUnique
+                                                                        ? 'linear(to-tr, orange.500, orange.300)'
+                                                                        : 'linear(to-tr, gray.600, green.700)'
                                                                 }
-
-                                                                return null
-                                                            }
-                                                        )}
-                                                    </SimpleGrid>
-                                                </LinkBox>
-                                            </Tooltip>
-                                        ) )}
-                                    </SimpleGrid>
-                                </Stack>
+                                                                borderRadius={2} />
+                                                        </Link>
+                                                    </Tooltip>
+                                                )
+                                            } )}
+                                        </SimpleGrid>
+                                    </Stack>
+                                )}
                             </Stack>
                         </Box>
                     </SimpleGrid>
-                    {lootDrops && (
-                        <Stack direction='column' spacing={4}>
-                            <Heading as='h3' fontSize='4xl'>
-                                Guilded Loot drops
-                            </Heading>
-                            <SimpleGrid columns={[1, 2, 3, 6]} spacing={4}>
-                                {lootDrops.map( ( { node } ) => {
-                                    return (
-                                        <Tooltip
-                                            key={node.id}
-                                            label={node.title}
-                                            placement='top'
-                                            colorScheme='purple'
-                                            shouldWrapChildren>
-                                            <Link
-                                                to={`/${generateSlug(
-                                                    node._type
-                                                )}/${node.slug.current}/`}>
-                                                <Image
-                                                    imageData={node.image}
-                                                    alt={node.title}
-                                                    width={imageWidthSizes}
-                                                    p={2}
-                                                    bgGradient={
-                                                        node.isUnique
-                                                            ? 'linear(to-tr, orange.500, orange.300)'
-                                                            : 'linear(to-tr, gray.600, green.700)'
+                    <Stack direction='column' spacing={4}>
+                        <Heading as='h3' fontSize='xl'>
+                                        Items with required runes
+                        </Heading>
+                        <SimpleGrid columns={[1, 2, 3, 8]} spacing={4}>
+                            {itemsWithRunes.map( ( { node } ) => (
+                                <Tooltip
+                                    key={node.id}
+                                    label={node.title}
+                                    placement='top'
+                                    shouldWrapChildren>
+                                    <LinkBox position='relative'>
+                                        <LinkOverlay
+                                            as={Link}
+                                            to={`/${generateSlug(
+                                                node._type
+                                            )}/${
+                                                node.slug.current
+                                            }/`}>
+                                            <Image
+                                                imageData={
+                                                    node.image
+                                                }
+                                                alt={node.title}
+                                                width={imageWidthSizes}
+                                                p={2}
+                                                bgGradient={
+                                                    node.isUnique
+                                                        ? 'linear(to-tr, orange.500, orange.300)'
+                                                        : 'linear(to-tr, gray.600, green.700)'
+                                                }
+                                                borderRadius={2} />
+                                        </LinkOverlay>
+                                        <SimpleGrid
+                                            p={1}
+                                            columns={3}
+                                            spacing={1}
+                                            position='absolute'
+                                            bottom={0}
+                                            pointerEvents='none'>
+                                            {node.runeValues.map(
+                                                ( rune ) => {
+                                                    if (
+                                                        runeRequirementIds.includes(
+                                                            rune.id
+                                                        )
+                                                    ) {
+                                                        return (
+                                                            <Image
+                                                                imageData={rune.image}
+                                                                alt={rune.title}
+                                                                width={46}
+                                                                p={0}
+                                                                borderRadius={2} />
+                                                        )
                                                     }
-                                                    borderRadius={2} />
-                                            </Link>
-                                        </Tooltip>
-                                    )
-                                } )}
-                            </SimpleGrid>
-                        </Stack>
-                    )}
+
+                                                    return null
+                                                }
+                                            )}
+                                        </SimpleGrid>
+                                    </LinkBox>
+                                </Tooltip>
+                            ) )}
+                        </SimpleGrid>
+                    </Stack>
                 </Stack>
             </Container>
         </Layout>

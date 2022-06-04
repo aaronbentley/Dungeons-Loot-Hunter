@@ -12,7 +12,6 @@ import {
 } from '@chakra-ui/react'
 import { graphql } from 'gatsby'
 import React from 'react'
-import ArmorTraits from '../../components/armor-traits/armor-traits'
 import BackButton from '../../components/back-button/back-button'
 import DlcItem from '../../components/dlc-item/dlc-item'
 import EventItem from '../../components/event-item/event-item'
@@ -21,6 +20,7 @@ import { Layout } from '../../components/layouts'
 import Locations from '../../components/locations/locations'
 import LootVariants from '../../components/loot-variants/loot-variants'
 import Runes from '../../components/runes/runes'
+import Traits from '../../components/traits/traits'
 import { humanReadableTypeName } from '../../utils/helpers'
 
 export const query = graphql`
@@ -81,11 +81,11 @@ const Artifact = ( { data = {} } ) => {
 
     return (
         <Layout>
-            <Container maxWidth='6xl' py={24}>
+            <Container maxWidth='6xl' py={12}>
                 <Stack direction='column' spacing={12}>
                     <Stack direction='column' spacing={2}>
                         <BackButton />
-                        <Heading as='h1' fontSize='6xl' noOfLines={1} mb={0}>
+                        <Heading as='h1' fontSize={['4xl', '6xl']} noOfLines={2} mb={0}>
                             {title}
                         </Heading>
                         <Stack direction='row' spacing={2}>
@@ -148,37 +148,11 @@ const Artifact = ( { data = {} } ) => {
                                         <Text>💀 Requires souls</Text>
                                     </Stack>
                                 )}
-                                {traits.length !== 0 && (
-                                    <Stack direction='column' spacing={4}>
-                                        <Heading as='h3' fontSize='xl'>
-                                            Traits
-                                        </Heading>
-                                        <ArmorTraits data={traits} />
-                                    </Stack>
-                                )}
-                                <Stack direction='column' spacing={4}>
-                                    <Heading as='h3' fontSize='xl'>
-                                        Rune Value
-                                    </Heading>
-                                    <Runes data={runes} />
-                                </Stack>
 
-                                {dlcItem.isDlcItem && (
-                                    <Stack direction='column' spacing={4}>
-                                        <Heading as='h3' fontSize='xl'>
-                                            DLC
-                                        </Heading>
-                                        <DlcItem data={dlcItem} />
-                                    </Stack>
-                                )}
-                                {eventItem.isEventItem && (
-                                    <Stack direction='column' spacing={4}>
-                                        <Heading as='h3' fontSize='xl'>
-                                            Event
-                                        </Heading>
-                                        <EventItem data={eventItem} />
-                                    </Stack>
-                                )}
+                                <Traits data={traits} />
+                                <Runes title='Rune Value' data={runes} />
+                                <DlcItem data={dlcItem} />
+                                <EventItem data={eventItem} />
                             </Stack>
                         </Box>
                     </SimpleGrid>
@@ -187,12 +161,7 @@ const Artifact = ( { data = {} } ) => {
                         <SimpleGrid columns={[1, 2]} spacing={10}>
                             {obtainableOn && (
                                 <Box>
-                                    <Stack direction='column' spacing={4}>
-                                        <Heading as='h3' fontSize='xl'>
-                                            Locations
-                                        </Heading>
-                                        <Locations data={obtainableOn} />
-                                    </Stack>
+                                    <Locations data={obtainableOn} />
                                 </Box>
                             )}
                         </SimpleGrid>

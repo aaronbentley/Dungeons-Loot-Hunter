@@ -1,7 +1,7 @@
 /**
  * MC Dungeons Loot Hunter Locations
  */
-import { Stack, Tooltip } from '@chakra-ui/react'
+import { Heading, Stack, Tooltip } from '@chakra-ui/react'
 import React from 'react'
 import Link from '../../components/link/link'
 import { generateSlug } from '../../utils/helpers'
@@ -17,8 +17,12 @@ const Locations = ( { data = {} } ) => {
     const locations = Array.isArray( data ) ? data : data.obtainableOn
 
     return (
-        <Stack direction='row' spacing={2}>
-            {locations &&
+        <Stack direction='column' spacing={4}>
+            <Heading as='h3' fontSize='xl'>
+                Locations
+            </Heading>
+            <Stack direction='row' spacing={2}>
+                {locations &&
                 locations.map( ( location ) => (
                     <Tooltip
                         key={location.id}
@@ -37,6 +41,7 @@ const Locations = ( { data = {} } ) => {
                         </Link>
                     </Tooltip>
                 ) )}
+            </Stack>
         </Stack>
     )
 }

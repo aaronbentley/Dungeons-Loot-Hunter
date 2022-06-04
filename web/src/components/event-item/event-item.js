@@ -1,7 +1,7 @@
 /**
  * MC Dungeons Loot Hunter Event Item
  */
-import { Tag } from '@chakra-ui/react'
+import { Heading, Stack, Tag } from '@chakra-ui/react'
 import React from 'react'
 
 const EventItem = ( { data = {} } ) => {
@@ -16,9 +16,14 @@ const EventItem = ( { data = {} } ) => {
     }
 
     return (
-        <Tag colorScheme='purple' width='max'>
-            {title}
-        </Tag>
+        <Stack direction='column' spacing={4}>
+            <Heading as='h3' fontSize='xl'>
+                Event
+            </Heading>
+            <Tag colorScheme='purple' width='max'>
+                {title}
+            </Tag>
+        </Stack>
     )
 }
 

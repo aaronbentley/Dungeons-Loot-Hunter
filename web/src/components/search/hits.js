@@ -41,7 +41,7 @@ const Hits = ( props ) => {
             )}
             <Grid 
                 templateColumns={[
-                    'repeat(1, 1fr)',
+                    'repeat(3, 1fr)',
                     'repeat(2, 1fr)',
                     'repeat(3, 1fr)',
                     'repeat(5, 1fr)'
@@ -72,8 +72,8 @@ const Hits = ( props ) => {
                                             }}>
                                             <Heading
                                                 as='h4'
-                                                fontSize='lg'
-                                                noOfLines={1}
+                                                fontSize={['xs', 'lg']}
+                                                noOfLines={2}
                                                 pt={2}
                                                 pb={4}>
                                                 {hit.title}

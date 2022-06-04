@@ -214,11 +214,15 @@ const Level = ( { data = {} } ) => {
 
     return (
         <Layout>
-            <Container maxWidth='6xl' py={24}>
+            <Container maxWidth='6xl' py={12}>
                 <Stack direction='column' spacing={12}>
                     <Stack direction='column' spacing={2}>
                         <BackButton />
-                        <Heading as='h1' fontSize='6xl' noOfLines={1} mb={0}>
+                        <Heading
+                            as='h1'
+                            fontSize={['4xl', '6xl']}
+                            noOfLines={2}
+                            mb={0}>
                             {title}
                         </Heading>
                     </Stack>

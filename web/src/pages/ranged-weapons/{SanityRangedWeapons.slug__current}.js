@@ -26,7 +26,7 @@ import Stats from '../../components/stats/stats'
 import { humanReadableTypeName } from '../../utils/helpers'
 
 export const query = graphql`
-    query RANGED_WEAPON_COLLECTION ($id: String!) {
+    query RANGED_WEAPON_COLLECTION($id: String!) {
         sanityRangedWeapons(id: { eq: $id }) {
             type: _type
             title
@@ -91,11 +91,15 @@ const RangedWeapon = ( { data = {} } ) => {
 
     return (
         <Layout>
-            <Container maxWidth='6xl' py={24}>
+            <Container maxWidth='6xl' py={12}>
                 <Stack direction='column' spacing={12}>
                     <Stack direction='column' spacing={2}>
                         <BackButton />
-                        <Heading as='h1' fontSize='6xl' noOfLines={1} mb={0}>
+                        <Heading
+                            as='h1'
+                            fontSize={['4xl', '6xl']}
+                            noOfLines={2}
+                            mb={0}>
                             {title}
                         </Heading>
                         <Stack direction='row' spacing={2}>
@@ -150,80 +154,25 @@ const RangedWeapon = ( { data = {} } ) => {
                                     isUnique={isUnique}
                                     variationOf={variationOf}
                                     uniqueVariants={uniqueVariants} />
-                                <Stack direction='column' spacing={4}>
-                                    <Heading as='h3' fontSize='xl'>
-                                        Stats
-                                    </Heading>
-                                    <Stats type={type} data={stats} />
-                                </Stack>
-                                {builtInEnchantments && (
-                                    <Stack direction='column' spacing={4}>
-                                        <Heading as='h3' fontSize='xl'>
-                                            Enchantments
-                                        </Heading>
-                                        <BuiltInEnchantments
-                                            data={builtInEnchantments} />
-                                    </Stack>
-                                )}
-                                <Stack direction='column' spacing={4}>
-                                    <Heading as='h3' fontSize='xl'>
-                                        Rune Value
-                                    </Heading>
-                                    <Runes data={runes} />
-                                </Stack>
-                                {builtInAbilities && (
-                                    <Stack direction='column' spacing={4}>
-                                        <Heading as='h3' fontSize='xl'>
-                                            Built-in Abilities
-                                        </Heading>
-                                        <BuiltInAbilities
-                                            data={builtInAbilities} />
-                                    </Stack>
-                                )}
-                                {dlcItem.isDlcItem && (
-                                    <Stack direction='column' spacing={4}>
-                                        <Heading as='h3' fontSize='xl'>
-                                            DLC
-                                        </Heading>
-                                        <DlcItem data={dlcItem} />
-                                    </Stack>
-                                )}
-                                {eventItem.isEventItem && (
-                                    <Stack direction='column' spacing={4}>
-                                        <Heading as='h3' fontSize='xl'>
-                                            Event
-                                        </Heading>
-                                        <EventItem data={eventItem} />
-                                    </Stack>
-                                )}
+                                <Stats type={type} data={stats} />
+                                <BuiltInEnchantments
+                                    data={builtInEnchantments} />
+                                <Runes data={runes} />
+                                <BuiltInAbilities data={builtInAbilities} />
+                                <DlcItem data={dlcItem} />
+                                <EventItem data={eventItem} />
                             </Stack>
                         </Box>
                     </SimpleGrid>
                     {!eventItem.isEventItem && (
                         <SimpleGrid columns={[1, 2]} spacing={10}>
                             <Box>
-                                <Stack direction='column' spacing={4}>
-                                    <Heading as='h3' fontSize='xl'>
-                                        Locations
-                                    </Heading>
-                                    <Locations
-                                        data={
-                                            isUnique
-                                                ? variationOf
-                                                : obtainableOn
-                                        } />
-                                </Stack>
+                                <AncientMobs
+                                    data={isUnique ? variationOf : droppedBy} />
                             </Box>
                             <Box>
-                                <Stack direction='column' spacing={4}>
-                                    <Heading as='h3' fontSize='xl'>
-                                        Ancient Mobs
-                                    </Heading>
-                                    <AncientMobs
-                                        data={
-                                            isUnique ? variationOf : droppedBy
-                                        } />
-                                </Stack>
+                                <Locations
+                                    data={isUnique ? variationOf : obtainableOn} />
                             </Box>
                         </SimpleGrid>
                     )}

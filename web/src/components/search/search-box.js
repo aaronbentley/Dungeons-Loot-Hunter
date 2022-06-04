@@ -49,7 +49,7 @@ const SearchBox = ( props ) => {
                 variant='filled'
                 focusBorderColor='purple.400'
                 textAlign='center'
-                minWidth='lg'
+                minWidth={['sm', 'lg']}
                 maxWidth='xl'
                 autocomplete='off'
                 spellcheck='false'
