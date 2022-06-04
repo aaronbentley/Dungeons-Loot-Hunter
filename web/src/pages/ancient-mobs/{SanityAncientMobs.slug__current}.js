@@ -16,7 +16,6 @@ import {
 import { graphql } from 'gatsby'
 import React from 'react'
 import BackButton from '../../components/back-button/back-button'
-import BuiltInEnchantments from '../../components/built-in-enchantments/built-in-enchantments'
 import Image from '../../components/image/image'
 import { Layout } from '../../components/layouts'
 import Link from '../../components/link/link'
@@ -231,7 +230,6 @@ const AncientMob = ( { data = {} } ) => {
             // type = '',
             title = '',
             image = {},
-            enchantments = [],
             runeRequirements = []
         },
         meleeWeapons = {},
@@ -245,10 +243,6 @@ const AncientMob = ( { data = {} } ) => {
         allArmor = {},
         allArtifacts = {}
     } = data
-
-    // console.log( '🦄 ~ file: {SanityAncientMobs.slug__current}.js ~ line 181 ~ AncientMob ~ runeRequirements', runeRequirements )
-
-    // console.log( '🦄 ~ file: {SanityAncientMobs.slug__current}.js ~ line 189 ~ AncientMob ~ allMeleeWeapons', allMeleeWeapons )
 
     // Merge loot drops into collection & map edges to nodes
     const lootDrops = [
@@ -287,7 +281,21 @@ const AncientMob = ( { data = {} } ) => {
 
     // Generate dynamic image thumbnail sizing relative to viewport
     const imageWidthSizes = useBreakpointValue( {
-        base: 478,
+        base: 382,
+        sm: 384,
+        md: 460,
+        lg: 540
+    } )
+
+    const gildedlootDropsimageWidthSizes = useBreakpointValue( {
+        base: 122,
+        sm: 168,
+        md: 148,
+        lg: 84
+    } )
+
+    const requiredRunesimageWidthSizes = useBreakpointValue( {
+        base: 142,
         sm: 360,
         md: 310,
         lg: 175
@@ -299,7 +307,11 @@ const AncientMob = ( { data = {} } ) => {
                 <Stack direction='column' spacing={12}>
                     <Stack direction='column' spacing={2}>
                         <BackButton />
-                        <Heading as='h1' fontSize={['4xl', '6xl']} noOfLines={2} mb={0}>
+                        <Heading
+                            as='h1'
+                            fontSize={['4xl', '6xl']}
+                            noOfLines={2}
+                            mb={0}>
                             {title}
                         </Heading>
                     </Stack>
@@ -308,34 +320,23 @@ const AncientMob = ( { data = {} } ) => {
                             <Image
                                 imageData={image}
                                 alt={title}
-                                width={350}
-                                height={350}
+                                width={imageWidthSizes}
                                 borderRadius={2} />
                         </Box>
 
                         <Box>
                             <Stack direction='column' spacing={8}>
-                                {enchantments && (
-                                    <Stack direction='column' spacing={4}>
-                                        <Heading as='h3' fontSize='xl'>
-                                            Enchantments
-                                        </Heading>
-                                        <BuiltInEnchantments
-                                            data={enchantments} />
-                                    </Stack>
-                                )}
-                                <Stack direction='column' spacing={4}>
-                                    <Heading as='h3' fontSize='xl'>
-                                        Rune offering required
-                                    </Heading>
-                                    <Runes data={runeRequirements} />
-                                </Stack>
+                                <Runes
+                                    title='Rune offering required'
+                                    data={runeRequirements} />
                                 {lootDrops && (
                                     <Stack direction='column' spacing={4}>
                                         <Heading as='h3' fontSize='xl'>
-                                            Guilded Loot drops
+                                            Gilded Loot drops
                                         </Heading>
-                                        <SimpleGrid columns={[1, 2, 3, 6]} spacing={4}>
+                                        <SimpleGrid
+                                            columns={[3, 2, 3, 6]}
+                                            spacing={2}>
                                             {lootDrops.map( ( { node } ) => {
                                                 return (
                                                     <Tooltip
@@ -347,11 +348,18 @@ const AncientMob = ( { data = {} } ) => {
                                                         <Link
                                                             to={`/${generateSlug(
                                                                 node._type
-                                                            )}/${node.slug.current}/`}>
+                                                            )}/${
+                                                                node.slug
+                                                                    .current
+                                                            }/`}>
                                                             <Image
-                                                                imageData={node.image}
+                                                                imageData={
+                                                                    node.image
+                                                                }
                                                                 alt={node.title}
-                                                                width={imageWidthSizes}
+                                                                width={
+                                                                    gildedlootDropsimageWidthSizes
+                                                                }
                                                                 p={2}
                                                                 bgGradient={
                                                                     node.isUnique
@@ -371,9 +379,9 @@ const AncientMob = ( { data = {} } ) => {
                     </SimpleGrid>
                     <Stack direction='column' spacing={4}>
                         <Heading as='h3' fontSize='xl'>
-                                        Items with required runes
+                            Items with required runes
                         </Heading>
-                        <SimpleGrid columns={[1, 2, 3, 8]} spacing={4}>
+                        <SimpleGrid columns={[3, 4, 3, 8]} spacing={2} bg={['red', 'orange', 'yellow', 'green', 'blue']}>
                             {itemsWithRunes.map( ( { node } ) => (
                                 <Tooltip
                                     key={node.id}
@@ -383,17 +391,13 @@ const AncientMob = ( { data = {} } ) => {
                                     <LinkBox position='relative'>
                                         <LinkOverlay
                                             as={Link}
-                                            to={`/${generateSlug(
-                                                node._type
-                                            )}/${
+                                            to={`/${generateSlug( node._type )}/${
                                                 node.slug.current
                                             }/`}>
                                             <Image
-                                                imageData={
-                                                    node.image
-                                                }
+                                                imageData={node.image}
                                                 alt={node.title}
-                                                width={imageWidthSizes}
+                                                width={requiredRunesimageWidthSizes}
                                                 p={2}
                                                 bgGradient={
                                                     node.isUnique
@@ -409,26 +413,27 @@ const AncientMob = ( { data = {} } ) => {
                                             position='absolute'
                                             bottom={0}
                                             pointerEvents='none'>
-                                            {node.runeValues.map(
-                                                ( rune ) => {
-                                                    if (
-                                                        runeRequirementIds.includes(
-                                                            rune.id
-                                                        )
-                                                    ) {
-                                                        return (
-                                                            <Image
-                                                                imageData={rune.image}
-                                                                alt={rune.title}
-                                                                width={46}
-                                                                p={0}
-                                                                borderRadius={2} />
-                                                        )
-                                                    }
-
-                                                    return null
+                                            {node.runeValues.map( ( rune ) => {
+                                                if (
+                                                    runeRequirementIds.includes(
+                                                        rune.id
+                                                    )
+                                                ) {
+                                                    return (
+                                                        <Image
+                                                            key={rune.id}
+                                                            imageData={
+                                                                rune.image
+                                                            }
+                                                            alt={rune.title}
+                                                            width={46}
+                                                            p={0}
+                                                            borderRadius={2} />
+                                                    )
                                                 }
-                                            )}
+
+                                                return null
+                                            } )}
                                         </SimpleGrid>
                                     </LinkBox>
                                 </Tooltip>

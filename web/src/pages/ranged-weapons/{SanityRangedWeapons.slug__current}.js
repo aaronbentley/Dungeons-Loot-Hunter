@@ -7,7 +7,8 @@ import {
     Heading,
     SimpleGrid,
     Stack,
-    Tag
+    Tag,
+    useBreakpointValue
 } from '@chakra-ui/react'
 import { graphql } from 'gatsby'
 import React from 'react'
@@ -89,6 +90,14 @@ const RangedWeapon = ( { data = {} } ) => {
         uniqueVariants = {}
     } = data
 
+    // Generate dynamic image thumbnail sizing relative to viewport
+    const imageWidthSizes = useBreakpointValue( {
+        base: 382,
+        sm: 384,
+        md: 460,
+        lg: 540
+    } )
+
     return (
         <Layout>
             <Container maxWidth='6xl' py={12}>
@@ -136,8 +145,7 @@ const RangedWeapon = ( { data = {} } ) => {
                                 p={6}
                                 imageData={image}
                                 alt={title}
-                                width={350}
-                                height={350}
+                                width={imageWidthSizes}
                                 backgroundColor={isUnique ? 'orange.500' : null}
                                 bgGradient={
                                     isUnique

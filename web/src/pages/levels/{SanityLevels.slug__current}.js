@@ -206,10 +206,10 @@ const Level = ( { data = {} } ) => {
 
     // Generate dynamic image thumbnail sizing relative to viewport
     const imageWidthSizes = useBreakpointValue( {
-        base: 478,
-        sm: 360,
-        md: 310,
-        lg: 175
+        base: 382,
+        sm: 384,
+        md: 460,
+        lg: 540
     } )
 
     return (
@@ -231,8 +231,7 @@ const Level = ( { data = {} } ) => {
                             <Image
                                 imageData={image}
                                 alt={title}
-                                width={350}
-                                height={350}
+                                width={imageWidthSizes}
                                 borderRadius={2} />
                         </Box>
                         <Box>
@@ -257,7 +256,7 @@ const Level = ( { data = {} } ) => {
                             <Heading as='h3' fontSize='4xl'>
                                 Loot drops
                             </Heading>
-                            <SimpleGrid columns={[1, 2, 3, 6]} spacing={4}>
+                            <SimpleGrid columns={[3, 2, 3, 8]} spacing={2}>
                                 {lootDrops.map( ( { node } ) => {
                                     return (
                                         <Tooltip
@@ -273,7 +272,7 @@ const Level = ( { data = {} } ) => {
                                                 <Image
                                                     imageData={node.image}
                                                     alt={node.title}
-                                                    width={imageWidthSizes}
+                                                    // width={imageWidthSizes}
                                                     p={2}
                                                     bgGradient={
                                                         node.isUnique
