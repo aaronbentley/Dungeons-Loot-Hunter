@@ -381,7 +381,7 @@ const AncientMob = ( { data = {} } ) => {
                         <Heading as='h3' fontSize='xl'>
                             Items with required runes
                         </Heading>
-                        <SimpleGrid columns={[3, 4, 3, 8]} spacing={2} bg={['red', 'orange', 'yellow', 'green', 'blue']}>
+                        <SimpleGrid columns={[3, 4, 3, 8]} spacing={2}>
                             {itemsWithRunes.map( ( { node } ) => (
                                 <Tooltip
                                     key={node.id}
