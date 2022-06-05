@@ -9,13 +9,11 @@ import {
     DrawerContent,
     DrawerFooter,
     DrawerHeader,
-    DrawerOverlay,
-    Flex,
-    Heading,
-    IconButton,
+    DrawerOverlay, IconButton,
     Stack
 } from '@chakra-ui/react'
 import React, { useRef } from 'react'
+import Link from '../link/link'
 
 const NavMenu = ( { isOpen, onClose } ) => {
     // Create ref for close button
@@ -31,7 +29,6 @@ const NavMenu = ( { isOpen, onClose } ) => {
             zIndex='auto'>
             <DrawerOverlay />
             <DrawerContent
-                // backgroundColor='purple.700'
                 py={6}
                 height='full'>
                 <DrawerHeader
@@ -50,13 +47,44 @@ const NavMenu = ( { isOpen, onClose } ) => {
                 <DrawerBody pt={12} overflowX='hidden'>
                     <Stack
                         height='full'
-                        direction='row'
-                        pl={[8, 0]}
-                        justifyContent='space-between'
-                        maxHeight='xl'>
-                        <Flex direction='column' justifyContent='flex-start'>
-                            <Heading>Nav</Heading>
-                        </Flex>
+                        direction='column'
+                        pl={[8, 0]}>
+                        <Link
+                            to='/melee-weapons/'
+                            fontSize={['xl', '2xl']}
+                            onClick={onClose}>
+                                Melee Weapons
+                        </Link>
+                        <Link
+                            to='/ranged-weapons/'
+                            fontSize={['xl', '2xl']}
+                            onClick={onClose}>
+                                Ranged Weapons
+                        </Link>
+                        <Link
+                            to='/armor/'
+                            fontSize={['xl', '2xl']}
+                            onClick={onClose}>
+                                Armor
+                        </Link>
+                        <Link
+                            to='/artifacts/'
+                            fontSize={['xl', '2xl']}
+                            onClick={onClose}>
+                                Artifacts
+                        </Link>
+                        <Link
+                            to='/ancient-mobs/'
+                            fontSize={['xl', '2xl']}
+                            onClick={onClose}>
+                                Ancient Mobs
+                        </Link>
+                        <Link
+                            to='/levels/'
+                            fontSize={['xl', '2xl']}
+                            onClick={onClose}>
+                                Levels
+                        </Link>
                     </Stack>
                 </DrawerBody>
                 <DrawerFooter

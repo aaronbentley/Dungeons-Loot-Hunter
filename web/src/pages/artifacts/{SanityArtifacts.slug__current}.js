@@ -13,7 +13,6 @@ import {
 } from '@chakra-ui/react'
 import { graphql } from 'gatsby'
 import React from 'react'
-import BackButton from '../../components/back-button/back-button'
 import DlcItem from '../../components/dlc-item/dlc-item'
 import EventItem from '../../components/event-item/event-item'
 import Image from '../../components/image/image'
@@ -93,7 +92,6 @@ const Artifact = ( { data = {} } ) => {
             <Container maxWidth='6xl' py={12}>
                 <Stack direction='column' spacing={12}>
                     <Stack direction='column' spacing={2}>
-                        <BackButton />
                         <Heading as='h1' fontSize={['4xl', '6xl']} noOfLines={2} mb={0}>
                             {title}
                         </Heading>

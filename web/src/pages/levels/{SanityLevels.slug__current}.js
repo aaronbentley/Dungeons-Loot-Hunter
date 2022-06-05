@@ -14,7 +14,6 @@ import {
 } from '@chakra-ui/react'
 import { graphql } from 'gatsby'
 import React from 'react'
-import BackButton from '../../components/back-button/back-button'
 import Image from '../../components/image/image'
 import { Layout } from '../../components/layouts'
 import Link from '../../components/link/link'
@@ -217,7 +216,6 @@ const Level = ( { data = {} } ) => {
             <Container maxWidth='6xl' py={12}>
                 <Stack direction='column' spacing={12}>
                     <Stack direction='column' spacing={2}>
-                        <BackButton />
                         <Heading
                             as='h1'
                             fontSize={['4xl', '6xl']}
