@@ -51,8 +51,8 @@ const SearchBox = ( props ) => {
                 textAlign='center'
                 minWidth={['sm', 'lg']}
                 maxWidth='xl'
-                autocomplete='off'
-                spellcheck='false'
+                autoComplete='off'
+                spellCheck='false'
                 {...props} />
         </FormControl>
     )

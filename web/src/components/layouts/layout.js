@@ -4,6 +4,7 @@
 import { Flex, Stack } from '@chakra-ui/react'
 import React from 'react'
 import Header from '../header/header'
+import Footer from '../footer/footer'
 
 const Layout = ( { children } ) => {
     return (
@@ -12,6 +13,7 @@ const Layout = ( { children } ) => {
             <Flex flex='1' flexDirection='column'>
                 {children}
             </Flex>
+            <Footer />
         </Stack>
     )
 }
