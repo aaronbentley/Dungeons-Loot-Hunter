@@ -42,14 +42,12 @@ const SearchBox = ( props ) => {
                 onChange={( e ) => {
                     setValue( e.target.value )
                 }}
-                // onChange={(e) => onInput(e)}
-                // onChange={onInput}
                 placeholder='What loot are you looking for?'
                 size='lg'
                 variant='filled'
                 focusBorderColor='purple.400'
                 textAlign='center'
-                minWidth={['sm', 'lg']}
+                minWidth={['xs', 'sm', 'md', 'lg']}
                 maxWidth='xl'
                 autoComplete='off'
                 spellCheck='false'

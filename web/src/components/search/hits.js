@@ -21,7 +21,7 @@ import Link from '../link/link'
 
 const Hits = ( props ) => {
     const { hits } = useHits( props )
-    const { query } = useSearchBox( )
+    const { query } = useSearchBox()
 
     // // If no query, bail early
     if ( !query ) {
@@ -39,13 +39,13 @@ const Hits = ( props ) => {
                     </AlertDescription>
                 </Alert>
             )}
-            <Grid 
+            <Grid
                 templateColumns={[
                     'repeat(3, 1fr)',
                     'repeat(2, 1fr)',
                     'repeat(3, 1fr)',
                     'repeat(5, 1fr)'
-                ]} 
+                ]}
                 gap={6}>
                 {hits &&
                     hits.map( ( hit ) => {

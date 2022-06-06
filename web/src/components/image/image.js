@@ -14,24 +14,11 @@ const Image = ( {
     ...rest
 } ) => {
     const ChakraSanityImage = chakra( SanityImage, {
-        // shouldForwardProp: (prop) => {
-        //     /**
-        //      * Don't forward Chakra's props
-        //      * @link https://chakra-ui.com/docs/styled-system/features/chakra-factory#chakra-factory-function
-        //      */
-        //     const isChakraProp = !shouldForwardProp(prop)
-        //     if (isChakraProp) {
-        //         return false
-        //     }
-
-        //     // else forward props
-        //     return prop
-        // }
-
         // Forward GPSI props to Image component
         shouldForwardProp: ( prop ) => {
             return [
                 'alt',
+                'config',
                 'width',
                 'height',
                 'asset',

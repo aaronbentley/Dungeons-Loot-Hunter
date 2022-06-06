@@ -13,6 +13,7 @@ import {
     Stack
 } from '@chakra-ui/react'
 import React, { useRef } from 'react'
+import BuyMeACoffee from '../buy-me-a-coffee/buy-me-a-coffee'
 import Link from '../link/link'
 
 const NavMenu = ( { isOpen, onClose } ) => {
@@ -46,46 +47,67 @@ const NavMenu = ( { isOpen, onClose } ) => {
                 </DrawerHeader>
                 <DrawerBody pt={12} overflowX='hidden'>
                     <Stack
-                        height='full'
+                        // height='full'
+                        mb={6}
                         direction='column'
                         pl={[8, 0]}>
                         <Link
                             to='/melee-weapons/'
                             fontSize={['xl', '2xl']}
+                            _hover ={{
+                                textDecoration: 'none'
+                            }}
                             onClick={onClose}>
                                 Melee Weapons
                         </Link>
                         <Link
                             to='/ranged-weapons/'
                             fontSize={['xl', '2xl']}
+                            _hover ={{
+                                textDecoration: 'none'
+                            }}
                             onClick={onClose}>
                                 Ranged Weapons
                         </Link>
                         <Link
                             to='/armor/'
                             fontSize={['xl', '2xl']}
+                            _hover ={{
+                                textDecoration: 'none'
+                            }}
                             onClick={onClose}>
                                 Armor
                         </Link>
                         <Link
                             to='/artifacts/'
                             fontSize={['xl', '2xl']}
+                            _hover ={{
+                                textDecoration: 'none'
+                            }}
                             onClick={onClose}>
                                 Artifacts
                         </Link>
                         <Link
                             to='/ancient-mobs/'
                             fontSize={['xl', '2xl']}
+                            _hover ={{
+                                textDecoration: 'none'
+                            }}
                             onClick={onClose}>
                                 Ancient Mobs
                         </Link>
                         <Link
                             to='/levels/'
                             fontSize={['xl', '2xl']}
+                            _hover ={{
+                                textDecoration: 'none'
+                            }}
                             onClick={onClose}>
                                 Levels
                         </Link>
                     </Stack>
+
+                    <BuyMeACoffee />
                 </DrawerBody>
                 <DrawerFooter
                     pt={[8, 12, 24]}
