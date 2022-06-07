@@ -8,14 +8,14 @@
 const activeEnv =
     process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development'
 const previewEnabled =
-    (process.env.GATSBY_IS_PREVIEW || 'false').toLowerCase() === 'true'
+    ( process.env.GATSBY_IS_PREVIEW || 'false' ).toLowerCase() === 'true'
 
-console.log(`🦄  Using environment config: '${activeEnv}' 🦄`)
-console.log('🦄  GATSBY_IS_PREVIEW : previewEnabled', previewEnabled)
+console.log( `🦄  Using environment config: '${activeEnv}' 🦄` )
+console.log( '🦄  GATSBY_IS_PREVIEW : previewEnabled', previewEnabled )
 
-require('dotenv').config({
+require( 'dotenv' ).config( {
     path: `.env.${activeEnv}`
-})
+} )
 
 module.exports = {
     trailingSlash: 'always',
@@ -79,11 +79,11 @@ module.exports = {
             }
         },
         {
-            resolve: `gatsby-plugin-algolia`,
+            resolve: 'gatsby-plugin-algolia',
             options: {
                 appId: process.env.GATSBY_ALGOLIA_APP_ID,
                 apiKey: process.env.ALGOLIA_ADMIN_KEY,
-                queries: require('./src/search/algolia-queries')
+                queries: require( './src/search/algolia-queries' )
             }
         }
     ]
