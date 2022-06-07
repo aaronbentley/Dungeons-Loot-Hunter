@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
 /**
  * MC Dungeons Loot Hunter CookieConsent
- *
  */
 
-import { Button, ButtonGroup, Flex, Portal, Slide, Text } from '@chakra-ui/react'
+import { Button, ButtonGroup, Flex, Portal, Slide, Text, useColorModeValue } from '@chakra-ui/react'
 import { useLocation } from '@reach/router'
 import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies'
 import React from 'react'
 import { useCookie, useLocalStorage } from 'react-use'
+import Emoji from '../emoji/emoji'
 
 const CookieConsent = () => {
     // Check in browser enviroment - Initialize & configure tracking
@@ -36,10 +36,7 @@ const CookieConsent = () => {
         setCookieConsentLocalStorageValue( true )
     }
 
-    // Guard - bail early if in development environment
-    if ( process.env.GATSBY_ACTIVE_ENV === 'development' ) {
-        return null
-    }
+    const backgroundColor = useColorModeValue( 'white', 'gray.800' )
 
     return (
         <Portal>
@@ -48,40 +45,31 @@ const CookieConsent = () => {
                     in={!cookieConsentLocalStorageValue} 
                     direction='bottom'>
                     <Flex
-                        py={4}
-                        color='white'
-                        bg='gray.900'
+                        py={6}
+                        backgroundColor={backgroundColor}
                         mb={2}
                         justifyContent='center'
                         alignItems='center'
-                        maxWidth='2xl'
+                        maxWidth='xl'
                         borderRadius='md'
                         mx='auto'>
-                        <Text as='span' mr={4}>🍪</Text>
-                        <Text as='span'>We use cookies to optimise this service</Text>
+                        <Emoji symbol='🍪' label='cookie' mr={4} />
+                        <Text as='span'>Ok to use cookies?</Text>
                         <ButtonGroup 
                             size='sm' 
                             spacing={2}  
                             ml={4} >
                             <Button 
-                                backgroundColor='brand_primary.400'
+                                colorScheme='brand_primary'
                                 variant='solid' 
-                                _hover={{
-                                    backgroundColor: 'brand_primary.600'
-                                }}
                                 onClick={EnableAnalytics}>
-                                    Accept
+                                    Oki doki
                             </Button>
                             <Button 
-                                color='brand_primary.400'
-                                borderColor='brand_primary.400'
+                                colorScheme='brand_primary'
                                 variant='outline'
-                                _hover={{
-                                    color: 'brand_primary.600',
-                                    borderColor: 'brand_primary.600'
-                                }}
                                 onClick={() => setCookieConsentLocalStorageValue( true )}>
-                                    Reject
+                                    No thanks
                             </Button>
                         </ButtonGroup>
                     </Flex>

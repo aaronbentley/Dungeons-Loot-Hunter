@@ -10,6 +10,7 @@ import ThemeToggleButton from '../theme-toggle-button/theme-toggle-button'
 
 const Header = () => {
     const { title = '' } = useSiteMetadata()
+    const backgroundColor = useColorModeValue( 'white', 'gray.800' )
 
     return (
         <Flex
@@ -17,7 +18,7 @@ const Header = () => {
             position='sticky'
             zIndex='docked'
             top={0}
-            backgroundColor={useColorModeValue( 'white', 'gray.800' )}>
+            backgroundColor={backgroundColor}>
             <Container maxWidth='6xl'>
                 <Flex
                     alignItems='center'
