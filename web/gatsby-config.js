@@ -45,15 +45,15 @@ module.exports = {
             options: {
                 googleAnalytics: {
                     // leave empty if you want to disable the tracker 
-                    trackingId:'',  // process.env.GATSBY_GOOGLE_ANALYTICS_TRACKING_ID
-                    cookieName: 'gatsby-gdpr-google-analytics',
+                    trackingId: process.env.GATSBY_GOOGLE_ANALYTICS_TRACKING_ID,
+                    cookieName: 'mcdlt-gdpr-google-analytics',
                     anonymize: true,
                     allowAdFeatures: false
                 },
                 googleTagManager: {
                     // leave empty if you want to disable the tracker
-                    trackingId:'',  // process.env.GATSBY_GOOGLE_TAG_MANAGER_ID
-                    cookieName: 'gatsby-gdpr-google-tagmanager',
+                    trackingId: process.env.GATSBY_GOOGLE_TAG_MANAGER_ID,
+                    cookieName: 'mcdlt-gdpr-google-tagmanager',
                     defaultDataLayer: { platform: 'gatsby' }
                 },
                 // defines the environments where the tracking should be available  - default is ["production"]
