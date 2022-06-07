@@ -3,18 +3,22 @@
  */
 import { Flex, Stack } from '@chakra-ui/react'
 import React from 'react'
-import Header from '../header/header'
+import CookieConsent from '../cookie-consent/cookie-consent'
 import Footer from '../footer/footer'
+import Header from '../header/header'
 
 const Layout = ( { children } ) => {
     return (
-        <Stack spacing={0} minHeight='100vh' direction='column'>
-            <Header />
-            <Flex flex='1' flexDirection='column'>
-                {children}
-            </Flex>
-            <Footer />
-        </Stack>
+        <React.Fragment>
+            <Stack spacing={0} minHeight='100vh' direction='column'>
+                <Header />
+                <Flex flex='1' flexDirection='column'>
+                    {children}
+                </Flex>
+                <Footer />
+            </Stack>
+            <CookieConsent />
+        </React.Fragment>
     )
 }
 
