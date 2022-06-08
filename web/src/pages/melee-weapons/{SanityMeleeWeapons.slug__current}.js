@@ -146,6 +146,7 @@ const MeleeWeapon = ( { data = {} } ) => {
                             <Image
                                 p={6}
                                 imageData={image}
+                                loading='eager'
                                 alt={title}
                                 width={imageWidthSizes}
                                 bgGradient={

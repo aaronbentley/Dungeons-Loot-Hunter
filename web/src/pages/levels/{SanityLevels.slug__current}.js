@@ -230,6 +230,7 @@ const Level = ( { data = {} } ) => {
                         <Box>
                             <Image
                                 imageData={image}
+                                loading='eager'
                                 alt={title}
                                 width={imageWidthSizes}
                                 borderRadius={2} />
@@ -257,33 +258,33 @@ const Level = ( { data = {} } ) => {
                                 Loot drops
                             </Heading>
                             <SimpleGrid columns={[3, 2, 3, 8]} spacing={2}>
-                                {lootDrops.map( ( { node } ) => {
-                                    return (
-                                        <Tooltip
-                                            key={node.id}
-                                            label={node.title}
-                                            placement='top'
-                                            colorScheme='purple'
-                                            shouldWrapChildren>
-                                            <Link
-                                                to={`/${generateSlug(
-                                                    node._type
-                                                )}/${node.slug.current}/`}>
-                                                <Image
-                                                    imageData={node.image}
-                                                    alt={node.title}
-                                                    // width={imageWidthSizes}
-                                                    p={2}
-                                                    bgGradient={
-                                                        node.isUnique
-                                                            ? 'linear(to-tr, orange.500, orange.300)'
-                                                            : 'linear(to-tr, gray.600, green.700)'
-                                                    }
-                                                    borderRadius={2} />
-                                            </Link>
-                                        </Tooltip>
-                                    )
-                                } )}
+                                {lootDrops.map( ( { node }, index ) => (
+                                    <Tooltip
+                                        key={node.id}
+                                        label={node.title}
+                                        placement='top'
+                                        colorScheme='purple'
+                                        shouldWrapChildren>
+                                        <Link
+                                            to={`/${generateSlug(
+                                                node._type
+                                            )}/${node.slug.current}/`}>
+                                            <Image
+                                                imageData={node.image}
+                                                alt={node.title}
+                                                loading={( index <= 16 ? 'eager' : 'lazy' )}
+                                                // width={imageWidthSizes}
+                                                p={2}
+                                                bgGradient={
+                                                    node.isUnique
+                                                        ? 'linear(to-tr, orange.500, orange.300)'
+                                                        : 'linear(to-tr, gray.600, green.700)'
+                                                }
+                                                borderRadius={2} />
+                                        </Link>
+                                    </Tooltip>
+                                )
+                                )}
                             </SimpleGrid>
                         </Stack>
                     )}

@@ -23,6 +23,7 @@ const Image = ( {
                 'height',
                 'asset',
                 'hotspot',
+                'loading',
                 'crop',
                 'config',
                 'options',

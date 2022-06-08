@@ -319,6 +319,7 @@ const AncientMob = ( { data = {} } ) => {
                         <Box>
                             <Image
                                 imageData={image}
+                                loading='eager'
                                 alt={title}
                                 width={imageWidthSizes}
                                 borderRadius={2} />

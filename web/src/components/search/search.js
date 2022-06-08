@@ -2,7 +2,16 @@
  * MC Dungeons Loot Hunter Alogolia Search
  */
 
-import { Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Spinner } from '@chakra-ui/react'
+import {
+    Flex,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalHeader,
+    ModalOverlay,
+    Spinner
+} from '@chakra-ui/react'
 import algoliasearch from 'algoliasearch/lite'
 import React, { lazy, Suspense } from 'react'
 import { InstantSearch, useConfigure } from 'react-instantsearch-hooks-web'
@@ -27,10 +36,7 @@ const Search = ( { isOpen, onClose } ) => {
     )
 
     return (
-        <Modal 
-            isOpen={isOpen} 
-            onClose={onClose}
-            size={'full'}>
+        <Modal isOpen={isOpen} onClose={onClose} size={'full'}>
             <ModalOverlay />
             <ModalContent>
                 <ModalHeader textAlign='center'>Search</ModalHeader>
@@ -40,7 +46,15 @@ const Search = ( { isOpen, onClose } ) => {
                         searchClient={searchClient}
                         indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME}>
                         <CustomConfigure />
-                        <Suspense fallback={<Spinner />}>
+                        <Suspense
+                            fallback={
+                                <Flex
+                                    width='full'
+                                    justifyContent='center'
+                                    py={6}>
+                                    <Spinner />
+                                </Flex>
+                            }>
                             <SearchBox mb={12} />
                             <Hits />
                         </Suspense>

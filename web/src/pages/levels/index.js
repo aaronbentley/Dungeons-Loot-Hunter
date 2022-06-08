@@ -70,48 +70,48 @@ const Levels = ( { data = {} } ) => {
                         ]}
                         gap={6}>
                         {levels &&
-                            levels.map( ( { node } ) => {
-                                return (
-                                    <GridItem key={node.id}>
-                                        <LinkBox>
-                                            <Stack
-                                                direction='column'
-                                                spacing={2}>
-                                                <Image
-                                                    padding={2}
-                                                    imageData={node.image}
-                                                    alt={node.title}
-                                                    width={280}
-                                                    height={220}
-                                                    config={{
-                                                        fit: 'fill'
-                                                    }}
-                                                    borderRadius={2} />
-                                                <LinkOverlay
-                                                    as={Link}
-                                                    to={`/${generateSlug(
-                                                        node._type
-                                                    )}/${
-                                                        node.slug
-                                                            .current
-                                                    }/`}
-                                                    _hover={{
-                                                        textDecoration: 'none'
-                                                    }}>
-                                                    <Heading
-                                                        as='h3'
-                                                        fontSize={['xs', 'lg']}
-                                                        noOfLines={2}
-                                                        pt={2}
-                                                        pb={4}>
-                                                        {node.title}
-                                                    </Heading>
-                                                </LinkOverlay>
-                                            </Stack>
-                                        </LinkBox>
-                                    </GridItem>
-                                )
-                            } )}
+                            levels.map( ( { node }, index ) => (
+                                <GridItem key={node.id}>
+                                    <LinkBox>
+                                        <Stack
+                                            direction='column'
+                                            spacing={2}>
+                                            <Image
+                                                padding={2}
+                                                loading={( index <= 30 ? 'eager' : 'lazy' )}
+                                                imageData={node.image}
+                                                alt={node.title}
+                                                width={280}
+                                                height={220}
+                                                config={{
+                                                    fit: 'fill'
+                                                }}
+                                                borderRadius={2} />
+                                            <LinkOverlay
+                                                as={Link}
+                                                to={`/${generateSlug(
+                                                    node._type
+                                                )}/${
+                                                    node.slug
+                                                        .current
+                                                }/`}
+                                                _hover={{
+                                                    textDecoration: 'none'
+                                                }}>
+                                                <Heading
+                                                    as='h3'
+                                                    fontSize={['xs', 'lg']}
+                                                    noOfLines={2}
+                                                    pt={2}
+                                                    pb={4}>
+                                                    {node.title}
+                                                </Heading>
+                                            </LinkOverlay>
+                                        </Stack>
+                                    </LinkBox>
+                                </GridItem>
+                            )
+                            )}
                     </Grid>
                 </Stack>
             </Container>

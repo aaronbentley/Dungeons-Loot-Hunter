@@ -132,6 +132,7 @@ const Index = ( { data = {} } ) => {
                                                 spacing={2}>
                                                 <Image
                                                     padding={2}
+                                                    loading='eager'
                                                     imageData={node.image}
                                                     alt={node.title}
                                                     width={280}
@@ -183,6 +184,7 @@ const Index = ( { data = {} } ) => {
                                                 spacing={2}>
                                                 <Image
                                                     padding={2}
+                                                    loading='eager'
                                                     imageData={node.image}
                                                     alt={node.title}
                                                     width={280}
@@ -234,6 +236,7 @@ const Index = ( { data = {} } ) => {
                                                 spacing={2}>
                                                 <Image
                                                     padding={2}
+                                                    loading='eager'
                                                     imageData={node.image}
                                                     alt={node.title}
                                                     width={280}
@@ -284,6 +287,7 @@ const Index = ( { data = {} } ) => {
                                                 spacing={2}>
                                                 <Image
                                                     padding={2}
+                                                    loading='eager'
                                                     imageData={node.image}
                                                     alt={node.title}
                                                     width={280}

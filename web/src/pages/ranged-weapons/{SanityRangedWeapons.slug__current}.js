@@ -144,6 +144,7 @@ const RangedWeapon = ( { data = {} } ) => {
                             <Image
                                 p={6}
                                 imageData={image}
+                                loading='eager'
                                 alt={title}
                                 width={imageWidthSizes}
                                 backgroundColor={isUnique ? 'orange.500' : null}
