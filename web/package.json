@@ -23,7 +23,7 @@
         "@sanity/image-url": "^1.0.1",
         "a11y-react-emoji": "^1.2.0",
         "algoliasearch": "^4.13.1",
-        "framer-motion": "^6.3.10",
+        "framer-motion": "^6.3.11",
         "gatsby": "^4.16.0",
         "gatsby-plugin-algolia": "^0.26.0",
         "gatsby-plugin-gdpr-cookies": "^2.0.9",
