@@ -6,7 +6,7 @@ import React from 'react'
 import { useSiteMetadata } from '../../hooks/use-site-metadata'
 import Link from '../link/link'
 import NavToggleButton from '../nav-toggle-button/nav-toggle-button'
-import ThemeToggleButton from '../theme-toggle-button/theme-toggle-button'
+import SearchButton from '../search-button/search-button'
 
 const Header = () => {
     const { title = '' } = useSiteMetadata()
@@ -37,7 +37,7 @@ const Header = () => {
                             {title}
                         </Heading>
                     </Link>
-                    <ThemeToggleButton />
+                    <SearchButton />
                 </Flex>
             </Container>
         </Flex>

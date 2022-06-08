@@ -15,6 +15,7 @@ import {
 import React, { useRef } from 'react'
 import BuyMeACoffee from '../buy-me-a-coffee/buy-me-a-coffee'
 import Link from '../link/link'
+import ThemeToggleButton from '../theme-toggle-button/theme-toggle-button'
 
 const NavMenu = ( { isOpen, onClose } ) => {
     // Create ref for close button
@@ -47,15 +48,16 @@ const NavMenu = ( { isOpen, onClose } ) => {
                 </DrawerHeader>
                 <DrawerBody pt={12} overflowX='hidden'>
                     <Stack
-                        // height='full'
                         mb={6}
-                        direction='column'
-                        pl={[8, 0]}>
+                        direction='column'>
                         <Link
                             to='/melee-weapons/'
                             fontSize={['xl', '2xl']}
+                            fontWeight='bold'
+                            transition='all 0.3s ease-in-out'
                             _hover ={{
-                                textDecoration: 'none'
+                                textDecoration: 'none',
+                                color: 'brand_primary.400'
                             }}
                             onClick={onClose}>
                                 Melee Weapons
@@ -63,8 +65,11 @@ const NavMenu = ( { isOpen, onClose } ) => {
                         <Link
                             to='/ranged-weapons/'
                             fontSize={['xl', '2xl']}
+                            fontWeight='bold'
+                            transition='all 0.3s ease-in-out'
                             _hover ={{
-                                textDecoration: 'none'
+                                textDecoration: 'none',
+                                color: 'brand_primary.400'
                             }}
                             onClick={onClose}>
                                 Ranged Weapons
@@ -72,8 +77,11 @@ const NavMenu = ( { isOpen, onClose } ) => {
                         <Link
                             to='/armor/'
                             fontSize={['xl', '2xl']}
+                            fontWeight='bold'
+                            transition='all 0.3s ease-in-out'
                             _hover ={{
-                                textDecoration: 'none'
+                                textDecoration: 'none',
+                                color: 'brand_primary.400'
                             }}
                             onClick={onClose}>
                                 Armor
@@ -81,8 +89,11 @@ const NavMenu = ( { isOpen, onClose } ) => {
                         <Link
                             to='/artifacts/'
                             fontSize={['xl', '2xl']}
+                            fontWeight='bold'
+                            transition='all 0.3s ease-in-out'
                             _hover ={{
-                                textDecoration: 'none'
+                                textDecoration: 'none',
+                                color: 'brand_primary.400'
                             }}
                             onClick={onClose}>
                                 Artifacts
@@ -90,8 +101,11 @@ const NavMenu = ( { isOpen, onClose } ) => {
                         <Link
                             to='/ancient-mobs/'
                             fontSize={['xl', '2xl']}
+                            fontWeight='bold'
+                            transition='all 0.3s ease-in-out'
                             _hover ={{
-                                textDecoration: 'none'
+                                textDecoration: 'none',
+                                color: 'brand_primary.400'
                             }}
                             onClick={onClose}>
                                 Ancient Mobs
@@ -99,19 +113,23 @@ const NavMenu = ( { isOpen, onClose } ) => {
                         <Link
                             to='/levels/'
                             fontSize={['xl', '2xl']}
+                            fontWeight='bold'
+                            transition='all 0.3s ease-in-out'
                             _hover ={{
-                                textDecoration: 'none'
+                                textDecoration: 'none',
+                                color: 'brand_primary.400'
                             }}
                             onClick={onClose}>
                                 Levels
                         </Link>
                     </Stack>
-
                     <BuyMeACoffee />
                 </DrawerBody>
                 <DrawerFooter
                     pt={[8, 12, 24]}
-                    justifyContent='flex-start'></DrawerFooter>
+                    justifyContent='flex-start'>
+                    <ThemeToggleButton />
+                </DrawerFooter>
             </DrawerContent>
         </Drawer>
     )

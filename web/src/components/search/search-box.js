@@ -36,6 +36,7 @@ const SearchBox = ( props ) => {
                 <FormLabel htmlFor='search'>Search</FormLabel>
             </VisuallyHidden>
             <Input
+                ref={inputRef}
                 id='search'
                 type='search'
                 value={value}

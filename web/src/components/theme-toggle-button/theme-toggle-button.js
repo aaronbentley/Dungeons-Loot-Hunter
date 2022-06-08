@@ -11,7 +11,8 @@ const ThemeToggleButton = () => {
 
     return (
         <IconButton
-            aria-label='Navigtaion menu'
+            width='max'
+            aria-label='Toggle theme'
             icon={colorMode === 'dark' ? <SunIcon fontSize='2xl' /> : <MoonIcon fontSize='2xl' />}
             onClick={toggleColorMode}
             zIndex={1} />

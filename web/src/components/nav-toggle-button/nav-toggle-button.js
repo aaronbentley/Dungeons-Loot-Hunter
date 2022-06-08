@@ -13,7 +13,7 @@ const NavToggleButton = () => {
     return (
         <React.Fragment>
             <IconButton
-                aria-label='Navigtaion menu'
+                aria-label='Navigation menu'
                 icon={<HamburgerIcon fontSize='2xl' />}
                 onClick={onOpen}
                 zIndex={1} />
