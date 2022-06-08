@@ -29,11 +29,11 @@ const LootVariants = ( {
                         key={variationOf.id}
                         label={variationOf.title}
                         placement='top'
-                        
                         shouldWrapChildren>
                         <Link to={url}>
                             <Image
                                 imageData={variationOf.image}
+                                loading='eager'
                                 width={60}
                                 bgGradient='linear(to-tr, gray.600, green.700)'
                                 borderRadius={2}
@@ -66,11 +66,11 @@ const LootVariants = ( {
                             key={node.id}
                             label={node.title}
                             placement='top'
-                            
                             shouldWrapChildren>
                             <Link to={url}>
                                 <Image
                                     imageData={node.image}
+                                    loading='eager'
                                     width={60}
                                     bgGradient='linear(to-tr, orange.500, orange.300)'
                                     borderRadius={2}
