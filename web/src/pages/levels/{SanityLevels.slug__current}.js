@@ -219,8 +219,8 @@ const Level = ( { data = {} } ) => {
                 <Stack direction='column' spacing={12}>
                     <Stack direction='column' spacing={2}>
                         <Heading
-                            as='h1'
-                            fontSize={['4xl', '6xl']}
+                            as='h2'
+                            fontSize='4xl'
                             noOfLines={2}
                             mb={0}>
                             {title}
@@ -243,7 +243,7 @@ const Level = ( { data = {} } ) => {
                                         </Heading>
                                         {location.map( location => {
                                             return (
-                                                <Text textTransform='capitalize'>{location}</Text>
+                                                <Text textTransform='capitalize'>{location.replace( '-', ' ' )}</Text>
                                             )
                                         } )}
                                     </Stack>

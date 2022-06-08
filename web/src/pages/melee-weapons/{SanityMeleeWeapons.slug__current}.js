@@ -108,7 +108,7 @@ const MeleeWeapon = ( { data = {} } ) => {
                     <Stack direction='column' spacing={2}>
                         <Heading
                             as='h1'
-                            fontSize={['4xl', '6xl']}
+                            fontSize='4xl'
                             noOfLines={2}
                             mb={0}>
                             {title}

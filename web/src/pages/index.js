@@ -116,13 +116,6 @@ const Index = ( { data = {} } ) => {
     return (
         <Layout>
             <Seo omitSuffix={true} />
-            {/*
-            <Container maxWidth='6xl' py={12} centerContent>
-                <Stack direction='column' spacing={12}>
-                    <Search />
-                </Stack>
-            </Container>
-            */}
             <Container maxWidth='6xl' py={12}>
                 <SimpleGrid columns={[1,2]} spacing={8} my={12}>
                     <Stack direction='column' spacing={4}>
@@ -160,7 +153,7 @@ const Index = ( { data = {} } ) => {
                                                         textDecoration: 'none'
                                                     }}>
                                                     <Heading
-                                                        as='h4'
+                                                        as='h3'
                                                         fontSize={['xs', 'sm', 'md']}
                                                         noOfLines={2}
                                                         pt={2}

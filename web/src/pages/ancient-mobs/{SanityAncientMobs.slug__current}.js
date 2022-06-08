@@ -308,8 +308,8 @@ const AncientMob = ( { data = {} } ) => {
                 <Stack direction='column' spacing={12}>
                     <Stack direction='column' spacing={2}>
                         <Heading
-                            as='h1'
-                            fontSize={['4xl', '6xl']}
+                            as='h2'
+                            fontSize='4xl'
                             noOfLines={2}
                             mb={0}>
                             {title}

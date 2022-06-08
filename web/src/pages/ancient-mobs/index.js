@@ -55,8 +55,8 @@ const AncientMobs = ( { data = {} } ) => {
             <Container maxWidth='6xl' py={12}>
                 <Stack direction='column' spacing={12}>
                     <Heading
-                        as='h1'
-                        fontSize={['4xl', '6xl']}
+                        as='h2'
+                        fontSize='4xl'
                         noOfLines={2}
                         mb={0}>
                         Ancient Mobs
@@ -98,7 +98,7 @@ const AncientMobs = ( { data = {} } ) => {
                                                         textDecoration: 'none'
                                                     }}>
                                                     <Heading
-                                                        as='h4'
+                                                        as='h3'
                                                         fontSize={['xs', 'lg']}
                                                         noOfLines={2}
                                                         pt={2}
