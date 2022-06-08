@@ -29,7 +29,11 @@ const Header = () => {
                         to='/'
                         aria-label='Home'
                         _hover={{ textDecoration: 'none' }}>
-                        <Heading as='h1' size={['md', 'lg', 'xl']}>
+                        <Heading 
+                            as='h1' 
+                            textAlign='center'
+                            fontSize={['md', 'xl', '2xl', '3xl', '4xl']}
+                            maxWidth={['2xs', 'xs', 'sm', 'lg', 'xl']}>
                             {title}
                         </Heading>
                     </Link>
