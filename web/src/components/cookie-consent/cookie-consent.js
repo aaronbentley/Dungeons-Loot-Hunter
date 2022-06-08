@@ -24,8 +24,8 @@ const CookieConsent = () => {
     ] = useLocalStorage( 'cookie-consent-hidden', false )
 
     // Create cookies
-    const [ gaCookie, updateGaCookie ] = useCookie( 'gatsby-gdpr-google-analytics' )
-    const [ gtmCookie, updateGtmCookie ] = useCookie( 'gatsby-gdpr-google-tagmanager' )
+    const [ gaCookie, updateGaCookie ] = useCookie( 'mcdlt-gdpr-google-analytics' )
+    const [ gtmCookie, updateGtmCookie ] = useCookie( 'mcdlt-gdpr-google-tagmanager' )
 
     // Enable tracking services
     const EnableAnalytics = () => {
