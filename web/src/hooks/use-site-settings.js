@@ -10,6 +10,9 @@ export const useSiteSettings = () => {
                 siteSettings: sanitySiteSettings {
                     title
                     description
+                    logo {
+                        ...Image
+                    }
                     primaryBrandColor: _rawPrimaryColor(
                         resolveReferences: { maxDepth: 10 }
                     )
