@@ -165,8 +165,7 @@ const MeleeWeapon = ( { data = {} } ) => {
                                     variationOf={variationOf}
                                     uniqueVariants={uniqueVariants} />
                                 <Stats type={type} data={stats} />
-                                <BuiltInEnchantments
-                                    data={builtInEnchantments} />
+                                <BuiltInEnchantments data={builtInEnchantments} />
                                 <Runes title='Rune value' data={runes} />
                                 <BuiltInAbilities data={builtInAbilities} />
                                 <DlcItem data={dlcItem} />
