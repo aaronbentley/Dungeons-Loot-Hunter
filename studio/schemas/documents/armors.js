@@ -67,6 +67,14 @@ export default {
             }
         },
         {
+            name: 'isFeatured',
+            title: 'Is featured?',
+            description: 'Feature item on Frontpage?',
+            type: 'boolean',
+            group: 'content',
+            initialValue: false
+        },
+        {
             name: 'builtInAbilities',
             title: 'Built-in Abilities',
             type: 'array',

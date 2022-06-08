@@ -67,6 +67,14 @@ export default {
             group: 'content'
         },
         {
+            name: 'isFeatured',
+            title: 'Is featured?',
+            description: 'Feature item on Frontpage?',
+            type: 'boolean',
+            group: 'content',
+            initialValue: false
+        },
+        {
             name: 'isUnique',
             title: 'Is unique?',
             type: 'boolean',
