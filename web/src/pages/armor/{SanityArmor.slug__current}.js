@@ -23,6 +23,7 @@ import { Layout } from '../../components/layouts'
 import Locations from '../../components/locations/locations'
 import LootVariants from '../../components/loot-variants/loot-variants'
 import Runes from '../../components/runes/runes'
+import Seo from '../../components/seo/seo'
 import Traits from '../../components/traits/traits'
 import { humanReadableTypeName } from '../../utils/helpers'
 
@@ -100,6 +101,7 @@ const Armor = ( { data = {} } ) => {
 
     return (
         <Layout>
+            <Seo title={`${title} | ${humanReadableTypeName( type )}`} />
             <Container maxWidth='6xl' py={12}>
                 <Stack direction='column' spacing={12}>
                     <Stack direction='column' spacing={2}>

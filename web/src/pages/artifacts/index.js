@@ -15,6 +15,7 @@ import React from 'react'
 import Image from '../../components/image/image'
 import { Layout } from '../../components/layouts'
 import Link from '../../components/link/link'
+import Seo from '../../components/seo/seo'
 import { generateSlug, mapEdgesToNodes } from '../../utils/helpers'
 
 export const query = graphql`
@@ -73,6 +74,7 @@ const Artifacts = ( { data = {} } ) => {
 
     return (
         <Layout>
+            <Seo title='Artifacts' />
             <Container maxWidth='6xl' py={12}>
                 <Stack direction='column' spacing={12}>
                     <Heading

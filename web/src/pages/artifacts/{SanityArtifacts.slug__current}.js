@@ -20,6 +20,7 @@ import { Layout } from '../../components/layouts'
 import Locations from '../../components/locations/locations'
 import LootVariants from '../../components/loot-variants/loot-variants'
 import Runes from '../../components/runes/runes'
+import Seo from '../../components/seo/seo'
 import Traits from '../../components/traits/traits'
 import { humanReadableTypeName } from '../../utils/helpers'
 
@@ -90,6 +91,7 @@ const Artifact = ( { data = {} } ) => {
     return (
         <Layout>
             <Container maxWidth='6xl' py={12}>
+                <Seo title={`${title} | ${humanReadableTypeName( type )}`} />
                 <Stack direction='column' spacing={12}>
                     <Stack direction='column' spacing={2}>
                         <Heading as='h1' fontSize={['4xl', '6xl']} noOfLines={2} mb={0}>

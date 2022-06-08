@@ -17,12 +17,13 @@ import React from 'react'
 import Image from '../../components/image/image'
 import { Layout } from '../../components/layouts'
 import Link from '../../components/link/link'
-import { generateSlug, mapEdgesToNodes } from '../../utils/helpers'
+import Seo from '../../components/seo/seo'
+import { generateSlug, humanReadableTypeName, mapEdgesToNodes } from '../../utils/helpers'
 
 export const query = graphql`
     query LEVEL_COLLECTION ($id: String!) {
         sanityLevels(id: { eq: $id }) {
-            # type: _type
+            type: _type
             title
             image {
                 ...ImageWithPreview
@@ -178,7 +179,7 @@ export const query = graphql`
 const Level = ( { data = {} } ) => {
     const {
         sanityLevels: {
-            // type = '',
+            type = '',
             title = '',
             image = {},
             location = []
@@ -213,6 +214,7 @@ const Level = ( { data = {} } ) => {
 
     return (
         <Layout>
+            <Seo title={`${title} | ${humanReadableTypeName( type )}`} />
             <Container maxWidth='6xl' py={12}>
                 <Stack direction='column' spacing={12}>
                     <Stack direction='column' spacing={2}>

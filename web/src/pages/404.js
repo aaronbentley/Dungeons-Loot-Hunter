@@ -6,10 +6,12 @@ import React from 'react'
 import Emoji from '../components/emoji/emoji'
 import { Layout } from '../components/layouts'
 import Link from '../components/link/link'
+import Seo from '../components/seo/seo'
 
 const NotFoundPage = () => {
     return (
         <Layout>
+            <Seo title='404 Not found' />
             <Container maxWidth='6xl' py={12} centerContent>
                 <Stack direction='column' spacing={6}>
                     <Heading>This ain't it Chief</Heading>

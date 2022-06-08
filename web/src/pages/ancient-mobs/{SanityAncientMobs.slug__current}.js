@@ -19,13 +19,14 @@ import Image from '../../components/image/image'
 import { Layout } from '../../components/layouts'
 import Link from '../../components/link/link'
 import Runes from '../../components/runes/runes'
-import { generateSlug, mapEdgesToNodes } from '../../utils/helpers'
+import Seo from '../../components/seo/seo'
+import { generateSlug, humanReadableTypeName, mapEdgesToNodes } from '../../utils/helpers'
 
 export const query = graphql`
     query ANCIENT_MOB_COLLECTION($id: String!) {
         sanityAncientMobs(id: { eq: $id }) {
             id
-            # type: _type
+            type: _type
             title
             image {
                 ...ImageWithPreview
@@ -226,7 +227,7 @@ export const query = graphql`
 const AncientMob = ( { data = {} } ) => {
     const {
         sanityAncientMobs: {
-            // type = '',
+            type = '',
             title = '',
             image = {},
             runeRequirements = []
@@ -302,6 +303,7 @@ const AncientMob = ( { data = {} } ) => {
 
     return (
         <Layout>
+            <Seo title={`${title} | ${humanReadableTypeName( type )}`} />
             <Container maxWidth='6xl' py={12}>
                 <Stack direction='column' spacing={12}>
                     <Stack direction='column' spacing={2}>
