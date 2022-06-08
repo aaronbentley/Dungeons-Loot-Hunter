@@ -31,6 +31,16 @@ export default {
             validation: (Rule) => Rule.required()
         },
         {
+            name: 'logo',
+            title: 'Logo',
+            type: 'image',
+            description: 'Provide logo for your site',
+            validation: (Rule) => Rule.required(),
+            options: {
+                hotspot: true
+            }
+        },
+        {
             name: 'primaryColor',
             title: 'Primary brand color',
             type: 'color',
