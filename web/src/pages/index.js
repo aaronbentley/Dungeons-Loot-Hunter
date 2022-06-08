@@ -204,7 +204,7 @@ const Index = ( { data = {} } ) => {
                                                         textDecoration: 'none'
                                                     }}>
                                                     <Heading
-                                                        as='h4'
+                                                        as='h3'
                                                         fontSize={['xs', 'sm', 'md']}
                                                         noOfLines={2}
                                                         pt={2}
@@ -255,7 +255,7 @@ const Index = ( { data = {} } ) => {
                                                         textDecoration: 'none'
                                                     }}>
                                                     <Heading
-                                                        as='h4'
+                                                        as='h3'
                                                         fontSize={['xs', 'sm', 'md']}
                                                         noOfLines={2}
                                                         pt={2}
@@ -305,7 +305,7 @@ const Index = ( { data = {} } ) => {
                                                         textDecoration: 'none'
                                                     }}>
                                                     <Heading
-                                                        as='h4'
+                                                        as='h3'
                                                         fontSize={['xs', 'sm', 'md']}
                                                         noOfLines={2}
                                                         pt={2}
