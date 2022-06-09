@@ -7,7 +7,8 @@ import {
     LinkBox,
     LinkOverlay,
     SimpleGrid,
-    Stack
+    Stack,
+    useBreakpointValue
 } from '@chakra-ui/react'
 import { graphql } from 'gatsby'
 import React from 'react'
@@ -111,6 +112,14 @@ const Index = ( { data = {} } ) => {
     const featuredArmor = mapEdgesToNodes( allArmor )
     const featuredArtifacts = mapEdgesToNodes( allArtifacts )
 
+    // Generate dynamic image thumbnail sizing relative to viewport
+    const imageWidthSizes = useBreakpointValue( {
+        base: 220,
+        sm: 172,
+        md: 110,
+        lg: 130
+    } )
+
     return (
         <Layout>
             <Seo omitSuffix={true} />
@@ -142,7 +151,7 @@ const Index = ( { data = {} } ) => {
                                                     loading='eager'
                                                     imageData={node.image}
                                                     alt={node.title}
-                                                    width={280}
+                                                    width={imageWidthSizes}
                                                     bgGradient={
                                                         node.isUnique
                                                             ? 'linear(to-tr, orange.500, orange.300)'
@@ -202,7 +211,7 @@ const Index = ( { data = {} } ) => {
                                                     loading='eager'
                                                     imageData={node.image}
                                                     alt={node.title}
-                                                    width={280}
+                                                    width={imageWidthSizes}
                                                     bgGradient={
                                                         node.isUnique
                                                             ? 'linear(to-tr, orange.500, orange.300)'
@@ -262,7 +271,7 @@ const Index = ( { data = {} } ) => {
                                                     loading='eager'
                                                     imageData={node.image}
                                                     alt={node.title}
-                                                    width={280}
+                                                    width={imageWidthSizes}
                                                     bgGradient={
                                                         node.isUnique
                                                             ? 'linear(to-tr, orange.500, orange.300)'
@@ -322,7 +331,7 @@ const Index = ( { data = {} } ) => {
                                                     loading='eager'
                                                     imageData={node.image}
                                                     alt={node.title}
-                                                    width={280}
+                                                    width={imageWidthSizes}
                                                     bgGradient={
                                                         node.isUnique
                                                             ? 'linear(to-tr, orange.500, orange.300)'
