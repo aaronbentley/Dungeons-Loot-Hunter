@@ -10,15 +10,14 @@ import SearchButton from '../search-button/search-button'
 
 const Header = () => {
     const { title = '' } = useSiteMetadata()
-    const backgroundColor = useColorModeValue( 'white', 'gray.800' )
 
     return (
         <Flex
             as='header'
             position='sticky'
             zIndex='docked'
-            top={0}
-            backgroundColor={backgroundColor}>
+            backgroundColor={useColorModeValue( 'white', 'gray.800' )}
+            top={0}>
             <Container maxWidth='6xl'>
                 <Flex
                     alignItems='center'

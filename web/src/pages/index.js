@@ -1,7 +1,14 @@
 /**
  * MC Dungeons Loot Hunter Index
  */
-import { Container, Heading, LinkBox, LinkOverlay, SimpleGrid, Stack } from '@chakra-ui/react'
+import {
+    Container,
+    Heading,
+    LinkBox,
+    LinkOverlay,
+    SimpleGrid,
+    Stack
+} from '@chakra-ui/react'
 import { graphql } from 'gatsby'
 import React from 'react'
 import Image from '../components/image/image'
@@ -13,9 +20,7 @@ import { generateSlug, mapEdgesToNodes } from '../utils/helpers'
 export const query = graphql`
     query INDEX_PAGE {
         allMeleeWeapons: allSanityMeleeWeapons(
-            filter: { 
-                isFeatured: { eq: true } 
-            }
+            filter: { isFeatured: { eq: true } }
             limit: 4
         ) {
             edges {
@@ -34,9 +39,7 @@ export const query = graphql`
             }
         }
         allRangedWeapons: allSanityRangedWeapons(
-            filter: { 
-                isFeatured: { eq: true } 
-            }
+            filter: { isFeatured: { eq: true } }
             limit: 4
         ) {
             edges {
@@ -55,9 +58,7 @@ export const query = graphql`
             }
         }
         allArmor: allSanityArmor(
-            filter: { 
-                isFeatured: { eq: true } 
-            }
+            filter: { isFeatured: { eq: true } }
             limit: 4
         ) {
             edges {
@@ -76,9 +77,7 @@ export const query = graphql`
             }
         }
         allArtifacts: allSanityArtifacts(
-            filter: { 
-                isFeatured: { eq: true } 
-            }
+            filter: { isFeatured: { eq: true } }
             limit: 4
         ) {
             edges {
@@ -100,13 +99,12 @@ export const query = graphql`
 `
 
 const Index = ( { data = {} } ) => {
-    const { 
+    const {
         allMeleeWeapons = [],
         allRangedWeapons = [],
         allArmor = [],
         allArtifacts = []
     } = data
-    
 
     const featuredMeleeWeapons = mapEdgesToNodes( allMeleeWeapons )
     const featuredRangedWeapons = mapEdgesToNodes( allRangedWeapons )
@@ -117,14 +115,23 @@ const Index = ( { data = {} } ) => {
         <Layout>
             <Seo omitSuffix={true} />
             <Container maxWidth='6xl' py={12}>
-                <SimpleGrid columns={[1,2]} spacing={8} my={12}>
+                <SimpleGrid columns={[1, 2]} spacing={8} my={12}>
                     <Stack direction='column' spacing={4}>
-                        <Link to='/melee-weapons/'>
-                            <Heading as='h2' fontSize='xl'>Melee Weapons</Heading>
+                        <Link
+                            to='/melee-weapons/'
+                            width='max'
+                            transition='all 0.3s ease-in-out'
+                            _hover={{
+                                textDecoration: 'none',
+                                color: 'brand_primary.400'
+                            }}>
+                            <Heading as='h2' fontSize='xl'>
+                                Melee Weapons
+                            </Heading>
                         </Link>
                         {featuredMeleeWeapons && (
                             <SimpleGrid columns={[2, null, 4]} spacing={2}>
-                                {featuredMeleeWeapons.map( ( {node} ) => {
+                                {featuredMeleeWeapons.map( ( { node } ) => {
                                     return (
                                         <LinkBox>
                                             <Stack
@@ -146,16 +153,17 @@ const Index = ( { data = {} } ) => {
                                                     as={Link}
                                                     to={`/${generateSlug(
                                                         node.type
-                                                    )}/${
-                                                        node.slug
-                                                            .current
-                                                    }/`}
+                                                    )}/${node.slug.current}/`}
                                                     _hover={{
                                                         textDecoration: 'none'
                                                     }}>
                                                     <Heading
                                                         as='h3'
-                                                        fontSize={['xs', 'sm', 'md']}
+                                                        fontSize={[
+                                                            'xs',
+                                                            'sm',
+                                                            'md'
+                                                        ]}
                                                         noOfLines={2}
                                                         pt={2}
                                                         pb={4}>
@@ -165,18 +173,25 @@ const Index = ( { data = {} } ) => {
                                             </Stack>
                                         </LinkBox>
                                     )
-
                                 } )}
                             </SimpleGrid>
                         )}
                     </Stack>
                     <Stack direction='column' spacing={4}>
-                        <Link to='/ranged-weapons/'>
-                            <Heading as='h2' fontSize='xl'>Ranged Weapons</Heading>
+                        <Link
+                            to='/ranged-weapons/'
+                            transition='all 0.3s ease-in-out'
+                            _hover={{
+                                textDecoration: 'none',
+                                color: 'brand_primary.400'
+                            }}>
+                            <Heading as='h2' fontSize='xl'>
+                                Ranged Weapons
+                            </Heading>
                         </Link>
                         {featuredRangedWeapons && (
                             <SimpleGrid columns={[2, null, 4]} spacing={2}>
-                                {featuredRangedWeapons.map( ( {node} ) => {
+                                {featuredRangedWeapons.map( ( { node } ) => {
                                     return (
                                         <LinkBox>
                                             <Stack
@@ -198,16 +213,17 @@ const Index = ( { data = {} } ) => {
                                                     as={Link}
                                                     to={`/${generateSlug(
                                                         node.type
-                                                    )}/${
-                                                        node.slug
-                                                            .current
-                                                    }/`}
+                                                    )}/${node.slug.current}/`}
                                                     _hover={{
                                                         textDecoration: 'none'
                                                     }}>
                                                     <Heading
                                                         as='h3'
-                                                        fontSize={['xs', 'sm', 'md']}
+                                                        fontSize={[
+                                                            'xs',
+                                                            'sm',
+                                                            'md'
+                                                        ]}
                                                         noOfLines={2}
                                                         pt={2}
                                                         pb={4}>
@@ -217,18 +233,25 @@ const Index = ( { data = {} } ) => {
                                             </Stack>
                                         </LinkBox>
                                     )
-
                                 } )}
                             </SimpleGrid>
                         )}
                     </Stack>
                     <Stack direction='column' spacing={4}>
-                        <Link to='/armor/'>
-                            <Heading as='h2' fontSize='xl'>Armor</Heading>
+                        <Link
+                            to='/armor/'
+                            transition='all 0.3s ease-in-out'
+                            _hover={{
+                                textDecoration: 'none',
+                                color: 'brand_primary.400'
+                            }}>
+                            <Heading as='h2' fontSize='xl'>
+                                Armor
+                            </Heading>
                         </Link>
                         {featuredArmor && (
                             <SimpleGrid columns={[2, null, 4]} spacing={2}>
-                                {featuredArmor.map( ( {node} ) => {
+                                {featuredArmor.map( ( { node } ) => {
                                     return (
                                         <LinkBox>
                                             <Stack
@@ -250,16 +273,17 @@ const Index = ( { data = {} } ) => {
                                                     as={Link}
                                                     to={`/${generateSlug(
                                                         node.type
-                                                    )}/${
-                                                        node.slug
-                                                            .current
-                                                    }/`}
+                                                    )}/${node.slug.current}/`}
                                                     _hover={{
                                                         textDecoration: 'none'
                                                     }}>
                                                     <Heading
                                                         as='h3'
-                                                        fontSize={['xs', 'sm', 'md']}
+                                                        fontSize={[
+                                                            'xs',
+                                                            'sm',
+                                                            'md'
+                                                        ]}
                                                         noOfLines={2}
                                                         pt={2}
                                                         pb={4}>
@@ -274,12 +298,20 @@ const Index = ( { data = {} } ) => {
                         )}
                     </Stack>
                     <Stack direction='column' spacing={4}>
-                        <Link to='/artifacts/'>
-                            <Heading as='h2' fontSize='xl'>Artifacts</Heading>
+                        <Link
+                            to='/artifacts/'
+                            transition='all 0.3s ease-in-out'
+                            _hover={{
+                                textDecoration: 'none',
+                                color: 'brand_primary.400'
+                            }}>
+                            <Heading as='h2' fontSize='xl'>
+                                Artifacts
+                            </Heading>
                         </Link>
                         {featuredArtifacts && (
                             <SimpleGrid columns={[2, null, 4]} spacing={2}>
-                                {featuredArtifacts.map( ( {node} ) => {
+                                {featuredArtifacts.map( ( { node } ) => {
                                     return (
                                         <LinkBox>
                                             <Stack
@@ -301,16 +333,17 @@ const Index = ( { data = {} } ) => {
                                                     as={Link}
                                                     to={`/${generateSlug(
                                                         node.type
-                                                    )}/${
-                                                        node.slug
-                                                            .current
-                                                    }/`}
+                                                    )}/${node.slug.current}/`}
                                                     _hover={{
                                                         textDecoration: 'none'
                                                     }}>
                                                     <Heading
                                                         as='h3'
-                                                        fontSize={['xs', 'sm', 'md']}
+                                                        fontSize={[
+                                                            'xs',
+                                                            'sm',
+                                                            'md'
+                                                        ]}
                                                         noOfLines={2}
                                                         pt={2}
                                                         pb={4}>
