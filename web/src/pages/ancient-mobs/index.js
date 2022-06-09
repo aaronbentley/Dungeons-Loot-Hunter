@@ -8,7 +8,8 @@ import {
     Heading,
     LinkBox,
     LinkOverlay,
-    Stack
+    Stack,
+    useBreakpointValue
 } from '@chakra-ui/react'
 import { graphql } from 'gatsby'
 import React from 'react'
@@ -49,6 +50,14 @@ const AncientMobs = ( { data = {} } ) => {
         ...mapEdgesToNodes( allSanityAncientMobs )
     ]
 
+    // Generate dynamic image thumbnail sizing relative to viewport
+    const imageWidthSizes = useBreakpointValue( {
+        base: 133,
+        sm: 228,
+        md: 304,
+        lg: 205
+    } )
+
     return (
         <Layout>
             <Seo title='Ancient Mobs' />
@@ -64,8 +73,8 @@ const AncientMobs = ( { data = {} } ) => {
                     <Grid
                         templateColumns={[
                             'repeat(3, 1fr)',
-                            'repeat(2, 1fr)',
-                            'repeat(3, 1fr)',
+                            null,
+                            null,
                             'repeat(5, 1fr)'
                         ]}
                         gap={6}>
@@ -81,7 +90,7 @@ const AncientMobs = ( { data = {} } ) => {
                                                 loading={( index <= 30 ? 'eager' : 'lazy' )}
                                                 imageData={node.image}
                                                 alt={node.title}
-                                                width={280}
+                                                width={imageWidthSizes}
                                                 config={{
                                                     fit: 'crop'
                                                 }}
