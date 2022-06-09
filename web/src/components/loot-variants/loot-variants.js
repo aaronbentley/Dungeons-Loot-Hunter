@@ -30,9 +30,10 @@ const LootVariants = ( {
                         label={variationOf.title}
                         placement='top'
                         shouldWrapChildren>
-                        <Link to={url}>
+                        <Link to={url} title={variationOf.title}>
                             <Image
                                 imageData={variationOf.image}
+                                alt={variationOf.title}
                                 loading='eager'
                                 width={60}
                                 bgGradient='linear(to-tr, gray.600, green.700)'
@@ -67,9 +68,10 @@ const LootVariants = ( {
                             label={node.title}
                             placement='top'
                             shouldWrapChildren>
-                            <Link to={url}>
+                            <Link to={url} title={node.title}>
                                 <Image
                                     imageData={node.image}
+                                    alt={node.title}
                                     loading='eager'
                                     width={60}
                                     bgGradient='linear(to-tr, orange.500, orange.300)'

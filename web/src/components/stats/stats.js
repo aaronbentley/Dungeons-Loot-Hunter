@@ -24,6 +24,7 @@ const Stats = ( { type = '', data = {}, ...rest } ) => {
                 </GridItem>
                 <GridItem colSpan={4}>
                     <Progress
+                        aria-label='Power'
                         colorScheme='pink'
                         max={MAX_VALUE}
                         value={data.power}
@@ -34,6 +35,7 @@ const Stats = ( { type = '', data = {}, ...rest } ) => {
                 </GridItem>
                 <GridItem colSpan={4}>
                     <Progress
+                        aria-label='Speed'
                         colorScheme='pink'
                         max={MAX_VALUE}
                         value={data.speed}
@@ -46,6 +48,7 @@ const Stats = ( { type = '', data = {}, ...rest } ) => {
                         </GridItem>
                         <GridItem colSpan={4}>
                             <Progress
+                                aria-label='Area'
                                 colorScheme='pink'
                                 max={MAX_VALUE}
                                 value={data.area}
@@ -60,6 +63,7 @@ const Stats = ( { type = '', data = {}, ...rest } ) => {
                         </GridItem>
                         <GridItem colSpan={4}>
                             <Progress
+                                aria-label='Ammop'
                                 colorScheme='pink'
                                 max={MAX_VALUE}
                                 value={data.ammo}
