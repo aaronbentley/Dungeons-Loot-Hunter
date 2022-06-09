@@ -281,24 +281,24 @@ const AncientMob = ( { data = {} } ) => {
 
     // Generate dynamic image thumbnail sizing relative to viewport
     const imageWidthSizes = useBreakpointValue( {
-        base: 382,
+        base: 447,
         sm: 384,
         md: 460,
         lg: 540
     } )
 
     const gildedlootDropsimageWidthSizes = useBreakpointValue( {
-        base: 122,
-        sm: 168,
+        base: 144,
+        sm: 170,
         md: 148,
         lg: 84
     } )
 
     const requiredRunesimageWidthSizes = useBreakpointValue( {
-        base: 142,
-        sm: 360,
-        md: 310,
-        lg: 175
+        base: 144,
+        sm: 170,
+        md: 148,
+        lg: 133
     } )
 
     return (
@@ -363,9 +363,10 @@ const AncientMob = ( { data = {} } ) => {
                                                                 }
                                                                 p={2}
                                                                 bgGradient={
-                                                                    node.isUnique
-                                                                        ? 'linear(to-tr, orange.500, orange.300)'
-                                                                        : 'linear(to-tr, gray.600, green.700)'
+                                                                    // node.isUnique
+                                                                    //     ? 'linear(to-tr, orange.500, orange.300)'
+                                                                    //     : 'linear(to-tr, gray.600, green.700)'
+                                                                    'linear(to-tr, yellow.500, yellow.300)'
                                                                 }
                                                                 borderRadius={2} />
                                                         </Link>
@@ -382,7 +383,9 @@ const AncientMob = ( { data = {} } ) => {
                         <Heading as='h3' fontSize='xl'>
                             Items with required runes
                         </Heading>
-                        <SimpleGrid columns={[3, 4, 3, 8]} spacing={2}>
+                        <SimpleGrid 
+                            columns={[3, 4, 6, 8]} 
+                            spacing={2}>
                             {itemsWithRunes.map( ( { node } ) => (
                                 <Tooltip
                                     key={node.id}
