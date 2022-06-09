@@ -1,7 +1,7 @@
 /**
  * MC Dungeons Loot Hunter Header
  */
-import { Container, Flex, Heading, useColorModeValue } from '@chakra-ui/react'
+import { Center, Container, Flex, Heading, Stack, Tag, useColorModeValue } from '@chakra-ui/react'
 import React from 'react'
 import { useSiteMetadata } from '../../hooks/use-site-metadata'
 import Link from '../link/link'
@@ -24,18 +24,23 @@ const Header = () => {
                     justifyContent='space-between'
                     paddingY={[3, 6]}>
                     <NavToggleButton />
-                    <Link
-                        to='/'
-                        aria-label='Home'
-                        _hover={{ textDecoration: 'none' }}>
-                        <Heading 
-                            as='h1' 
-                            textAlign='center'
-                            fontSize={['md', 'xl', '2xl', '3xl', '4xl']}
-                            maxWidth={['2xs', 'xs', 'sm', 'lg', 'xl']}>
-                            {title}
-                        </Heading>
-                    </Link>
+                    <Stack direction='column' spacing={2}>
+                        <Link
+                            to='/'
+                            aria-label='Home'
+                            _hover={{ textDecoration: 'none' }}>
+                            <Heading 
+                                as='h1' 
+                                textAlign='center'
+                                fontSize={['md', 'xl', '2xl', '3xl', '4xl']}
+                                maxWidth={['2xs', 'xs', 'sm', 'lg', 'xl']}>
+                                {title}
+                            </Heading>
+                        </Link>
+                        <Center>
+                            <Tag size='sm' variant='subtle' width='max' colorScheme='brand_primary'>Beta</Tag>
+                        </Center>
+                    </Stack>
                     <SearchButton />
                 </Flex>
             </Container>
