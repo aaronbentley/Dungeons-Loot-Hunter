@@ -12,7 +12,8 @@ import {
     Heading,
     LinkBox,
     LinkOverlay,
-    Stack
+    Stack,
+    useBreakpointValue
 } from '@chakra-ui/react'
 import React from 'react'
 import { useHits, useSearchBox } from 'react-instantsearch-hooks-web'
@@ -22,6 +23,14 @@ import Link from '../link/link'
 const Hits = ( props ) => {
     const { hits } = useHits( props )
     const { query } = useSearchBox()
+
+    // Generate dynamic image thumbnail sizing relative to viewport
+    const imageWidthSizes = useBreakpointValue( {
+        base: 133,
+        sm: 228,
+        md: 304,
+        lg: 205
+    } )
 
     // // If no query, bail early
     if ( !query ) {
@@ -42,8 +51,8 @@ const Hits = ( props ) => {
             <Grid
                 templateColumns={[
                     'repeat(3, 1fr)',
-                    'repeat(2, 1fr)',
-                    'repeat(3, 1fr)',
+                    null,
+                    null,
                     'repeat(5, 1fr)'
                 ]}
                 gap={6}>
@@ -57,7 +66,7 @@ const Hits = ( props ) => {
                                             padding={2}
                                             imageData={hit.imageData}
                                             alt={hit.title}
-                                            width={280}
+                                            width={imageWidthSizes}
                                             bgGradient={
                                                 hit.unique
                                                     ? 'linear(to-tr, orange.500, orange.300)'
