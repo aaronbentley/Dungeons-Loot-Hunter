@@ -247,15 +247,8 @@ export default {
             eventItem: 'eventItem'
         },
         prepare(selection) {
-            const {
-                title,
-                image,
-                isUnique,
-                stats,
-                runes,
-                dlcItem,
-                eventItem
-            } = selection
+            const { title, image, isUnique, stats, runes, dlcItem, eventItem } =
+                selection
 
             // Create subtitle string
             let subtitle = ''

@@ -7,10 +7,7 @@ import Emoji from 'a11y-react-emoji'
 import React from 'react'
 import IFramePreview from '../schemas/previews/iframe'
 
-/**
- * Create icon emojis for menu items
- */
-const SettingsIcon = () => <Emoji style={{ fontSize: '1.8em' }} symbol='⚙️' />
+const Icon = () => <Emoji style={{ fontSize: '1.8em' }} symbol='⚙️' />
 
 /**
  * Add web preview to schema types
@@ -134,7 +131,7 @@ export default () =>
             S.documentListItem()
                 .title('Settings')
                 .schemaType('siteSettings')
-                .icon(SettingsIcon)
+                .icon(Icon)
                 .child(
                     S.document()
                         .schemaType('siteSettings')

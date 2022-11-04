@@ -2,11 +2,16 @@
  * Site Settings - Singleton pattern
  *
  */
+import Emoji from 'a11y-react-emoji'
+import React from 'react'
+
+const Icon = () => <Emoji style={{ fontSize: '1.8em' }} symbol='⚙️' />
 
 export default {
     title: 'Site Settings',
     name: 'siteSettings',
     type: 'document',
+    icon: Icon,
     __experimental_actions: [
         'update',
         // 'create',
@@ -35,7 +40,7 @@ export default {
             title: 'Logo',
             type: 'image',
             description: 'Provide logo for your site',
-            validation: (Rule) => Rule.required(),
+            // validation: (Rule) => Rule.required(),
             options: {
                 hotspot: true
             }

@@ -25,7 +25,8 @@ export default {
                     'Chills and Thrills',
                     'Anniversary Event',
                     'Spookier Fall',
-                    'Festival of Frost'
+                    'Festival of Frost',
+                    'Spookiest Fall'
                 ]
             }
         }
