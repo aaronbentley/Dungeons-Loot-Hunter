@@ -8,9 +8,9 @@
         "gatsby"
     ],
     "scripts": {
-        "dev": "ponysay --pony pinkie \"It's dev time\" && ENABLE_GATSBY_REFRESH_ENDPOINT=true && node node_modules/.bin/gatsby develop -H 0.0.0.0 -o",
-        "build": "ponysay --pony rarity \"It's build time\" && gatsby build",
-        "build-serve": "ponysay --pony fluttershy \"It's build-serve time\" && gatsby build && gatsby serve -H 0.0.0.0 -o",
+        "dev": "gatsby develop",
+        "build": "gatsby build",
+        "previw": "gatsby build && gatsby serve",
         "clean": "gatsby clean"
     },
     "dependencies": {
