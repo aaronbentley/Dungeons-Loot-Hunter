@@ -100,6 +100,7 @@ module.exports = {
                 apiKey: process.env.ALGOLIA_ADMIN_KEY,
                 queries: require( './src/search/algolia-queries' )
             }
-        }
+        },
+        'gatsby-plugin-netlify'
     ]
 }
