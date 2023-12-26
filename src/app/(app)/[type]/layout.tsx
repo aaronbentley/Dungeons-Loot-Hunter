@@ -10,7 +10,11 @@ export const generateStaticParams = async () =>
     }))
 
 const TypeLayout = ({ children }: { children: React.ReactNode }) => {
-    return <section>{children}</section>
+    return (
+        <>
+            <div className='container'>{children}</div>
+        </>
+    )
 }
 
 export default TypeLayout

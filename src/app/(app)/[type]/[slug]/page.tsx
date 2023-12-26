@@ -30,7 +30,7 @@ const ItemPage = async ({
         typeName: camelize(params.type),
         slug: params.slug
     })
-    console.log('🦄 ~ file: page.[slug] tsx ~ item:', item)
+    // console.log('🦄 ~ file: page.[slug] tsx ~ item:', item)
 
     return <h1>{item?.title}</h1>
 }

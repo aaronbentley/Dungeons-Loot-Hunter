@@ -1125,6 +1125,14 @@
     "@radix-ui/react-use-callback-ref" "1.0.1"
     "@radix-ui/react-use-layout-effect" "1.0.1"
 
+"@radix-ui/react-separator@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-separator/-/react-separator-1.0.3.tgz#be5a931a543d5726336b112f465f58585c04c8aa"
+  integrity sha512-itYmTy/kokS21aiV5+Z56MZB54KrhPgn6eHDKkFeOLR34HMN2s8PaN47qZZAGnvupcjxHaFZnW4pQEh0BvvVuw==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-primitive" "1.0.3"
+
 "@radix-ui/react-slot@1.0.2", "@radix-ui/react-slot@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-slot/-/react-slot-1.0.2.tgz#a9ff4423eade67f501ffb32ec22064bc9d3099ab"
@@ -5578,6 +5586,11 @@ sanity-diff-patch@^3.0.2:
   integrity sha512-Vsx6IPuMepvfaX2/jOFuUrJaloHvSmXavS9SL3iJhhIPAu20VfumCtdH5kpKlXKL1pBgCAZhWHXfLC4Fyg7qFg==
   dependencies:
     "@sanity/diff-match-patch" "^3.0.0"
+
+sanity-image@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/sanity-image/-/sanity-image-0.1.7.tgz#14b3bf4fde02bae175efae23ac0016afece6b39f"
+  integrity sha512-4HRRWGIJPHvJBpezG22gHRVdTWG4R+Xk4Pj0W1utftgpYvBn6O0dekGEP/3B6rPWhGSKcZrWDbu9zNaAl0lBPQ==
 
 sanity@^3.23.4:
   version "3.23.4"

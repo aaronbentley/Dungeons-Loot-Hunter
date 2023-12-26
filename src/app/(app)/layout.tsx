@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description: process.env.APP_DESCRIPTION!
 }
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+const AppRootLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <html
             lang='en'
@@ -46,7 +46,6 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                         </div>
                         <Footer />
                     </div>
-                    {children}
                     <TailwindIndicator />
                 </ThemeProvider>
                 <Analytics />
@@ -55,4 +54,4 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     )
 }
 
-export default RootLayout
+export default AppRootLayout
