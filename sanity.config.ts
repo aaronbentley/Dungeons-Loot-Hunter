@@ -9,6 +9,7 @@ import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { structure } from './sanity/config/structure'
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
+import { presentationTool } from 'sanity/presentation'
 import { apiVersion, dataset, projectId } from './sanity/env'
 import { schema } from './sanity/schema'
 
@@ -27,6 +28,9 @@ export default defineConfig({
             structure
         }),
         visionTool({ defaultApiVersion: apiVersion }),
+        presentationTool({
+            previewUrl: process.env.APP_URL!
+        }),
         colorInput()
     ],
     schema: {
