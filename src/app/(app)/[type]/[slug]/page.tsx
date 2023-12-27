@@ -346,34 +346,41 @@ const ItemPage = async ({
                                         Locations
                                     </Typography>
                                     <div className='grid grid-cols-4 items-center gap-4'>
-                                        {item.obtainableOn.levels.map(
-                                            (level, index) => (
-                                                <div key={index}>
-                                                    <Tooltip>
-                                                        <TooltipTrigger>
-                                                            <Link
-                                                                href={`/levels/${level.slug.current}`}>
-                                                                <Image
-                                                                    key={index}
-                                                                    image={
-                                                                        level.image
-                                                                    }
-                                                                    alt={
-                                                                        level.title
-                                                                    }
-                                                                    width={84}
-                                                                    height={84}
-                                                                    mode='cover'
-                                                                />
-                                                            </Link>
-                                                        </TooltipTrigger>
-                                                        <TooltipContent>
-                                                            {level.title}
-                                                        </TooltipContent>
-                                                    </Tooltip>
-                                                </div>
-                                            )
-                                        )}
+                                        {item.obtainableOn.levels &&
+                                            item.obtainableOn.levels.map(
+                                                (level, index) => (
+                                                    <div key={index}>
+                                                        <Tooltip>
+                                                            <TooltipTrigger>
+                                                                <Link
+                                                                    href={`/levels/${level.slug.current}`}>
+                                                                    <Image
+                                                                        key={
+                                                                            index
+                                                                        }
+                                                                        image={
+                                                                            level.image
+                                                                        }
+                                                                        alt={
+                                                                            level.title
+                                                                        }
+                                                                        width={
+                                                                            84
+                                                                        }
+                                                                        height={
+                                                                            84
+                                                                        }
+                                                                        mode='cover'
+                                                                    />
+                                                                </Link>
+                                                            </TooltipTrigger>
+                                                            <TooltipContent>
+                                                                {level.title}
+                                                            </TooltipContent>
+                                                        </Tooltip>
+                                                    </div>
+                                                )
+                                            )}
                                     </div>
                                 </div>
                             )}
