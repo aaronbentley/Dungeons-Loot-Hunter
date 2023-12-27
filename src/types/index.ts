@@ -26,8 +26,12 @@ export type MeleeWeapon = SanityDocument & {
     runes: Rune[]
     dlcItem: DlcItem
     eventItem: EventItem
-    obtainableOn: Level[]
-    droppedBy: AncientMob[]
+    obtainableOn: {
+        levels: Level[]
+    }
+    droppedBy: {
+        ancientMobs: AncientMob[]
+    }
 }
 
 export type RangedWeapon = SanityDocument & {
@@ -36,7 +40,7 @@ export type RangedWeapon = SanityDocument & {
     slug: Slug
     image: SanityImageAssetDocument
     isFeatured: boolean
-    stats: RangeWeaponStats
+    stats: RangedWeaponStats
     builtInAbilities: Enchantment[]
     isUnique: boolean
     variationOf: RangedWeapon
@@ -44,8 +48,12 @@ export type RangedWeapon = SanityDocument & {
     runes: Rune[]
     dlcItem: DlcItem
     eventItem: EventItem
-    obtainableOn: Level[]
-    droppedBy: AncientMob[]
+    obtainableOn: {
+        levels: Level[]
+    }
+    droppedBy: {
+        ancientMobs: AncientMob[]
+    }
 }
 
 export type Armor = SanityDocument & {
@@ -62,8 +70,12 @@ export type Armor = SanityDocument & {
     runes: Rune[]
     dlcItem: DlcItem
     eventItem: EventItem
-    obtainableOn: Level[]
-    droppedBy: AncientMob[]
+    obtainableOn: {
+        levels: Level[]
+    }
+    droppedBy: {
+        ancientMobs: AncientMob[]
+    }
 }
 
 export type Artifact = SanityDocument & {
@@ -79,8 +91,12 @@ export type Artifact = SanityDocument & {
     traits: ArtifactTraits
     dlcItem: DlcItem
     eventItem: EventItem
-    obtainableOn: Level[]
-    droppedBy: AncientMob[]
+    obtainableOn: {
+        levels: Level[]
+    }
+    droppedBy: {
+        ancientMobs: AncientMob[]
+    }
 }
 
 type Enchantment = SanityDocument & {
@@ -173,7 +189,7 @@ type MeleeWeaponStats = SanityObject & {
     area: number
 }
 
-type RangeWeaponStats = SanityObject & {
+type RangedWeaponStats = SanityObject & {
     _type: 'rangeWeaponStats'
     power: number
     speed: number

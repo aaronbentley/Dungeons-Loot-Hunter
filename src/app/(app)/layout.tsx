@@ -3,6 +3,7 @@ import Footer from '@/components/footer'
 import Header from '@/components/header'
 import TailwindIndicator from '@/components/tailwind-indicator'
 import ThemeProvider from '@/components/theme-provider'
+import { TooltipProvider } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
 import { Analytics } from '@vercel/analytics/react'
 import { GeistSans } from 'geist/font/sans'
@@ -39,13 +40,15 @@ const AppRootLayout = ({ children }: { children: React.ReactNode }) => {
                     defaultTheme='system'
                     enableSystem
                     disableTransitionOnChange>
-                    <div className='relative flex min-h-screen flex-col'>
-                        <Header />
-                        <div className='flex-1 flex min-h-max flex-col items-center justify-start gap-y-4 md:gap-y-12'>
-                            <Suspense>{children}</Suspense>
+                    <TooltipProvider>
+                        <div className='relative flex min-h-screen flex-col'>
+                            <Header />
+                            <div className='flex-1 flex min-h-max flex-col items-center justify-start gap-y-4 md:gap-y-12'>
+                                <Suspense>{children}</Suspense>
+                            </div>
+                            <Footer />
                         </div>
-                        <Footer />
-                    </div>
+                    </TooltipProvider>
                     <TailwindIndicator />
                 </ThemeProvider>
                 <Analytics />

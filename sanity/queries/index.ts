@@ -1,5 +1,5 @@
 import { groq } from 'next-sanity'
-import { imageAssetReference } from './fragments'
+import { imageAssetReference, slug } from './fragments'
 
 /**
  * Get type items by typeName
@@ -20,6 +20,46 @@ export const itemQuery = groq`
         slug.current == $slug 
     ][0] {
         ...,
-        ${imageAssetReference}
+        ${imageAssetReference},
+        builtInEnchantments[]-> {
+            title,
+            ${imageAssetReference}
+        },
+        runes[]-> {
+            title,
+            ${imageAssetReference}
+        },
+        "obtainableOn" : select(
+            isUnique == true => {
+                "levels": variationOf-> obtainableOn[]-> {
+                    title,
+                    ${imageAssetReference},
+                    ${slug}
+                }
+            },
+            isUnique == false => {
+                "levels": obtainableOn[]-> {
+                    title,
+                    ${imageAssetReference},
+                    ${slug}
+                }
+            }
+        ),
+        "droppedBy" : select(
+            isUnique == true => {
+                "ancientMobs": variationOf-> droppedBy[]-> {
+                    title,
+                    ${imageAssetReference},
+                    ${slug}
+                }
+            },
+            isUnique == false => {
+                "ancientMobs": droppedBy[]-> {
+                    title,
+                    ${imageAssetReference},
+                    ${slug}
+                }
+            }
+        )
     }
 `

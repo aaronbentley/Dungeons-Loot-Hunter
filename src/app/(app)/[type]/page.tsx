@@ -39,62 +39,56 @@ const TypePage = async ({
 
             <div className='grid md:grid-flow-dense grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 xl:gap-8 mt-2 px-4'>
                 {typeItems &&
-                    typeItems.map((item) => {
-                        // console.log('🦄 ~ file: page.tsx:33 ~ item:', item)
-
-                        return (
-                            <Link
-                                key={item._id}
-                                href={item?.slug?.current}>
-                                <Card
-                                    className={cn([
-                                        'group',
-                                        'flex',
-                                        'flex-col',
-                                        'justify-start',
-                                        'h-full',
-                                        [
-                                            'meleeWeapons',
-                                            'rangedWeapons',
-                                            'armor',
-                                            'artifacts'
-                                        ].includes(item._type) && [
-                                            'bg-emerald-200',
-                                            'dark:bg-emerald-900',
-                                            'border-emerald-500',
-                                            'dark:border-emerald-500'
-                                        ],
-                                        'isUnique' in item &&
-                                            item.isUnique && [
-                                                'bg-orange-200',
-                                                'dark:bg-orange-900',
-                                                'border-orange-500',
-                                                'dark:border-orange-500'
-                                            ]
-                                    ])}>
-                                    <CardContent className='pt-4 flex justify-center'>
-                                        {item?.image && (
-                                            <Image
-                                                image={item?.image}
-                                                alt={item?.title}
-                                                src={item?.image}
-                                                width={400}
-                                                height={300}
-                                                mode='contain'
-                                                // className='w-full h-48 object-cover'
-                                                className='transition-all duration-200 group-hover:scale-105'
-                                            />
-                                        )}
-                                    </CardContent>
-                                    <CardHeader>
-                                        <CardTitle className='font-medium text-center sm:text-start'>
-                                            {item?.title}
-                                        </CardTitle>
-                                    </CardHeader>
-                                </Card>
-                            </Link>
-                        )
-                    })}
+                    typeItems.map((item, index) => (
+                        <Link
+                            key={item._id}
+                            href={item?.slug?.current}>
+                            <Card
+                                className={cn([
+                                    'flex',
+                                    'flex-col',
+                                    'justify-start',
+                                    'h-full',
+                                    [
+                                        'meleeWeapons',
+                                        'rangedWeapons',
+                                        'armor',
+                                        'artifacts'
+                                    ].includes(item._type) && [
+                                        'bg-emerald-200',
+                                        'dark:bg-emerald-900',
+                                        'border-emerald-200',
+                                        'dark:border-emerald-900'
+                                    ],
+                                    'isUnique' in item &&
+                                        item.isUnique && [
+                                            'bg-orange-200',
+                                            'dark:bg-orange-900',
+                                            'border-orange-200',
+                                            'dark:border-orange-900'
+                                        ]
+                                ])}>
+                                <CardContent className='pt-4 flex justify-center'>
+                                    {item?.image && (
+                                        <Image
+                                            image={item.image}
+                                            alt={item.title}
+                                            src={item.image}
+                                            priority={index < 15}
+                                            width={400}
+                                            height={300}
+                                            mode='contain'
+                                        />
+                                    )}
+                                </CardContent>
+                                <CardHeader>
+                                    <CardTitle className='font-medium text-center sm:text-start'>
+                                        {item?.title}
+                                    </CardTitle>
+                                </CardHeader>
+                            </Card>
+                        </Link>
+                    ))}
             </div>
         </>
     )

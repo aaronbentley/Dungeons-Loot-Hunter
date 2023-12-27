@@ -10,3 +10,9 @@ export const imageAssetReference = `
         }
     }
 `
+
+export const slug = `
+    slug {
+        current
+    }
+`
