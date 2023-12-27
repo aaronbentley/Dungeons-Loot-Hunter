@@ -104,6 +104,7 @@ const ItemPage = async ({
                         image={item.image}
                         alt={item.title}
                         src={item.image}
+                        priority={true}
                         width={400}
                         mode='cover'
                         className={cn([
