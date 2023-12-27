@@ -252,34 +252,43 @@ const ItemPage = async ({
                                         Ancient Mobs
                                     </Typography>
                                     <div className='grid grid-cols-4 items-center gap-4'>
-                                        {item.droppedBy.ancientMobs.map(
-                                            (ancientMob, index) => (
-                                                <div key={index}>
-                                                    <Tooltip>
-                                                        <TooltipTrigger>
-                                                            <Link
-                                                                href={`/ancient-mobs/${ancientMob.slug.current}`}>
-                                                                <Image
-                                                                    key={index}
-                                                                    image={
-                                                                        ancientMob.image
-                                                                    }
-                                                                    alt={
-                                                                        ancientMob.title
-                                                                    }
-                                                                    width={84}
-                                                                    height={84}
-                                                                    mode='cover'
-                                                                />
-                                                            </Link>
-                                                        </TooltipTrigger>
-                                                        <TooltipContent>
-                                                            {ancientMob.title}
-                                                        </TooltipContent>
-                                                    </Tooltip>
-                                                </div>
-                                            )
-                                        )}
+                                        {item.droppedBy.ancientMobs &&
+                                            item.droppedBy.ancientMobs.map(
+                                                (ancientMob, index) => (
+                                                    <div key={index}>
+                                                        <Tooltip>
+                                                            <TooltipTrigger>
+                                                                <Link
+                                                                    href={`/ancient-mobs/${ancientMob.slug.current}`}>
+                                                                    <Image
+                                                                        key={
+                                                                            index
+                                                                        }
+                                                                        image={
+                                                                            ancientMob.image
+                                                                        }
+                                                                        alt={
+                                                                            ancientMob.title
+                                                                        }
+                                                                        width={
+                                                                            84
+                                                                        }
+                                                                        height={
+                                                                            84
+                                                                        }
+                                                                        mode='cover'
+                                                                    />
+                                                                </Link>
+                                                            </TooltipTrigger>
+                                                            <TooltipContent>
+                                                                {
+                                                                    ancientMob.title
+                                                                }
+                                                            </TooltipContent>
+                                                        </Tooltip>
+                                                    </div>
+                                                )
+                                            )}
                                     </div>
                                 </div>
                             )}
