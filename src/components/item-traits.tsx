@@ -2,7 +2,6 @@ import { Armor, Artifact } from '@/types'
 import { Typography } from './typography'
 
 const ItemTraits = ({ item }: { item: Armor | Artifact }) => {
-    console.log('🦄 ~ file: item-traits.tsx:5 ~ ItemTraits ~ item:', item)
     if (!item.traits) {
         return null
     }

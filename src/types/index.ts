@@ -133,7 +133,7 @@ export type AncientMob = SanityDocument & {
     image: SanityImageAssetDocument
     enchantments: Enchantment[]
     runeRequirements: Rune[]
-    lootDrops: LootDrops
+    lootDrops: { items: (MeleeWeapon | RangedWeapon | Armor)[] }[]
 }
 
 /**
@@ -168,10 +168,10 @@ type EventItem = SanityObject & {
         | 'Spooky Fall'
 }
 
-type LootDrops = SanityObject & {
-    _type: 'lootDrops'
-    lootDrops: (MeleeWeapon | RangedWeapon | Armor | Artifact)[]
-}
+// type LootDrops = SanityObject & {
+//     _type: 'lootDrops'
+//     lootDrops: (MeleeWeapon | RangedWeapon | Armor | Artifact)[]
+// }
 
 type MeleeWeaponStats = SanityObject & {
     _type: 'meleeWeaponStats'

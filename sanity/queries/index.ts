@@ -38,7 +38,7 @@ export const itemQuery = groq`
                     ${slug}
                 }
             },
-            isUnique == false => {
+            isUnique != true => {
                 "levels": obtainableOn[]-> {
                     title,
                     ${imageAssetReference},
@@ -54,7 +54,7 @@ export const itemQuery = groq`
                     ${slug}
                 }
             },
-            isUnique == false => {
+            isUnique != true => {
                 "ancientMobs": droppedBy[]-> {
                     title,
                     ${imageAssetReference},
@@ -72,11 +72,54 @@ export const itemQuery = groq`
         ),
         "uniqueVariants" : select(
             isUnique == true => null,
-            isUnique == false => *[_type == $typeName && references(^._id)] {
+            isUnique != true => *[_type == $typeName && references(^._id)] {
                 title,
                 ${imageAssetReference},
                 ${slug}
             }
         ),
+        "runeRequirements" : select(
+            _type != "ancientMobs" => null,
+            _type == "ancientMobs" => runeRequirements[]-> {
+                ...,
+                title,
+                ${imageAssetReference}
+            }
+        ),
+        "lootDrops" : select(
+            _type != "ancientMobs" => null,
+            _type == "ancientMobs" => *[references(^._id)] {
+                "items": *[references(^._id)] {
+                    _type,
+                    title,
+                    ${imageAssetReference},
+                    ${slug}
+                }
+            }
+        ),
+        "enchantments" : select(
+            _type != "ancientMobs" => null,
+            _type == "ancientMobs" => enchantments[]-> {
+                title,
+                ${imageAssetReference}
+            }
+        ),
+        "mobRuneItems" : select(
+            _type != "ancientMobs" => null,
+            _type == "ancientMobs" => *[references(^._id)] {
+                "items": *[references(^._id)] {
+                    _type,
+                    title,
+                    ${imageAssetReference},
+                    ${slug}
+                }
+            }
+        ),
     }
 `
+
+// export const mobRunesItemsQuery = groq`
+//     *[] {
+//         ...
+//     }
+// `

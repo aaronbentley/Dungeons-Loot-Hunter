@@ -7,7 +7,10 @@ import ItemRuneValue from '@/components/item-rune-value'
 import ItemStats from '@/components/item-stats'
 import ItemTraits from '@/components/item-traits'
 import ItemVariants from '@/components/item-variants'
+import MobEnchantments from '@/components/mob-enchantments'
+import LootDrops from '@/components/mob-loot-drops'
 import { PageHeader, PageHeaderHeading } from '@/components/page-header'
+import RuneRequirements from '@/components/rune-requirements'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
 import {
@@ -143,7 +146,6 @@ const ItemPage = async ({
                             className={cn([
                                 'w-full',
                                 'object-cover',
-                                'p-8',
                                 'rounded-lg',
                                 [
                                     'meleeWeapons',
@@ -151,6 +153,7 @@ const ItemPage = async ({
                                     'armor',
                                     'artifacts'
                                 ].includes(item._type) && [
+                                    'p-8',
                                     'bg-emerald-200',
                                     'dark:bg-emerald-900',
                                     'border-emerald-200',
@@ -158,6 +161,7 @@ const ItemPage = async ({
                                 ],
                                 'isUnique' in item &&
                                     item.isUnique && [
+                                        'p-8',
                                         'bg-orange-200',
                                         'dark:bg-orange-900',
                                         'border-orange-200',
@@ -170,25 +174,53 @@ const ItemPage = async ({
                     {'isUnique' in item && <ItemVariants item={item} />}
                 </div>
 
-                <div className='md:col-span-2'>
-                    <div className='grid grid-row-subgrid md:grid-cols-2 gap-12'>
-                        {'stats' in item && <ItemStats item={item} />}
+                {[
+                    'meleeWeapons',
+                    'rangedWeapons',
+                    'armor',
+                    'artifacts'
+                ].includes(item._type) && (
+                    <div className='md:col-span-2'>
+                        <div className='grid grid-row-subgrid md:grid-cols-2 gap-12'>
+                            {'stats' in item && <ItemStats item={item} />}
 
-                        {'traits' in item && <ItemTraits item={item} />}
+                            {'traits' in item && <ItemTraits item={item} />}
 
-                        {'droppedBy' in item && <ItemDroppedBy item={item} />}
+                            {'droppedBy' in item && (
+                                <ItemDroppedBy item={item} />
+                            )}
 
-                        {'builtInEnchantments' in item && (
-                            <ItemEnchantments item={item} />
-                        )}
+                            {'builtInEnchantments' in item && (
+                                <ItemEnchantments item={item} />
+                            )}
 
-                        {'obtainableOn' in item && (
-                            <ItemObtainableOn item={item} />
-                        )}
+                            {'runes' in item && <ItemRuneValue item={item} />}
 
-                        {'runes' in item && <ItemRuneValue item={item} />}
+                            {'obtainableOn' in item && (
+                                <ItemObtainableOn item={item} />
+                            )}
+                        </div>
                     </div>
-                </div>
+                )}
+
+                {'ancientMobs' === item._type && (
+                    <div className='md:col-span-2'>
+                        <div className='grid grid-row-subgrid md:grid-cols-2 gap-12'>
+                            {'lootDrops' in item && (
+                                <LootDrops ancientMob={item} />
+                            )}
+                            {'runeRequirements' in item && (
+                                <RuneRequirements ancientMob={item} />
+                            )}
+                            {'enchantments' in item && (
+                                <MobEnchantments ancientMob={item} />
+                            )}
+                            {/* 'runeRequirements' in item && (
+                                <MobRuneItems ancientMob={item} />
+                            ) */}
+                        </div>
+                    </div>
+                )}
             </div>
         </>
     )
