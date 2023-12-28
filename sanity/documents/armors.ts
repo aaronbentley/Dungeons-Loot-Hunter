@@ -253,23 +253,23 @@ export const armors = defineType({
             let subtitle = ''
 
             if (traits === undefined || Object.keys(traits).length === 0) {
-                subtitle += '📊'
+                subtitle += '📊 '
             }
 
             if (runes === undefined || runes.length === 0) {
-                subtitle += '🔮'
+                subtitle += '🔮 '
             }
 
             if (isUnique !== undefined && isUnique) {
-                subtitle += '🟠'
+                subtitle += '🟠 '
             }
 
             if (dlcItem !== undefined && dlcItem?.isDlcItem) {
-                subtitle += '🔵'
+                subtitle += '🔵 '
             }
 
             if (eventItem !== undefined && eventItem?.isEventItem) {
-                subtitle += '🟣'
+                subtitle += '🟣 '
             }
 
             return {

@@ -21,6 +21,7 @@ export const itemQuery = groq`
     ][0] {
         ...,
         ${imageAssetReference},
+        variationOf->,
         builtInEnchantments[]-> {
             title,
             ${imageAssetReference}
@@ -60,6 +61,22 @@ export const itemQuery = groq`
                     ${slug}
                 }
             }
-        )
+        ),
+        "variationOf" : select(
+            isUnique == true => variationOf-> {
+                title,
+                ${imageAssetReference},
+                ${slug}
+            },
+            isUnique == false => null
+        ),
+        "uniqueVariants" : select(
+            isUnique == true => null,
+            isUnique == false => *[_type == $typeName && references(^._id)] {
+                title,
+                ${imageAssetReference},
+                ${slug}
+            }
+        ),
     }
 `

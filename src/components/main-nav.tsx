@@ -16,7 +16,7 @@ const MainNav = () => {
     const pathname = usePathname()
 
     return (
-        <div className='hidden md:flex'>
+        <div className='hidden xl:flex'>
             <NavigationMenu>
                 <NavigationMenuList>
                     {links.map((link, index) => (

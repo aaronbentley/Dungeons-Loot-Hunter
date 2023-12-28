@@ -23,7 +23,7 @@ const MobileNav = () => {
                 <Button
                     size='icon'
                     variant='ghost'
-                    className='md:hidden'>
+                    className='xl:hidden'>
                     <Menu className='h-[1.2rem] w-[1.2rem]' />
                     <span className='sr-only'>Toggle Menu</span>
                 </Button>

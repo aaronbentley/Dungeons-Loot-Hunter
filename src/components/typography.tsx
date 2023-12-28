@@ -13,7 +13,7 @@ import { cn } from '@/lib/utils'
 const headingBaseClasses = [
     'text-zinc-900',
     'dark:text-zinc-100',
-    'font-medium',
+    'font-bold',
     'tracking-tight',
     'lg:tracking-[-0.035em]'
 ]

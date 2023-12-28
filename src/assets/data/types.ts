@@ -15,3 +15,12 @@ export const typesMap = {
     ancientMobs: 'Ancient Mobs',
     levels: 'Levels'
 }
+
+export const pathsMap = {
+    meleeWeapons: 'melee-weapons',
+    rangedWeapons: 'ranged-weapons',
+    armor: 'armor',
+    artifacts: 'artifacts',
+    ancientMobs: 'ancient-mobs',
+    levels: 'levels'
+}

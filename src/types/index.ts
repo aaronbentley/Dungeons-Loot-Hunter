@@ -21,7 +21,8 @@ export type MeleeWeapon = SanityDocument & {
     stats: MeleeWeaponStats
     builtInAbilities: Enchantment[]
     isUnique: boolean
-    variationOf: MeleeWeapon
+    variationOf: MeleeWeapon | null
+    uniqueVariants: MeleeWeapon[]
     builtInEnchantments: Enchantment[]
     runes: Rune[]
     dlcItem: DlcItem
@@ -43,7 +44,8 @@ export type RangedWeapon = SanityDocument & {
     stats: RangedWeaponStats
     builtInAbilities: Enchantment[]
     isUnique: boolean
-    variationOf: RangedWeapon
+    variationOf: RangedWeapon | null
+    uniqueVariants: RangedWeapon[]
     builtInEnchantments: Enchantment[]
     runes: Rune[]
     dlcItem: DlcItem
@@ -64,9 +66,10 @@ export type Armor = SanityDocument & {
     isFeatured: boolean
     builtInAbilities: Enchantment[]
     isUnique: boolean
-    variationOf: Armor
+    variationOf: Armor | null
+    uniqueVariants: Armor[]
     builtInEnchantments: Enchantment[]
-    traits: ArmorTraits
+    traits: string[]
     runes: Rune[]
     dlcItem: DlcItem
     eventItem: EventItem
@@ -85,17 +88,15 @@ export type Artifact = SanityDocument & {
     image: SanityImageAssetDocument
     isFeatured: boolean
     isUnique: boolean
-    variationOf: Artifact
+    variationOf: Artifact | null
+    uniqueVariants: Artifact[]
     requiresSouls: boolean
     runes: Rune[]
-    traits: ArtifactTraits
+    traits: string[]
     dlcItem: DlcItem
     eventItem: EventItem
     obtainableOn: {
         levels: Level[]
-    }
-    droppedBy: {
-        ancientMobs: AncientMob[]
     }
 }
 
@@ -141,16 +142,6 @@ export type AncientMob = SanityDocument & {
 
 type SanityObject = {
     _type: ObjectField
-}
-
-type ArmorTraits = SanityObject & {
-    _type: 'armorTraits'
-    traits: string[]
-}
-
-type ArtifactTraits = SanityObject & {
-    _type: 'artifactTraits'
-    traits: string[]
 }
 
 type DlcItem = SanityObject & {

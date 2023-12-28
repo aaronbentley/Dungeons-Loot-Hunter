@@ -262,34 +262,34 @@ export const meleeWeapons = defineType({
             let subtitle = ''
 
             if (stats?._type !== 'meleeWeaponStats') {
-                subtitle += '⚠️'
+                subtitle += '⚠️ '
             }
 
             if (stats === undefined || Object.keys(stats).length === 0) {
-                subtitle += '📊'
+                subtitle += '📊 '
             }
 
             if (runes === undefined || runes.length === 0) {
-                subtitle += '🔮'
+                subtitle += '🔮 '
             }
 
             if (isUnique !== undefined && isUnique) {
-                subtitle += '🟠'
+                subtitle += '🟠 '
             }
 
             if (dlcItem !== undefined && dlcItem?.isDlcItem) {
-                subtitle += '🔵'
+                subtitle += '🔵 '
             }
 
             if (eventItem !== undefined && eventItem?.isEventItem) {
-                subtitle += '🟣'
+                subtitle += '🟣 '
             }
 
             if (stats !== undefined || Object.keys(stats).length !== 0) {
                 const { area, power, speed } = stats
 
                 if (area === 1 && power === 1 && speed === 1) {
-                    subtitle = '🛑' + subtitle
+                    subtitle = '🛑 ' + subtitle
                 }
             }
 

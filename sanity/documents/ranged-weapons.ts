@@ -248,34 +248,34 @@ export const rangedWeapons = defineType({
             let subtitle = ''
 
             if (stats._type !== 'rangedWeaponStats') {
-                subtitle += '⚠️'
+                subtitle += '⚠️ '
             }
 
             if (stats === undefined || Object.keys(stats).length === 0) {
-                subtitle += '📊'
+                subtitle += '📊 '
             }
 
             if (runes === undefined || runes.length === 0) {
-                subtitle += '🔮'
+                subtitle += '🔮 '
             }
 
             if (isUnique !== undefined && isUnique) {
-                subtitle += '🟠'
+                subtitle += '🟠 '
             }
 
             if (dlcItem !== undefined && dlcItem?.isDlcItem) {
-                subtitle += '🔵'
+                subtitle += '🔵 '
             }
 
             if (eventItem !== undefined && eventItem?.isEventItem) {
-                subtitle += '🟣'
+                subtitle += '🟣 '
             }
 
             if (stats !== undefined || Object.keys(stats).length !== 0) {
                 const { ammo, power, speed } = stats
 
                 if (ammo === 1 && power === 1 && speed === 1) {
-                    subtitle = '🛑' + subtitle
+                    subtitle = '🛑 ' + subtitle
                 }
             }
 

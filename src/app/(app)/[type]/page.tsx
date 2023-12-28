@@ -14,7 +14,22 @@ import {
 import { client } from '@sanity/lib/client'
 import { typeItemsQuery } from '@sanity/queries'
 import camelize from 'camelize'
+import { Metadata } from 'next'
 import Link from 'next/link'
+
+export const generateMetadata = async ({
+    params
+}: {
+    params: { type: string }
+}): Promise<Metadata> => {
+    const { type } = params
+    const typeName = camelize(type)
+    const typeTitle = typesMap[typeName as keyof typeof typesMap] as string
+
+    return {
+        title: typeTitle
+    }
+}
 
 const TypePage = async ({
     params
