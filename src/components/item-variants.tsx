@@ -46,6 +46,7 @@ const ItemVariants = ({
                                             className={cn([
                                                 'p-3',
                                                 'rounded-lg',
+                                                'aspect-square',
                                                 'bg-emerald-200',
                                                 'dark:bg-emerald-900',
                                                 'border-emerald-200',
@@ -92,6 +93,7 @@ const ItemVariants = ({
                                             className={cn([
                                                 'p-3',
                                                 'rounded-lg',
+                                                'aspect-square',
                                                 'bg-orange-200',
                                                 'dark:bg-orange-900',
                                                 'border-orange-200',

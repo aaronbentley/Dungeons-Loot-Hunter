@@ -35,7 +35,7 @@ const ItemRuneValue = ({
                                     alt={rune.title}
                                     width={48}
                                     mode='cover'
-                                    className='rounded-lg p-1'
+                                    className='rounded-lg p-1 aspect-square'
                                 />
                             </TooltipTrigger>
                             <TooltipContent>{rune.title}</TooltipContent>

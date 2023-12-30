@@ -7,8 +7,10 @@ import ItemRuneValue from '@/components/item-rune-value'
 import ItemStats from '@/components/item-stats'
 import ItemTraits from '@/components/item-traits'
 import ItemVariants from '@/components/item-variants'
+import LevelLootDrops from '@/components/level-loot-drops'
 import MobEnchantments from '@/components/mob-enchantments'
-import LootDrops from '@/components/mob-loot-drops'
+import MobLootDrops from '@/components/mob-loot-drops'
+import MobRuneItems from '@/components/mob-rune-items'
 import { PageHeader, PageHeaderHeading } from '@/components/page-header'
 import RuneRequirements from '@/components/rune-requirements'
 import { Badge } from '@/components/ui/badge'
@@ -81,8 +83,6 @@ const ItemPage = async ({
      */
     if (!item) notFound()
 
-    // console.log('🦄 ~ file: [slug] page.tsx ~ item:', item)
-
     return (
         <>
             <PageHeader className='gap-6'>
@@ -131,9 +131,27 @@ const ItemPage = async ({
                                 )}
                         </>
                     )}
+
+                    {'levels' === item._type && (
+                        <>
+                            {item?.location?.[0] && (
+                                <Badge className='text-neutral-500 dark:text-neutral-500 bg-neutral-100 dark:bg-neutral-900 border-neutral-100 dark:border-neutral-900 capitalize'>
+                                    {item.location[0].replace('-', ' ')}
+                                </Badge>
+                            )}
+
+                            {item.isDlc && (
+                                <Badge
+                                    variant='secondary'
+                                    className='text-blue-500 dark:text-blue-500 bg-blue-50 dark:bg-blue-950 border-blue-50 dark:border-blue-950'>
+                                    {item.dlcTitle} DLC
+                                </Badge>
+                            )}
+                        </>
+                    )}
                 </div>
             </PageHeader>
-            <div className='px-4 grid md:grid-flow-dense grid-cols-1 md:grid-cols-3 gap-x-0 gap-4 md:gap-x-6 xl:gap-x-16'>
+            <div className='px-4 grid md:grid-flow-dense grid-cols-1 md:grid-cols-3 gap-x-0 gap-4 md:gap-x-6 xl:gap-x-16 relative'>
                 <div className='col-span-1'>
                     {item.image && (
                         <Image
@@ -142,8 +160,12 @@ const ItemPage = async ({
                             src={item.image}
                             priority={true}
                             width={400}
+                            height={400}
                             mode='cover'
                             className={cn([
+                                'sticky',
+                                'top-24',
+                                'aspect-square',
                                 'w-full',
                                 'object-cover',
                                 'rounded-lg',
@@ -207,7 +229,7 @@ const ItemPage = async ({
                     <div className='md:col-span-2'>
                         <div className='grid grid-row-subgrid md:grid-cols-2 gap-12'>
                             {'lootDrops' in item && (
-                                <LootDrops ancientMob={item} />
+                                <MobLootDrops ancientMob={item} />
                             )}
                             {'runeRequirements' in item && (
                                 <RuneRequirements ancientMob={item} />
@@ -215,9 +237,17 @@ const ItemPage = async ({
                             {'enchantments' in item && (
                                 <MobEnchantments ancientMob={item} />
                             )}
-                            {/* 'runeRequirements' in item && (
+                            {'runeRequirements' in item && (
                                 <MobRuneItems ancientMob={item} />
-                            ) */}
+                            )}
+                        </div>
+                    </div>
+                )}
+
+                {'levels' === item._type && (
+                    <div className='md:col-span-2'>
+                        <div className='grid grid-row-subgrid md:grid-cols-2 gap-12'>
+                            <LevelLootDrops level={item} />
                         </div>
                     </div>
                 )}

@@ -74,5 +74,27 @@ export const levels = defineType({
                 ]
             }
         })
-    ]
+    ],
+    preview: {
+        select: {
+            title: 'title',
+            image: 'image',
+            isDlc: 'isDlc'
+        },
+        prepare(selection) {
+            const { title = '', image = null, isDlc = false } = selection
+            selection
+            let subtitle = ''
+
+            if (isDlc) {
+                subtitle += '🔵 '
+            }
+
+            return {
+                title: title,
+                media: image,
+                subtitle: subtitle
+            }
+        }
+    }
 })

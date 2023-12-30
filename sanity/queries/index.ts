@@ -118,8 +118,79 @@ export const itemQuery = groq`
     }
 `
 
-// export const mobRunesItemsQuery = groq`
-//     *[] {
-//         ...
-//     }
-// `
+/**
+ * Get items that feature specific runes
+ */
+export const mobRunesItemsQuery = groq`
+    *[
+        (
+            _type == 'meleeWeapons' ||
+            _type == 'rangedWeapons' ||
+            _type == 'armor' || 
+            _type == 'artifacts'
+        ) && 
+        references($runes)
+    ] {
+        _id,
+        _type,
+        title,
+        isUnique,
+        runes[]-> {
+            ...,
+            ${imageAssetReference}
+        },
+        ${imageAssetReference},
+        ${slug}
+    } | order(isUnique desc, title asc)
+`
+
+export const levelLootDropsQuery = groq`
+    *[
+        (
+            _type == 'meleeWeapons' ||
+            _type == 'rangedWeapons' ||
+            _type == 'armor' || 
+            _type == 'artifacts'
+        ) && 
+        references($level)
+     ] {
+        _id,
+        _type,
+        title,
+        isUnique,
+        ${imageAssetReference},
+        ${slug},
+        "uniques": *[references(^._id)] {
+            _id,
+            _type,
+            title,
+            isUnique,
+            ${imageAssetReference},
+            ${slug}
+        }
+} 
+| order(isUnique desc, title asc)
+`
+
+/**
+ * Sitemap paths query
+ */
+export const sitemapPathsQuery = groq`
+    *[
+        (
+            _type == 'meleeWeapons' ||
+            _type == 'rangedWeapons' ||
+            _type == 'armor' ||
+            _type == 'artifacts' ||
+            _type == 'ancientMobs' ||
+            _type == 'levels'
+        ) && 
+        defined(slug.current)
+    ] {
+        _type,
+        slug {
+            current
+        },
+        _updatedAt
+    }
+`

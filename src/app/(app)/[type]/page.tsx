@@ -91,8 +91,9 @@ const TypePage = async ({
                                             src={item.image}
                                             priority={index < 15}
                                             width={400}
-                                            height={300}
-                                            mode='contain'
+                                            height={400}
+                                            mode='cover'
+                                            className='aspect-square object-cover rounded-lg'
                                         />
                                     )}
                                 </CardContent>

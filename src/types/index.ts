@@ -113,7 +113,7 @@ export type Level = SanityDocument & {
     title: string
     slug: Slug
     image: SanityImageAssetDocument
-    location: ('mainland' | 'island-realm' | 'other-dimmensions')[]
+    location: 'mainland' | 'island-realm' | 'other-dimmensions'[]
     isDlc: DlcItem
     dlcTitle: string
 }
@@ -167,11 +167,6 @@ type EventItem = SanityObject & {
         | 'Spookiest Fall'
         | 'Spooky Fall'
 }
-
-// type LootDrops = SanityObject & {
-//     _type: 'lootDrops'
-//     lootDrops: (MeleeWeapon | RangedWeapon | Armor | Artifact)[]
-// }
 
 type MeleeWeaponStats = SanityObject & {
     _type: 'meleeWeaponStats'

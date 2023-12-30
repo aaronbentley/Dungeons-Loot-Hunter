@@ -25,7 +25,7 @@ const ItemStats = ({ item }: { item: MeleeWeapon | RangedWeapon }) => (
                         parseInt(process.env.ITEM_STATS_MAX_VALUE!)) *
                     100
                 }
-                max={parseInt(process.env.ITEM_STATS_MAX_VALUE!)}
+                // max={parseInt(process.env.ITEM_STATS_MAX_VALUE!)}
             />
         </div>
         <div className='grid grid-cols-5 items-center'>
@@ -42,7 +42,7 @@ const ItemStats = ({ item }: { item: MeleeWeapon | RangedWeapon }) => (
                         parseInt(process.env.ITEM_STATS_MAX_VALUE!)) *
                     100
                 }
-                max={parseInt(process.env.ITEM_STATS_MAX_VALUE!)}
+                // max={parseInt(process.env.ITEM_STATS_MAX_VALUE!)}
             />
         </div>
         <div className='grid grid-cols-5 items-center'>
@@ -61,7 +61,7 @@ const ItemStats = ({ item }: { item: MeleeWeapon | RangedWeapon }) => (
                                 parseInt(process.env.ITEM_STATS_MAX_VALUE!)) *
                             100
                         }
-                        max={parseInt(process.env.ITEM_STATS_MAX_VALUE!)}
+                        // max={parseInt(process.env.ITEM_STATS_MAX_VALUE!)}
                     />
                 </>
             )}
@@ -80,7 +80,7 @@ const ItemStats = ({ item }: { item: MeleeWeapon | RangedWeapon }) => (
                                 parseInt(process.env.ITEM_STATS_MAX_VALUE!)) *
                             100
                         }
-                        max={parseInt(process.env.ITEM_STATS_MAX_VALUE!)}
+                        // max={parseInt(process.env.ITEM_STATS_MAX_VALUE!)}
                     />
                 </>
             )}

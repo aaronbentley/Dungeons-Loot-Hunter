@@ -6,7 +6,7 @@ import Image from './image'
 import { Typography } from './typography'
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip'
 
-const LootDrops = ({ ancientMob }: { ancientMob: AncientMob }) => {
+const MobLootDrops = ({ ancientMob }: { ancientMob: AncientMob }) => {
     if (!ancientMob.lootDrops) {
         return null
     }
@@ -26,39 +26,38 @@ const LootDrops = ({ ancientMob }: { ancientMob: AncientMob }) => {
             <div className='grid grid-cols-4 sm:grid-cols-6 items-center gap-2'>
                 {ancientMob.lootDrops.map((lootDrop: LootDrop) => {
                     return lootDrop.items.map(
-                        (item: MeleeWeapon | RangedWeapon | Armor) => {
-                            return (
-                                <Link
-                                    key={item._id}
-                                    title={`View ${item.title}`}
-                                    href={`/${pathsMap[item._type]}/${
-                                        item?.slug?.current
-                                    }/`}>
-                                    <Tooltip>
-                                        <TooltipTrigger>
-                                            <Image
-                                                image={item.image}
-                                                alt={item.title}
-                                                width={96}
-                                                mode='cover'
-                                                className={cn([
-                                                    'p-1',
-                                                    'sm:p-3',
-                                                    'rounded-lg',
-                                                    'bg-yellow-400',
-                                                    'dark:bg-yellow-600',
-                                                    'border-yellow-400',
-                                                    'dark:border-yellow-600'
-                                                ])}
-                                            />
-                                        </TooltipTrigger>
-                                        <TooltipContent>
-                                            {item.title}
-                                        </TooltipContent>
-                                    </Tooltip>
-                                </Link>
-                            )
-                        }
+                        (item: MeleeWeapon | RangedWeapon | Armor) => (
+                            <Link
+                                key={item._id}
+                                title={`View ${item.title}`}
+                                href={`/${pathsMap[item._type]}/${
+                                    item?.slug?.current
+                                }/`}>
+                                <Tooltip>
+                                    <TooltipTrigger>
+                                        <Image
+                                            image={item.image}
+                                            alt={item.title}
+                                            width={120}
+                                            height={120}
+                                            mode='cover'
+                                            className={cn([
+                                                'p-1',
+                                                'sm:p-3',
+                                                'rounded-lg',
+                                                'bg-yellow-400',
+                                                'dark:bg-yellow-600',
+                                                'border-yellow-400',
+                                                'dark:border-yellow-600'
+                                            ])}
+                                        />
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        {item.title}
+                                    </TooltipContent>
+                                </Tooltip>
+                            </Link>
+                        )
                     )
                 })}
             </div>
@@ -66,4 +65,4 @@ const LootDrops = ({ ancientMob }: { ancientMob: AncientMob }) => {
     )
 }
 
-export default LootDrops
+export default MobLootDrops

@@ -40,7 +40,7 @@ const ItemObtainableOn = ({
                                             width={84}
                                             height={84}
                                             mode='cover'
-                                            className='rounded-lg'
+                                            className='rounded-lg aspect-square'
                                         />
                                     </Link>
                                 </TooltipTrigger>
