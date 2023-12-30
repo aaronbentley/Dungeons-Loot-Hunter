@@ -1,3 +1,4 @@
+import { pathsMap } from '@/assets/data/types'
 import { client } from '@sanity/lib/client'
 import { sitemapPathsQuery } from '@sanity/queries'
 import { MetadataRoute } from 'next'
@@ -11,9 +12,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
         '/artifacts/',
         '/ancient-mobs/',
         '/levels/'
-    ]
-
-    const pathsMap = paths.map((path) => ({
+    ].map((path) => ({
         url: new URL(path, process.env.APP_URL!).href,
         lastModified: new Date().toISOString()
     }))
@@ -28,15 +27,20 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
         }[]
     >(sitemapPathsQuery)
 
-    const contentPathsMap = contentPathsQuery.map((path) => ({
-        url: new URL(
-            `/${path._type}/${path.slug.current}/`,
-            process.env.APP_URL!
-        ).href,
-        lastModified: path._updatedAt
-    }))
+    const contentPathsMap = contentPathsQuery.map((contentPath) => {
+        const typePrefix = pathsMap[
+            contentPath._type as keyof typeof pathsMap
+        ] as string
+        return {
+            url: new URL(
+                `/${typePrefix}/${contentPath.slug.current}/`,
+                process.env.APP_URL!
+            ).href,
+            lastModified: contentPath._updatedAt
+        }
+    })
 
-    return [...pathsMap, ...contentPathsMap]
+    return [...paths, ...contentPathsMap]
 }
 
 export default sitemap
