@@ -19,13 +19,17 @@ const ItemStats = ({ item }: { item: MeleeWeapon | RangedWeapon }) => (
             </Typography>
             <Progress
                 aria-label='Power stat'
+                data-value={
+                    (item.stats.power /
+                        parseInt(process.env.ITEM_STATS_MAX_VALUE!)) *
+                    100
+                }
                 className='col-span-4'
                 value={
                     (item.stats.power /
                         parseInt(process.env.ITEM_STATS_MAX_VALUE!)) *
                     100
                 }
-                // max={parseInt(process.env.ITEM_STATS_MAX_VALUE!)}
             />
         </div>
         <div className='grid grid-cols-5 items-center'>
@@ -36,13 +40,17 @@ const ItemStats = ({ item }: { item: MeleeWeapon | RangedWeapon }) => (
             </Typography>
             <Progress
                 aria-label='Speed stat'
+                data-value={
+                    (item.stats.speed /
+                        parseInt(process.env.ITEM_STATS_MAX_VALUE!)) *
+                    100
+                }
                 className='col-span-4'
                 value={
                     (item.stats.speed /
                         parseInt(process.env.ITEM_STATS_MAX_VALUE!)) *
                     100
                 }
-                // max={parseInt(process.env.ITEM_STATS_MAX_VALUE!)}
             />
         </div>
         <div className='grid grid-cols-5 items-center'>
@@ -56,12 +64,16 @@ const ItemStats = ({ item }: { item: MeleeWeapon | RangedWeapon }) => (
                     <Progress
                         aria-label='Area stat'
                         className='col-span-4'
+                        data-value={
+                            (item.stats.area /
+                                parseInt(process.env.ITEM_STATS_MAX_VALUE!)) *
+                            100
+                        }
                         value={
                             (item.stats.area /
                                 parseInt(process.env.ITEM_STATS_MAX_VALUE!)) *
                             100
                         }
-                        // max={parseInt(process.env.ITEM_STATS_MAX_VALUE!)}
                     />
                 </>
             )}
@@ -75,12 +87,16 @@ const ItemStats = ({ item }: { item: MeleeWeapon | RangedWeapon }) => (
                     <Progress
                         aria-label='Ammo stat'
                         className='col-span-4'
+                        data-value={
+                            (item.stats.ammo /
+                                parseInt(process.env.ITEM_STATS_MAX_VALUE!)) *
+                            100
+                        }
                         value={
                             (item.stats.ammo /
                                 parseInt(process.env.ITEM_STATS_MAX_VALUE!)) *
                             100
                         }
-                        // max={parseInt(process.env.ITEM_STATS_MAX_VALUE!)}
                     />
                 </>
             )}
