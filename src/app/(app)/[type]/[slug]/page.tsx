@@ -163,8 +163,8 @@ const ItemPage = async ({
                             height={400}
                             mode='cover'
                             className={cn([
-                                'sticky',
-                                'top-24',
+                                'md:sticky',
+                                'md:top-24',
                                 'aspect-square',
                                 'w-full',
                                 'object-cover',

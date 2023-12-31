@@ -1,10 +1,9 @@
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
-// import MainNav from './main-nav'
-// import MobileNav from './mobile-nav'
 import MainNav from './main-nav'
 import MobileNav from './mobile-nav'
 import ModeToggle from './mode-toggle'
+import Search from './search'
 import { buttonVariants } from './ui/button'
 
 const Header = () => (
@@ -15,6 +14,20 @@ const Header = () => (
                     <Link
                         href='/'
                         className={cn(buttonVariants({ variant: 'ghost' }), [
+                            'flex',
+                            'xl:hidden',
+                            'font-sans',
+                            'font-medium',
+                            'text-xl',
+                            'tracking-tight'
+                        ])}>
+                        {process.env.APP_SHORT_TITLE!}
+                    </Link>
+                    <Link
+                        href='/'
+                        className={cn(buttonVariants({ variant: 'ghost' }), [
+                            'hidden',
+                            'xl:flex',
                             'md:mr-6',
                             'font-sans',
                             'font-medium',
@@ -27,6 +40,7 @@ const Header = () => (
                     <MobileNav />
                 </div>
                 <div className='flex items-center md:space-x-4'>
+                    <Search />
                     <ModeToggle />
                 </div>
             </div>

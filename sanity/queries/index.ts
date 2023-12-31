@@ -5,7 +5,10 @@ import { imageAssetReference, slug } from './fragments'
  * Get type items by typeName
  */
 export const typeItemsQuery = groq`
-    *[_type == $typeName] | order(isUnique desc, title asc) {
+    *[
+        _type == $typeName &&
+        defined(slug.current)
+    ] | order(isUnique desc, title asc) {
         ...,
         ${imageAssetReference}
     }
@@ -17,6 +20,7 @@ export const typeItemsQuery = groq`
 export const itemQuery = groq`
     *[
         _type == $typeName && 
+        defined(slug.current) &&
         slug.current == $slug 
     ][0] {
         ...,
@@ -129,6 +133,7 @@ export const mobRunesItemsQuery = groq`
             _type == 'armor' || 
             _type == 'artifacts'
         ) && 
+        defined(slug.current) &&
         references($runes)
     ] {
         _id,
@@ -152,6 +157,7 @@ export const levelLootDropsQuery = groq`
             _type == 'armor' || 
             _type == 'artifacts'
         ) && 
+        defined(slug.current) &&
         references($level)
      ] {
         _id,

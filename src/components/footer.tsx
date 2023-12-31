@@ -11,12 +11,7 @@ const Footer = () => (
                 <a
                     href='https://www.buymeacoffee.com/aaronbentley'
                     target='_blank'
-                    className={cn(buttonVariants({ variant: 'default' }), [
-                        'transition-all',
-                        'duration-200',
-                        'hover:bg-indigo-500',
-                        'hover:dark:bg-indigo-500'
-                    ])}>
+                    className={cn(buttonVariants({ variant: 'default' }))}>
                     <Coffee className='w-4 h-4 me-2 transition-all duration-200 group-hover:scale-125' />
                     Buy me a coffee
                 </a>
