@@ -166,7 +166,6 @@ const ItemPage = async ({
                                 'md:sticky',
                                 'md:top-24',
                                 'aspect-square',
-                                'w-full',
                                 'object-cover',
                                 'rounded-lg',
                                 [
