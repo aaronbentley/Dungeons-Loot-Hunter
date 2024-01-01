@@ -64,6 +64,11 @@ export const POST = async (request: NextRequest) => {
                 }
             },
             (document: SanityDocumentStub) => {
+                console.log(
+                    '🦄 ~ file: route.ts:68 ~ POST ~ document:',
+                    document
+                )
+
                 const typePrefix = pathsMap[
                     document._type as keyof typeof pathsMap
                 ] as string
