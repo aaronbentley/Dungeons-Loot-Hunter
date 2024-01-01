@@ -23,7 +23,7 @@ const Home = async () => (
                     href={link.href}
                     key={index}
                     className='group'>
-                    <Card className='duration-200 transition-colors group-hover:border-indigo-500'>
+                    <Card className='duration-200 transition-colors group-hover:border-indigo-500 group-hover:bg-indigo-50 group-hover:dark:bg-indigo-950'>
                         <CardHeader>
                             <CardTitle className='font-medium text-xl md:text-2xl duration-200 transition-colors group-hover:text-indigo-500'>
                                 {link.label}
