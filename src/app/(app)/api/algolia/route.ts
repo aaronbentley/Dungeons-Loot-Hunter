@@ -189,9 +189,12 @@ export const POST = async (request: NextRequest) => {
 
         return sanityAlgolia
             .webhookSync(client, data)
-            .then(() =>
-                NextResponse.json({ message: 'success' }, { status: 200 })
-            )
+            .then(() => {
+                return NextResponse.json(
+                    { message: 'success' },
+                    { status: 200 }
+                )
+            })
             .catch((error) => {
                 throw new Error(error)
             })
