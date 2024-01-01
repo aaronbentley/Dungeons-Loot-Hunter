@@ -7,6 +7,9 @@ import { SanityDocumentStub } from 'next-sanity'
 import { NextRequest, NextResponse } from 'next/server'
 import indexer from 'sanity-algolia'
 
+/**
+ * Seed the Algolia index with data from Sanity.
+ */
 // export const GET = async (request: NextRequest) => {
 //     try {
 //         const algolia = algoliasearch(
@@ -108,6 +111,9 @@ import indexer from 'sanity-algolia'
 //     }
 // }
 
+/**
+ * Sync the Algolia index with data from Sanity.
+ */
 export const POST = async (request: NextRequest) => {
     const algolia = algoliasearch(
         process.env.ALGOLIA_APP_ID!,
