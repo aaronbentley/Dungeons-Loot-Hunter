@@ -107,14 +107,14 @@ const MobileLink = ({
                 onOpenChange?.(false)
             }}
             className={cn(
-                navigationMenuTriggerStyle(),
                 buttonVariants({ variant: 'ghost' }),
-                // active && [
-                //     'text-zinc-50',
-                //     'dark:text-zinc-950',
-                //     'bg-indigo-500',
-                //     'dark:bg-indigo-500'
-                // ],
+                navigationMenuTriggerStyle(),
+                active && [
+                    'text-zinc-50',
+                    'dark:text-zinc-950',
+                    'bg-indigo-500',
+                    'dark:bg-indigo-500'
+                ],
                 className
             )}
             {...props}>
