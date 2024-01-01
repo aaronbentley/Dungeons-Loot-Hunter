@@ -187,9 +187,11 @@ export const POST = async (request: NextRequest) => {
 
         const data = await request.json()
 
-        await sanityAlgolia.webhookSync(client, data)
-
-        return NextResponse.json({ message: 'success' }, { status: 200 })
+        return sanityAlgolia
+            .webhookSync(client, data)
+            .then(() =>
+                NextResponse.json({ message: 'success' }, { status: 200 })
+            )
     } catch (error) {
         let message = 'Something went wrong.'
         if (error instanceof Error) message = error.message
