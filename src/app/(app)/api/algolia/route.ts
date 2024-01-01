@@ -95,22 +95,23 @@ export const POST = async (request: NextRequest) => {
         const data = await request.json()
         console.log('🦄 ~ file: route.ts:88 ~ POST ~ data:', data)
 
-        // const webhook = await sanityAlgolia.webhookSync(client, data)
-        // console.log('🦄 ~ file: route.ts:90 ~ POST ~ webhook:', webhook)
-        sanityAlgolia
+        await sanityAlgolia
             .webhookSync(client, data)
-            .then((webhook) => {
-                console.log('🦄 ~ file: route.ts:90 ~ POST ~ webhook:', webhook)
+            .then(() => {
+                return NextResponse.json(
+                    { message: 'success' },
+                    { status: 200 }
+                )
             })
             .catch((error) => {
-                console.log('🦄 ~ file: route.ts:90 ~ POST ~ error:', error)
+                throw new Error(error)
             })
-
-        /**
-         * Return response
-         */
-        return NextResponse.json({ message: 'success' }, { status: 200 })
     } catch (error) {
-        return NextResponse.json({ message: 'error' }, { status: 400 })
+        let message = 'Something went wrong.'
+        if (error instanceof Error) message = error.message
+        return NextResponse.json(
+            { message: 'error', error: message },
+            { status: 400 }
+        )
     }
 }
