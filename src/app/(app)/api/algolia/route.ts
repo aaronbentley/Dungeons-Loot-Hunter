@@ -111,12 +111,6 @@ export const POST = async (request: NextRequest) => {
          */
         return NextResponse.json({ message: 'success' }, { status: 200 })
     } catch (error) {
-        return NextResponse.json(
-            {
-                message: 'error',
-                data: 'no data'
-            },
-            { status: 400 }
-        )
+        return NextResponse.json({ message: 'error' }, { status: 400 })
     }
 }
