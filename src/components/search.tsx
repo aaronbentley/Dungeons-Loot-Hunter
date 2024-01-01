@@ -1,4 +1,5 @@
 'use client'
+
 import algoliasearch from 'algoliasearch/lite'
 import { Hit } from 'instantsearch.js'
 import { SearchIcon } from 'lucide-react'

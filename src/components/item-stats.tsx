@@ -1,5 +1,3 @@
-'use client'
-
 import { MeleeWeapon, RangedWeapon } from '@/types'
 import { Typography } from './typography'
 import { Progress } from './ui/progress'
@@ -7,23 +5,19 @@ import { Progress } from './ui/progress'
 const ItemStats = ({ item }: { item: MeleeWeapon | RangedWeapon }) => {
     // Calculate stat values
     const power =
-        (item.stats.power /
-            parseInt(process.env.NEXT_PUBLIC_ITEM_STATS_MAX_VALUE!)) *
+        (item.stats.power / parseInt(process.env.ITEM_STATS_MAX_VALUE!)) *
             100 || 0
     const speed =
-        (item.stats.speed /
-            parseInt(process.env.NEXT_PUBLIC_ITEM_STATS_MAX_VALUE!)) *
+        (item.stats.speed / parseInt(process.env.ITEM_STATS_MAX_VALUE!)) *
             100 || 0
     const area =
         item._type === 'meleeWeapons'
-            ? (item.stats.area /
-                  parseInt(process.env.NEXT_PUBLIC_ITEM_STATS_MAX_VALUE!)) *
+            ? (item.stats.area / parseInt(process.env.ITEM_STATS_MAX_VALUE!)) *
               100
             : 0
     const ammo =
         item._type === 'rangedWeapons'
-            ? (item.stats.ammo /
-                  parseInt(process.env.NEXT_PUBLIC_ITEM_STATS_MAX_VALUE!)) *
+            ? (item.stats.ammo / parseInt(process.env.ITEM_STATS_MAX_VALUE!)) *
               100
             : 0
 
