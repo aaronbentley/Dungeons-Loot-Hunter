@@ -7,11 +7,6 @@ import { SanityDocumentStub } from 'next-sanity'
 import { NextRequest, NextResponse } from 'next/server'
 import indexer from 'sanity-algolia'
 
-const algolia = algoliasearch(
-    process.env.ALGOLIA_APP_ID!,
-    process.env.ALGOLIA_ADMIN_KEY!
-)
-
 // export const GET = async (request: NextRequest) => {
 //     try {
 //         const algolia = algoliasearch(
@@ -114,6 +109,11 @@ const algolia = algoliasearch(
 // }
 
 export const POST = async (request: NextRequest) => {
+    const algolia = algoliasearch(
+        process.env.ALGOLIA_APP_ID!,
+        process.env.ALGOLIA_ADMIN_KEY!
+    )
+
     const algoliaIndex = algolia.initIndex(process.env.ALGOLIA_INDEX_NAME!)
 
     const sanityAlgolia = indexer(
@@ -193,7 +193,20 @@ export const POST = async (request: NextRequest) => {
         if (error instanceof Error) message = error.message
         return NextResponse.json(
             { message: 'error', error: message },
-            { status: 400 }
+            { status: 500 }
         )
     }
+
+    // const data = await request.json()
+    // return sanityAlgolia
+    //     .webhookSync(client, data)
+    //     .then(() => NextResponse.json({ message: 'success' }, { status: 200 }))
+    //     .catch((error) => {
+    //         let message = 'Something went wrong.'
+    //         if (error instanceof Error) message = error.message
+    //         return NextResponse.json(
+    //             { message: 'error', error: message },
+    //             { status: 500 }
+    //         )
+    //     })
 }
