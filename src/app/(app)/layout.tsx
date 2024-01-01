@@ -7,8 +7,27 @@ import { TooltipProvider } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
 import { Analytics } from '@vercel/analytics/react'
 import { GeistSans } from 'geist/font/sans'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Suspense } from 'react'
+import resolveConfig from 'tailwindcss/resolveConfig'
+import tailwindConfig from '../../../tailwind.config'
+
+// export const generateViewport = async (): Promise<Viewport> => {
+export const generateViewport = (): Viewport => {
+    /**
+     * Resolve Tailwind CSS config
+     */
+    const fullConfig = resolveConfig(tailwindConfig)
+
+    /**
+     * Get color values from Tailwind CSS config
+     */
+    const colors = fullConfig?.theme?.colors
+    const themeColor = colors?.indigo?.['500']
+    return {
+        themeColor: themeColor
+    }
+}
 
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.APP_URL!),
