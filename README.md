@@ -2,4 +2,4 @@
 
 ## Todosies
 
-- [ ] Stats progress bars not working on prod
+- [ ] Favicon

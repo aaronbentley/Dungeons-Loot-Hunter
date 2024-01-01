@@ -7,6 +7,11 @@ import { SanityDocumentStub } from 'next-sanity'
 import { NextRequest, NextResponse } from 'next/server'
 import indexer from 'sanity-algolia'
 
+const algolia = algoliasearch(
+    process.env.ALGOLIA_APP_ID!,
+    process.env.ALGOLIA_ADMIN_KEY!
+)
+
 // export const GET = async (request: NextRequest) => {
 //     try {
 //         const algolia = algoliasearch(
@@ -109,19 +114,13 @@ import indexer from 'sanity-algolia'
 // }
 
 export const POST = async (request: NextRequest) => {
-    try {
-        const algolia = algoliasearch(
-            process.env.ALGOLIA_APP_ID!,
-            process.env.ALGOLIA_ADMIN_KEY!
-        )
+    const algoliaIndex = algolia.initIndex(process.env.ALGOLIA_INDEX_NAME!)
 
-        const algoliaIndex = algolia.initIndex(process.env.ALGOLIA_INDEX_NAME!)
-
-        const sanityAlgolia = indexer(
-            {
-                meleeWeapons: {
-                    index: algoliaIndex,
-                    projection: `{
+    const sanityAlgolia = indexer(
+        {
+            meleeWeapons: {
+                index: algoliaIndex,
+                projection: `{
                         _id,
                         _type,
                         title,
@@ -129,68 +128,65 @@ export const POST = async (request: NextRequest) => {
                         ${imageAssetReference},
                         ${slug},
                     }`
-                },
-                rangedWeapons: {
-                    index: algoliaIndex,
-                    projection: `{
-                        _id,
-                        _type,
-                        title,
-                        isUnique,
-                        ${imageAssetReference},
-                        ${slug},
-                    }`
-                },
-                armor: {
-                    index: algoliaIndex,
-                    projection: `{
-                        _id,
-                        _type,
-                        title,
-                        isUnique,
-                        ${imageAssetReference},
-                        ${slug},
-                    }`
-                },
-                artifacts: {
-                    index: algoliaIndex,
-                    projection: `{
-                        _id,
-                        _type,
-                        title,
-                        isUnique,
-                        ${imageAssetReference},
-                        ${slug},
-                    }`
-                }
             },
-            (document: SanityDocumentStub) => {
-                const typePrefix = pathsMap[
-                    document._type as keyof typeof pathsMap
-                ] as string
-
-                return {
-                    objectID: document._id,
-                    title: document.title,
-                    unique: document.isUnique ? true : false,
-                    imageData: document.image,
-                    image: imageBuilder
-                        .image(document.image)
-                        .size(256, 256)
-                        .dpr(2)
-                        .format('webp')
-                        .url(),
-                    url: `/${typePrefix}/${document.slug.current}/`
-                }
+            rangedWeapons: {
+                index: algoliaIndex,
+                projection: `{
+                        _id,
+                        _type,
+                        title,
+                        isUnique,
+                        ${imageAssetReference},
+                        ${slug},
+                    }`
+            },
+            armor: {
+                index: algoliaIndex,
+                projection: `{
+                        _id,
+                        _type,
+                        title,
+                        isUnique,
+                        ${imageAssetReference},
+                        ${slug},
+                    }`
+            },
+            artifacts: {
+                index: algoliaIndex,
+                projection: `{
+                        _id,
+                        _type,
+                        title,
+                        isUnique,
+                        ${imageAssetReference},
+                        ${slug},
+                    }`
             }
-        )
+        },
+        (document: SanityDocumentStub) => {
+            const typePrefix = pathsMap[
+                document._type as keyof typeof pathsMap
+            ] as string
 
+            return {
+                objectID: document._id,
+                title: document.title,
+                unique: document.isUnique ? true : false,
+                imageData: document.image,
+                image: imageBuilder
+                    .image(document.image)
+                    .size(256, 256)
+                    .dpr(2)
+                    .format('webp')
+                    .url(),
+                url: `/${typePrefix}/${document.slug.current}/`
+            }
+        }
+    )
+
+    try {
         const data = await request.json()
-        const updateIndex = await sanityAlgolia.webhookSync(client, data)
-        console.log(
-            '🦄 ~ file: route.ts:190 ~ POST ~ updateIndex:',
-            updateIndex
-        )
+        await sanityAlgolia.webhookSync(client, data)
         return NextResponse.json({ message: 'success' }, { status: 200 })
     } catch (error) {
         let message = 'Something went wrong.'
