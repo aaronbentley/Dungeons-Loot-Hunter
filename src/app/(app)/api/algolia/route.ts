@@ -73,7 +73,7 @@ export const POST = async (request: NextRequest) => {
                     document._type as keyof typeof pathsMap
                 ] as string
 
-                return {
+                const record = {
                     objectID: document._id,
                     title: document.title,
                     unique: document.isUnique ? true : false,
@@ -86,14 +86,25 @@ export const POST = async (request: NextRequest) => {
                         .url(),
                     url: `/${typePrefix}/${document.slug.current}/`
                 }
+                console.log('🦄 ~ file: route.ts:89 ~ POST ~ record:', record)
+
+                return record
             }
         )
 
         const data = await request.json()
         console.log('🦄 ~ file: route.ts:88 ~ POST ~ data:', data)
 
-        const webhook = await sanityAlgolia.webhookSync(client, data)
-        console.log('🦄 ~ file: route.ts:90 ~ POST ~ webhook:', webhook)
+        // const webhook = await sanityAlgolia.webhookSync(client, data)
+        // console.log('🦄 ~ file: route.ts:90 ~ POST ~ webhook:', webhook)
+        sanityAlgolia
+            .webhookSync(client, data)
+            .then((webhook) => {
+                console.log('🦄 ~ file: route.ts:90 ~ POST ~ webhook:', webhook)
+            })
+            .catch((error) => {
+                console.log('🦄 ~ file: route.ts:90 ~ POST ~ error:', error)
+            })
 
         /**
          * Return response
