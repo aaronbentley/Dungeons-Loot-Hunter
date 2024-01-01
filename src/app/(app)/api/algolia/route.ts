@@ -6,12 +6,9 @@ import algoliasearch from 'algoliasearch'
 import { SanityDocumentStub } from 'next-sanity'
 import { NextRequest, NextResponse } from 'next/server'
 import indexer from 'sanity-algolia'
-import { WebhookBody } from 'sanity-algolia/dist/types'
 
 export const POST = async (request: NextRequest) => {
     try {
-        const data = (await request.json()) as WebhookBody
-
         const algolia = algoliasearch(
             process.env.ALGOLIA_APP_ID!,
             process.env.ALGOLIA_ADMIN_API_KEY!
@@ -87,17 +84,16 @@ export const POST = async (request: NextRequest) => {
             }
         )
 
-        await sanityAlgolia.webhookSync(client, data)
+        const data = await request.json()
+        console.log('🦄 ~ file: route.ts:88 ~ POST ~ data:', data)
+
+        const webhook = await sanityAlgolia.webhookSync(client, data)
+        console.log('🦄 ~ file: route.ts:90 ~ POST ~ webhook:', webhook)
 
         /**
          * Return response
          */
-        return NextResponse.json(
-            {
-                message: 'success'
-            },
-            { status: 200 }
-        )
+        return NextResponse.json({ message: 'success' }, { status: 200 })
     } catch (error) {
         return NextResponse.json(
             {
