@@ -199,7 +199,7 @@ export const POST = async (request: NextRequest) => {
         if (error instanceof Error) message = error.message
         return NextResponse.json(
             { message: 'error', error: message },
-            { status: 500 }
+            { status: 400 }
         )
     }
 
