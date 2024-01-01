@@ -95,7 +95,7 @@ export const POST = async (request: NextRequest) => {
         const data = await request.json()
         console.log('🦄 ~ file: route.ts:88 ~ POST ~ data:', data)
 
-        await sanityAlgolia
+        sanityAlgolia
             .webhookSync(client, data)
             .then(() => {
                 return NextResponse.json(
