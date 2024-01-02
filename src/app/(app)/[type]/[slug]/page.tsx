@@ -151,7 +151,7 @@ const ItemPage = async ({
                     )}
                 </div>
             </PageHeader>
-            <div className='px-4 grid md:grid-flow-dense grid-cols-1 md:grid-cols-3 gap-x-0 gap-4 md:gap-x-6 xl:gap-x-16 relative'>
+            <div className='px-4 grid md:grid-flow-dense grid-cols-1 md:grid-cols-3 gap-x-0 gap-6 md:gap-x-6 xl:gap-x-16 '>
                 <div className='col-span-1'>
                     <div className='md:sticky md:top-24'>
                         {item.image && (
@@ -162,10 +162,15 @@ const ItemPage = async ({
                                 priority={true}
                                 width={400}
                                 height={400}
-                                mode='cover'
+                                mode={
+                                    item._type === 'levels'
+                                        ? 'cover'
+                                        : 'contain'
+                                }
                                 className={cn([
+                                    'w-full',
                                     'aspect-square',
-                                    'object-cover',
+                                    'object-contain',
                                     'rounded-lg',
                                     [
                                         'meleeWeapons',

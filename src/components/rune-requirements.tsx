@@ -26,8 +26,8 @@ const RuneRequirements = ({ ancientMob }: { ancientMob: AncientMob }) => {
                                     image={rune.image}
                                     alt={rune.title}
                                     width={48}
-                                    mode='cover'
-                                    className='rounded-lg p-1'
+                                    mode='contain'
+                                    className='rounded-lg p-1 aspect-square object-contain'
                                 />
                             </TooltipTrigger>
                             <TooltipContent>{rune.title}</TooltipContent>

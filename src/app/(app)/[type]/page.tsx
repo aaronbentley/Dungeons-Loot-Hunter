@@ -83,8 +83,8 @@ const TypeItemsGrid = async ({ type }: { type: string }) => {
                                         priority={index < 15}
                                         width={400}
                                         height={400}
-                                        mode='cover'
-                                        className='aspect-square object-cover rounded-lg'
+                                        mode='contain'
+                                        className='aspect-square object-contain rounded-lg'
                                     />
                                 )}
                             </CardContent>

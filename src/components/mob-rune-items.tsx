@@ -41,9 +41,10 @@ const MobRuneItems = async ({ ancientMob }: { ancientMob: AncientMob }) => {
                                         alt={item.title}
                                         width={120}
                                         height={120}
-                                        mode='cover'
+                                        mode='contain'
                                         className={cn([
                                             'p-1',
+                                            'object-contain',
                                             'sm:p-3',
                                             'rounded-lg',
                                             'bg-emerald-200',
@@ -73,9 +74,11 @@ const MobRuneItems = async ({ ancientMob }: { ancientMob: AncientMob }) => {
                                                         alt={rune.title}
                                                         width={24}
                                                         height={24}
-                                                        mode='cover'
+                                                        mode='contain'
                                                         className={cn([
-                                                            'rounded-md'
+                                                            'rounded-md',
+                                                            'aspect-square',
+                                                            'object-contain'
                                                         ])}
                                                     />
                                                 )

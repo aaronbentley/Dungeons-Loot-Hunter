@@ -27,7 +27,8 @@ const MobEnchantments = ({ ancientMob }: { ancientMob: AncientMob }) => {
                                         image={enchantment.image}
                                         alt={enchantment.title}
                                         width={64}
-                                        mode='cover'
+                                        mode='contain'
+                                        className='aspect-square object-contain'
                                     />
                                 </TooltipTrigger>
                                 <TooltipContent>

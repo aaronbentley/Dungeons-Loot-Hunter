@@ -31,8 +31,8 @@ const ItemEnchantments = ({
                                         image={enchantment.image}
                                         alt={enchantment.title}
                                         width={64}
-                                        mode='cover'
-                                        className='aspect-square'
+                                        mode='contain'
+                                        className='aspect-square object-contain'
                                     />
                                 </TooltipTrigger>
                                 <TooltipContent>

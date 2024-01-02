@@ -23,7 +23,7 @@ const MobLootDrops = ({ ancientMob }: { ancientMob: AncientMob }) => {
                 className='mb-4'>
                 Gilded Loot Drops
             </Typography>
-            <div className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 items-center gap-2'>
+            <div className='grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 items-center gap-2'>
                 {ancientMob.lootDrops.map((lootDrop: LootDrop) => {
                     return lootDrop.items.map(
                         (item: MeleeWeapon | RangedWeapon | Armor) => (
@@ -38,11 +38,13 @@ const MobLootDrops = ({ ancientMob }: { ancientMob: AncientMob }) => {
                                         <Image
                                             image={item.image}
                                             alt={item.title}
-                                            width={120}
-                                            height={120}
-                                            mode='cover'
+                                            width={100}
+                                            height={100}
+                                            mode='contain'
                                             className={cn([
                                                 'p-1',
+                                                'aspect-square',
+                                                'object-contain',
                                                 'sm:p-3',
                                                 'rounded-lg',
                                                 'bg-yellow-400',

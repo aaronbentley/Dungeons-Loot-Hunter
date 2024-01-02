@@ -42,11 +42,12 @@ const ItemVariants = ({
                                             image={item.variationOf?.image}
                                             alt={item.title}
                                             width={96}
-                                            mode='cover'
+                                            mode='contain'
                                             className={cn([
                                                 'p-3',
                                                 'rounded-lg',
                                                 'aspect-square',
+                                                'object-contain',
                                                 'bg-emerald-200',
                                                 'dark:bg-emerald-900',
                                                 'border-emerald-200',
@@ -89,11 +90,12 @@ const ItemVariants = ({
                                             image={variant.image}
                                             alt={variant.title}
                                             width={96}
-                                            mode='cover'
+                                            mode='contain'
                                             className={cn([
                                                 'p-3',
                                                 'rounded-lg',
                                                 'aspect-square',
+                                                'object-contain',
                                                 'bg-orange-200',
                                                 'dark:bg-orange-900',
                                                 'border-orange-200',

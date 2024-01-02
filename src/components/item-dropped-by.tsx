@@ -35,8 +35,8 @@ const ItemDroppedBy = ({
                                             alt={ancientMob.title}
                                             width={84}
                                             height={84}
-                                            mode='cover'
-                                            className='rounded-lg aspect-square'
+                                            mode='contain'
+                                            className='rounded-lg aspect-square object-contain'
                                         />
                                     </Link>
                                 </TooltipTrigger>
