@@ -10,7 +10,7 @@ import { deskTool } from 'sanity/desk'
 import { structure } from './sanity/config/structure'
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 // import { presentationTool } from 'sanity/presentation'
-import { apiVersion, dataset, projectId } from './sanity/env'
+import { apiVersion, dataset, projectId, projectName } from './sanity/env'
 import { schema } from './sanity/schema'
 
 // Define the actions that should be available for singleton documents
@@ -21,6 +21,7 @@ const singletonTypes = new Set(['siteSettings'])
 
 export default defineConfig({
     basePath: '/studio',
+    title: projectName,
     projectId,
     dataset,
     plugins: [
