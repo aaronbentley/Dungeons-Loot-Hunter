@@ -172,6 +172,7 @@ const ItemPage = async ({
                                     'aspect-square',
                                     'object-contain',
                                     'rounded-lg',
+                                    item._type === 'levels' && 'object-cover',
                                     [
                                         'meleeWeapons',
                                         'rangedWeapons',

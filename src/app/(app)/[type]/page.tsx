@@ -43,7 +43,7 @@ const TypeItemsGrid = async ({ type }: { type: string }) => {
     }
 
     return (
-        <div className='grid md:grid-flow-dense grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6 xl:gap-8 mt-2 px-4'>
+        <div className='grid md:grid-flow-dense grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6 gap-4 md:gap-6 xl:gap-8 mt-2 px-4'>
             {typeItems &&
                 typeItems.map((item, index) => (
                     <Link
@@ -83,8 +83,19 @@ const TypeItemsGrid = async ({ type }: { type: string }) => {
                                         priority={index < 15}
                                         width={400}
                                         height={400}
-                                        mode='contain'
-                                        className='aspect-square object-contain rounded-lg'
+                                        mode={
+                                            item._type === 'levels'
+                                                ? 'cover'
+                                                : 'contain'
+                                        }
+                                        className={cn([
+                                            'w-full',
+                                            'aspect-square',
+                                            'object-contain',
+                                            'rounded-lg',
+                                            item._type === 'levels' &&
+                                                'object-cover'
+                                        ])}
                                     />
                                 )}
                             </CardContent>
