@@ -1,6 +1,7 @@
 import '@/assets/styles/globals.css'
 import Footer from '@/components/footer'
 import Header from '@/components/header'
+import Preconnect from '@/components/preconnect'
 import TailwindIndicator from '@/components/tailwind-indicator'
 import ThemeProvider from '@/components/theme-provider'
 import { TooltipProvider } from '@/components/ui/tooltip'
@@ -54,6 +55,7 @@ const AppRootLayout = ({ children }: { children: React.ReactNode }) => {
                     'antialiased',
                     'min-h-screen'
                 ])}>
+                <Preconnect />
                 <ThemeProvider
                     attribute='class'
                     defaultTheme='system'
