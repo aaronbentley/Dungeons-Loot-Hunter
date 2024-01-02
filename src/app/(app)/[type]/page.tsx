@@ -1,4 +1,4 @@
-import { typesMap } from '@/assets/data/types'
+import { types, typesMap } from '@/assets/data/types'
 import Image from '@/components/image'
 import { PageHeader, PageHeaderHeading } from '@/components/page-header'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -16,6 +16,7 @@ import { typeItemsQuery } from '@sanity/queries'
 import camelize from 'camelize'
 import { Metadata } from 'next'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import Loading from '../loading'
 
@@ -121,6 +122,10 @@ const TypePage = async ({
     const { type } = params
     const typeName = camelize(type)
 
+    // Check if type path exists
+    if (!types.includes(typeName)) {
+        return notFound()
+    }
     const typeTitle = typesMap[typeName as keyof typeof typesMap] as string
 
     return (

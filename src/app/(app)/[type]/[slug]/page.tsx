@@ -58,6 +58,11 @@ export const generateMetadata = async ({
         slug: params.slug
     })
 
+    /**
+     * If the item is not found, return a 404 page
+     */
+    if (!item) notFound()
+
     return {
         title: `${item.title} - ${typesMap[item._type]}`
     }
