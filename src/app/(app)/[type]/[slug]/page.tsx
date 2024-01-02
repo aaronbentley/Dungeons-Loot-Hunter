@@ -153,46 +153,45 @@ const ItemPage = async ({
             </PageHeader>
             <div className='px-4 grid md:grid-flow-dense grid-cols-1 md:grid-cols-3 gap-x-0 gap-4 md:gap-x-6 xl:gap-x-16 relative'>
                 <div className='col-span-1'>
-                    {item.image && (
-                        <Image
-                            image={item.image}
-                            alt={item.title}
-                            src={item.image}
-                            priority={true}
-                            width={400}
-                            height={400}
-                            mode='cover'
-                            className={cn([
-                                'md:sticky',
-                                'md:top-24',
-                                'aspect-square',
-                                'object-cover',
-                                'rounded-lg',
-                                [
-                                    'meleeWeapons',
-                                    'rangedWeapons',
-                                    'armor',
-                                    'artifacts'
-                                ].includes(item._type) && [
-                                    'p-8',
-                                    'bg-emerald-200',
-                                    'dark:bg-emerald-900',
-                                    'border-emerald-200',
-                                    'dark:border-emerald-500'
-                                ],
-                                'isUnique' in item &&
-                                    item.isUnique && [
+                    <div className='md:sticky md:top-24'>
+                        {item.image && (
+                            <Image
+                                image={item.image}
+                                alt={item.title}
+                                src={item.image}
+                                priority={true}
+                                width={400}
+                                height={400}
+                                mode='cover'
+                                className={cn([
+                                    'aspect-square',
+                                    'object-cover',
+                                    'rounded-lg',
+                                    [
+                                        'meleeWeapons',
+                                        'rangedWeapons',
+                                        'armor',
+                                        'artifacts'
+                                    ].includes(item._type) && [
                                         'p-8',
-                                        'bg-orange-200',
-                                        'dark:bg-orange-900',
-                                        'border-orange-200',
-                                        'dark:border-orange-900'
-                                    ]
-                            ])}
-                        />
-                    )}
-
-                    {'isUnique' in item && <ItemVariants item={item} />}
+                                        'bg-emerald-200',
+                                        'dark:bg-emerald-900',
+                                        'border-emerald-200',
+                                        'dark:border-emerald-500'
+                                    ],
+                                    'isUnique' in item &&
+                                        item.isUnique && [
+                                            'p-8',
+                                            'bg-orange-200',
+                                            'dark:bg-orange-900',
+                                            'border-orange-200',
+                                            'dark:border-orange-900'
+                                        ]
+                                ])}
+                            />
+                        )}
+                        {'isUnique' in item && <ItemVariants item={item} />}
+                    </div>
                 </div>
 
                 {[
