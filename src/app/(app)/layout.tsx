@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils'
 import { Analytics } from '@vercel/analytics/react'
 import { GeistSans } from 'geist/font/sans'
 import type { Metadata, Viewport } from 'next'
+import Script from 'next/script'
 import { Suspense } from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '../../../tailwind.config'
@@ -56,6 +57,15 @@ const AppRootLayout = ({ children }: { children: React.ReactNode }) => {
                     'min-h-screen'
                 ])}>
                 <Preconnect />
+                <Script
+                    async
+                    id='adsense-id'
+                    src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js??client=${process
+                        .env.GOOGLE_ADSENSE_ID!}`}
+                    strategy='beforeInteractive'
+                    data-ad-client={process.env.GOOGLE_ADSENSE_ID!}
+                    crossOrigin='anonymous'
+                />
                 <ThemeProvider
                     attribute='class'
                     defaultTheme='system'
