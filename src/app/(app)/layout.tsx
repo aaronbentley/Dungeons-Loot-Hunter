@@ -62,8 +62,6 @@ const AppRootLayout = ({ children }: { children: React.ReactNode }) => {
                     src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js??client=${process
                         .env.GOOGLE_ADSENSE_ID!}`}
                     strategy='beforeInteractive'
-                    data-ad-client={process.env.GOOGLE_ADSENSE_ID!}
-                    crossOrigin='anonymous'
                 />
                 <ThemeProvider
                     attribute='class'
