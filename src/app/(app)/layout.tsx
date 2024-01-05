@@ -59,9 +59,11 @@ const AppRootLayout = ({ children }: { children: React.ReactNode }) => {
                 <Preconnect />
                 <Script
                     id='google-adsense-id'
+                    async
                     src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js??client=${process
                         .env.GOOGLE_ADSENSE_ID!}`}
                     strategy='beforeInteractive'
+                    crossOrigin='anonymous'
                 />
                 <ThemeProvider
                     attribute='class'
