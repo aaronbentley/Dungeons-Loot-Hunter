@@ -82,8 +82,8 @@ const TypeItemsGrid = async ({ type }: { type: string }) => {
                                         alt={item.title}
                                         src={item.image}
                                         priority={index < 15}
-                                        width={400}
-                                        height={400}
+                                        width={180}
+                                        height={180}
                                         mode={
                                             item._type === 'levels'
                                                 ? 'cover'
