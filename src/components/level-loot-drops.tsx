@@ -50,7 +50,7 @@ const LevelLootDrops = async ({ level }: { level: Level }) => {
                 className='mb-4'>
                 Loot Drops
             </Typography>
-            <div className='grid grid-cols-4 sm:grid-cols-6 items-center gap-2'>
+            <div className='grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-6 items-center gap-2'>
                 {[...uniqueItems, ...levelLootDrops].map((item) => (
                     <Link
                         key={item._id}
@@ -68,10 +68,11 @@ const LevelLootDrops = async ({ level }: { level: Level }) => {
                                     mode='contain'
                                     className={cn([
                                         'p-1',
-                                        'sm:p-3',
-                                        'rounded-lg',
+                                        'w-max',
                                         'aspect-square',
                                         'object-contain',
+                                        'sm:p-3',
+                                        'rounded-lg',
                                         'bg-emerald-200',
                                         'dark:bg-emerald-900',
                                         'border-emerald-200',

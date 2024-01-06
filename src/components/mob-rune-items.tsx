@@ -25,72 +25,78 @@ const MobRuneItems = async ({ ancientMob }: { ancientMob: AncientMob }) => {
                 className='mb-4'>
                 Items with Runes
             </Typography>
-            <div className='grid grid-cols-4 sm:grid-cols-6 items-center gap-2'>
+            <div className='grid grid-cols-4 sm:grid-cols-6 md:grid-cols-4 lg:grid-cols-6 items-center gap-2'>
                 {mobRuneItems.map((item) => (
-                    <Link
-                        key={item._id}
-                        title={`View ${item.title}`}
-                        href={`/${pathsMap[item._type]}/${
-                            item?.slug?.current
-                        }/`}>
-                        <Tooltip>
-                            <TooltipTrigger>
-                                <div className='relative'>
-                                    <Image
-                                        image={item.image}
-                                        alt={item.title}
-                                        width={120}
-                                        height={120}
-                                        mode='contain'
-                                        className={cn([
-                                            'p-1',
-                                            'object-contain',
-                                            'sm:p-3',
-                                            'rounded-lg',
-                                            'bg-emerald-200',
-                                            'dark:bg-emerald-900',
-                                            'border-emerald-200',
-                                            'dark:border-emerald-500',
-                                            'isUnique' in item &&
-                                                item.isUnique && [
-                                                    'bg-orange-200',
-                                                    'dark:bg-orange-900',
-                                                    'border-orange-200',
-                                                    'dark:border-orange-900'
-                                                ]
-                                        ])}
-                                    />
-                                    <div className='absolute bottom-2 left-2 flex gap-2'>
-                                        {item.runes.map((rune) => {
-                                            if (
-                                                requiredRuneIds.includes(
-                                                    rune._id
+                    <div key={item._id}>
+                        <Link
+                            title={`View ${item.title}`}
+                            href={`/${pathsMap[item._type]}/${
+                                item?.slug?.current
+                            }/`}>
+                            <Tooltip>
+                                <TooltipTrigger>
+                                    <div className='relative'>
+                                        <Image
+                                            image={item.image}
+                                            alt={item.title}
+                                            width={120}
+                                            height={120}
+                                            mode='contain'
+                                            className={cn([
+                                                'p-1',
+                                                'w-max',
+                                                'object-contain',
+                                                'sm:p-3',
+                                                'rounded-lg',
+                                                'bg-emerald-200',
+                                                'dark:bg-emerald-900',
+                                                'border-emerald-200',
+                                                'dark:border-emerald-500',
+                                                'isUnique' in item &&
+                                                    item.isUnique && [
+                                                        'bg-orange-200',
+                                                        'dark:bg-orange-900',
+                                                        'border-orange-200',
+                                                        'dark:border-orange-900'
+                                                    ]
+                                            ])}
+                                        />
+                                        <div className='absolute bottom-1 left-1 md:bottom-2 md:left-2 flex gap-1'>
+                                            {item.runes.map((rune) => {
+                                                if (
+                                                    requiredRuneIds.includes(
+                                                        rune._id
+                                                    )
                                                 )
-                                            )
-                                                return (
-                                                    <Image
-                                                        key={rune._id}
-                                                        image={rune.image}
-                                                        alt={rune.title}
-                                                        width={24}
-                                                        height={24}
-                                                        mode='contain'
-                                                        className={cn([
-                                                            'rounded-md',
-                                                            'aspect-square',
-                                                            'object-contain'
-                                                        ])}
-                                                    />
-                                                )
+                                                    return (
+                                                        <Image
+                                                            key={rune._id}
+                                                            image={rune.image}
+                                                            alt={rune.title}
+                                                            width={28}
+                                                            height={28}
+                                                            mode='contain'
+                                                            className={cn([
+                                                                'size-6',
+                                                                // 'md:size-5',
+                                                                // 'lg:size-7',
+                                                                'rounded-md',
+                                                                'aspect-square',
+                                                                'object-contain',
+                                                                'data-[lqip=true]:!min-w-min'
+                                                            ])}
+                                                        />
+                                                    )
 
-                                            return null
-                                        })}
+                                                return null
+                                            })}
+                                        </div>
                                     </div>
-                                </div>
-                            </TooltipTrigger>
-                            <TooltipContent>{item.title}</TooltipContent>
-                        </Tooltip>
-                    </Link>
+                                </TooltipTrigger>
+                                <TooltipContent>{item.title}</TooltipContent>
+                            </Tooltip>
+                        </Link>
+                    </div>
                 ))}
             </div>
         </div>
