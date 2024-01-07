@@ -12,9 +12,12 @@ const Home = async () => (
                 className='text-center text-balance'>
                 {process.env.APP_TITLE!}
             </Typography>
-            <p className='text-lg sm:text-2xl text-neutral-500 dark:text-neutral-500 max-w-[240px] sm:max-w-[340px] text-center'>
+            <Typography
+                variant='lead'
+                as='h2'
+                className='text-lg sm:text-2xl max-w-[240px] sm:max-w-[340px] text-center'>
                 {process.env.APP_DESCRIPTION!}
-            </p>
+            </Typography>
         </PageSection>
 
         <div className='grid sm:grid-cols-2 md:grid-flow-dense md:grid-cols-3 gap-8 mt-2 max-w-[1080px] mx-auto'>

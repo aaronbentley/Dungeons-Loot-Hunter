@@ -109,7 +109,7 @@ const ItemPage = async ({
                                 </Badge>
                             ) : (
                                 <>
-                                    <Badge className='text-neutral-500 dark:text-neutral-500 bg-neutral-100 dark:bg-neutral-900 border-neutral-100 dark:border-neutral-900'>
+                                    <Badge className='text-zinc-500 dark:text-zinc-500 bg-zinc-100 dark:bg-zinc-900 border-zinc-100 dark:border-zinc-900'>
                                         Common
                                     </Badge>
                                     <Badge className='text-emerald-500 dark:text-emerald-500 bg-emerald-50 dark:bg-emerald-950 border-emerald-50 dark:border-emerald-950'>
@@ -140,7 +140,7 @@ const ItemPage = async ({
                     {'levels' === item._type && (
                         <>
                             {item?.location?.[0] && (
-                                <Badge className='text-neutral-500 dark:text-neutral-500 bg-neutral-100 dark:bg-neutral-900 border-neutral-100 dark:border-neutral-900 capitalize'>
+                                <Badge className='text-zinc-500 dark:text-zinc-500 bg-zinc-100 dark:bg-zinc-900 border-zinc-100 dark:border-zinc-900 capitalize'>
                                     {item.location[0].replace('-', ' ')}
                                 </Badge>
                             )}
