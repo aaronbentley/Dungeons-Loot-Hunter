@@ -43,7 +43,6 @@ const MobLootDrops = ({ ancientMob }: { ancientMob: AncientMob }) => {
                                             mode='contain'
                                             className={cn([
                                                 'p-1',
-                                                'w-max',
                                                 'aspect-square',
                                                 'object-contain',
                                                 'sm:p-3',

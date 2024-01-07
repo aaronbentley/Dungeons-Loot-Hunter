@@ -54,7 +54,8 @@ const AppRootLayout = ({ children }: { children: React.ReactNode }) => {
                     'dark:text-zinc-100',
                     'font-sans',
                     'antialiased',
-                    'min-h-screen'
+                    'min-h-screen',
+                    'overflow-x-hidden'
                 ])}>
                 <Preconnect />
                 <Script

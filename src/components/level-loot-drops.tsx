@@ -68,7 +68,6 @@ const LevelLootDrops = async ({ level }: { level: Level }) => {
                                     mode='contain'
                                     className={cn([
                                         'p-1',
-                                        'w-max',
                                         'aspect-square',
                                         'object-contain',
                                         'sm:p-3',

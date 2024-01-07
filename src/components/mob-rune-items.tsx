@@ -44,7 +44,6 @@ const MobRuneItems = async ({ ancientMob }: { ancientMob: AncientMob }) => {
                                             mode='contain'
                                             className={cn([
                                                 'p-1',
-                                                'w-max',
                                                 'object-contain',
                                                 'sm:p-3',
                                                 'rounded-lg',
