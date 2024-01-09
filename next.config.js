@@ -12,7 +12,7 @@ const cspHeader = `
     frame-src 'self' *.doubleclick.net *.google.com *.googlesyndication.com;
     frame-ancestors 'none';
     worker-src 'self' blob:;
-    connect-src 'self' *.minecraftdungeonsloothunter.app *.googleapis.com *.algolia.net;
+    connect-src 'self' *.minecraftdungeonsloothunter.app *.algolia.net *.googleapis.com *.googlesyndication.com;
     block-all-mixed-content;
     upgrade-insecure-requests;
 `
@@ -50,8 +50,8 @@ const nextConfig = {
                         value: 'same-origin'
                     },
                     {
-                        key: 'Content-Security-Policy-Report-Only',
-                        // key: 'Content-Security-Policy',
+                        // key: 'Content-Security-Policy-Report-Only',
+                        key: 'Content-Security-Policy',
                         value: cspHeader.replace(/\n/g, '')
                     }
                 ]
