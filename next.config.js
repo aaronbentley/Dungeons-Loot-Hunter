@@ -4,15 +4,15 @@ const cspHeader = `
     default-src 'self';
     script-src 'self' 'unsafe-inline' *.minecraftdungeonsloothunter.app *.sanity.io *.googlesyndication.com;
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data: cdn.sanity.io;
+    img-src 'self' blob: data: *.sanity.io *.googlesyndication.com;
     font-src 'self';
     object-src 'none';
     base-uri 'self';
     form-action 'self';
-    frame-src 'self';
+    frame-src 'self' *.doubleclick.net *.google.com *.googlesyndication.com;
     frame-ancestors 'none';
     worker-src 'self' blob:;
-    connect-src 'self' *.minecraftdungeonsloothunter.app *.googleapis.com *.cloudfunctions.net;
+    connect-src 'self' *.minecraftdungeonsloothunter.app *.googleapis.com *.algolia.net;
     block-all-mixed-content;
     upgrade-insecure-requests;
 `
