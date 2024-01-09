@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 
+/**
+ * Set CSP headers
+ */
 const cspHeader = `
     default-src 'self';
     script-src 'self' 'unsafe-inline' *.minecraftdungeonsloothunter.app *.sanity.io *.googlesyndication.com;
