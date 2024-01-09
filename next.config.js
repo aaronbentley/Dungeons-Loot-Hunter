@@ -7,7 +7,7 @@ const cspHeader = `
     default-src 'self';
     script-src 'self' 'unsafe-inline' *.minecraftdungeonsloothunter.app *.sanity.io *.googlesyndication.com;
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data: *.sanity.io *.googlesyndication.com;
+    img-src 'self' blob: data: *.sanity.io *.githubusercontent.com *.googlesyndication.com;
     font-src 'self';
     object-src 'none';
     base-uri 'self';
@@ -15,7 +15,7 @@ const cspHeader = `
     frame-src 'self' *.doubleclick.net *.google.com *.googlesyndication.com;
     frame-ancestors 'none';
     worker-src 'self' blob:;
-    connect-src 'self' *.minecraftdungeonsloothunter.app *.sanity.io *.algolia.net *.googleapis.com *.googlesyndication.com;
+    connect-src 'self' *.minecraftdungeonsloothunter.app *.api.sanity.io *.algolia.net *.googleapis.com *.googlesyndication.com;
     block-all-mixed-content;
     upgrade-insecure-requests;
 `
