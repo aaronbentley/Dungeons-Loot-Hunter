@@ -185,7 +185,7 @@ const Search = () => {
         process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY!
     )
 
-    if (!searchActive) {
+    if (searchActive === false) {
         return null
     }
 
