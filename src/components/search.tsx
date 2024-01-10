@@ -80,10 +80,6 @@ const Hits = (
     const { hits } = useHits(props)
     const { query } = useSearchBox()
 
-    // if (!query && (!hits || hits.length === 0)) {
-    //     return <CommandEmpty>Start typing to search.</CommandEmpty>
-    // }
-
     if (query && hits && hits.length === 0) {
         return <CommandEmpty>No items found.</CommandEmpty>
     }
@@ -166,6 +162,11 @@ const Hits = (
 }
 
 const Search = () => {
+    /**
+     * Quick flag to disable search if over Alogoia's free tier quota
+     */
+    const searchActive = false
+
     const [open, setOpen] = useState(false)
 
     useEffect(() => {
@@ -183,6 +184,10 @@ const Search = () => {
         process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,
         process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY!
     )
+
+    if (!searchActive) {
+        return null
+    }
 
     return (
         <>
