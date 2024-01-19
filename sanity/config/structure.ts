@@ -1,4 +1,4 @@
-import { StructureResolver } from 'sanity/desk'
+import { StructureResolver } from 'sanity/structure'
 import { apiVersion } from '../env'
 
 export const structure: StructureResolver = (S, context) => {

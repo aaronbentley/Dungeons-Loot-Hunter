@@ -3,12 +3,10 @@
  */
 
 import { colorInput } from '@sanity/color-input'
-// Vision is a tool that lets you query your content with GROQ in the studio https://www.sanity.io/docs/the-vision-plugin
 import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
-import { deskTool } from 'sanity/desk'
+import { structureTool } from 'sanity/structure'
 import { structure } from './sanity/config/structure'
-// Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 // import { presentationTool } from 'sanity/presentation'
 import { apiVersion, dataset, projectId, projectName } from './sanity/env'
 import { schema } from './sanity/schema'
@@ -25,7 +23,7 @@ export default defineConfig({
     projectId,
     dataset,
     plugins: [
-        deskTool({
+        structureTool({
             structure
         }),
         visionTool({ defaultApiVersion: apiVersion }),
