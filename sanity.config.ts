@@ -5,9 +5,9 @@
 import { colorInput } from '@sanity/color-input'
 import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
+import { presentationTool } from 'sanity/presentation'
 import { structureTool } from 'sanity/structure'
 import { structure } from './sanity/config/structure'
-// import { presentationTool } from 'sanity/presentation'
 import { apiVersion, dataset, projectId, projectName } from './sanity/env'
 import { schema } from './sanity/schema'
 
@@ -26,12 +26,16 @@ export default defineConfig({
         structureTool({
             structure
         }),
+        presentationTool({
+            // previewUrl
+            // locate
+            previewUrl: {
+                draftMode: {
+                    enable: '/api/draft'
+                }
+            }
+        }),
         visionTool({ defaultApiVersion: apiVersion }),
-        // presentationTool({
-        //     // previewUrl: process.env.APP_URL!
-        //     previewUrl: 'https://localhost:3000',
-        //     locate
-        // }),
         colorInput()
     ],
     schema: {

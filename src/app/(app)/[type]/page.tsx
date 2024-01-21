@@ -3,18 +3,11 @@ import Image from '@/components/image'
 import { PageHeader, PageHeaderHeading } from '@/components/page-header'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
-import {
-    AncientMob,
-    Armor,
-    Artifact,
-    Level,
-    MeleeWeapon,
-    RangedWeapon
-} from '@/types'
-import { client } from '@sanity/lib/client'
+import { loadQuery } from '@sanity/lib/store'
 import { typeItemsQuery } from '@sanity/queries'
 import camelize from 'camelize'
 import { Metadata } from 'next'
+import { SanityDocument } from 'next-sanity'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
@@ -35,9 +28,28 @@ export const generateMetadata = async ({
 }
 
 const TypeItemsGrid = async ({ type }: { type: string }) => {
-    const typeItems = await client.fetch<
-        (MeleeWeapon | RangedWeapon | Armor | Artifact | AncientMob | Level)[]
-    >(typeItemsQuery, { typeName: type })
+    // const typeItems = await client.fetch<
+    //     (MeleeWeapon | RangedWeapon | Armor | Artifact | AncientMob | Level)[]
+    // >(typeItemsQuery, { typeName: type })
+
+    const typeItems = await loadQuery<SanityDocument[]>(typeItemsQuery, {
+        typeName: type
+    })
+
+    // const typeItems = await loadQuery<{
+    //     perspective: string | undefined
+    //     sourceMap: Record<string, string> | undefined
+    //     data: (
+    //         | MeleeWeapon
+    //         | RangedWeapon
+    //         | Armor
+    //         | Artifact
+    //         | AncientMob
+    //         | Level
+    //     )[]
+    // }>(typeItemsQuery, {
+    //     typeName: type
+    // })
 
     if (!typeItems) {
         return null
@@ -46,7 +58,7 @@ const TypeItemsGrid = async ({ type }: { type: string }) => {
     return (
         <div className='grid md:grid-flow-dense grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6 gap-4 md:gap-6 xl:gap-8 mt-2 px-4'>
             {typeItems &&
-                typeItems.map((item, index) => (
+                typeItems.data.map((item, index) => (
                     <Link
                         key={item._id}
                         href={item?.slug?.current}>

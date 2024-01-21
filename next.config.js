@@ -5,7 +5,7 @@
  */
 const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-inline' *.minecraftdungeonsloothunter.app *.sanity.io *.googlesyndication.com *.google.com;
+    script-src 'self' 'unsafe-inline' *.minecraftdungeonsloothunter.app *.sanity.io cdn.jsdelivr.net *.googlesyndication.com *.google.com;
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data: *.sanity.io *.githubusercontent.com *.googlesyndication.com;
     font-src 'self';
@@ -23,6 +23,14 @@ const cspHeader = `
 const nextConfig = {
     trailingSlash: true,
     crossOrigin: 'anonymous',
+    logging: {
+        fetches: {
+            fullUrl: process.env.NODE_ENV === 'development'
+        }
+    },
+    experimental: {
+        taint: true
+    },
     async headers() {
         if (process.env.NODE_ENV === 'production') {
             return [

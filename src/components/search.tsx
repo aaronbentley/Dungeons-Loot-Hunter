@@ -202,6 +202,7 @@ const Search = () => {
             <InstantSearchNext
                 searchClient={searchClient}
                 indexName={process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME!}
+                insights={true}
                 future={{
                     preserveSharedStateOnUnmount: false
                 }}>

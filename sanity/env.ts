@@ -16,6 +16,11 @@ export const projectName = assertValue(
     'Missing environment variable: NEXT_PUBLIC_APP_TITLE'
 )
 
+export const previewUrl = assertValue(
+    process.env.NEXT_PUBLIC_APP_URL,
+    'Missing environment variable: NEXT_PUBLIC_APP_URL'
+)
+
 export const useCdn = false
 
 function assertValue<T>(v: T | undefined, errorMessage: string): T {

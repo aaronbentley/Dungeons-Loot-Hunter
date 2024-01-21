@@ -5,10 +5,12 @@ import Preconnect from '@/components/preconnect'
 import TailwindIndicator from '@/components/tailwind-indicator'
 import ThemeProvider from '@/components/theme-provider'
 import { TooltipProvider } from '@/components/ui/tooltip'
+import VisualEditing from '@/components/visual-editing'
 import { cn } from '@/lib/utils'
 import { Analytics } from '@vercel/analytics/react'
 import { GeistSans } from 'geist/font/sans'
 import type { Metadata, Viewport } from 'next'
+import { draftMode } from 'next/headers'
 import Script from 'next/script'
 import { Suspense } from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
@@ -75,6 +77,7 @@ const AppRootLayout = ({ children }: { children: React.ReactNode }) => {
                             <Header />
                             <div className='flex-1 flex min-h-max flex-col items-center justify-start gap-y-4 md:gap-y-12'>
                                 <Suspense>{children}</Suspense>
+                                {draftMode().isEnabled && <VisualEditing />}
                             </div>
                             <Footer />
                         </div>
