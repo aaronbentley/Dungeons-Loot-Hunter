@@ -165,7 +165,7 @@ const Search = () => {
     /**
      * Quick flag to disable search if over Alogoia's free tier quota
      */
-    const searchActive = false
+    const searchActive = true
 
     const [open, setOpen] = useState(false)
 
@@ -185,7 +185,7 @@ const Search = () => {
         process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY!
     )
 
-    if (searchActive === false) {
+    if (!searchActive) {
         return null
     }
 
