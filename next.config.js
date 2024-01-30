@@ -13,7 +13,7 @@ const cspHeader = `
     base-uri 'self';
     form-action 'self';
     frame-src 'self' *.doubleclick.net *.google.com *.googlesyndication.com;
-    frame-ancestors 'none';
+    frame-ancestors 'self';
     worker-src 'self' blob:;
     connect-src 'self' ws: *.minecraftdungeonsloothunter.app *.api.sanity.io *.algolia.net *.googleapis.com *.googlesyndication.com;
     block-all-mixed-content;
