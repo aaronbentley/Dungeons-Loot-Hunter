@@ -60,13 +60,15 @@ const AppRootLayout = ({ children }: { children: React.ReactNode }) => {
                     'overflow-x-hidden'
                 ])}>
                 <Preconnect />
-                <Script
-                    async
-                    src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process
-                        .env.GOOGLE_ADSENSE_ID!}`}
-                    strategy='beforeInteractive'
-                    crossOrigin='anonymous'
-                />
+                {process.env.NODE_ENV === 'production' && (
+                    <Script
+                        async
+                        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process
+                            .env.GOOGLE_ADSENSE_ID!}`}
+                        strategy='beforeInteractive'
+                        crossOrigin='anonymous'
+                    />
+                )}
                 <ThemeProvider
                     attribute='class'
                     defaultTheme='system'
