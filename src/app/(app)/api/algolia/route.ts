@@ -5,10 +5,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import indexer from 'sanity-algolia'
 import { client } from '../../../../../sanity/lib/client'
 import { imageBuilder } from '../../../../../sanity/lib/image'
-import {
-    imageAssetReference,
-    slug
-} from '../../../../../sanity/queries/fragments'
+import { imageAssetReference, slug } from '../../../../../sanity/lib/queries'
 
 /**
  * Seed the Algolia index with data from Sanity.
