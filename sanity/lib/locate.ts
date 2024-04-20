@@ -20,7 +20,6 @@ export const locate: DocumentLocationResolver = (params, context) => {
 
     return doc$.pipe(
         map((doc) => {
-            console.log('🦄 ~ map ~ doc:', doc)
             if (!doc || !doc.slug?.current) {
                 return null
             }
