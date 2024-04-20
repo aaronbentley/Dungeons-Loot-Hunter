@@ -1,7 +1,7 @@
 import { pathsMap } from '@/assets/data/types'
-import { client } from '@sanity/lib/client'
-import { sitemapPathsQuery } from '@sanity/queries'
 import { MetadataRoute } from 'next'
+import { client } from '../../sanity/lib/client'
+import { sitemapPathsQuery } from '../../sanity/queries'
 
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
     const paths = [

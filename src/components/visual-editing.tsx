@@ -1,11 +1,12 @@
 'use client'
 
-import { enableOverlays, HistoryAdapterNavigate } from '@sanity/overlays'
 import { useLiveMode } from '@sanity/react-loader'
+import type { HistoryAdapterNavigate } from '@sanity/visual-editing'
+import { enableVisualEditing } from '@sanity/visual-editing'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
-import { client } from '@sanity/lib/client'
+import { client } from '../../sanity/lib/client'
 
 // Always enable stega in Live Mode
 const stegaClient = client.withConfig({ stega: true })
@@ -21,7 +22,7 @@ const VisualEditing = () => {
         routerRef.current = router
     }, [router])
     useEffect(() => {
-        const disable = enableOverlays({
+        const disable = enableVisualEditing({
             history: {
                 subscribe: (navigate) => {
                     setNavigate(() => navigate)

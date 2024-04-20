@@ -23,11 +23,11 @@ import {
     MeleeWeapon,
     RangedWeapon
 } from '@/types'
-import { client } from '@sanity/lib/client'
-import { itemQuery, typeItemsQuery } from '@sanity/queries'
 import camelize from 'camelize'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { sanityFetch } from '../../../../../sanity/lib/fetch'
+import { itemQuery, typeItemsQuery } from '../../../../../sanity/lib/queries'
 
 export const generateStaticParams = async ({
     params: { type }
@@ -35,9 +35,22 @@ export const generateStaticParams = async ({
     params: { type: string }
 }) => {
     const typeName = camelize(type)
-    const typeItems = await client.fetch<
+    // const typeItems = await client.fetch<
+    //     (MeleeWeapon | RangedWeapon | Armor | Artifact | AncientMob | Level)[]
+    // >(typeItemsQuery, { typeName })
+    // return typeItems.map((item) => ({
+    //     slug: item?.slug?.current
+    // }))
+
+    const typeItems = await sanityFetch<
         (MeleeWeapon | RangedWeapon | Armor | Artifact | AncientMob | Level)[]
-    >(typeItemsQuery, { typeName })
+    >({
+        query: typeItemsQuery,
+        perspective: 'published',
+        params: { typeName },
+        stega: false
+    })
+
     return typeItems.map((item) => ({
         slug: item?.slug?.current
     }))
@@ -51,11 +64,22 @@ export const generateMetadata = async ({
         slug: string
     }
 }): Promise<Metadata> => {
-    const item = await client.fetch<
+    // const item = await client.fetch<
+    //     MeleeWeapon | RangedWeapon | Armor | Artifact | AncientMob | Level
+    // >(itemQuery, {
+    //     typeName: camelize(params.type),
+    //     slug: params.slug
+    // })
+
+    const item = await sanityFetch<
         MeleeWeapon | RangedWeapon | Armor | Artifact | AncientMob | Level
-    >(itemQuery, {
-        typeName: camelize(params.type),
-        slug: params.slug
+    >({
+        query: itemQuery,
+        params: {
+            typeName: camelize(params.type),
+            slug: params.slug
+        },
+        stega: false
     })
 
     /**
@@ -64,7 +88,9 @@ export const generateMetadata = async ({
     if (!item) notFound()
 
     return {
-        title: `${item.title} - ${typesMap[item._type]}`
+        title: `${item.title} - ${
+            typesMap[item._type as keyof typeof typesMap]
+        }`
     }
 }
 
@@ -76,11 +102,21 @@ const ItemPage = async ({
         slug: string
     }
 }) => {
-    const item = await client.fetch<
+    // const item = await client.fetch<
+    //     MeleeWeapon | RangedWeapon | Armor | Artifact | AncientMob | Level
+    // >(itemQuery, {
+    //     typeName: camelize(params.type),
+    //     slug: params.slug
+    // })
+
+    const item = await sanityFetch<
         MeleeWeapon | RangedWeapon | Armor | Artifact | AncientMob | Level
-    >(itemQuery, {
-        typeName: camelize(params.type),
-        slug: params.slug
+    >({
+        query: itemQuery,
+        params: {
+            typeName: camelize(params.type),
+            slug: params.slug
+        }
     })
 
     /**
@@ -91,7 +127,9 @@ const ItemPage = async ({
     return (
         <>
             <PageHeader className='gap-6'>
-                <Badge variant='secondary'>{typesMap[item._type]}</Badge>
+                <Badge variant='secondary'>
+                    {typesMap[item._type as keyof typeof typesMap]}
+                </Badge>
                 <PageHeaderHeading>{item.title}</PageHeaderHeading>
                 <div className='flex gap-2 pointer-events-none'>
                     {[

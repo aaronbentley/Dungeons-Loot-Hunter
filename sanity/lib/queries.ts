@@ -1,5 +1,23 @@
 import { groq } from 'next-sanity'
-import { imageAssetReference, slug } from './fragments'
+
+/**
+ * Common media fragments
+ */
+export const imageAssetReference = `
+    image {
+        ...,
+        asset-> {
+            ...,
+            metadata
+        }
+    }
+`
+
+export const slug = `
+    slug {
+        current
+    }
+`
 
 /**
  * Get type items by typeName

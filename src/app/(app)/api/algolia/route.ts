@@ -1,11 +1,14 @@
 import { pathsMap } from '@/assets/data/types'
-import { client } from '@sanity/lib/client'
-import { imageBuilder } from '@sanity/lib/image'
-import { imageAssetReference, slug } from '@sanity/queries/fragments'
 import algoliasearch from 'algoliasearch'
 import { SanityDocumentStub } from 'next-sanity'
 import { NextRequest, NextResponse } from 'next/server'
 import indexer from 'sanity-algolia'
+import { client } from '../../../../../sanity/lib/client'
+import { imageBuilder } from '../../../../../sanity/lib/image'
+import {
+    imageAssetReference,
+    slug
+} from '../../../../../sanity/queries/fragments'
 
 /**
  * Seed the Algolia index with data from Sanity.
