@@ -1,6 +1,6 @@
 import { pathsMap } from '@/assets/data/types'
 import { MetadataRoute } from 'next'
-import { client } from '../../sanity/lib/client'
+import { sanityFetch } from '../../sanity/lib/fetch'
 import { sitemapPathsQuery } from '../../sanity/lib/queries'
 
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
@@ -17,7 +17,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
         lastModified: new Date().toISOString()
     }))
 
-    const contentPathsQuery = await client.fetch<
+    const contentPathsQuery = await sanityFetch<
         {
             _type: string
             slug: {
@@ -25,7 +25,9 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
             }
             _updatedAt: string
         }[]
-    >(sitemapPathsQuery)
+    >({
+        query: sitemapPathsQuery
+    })
 
     const contentPathsMap = contentPathsQuery.map((contentPath) => {
         const typePrefix = pathsMap[

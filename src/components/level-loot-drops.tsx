@@ -2,7 +2,7 @@ import { pathsMap } from '@/assets/data/types'
 import { cn } from '@/lib/utils'
 import { Armor, Artifact, Level, MeleeWeapon, RangedWeapon } from '@/types'
 import Link from 'next/link'
-import { client } from '../../sanity/lib/client'
+import { sanityFetch } from '../../sanity/lib/fetch'
 import { levelLootDropsQuery } from '../../sanity/lib/queries'
 import Image from './image'
 import { Typography } from './typography'
@@ -13,7 +13,7 @@ const LevelLootDrops = async ({ level }: { level: Level }) => {
         return null
     }
 
-    const levelLootDrops = await client.fetch<
+    const levelLootDrops = await sanityFetch<
         (
             | (MeleeWeapon & {
                   uniques: MeleeWeapon[]
@@ -28,8 +28,11 @@ const LevelLootDrops = async ({ level }: { level: Level }) => {
                   uniques: Artifact[]
               })
         )[]
-    >(levelLootDropsQuery, {
-        level: level._id
+    >({
+        query: levelLootDropsQuery,
+        params: {
+            level: level._id
+        }
     })
 
     const uniqueItems = levelLootDrops

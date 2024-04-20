@@ -35,13 +35,6 @@ export const generateStaticParams = async ({
     params: { type: string }
 }) => {
     const typeName = camelize(type)
-    // const typeItems = await client.fetch<
-    //     (MeleeWeapon | RangedWeapon | Armor | Artifact | AncientMob | Level)[]
-    // >(typeItemsQuery, { typeName })
-    // return typeItems.map((item) => ({
-    //     slug: item?.slug?.current
-    // }))
-
     const typeItems = await sanityFetch<
         (MeleeWeapon | RangedWeapon | Armor | Artifact | AncientMob | Level)[]
     >({
@@ -64,13 +57,6 @@ export const generateMetadata = async ({
         slug: string
     }
 }): Promise<Metadata> => {
-    // const item = await client.fetch<
-    //     MeleeWeapon | RangedWeapon | Armor | Artifact | AncientMob | Level
-    // >(itemQuery, {
-    //     typeName: camelize(params.type),
-    //     slug: params.slug
-    // })
-
     const item = await sanityFetch<
         MeleeWeapon | RangedWeapon | Armor | Artifact | AncientMob | Level
     >({
@@ -102,13 +88,6 @@ const ItemPage = async ({
         slug: string
     }
 }) => {
-    // const item = await client.fetch<
-    //     MeleeWeapon | RangedWeapon | Armor | Artifact | AncientMob | Level
-    // >(itemQuery, {
-    //     typeName: camelize(params.type),
-    //     slug: params.slug
-    // })
-
     const item = await sanityFetch<
         MeleeWeapon | RangedWeapon | Armor | Artifact | AncientMob | Level
     >({

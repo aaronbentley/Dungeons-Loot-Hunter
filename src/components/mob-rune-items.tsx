@@ -2,7 +2,7 @@ import { pathsMap } from '@/assets/data/types'
 import { cn } from '@/lib/utils'
 import { AncientMob, Armor, Artifact, MeleeWeapon, RangedWeapon } from '@/types'
 import Link from 'next/link'
-import { client } from '../../sanity/lib/client'
+import { sanityFetch } from '../../sanity/lib/fetch'
 import { mobRunesItemsQuery } from '../../sanity/lib/queries'
 import Image from './image'
 import { Typography } from './typography'
@@ -11,10 +11,13 @@ import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip'
 const MobRuneItems = async ({ ancientMob }: { ancientMob: AncientMob }) => {
     const requiredRuneIds = ancientMob.runeRequirements.map((rune) => rune._id)
 
-    const mobRuneItems = await client.fetch<
+    const mobRuneItems = await sanityFetch<
         (MeleeWeapon | RangedWeapon | Armor | Artifact)[]
-    >(mobRunesItemsQuery, {
-        runes: requiredRuneIds
+    >({
+        query: mobRunesItemsQuery,
+        params: {
+            runes: requiredRuneIds
+        }
     })
 
     return (
