@@ -9,7 +9,6 @@ import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { structure } from './sanity/config/structure'
 import { apiVersion, dataset, projectId, projectName } from './sanity/env'
-import { locate } from './sanity/lib/locate'
 import { schema } from './sanity/schema'
 
 // Define the actions that should be available for singleton documents
@@ -28,7 +27,7 @@ export default defineConfig({
             structure
         }),
         presentationTool({
-            locate,
+            // locate,
             previewUrl: {
                 draftMode: {
                     enable: '/api/draft',
