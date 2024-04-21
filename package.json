@@ -8,7 +8,10 @@
         "build": "next build",
         "start": "next start",
         "preview": "next build && next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "typegen": "yarn schema:extract && yarn schema:generate",
+        "schema:extract": "sanity schema extract --path='./types/schema.json'",
+        "schema:generate": "sanity typegen generate"
     },
     "dependencies": {
         "@radix-ui/react-dialog": "^1.0.5",
