@@ -1,5 +1,5 @@
-import { SanityImageAssetDocument } from '@sanity/client/stega'
 import { ColorDefinition } from '@sanity/color-input'
+import { SanityImageAssetDocument } from 'next-sanity'
 import { ObjectField, Slug } from 'sanity'
 
 /**

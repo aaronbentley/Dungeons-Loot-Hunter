@@ -10,7 +10,7 @@
         "preview": "next build && next start",
         "lint": "next lint",
         "typegen": "yarn schema:extract && yarn schema:generate",
-        "schema:extract": "sanity schema extract --path='./types/schema.json'",
+        "schema:extract": "sanity schema extract --enforce-required-fields --path='./types/schema.json'",
         "schema:generate": "sanity typegen generate"
     },
     "dependencies": {
