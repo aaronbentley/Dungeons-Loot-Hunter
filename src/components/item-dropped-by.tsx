@@ -1,5 +1,5 @@
-import { Armor, MeleeWeapon, RangedWeapon } from '@/types'
 import Link from 'next/link'
+import { Armor, MeleeWeapon, RangedWeapon } from '../../types'
 import Image from './image'
 import { Typography } from './typography'
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip'

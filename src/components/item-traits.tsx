@@ -1,4 +1,4 @@
-import { Armor, Artifact } from '@/types'
+import { Armor, Artifact } from '../../types'
 import { Typography } from './typography'
 
 const ItemTraits = ({ item }: { item: Armor | Artifact }) => {

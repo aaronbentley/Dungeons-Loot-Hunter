@@ -1,4 +1,4 @@
-import { AncientMob } from '@/types'
+import { AncientMob } from '../../types'
 import Image from './image'
 import { Typography } from './typography'
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip'

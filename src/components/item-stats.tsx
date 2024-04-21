@@ -1,4 +1,4 @@
-import { MeleeWeapon, RangedWeapon } from '@/types'
+import { MeleeWeapon, RangedWeapon } from '../../types'
 import { Typography } from './typography'
 import { Progress } from './ui/progress'
 

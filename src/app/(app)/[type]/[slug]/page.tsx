@@ -15,6 +15,11 @@ import { PageHeader, PageHeaderHeading } from '@/components/page-header'
 import RuneRequirements from '@/components/rune-requirements'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
+import camelize from 'camelize'
+import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import { sanityFetch } from '../../../../../sanity/lib/fetch'
+import { itemQuery, typeItemsQuery } from '../../../../../sanity/lib/queries'
 import {
     AncientMob,
     Armor,
@@ -22,12 +27,7 @@ import {
     Level,
     MeleeWeapon,
     RangedWeapon
-} from '@/types'
-import camelize from 'camelize'
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import { sanityFetch } from '../../../../../sanity/lib/fetch'
-import { itemQuery, typeItemsQuery } from '../../../../../sanity/lib/queries'
+} from '../../../../../types'
 
 export const generateStaticParams = async ({
     params: { type }

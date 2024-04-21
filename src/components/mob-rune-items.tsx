@@ -1,9 +1,15 @@
 import { pathsMap } from '@/assets/data/types'
 import { cn } from '@/lib/utils'
-import { AncientMob, Armor, Artifact, MeleeWeapon, RangedWeapon } from '@/types'
 import Link from 'next/link'
 import { sanityFetch } from '../../sanity/lib/fetch'
 import { mobRunesItemsQuery } from '../../sanity/lib/queries'
+import {
+    AncientMob,
+    Armor,
+    Artifact,
+    MeleeWeapon,
+    RangedWeapon
+} from '../../types'
 import Image from './image'
 import { Typography } from './typography'
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip'

@@ -1,7 +1,7 @@
 import { pathsMap } from '@/assets/data/types'
 import { cn } from '@/lib/utils'
-import { AncientMob, Armor, MeleeWeapon, RangedWeapon } from '@/types'
 import Link from 'next/link'
+import { AncientMob, Armor, MeleeWeapon, RangedWeapon } from '../../types'
 import Image from './image'
 import { Typography } from './typography'
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip'
