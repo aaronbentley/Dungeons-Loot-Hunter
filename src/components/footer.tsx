@@ -5,7 +5,7 @@ import { Button, buttonVariants } from './ui/button'
 
 const Footer = () => (
     <footer className='py-6 md:px-8 md:pt-12 lg:pt-24 md:pb-0'>
-        <div className='container flex flex-col items-center justify-center gap-4 py-4 text-zinc-400 dark:text-zinc-600 text-sm'>
+        <div className='container flex flex-col items-center justify-center gap-4 py-4 text-zinc-600 dark:text-zinc-400 text-sm'>
             <Button
                 asChild
                 className='group'>
