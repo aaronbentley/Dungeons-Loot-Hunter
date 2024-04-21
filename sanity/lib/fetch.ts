@@ -14,6 +14,7 @@ export const sanityFetch = async <QueryResponse>({
     query,
     params = {},
     perspective = draftMode().isEnabled ? 'previewDrafts' : 'published',
+    tags,
     /**
      * Stega embedded Content Source Maps are used by Visual Editing by both the Sanity Presentation Tool and Vercel Visual Editing.
      * The Sanity Presentation Tool will enable Draft Mode when loading up the live preview, and we use it as a signal for when to embed source maps.
@@ -25,6 +26,7 @@ export const sanityFetch = async <QueryResponse>({
     query: string
     params?: QueryParams
     perspective?: Omit<ClientPerspective, 'raw'>
+    tags?: string[]
     stega?: boolean
 }) => {
     if (perspective === 'previewDrafts') {
@@ -36,7 +38,10 @@ export const sanityFetch = async <QueryResponse>({
             // The `previewDrafts` perspective isn't available on the API CDN
             useCdn: false,
             // And we can't cache the responses as it would slow down the live preview experience
-            next: { revalidate: 0 }
+            next: {
+                // revalidate: 0
+                tags
+            }
         })
     }
     return client.fetch<QueryResponse>(query, params, {
@@ -46,6 +51,9 @@ export const sanityFetch = async <QueryResponse>({
         useCdn: true,
         // Only enable Stega in production if it's a Vercel Preview Deployment, as the Vercel Toolbar supports Visual Editing
         // When using the `published` perspective we use time-based revalidation to match the time-to-live on Sanity's API CDN (60 seconds)
-        next: { revalidate: 60 }
+        next: {
+            // revalidate: 60
+            tags
+        }
     })
 }

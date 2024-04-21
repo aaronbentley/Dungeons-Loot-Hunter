@@ -92,6 +92,7 @@ const ItemPage = async ({
         MeleeWeapon | RangedWeapon | Armor | Artifact | AncientMob | Level
     >({
         query: itemQuery,
+        tags: ['item'],
         params: {
             typeName: camelize(params.type),
             slug: params.slug

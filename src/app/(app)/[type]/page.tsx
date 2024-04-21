@@ -30,6 +30,7 @@ export const generateMetadata = async ({
 const TypeItemsGrid = async ({ type }: { type: string }) => {
     const typeItems = await sanityFetch<SanityDocument[]>({
         query: typeItemsQuery,
+        tags: ['typeItems'],
         params: {
             typeName: type
         }
