@@ -15,7 +15,7 @@ const cspHeader = `
     frame-src 'self' *.doubleclick.net *.google.com *.googlesyndication.com;
     frame-ancestors 'self';
     worker-src 'self' blob:;
-    connect-src 'self' ws: *.minecraftdungeonsloothunter.app *.api.sanity.io *.algolia.net *.googleapis.com *.googlesyndication.com *.google.com;
+    connect-src 'self' ws: *.minecraftdungeonsloothunter.app *.api.sanity.io *.algolia.net *.algolia.io *.googleapis.com *.googlesyndication.com *.google.com;
     block-all-mixed-content;
     upgrade-insecure-requests;
 `
