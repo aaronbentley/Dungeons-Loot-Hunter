@@ -1,7 +1,5 @@
 import { cn } from '@/lib/utils'
-import { Loader2 } from 'lucide-react'
 import Link from 'next/link'
-import { Suspense } from 'react'
 import MainNav from './main-nav'
 import MobileNav from './mobile-nav'
 import ModeToggle from './mode-toggle'
@@ -42,12 +40,7 @@ const Header = () => (
                     <MobileNav />
                 </div>
                 <div className='flex items-center md:space-x-4'>
-                    <Suspense
-                        fallback={
-                            <Loader2 className='size-[1.2rem] animate-spin text-indigo-500' />
-                        }>
-                        <Search />
-                    </Suspense>
+                    <Search />
                     <ModeToggle />
                 </div>
             </div>
