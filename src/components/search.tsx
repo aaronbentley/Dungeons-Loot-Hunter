@@ -1,6 +1,6 @@
 'use client'
 
-import { liteClient as algoliasearch } from 'algoliasearch/lite'
+import algoliasearch from 'algoliasearch/lite'
 import { Hit } from 'instantsearch.js'
 import { SearchIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
@@ -77,18 +77,18 @@ const Hits = (
     }
 ) => {
     const router = useRouter()
-    const { items } = useHits(props)
+    const { hits } = useHits(props)
     const { query } = useSearchBox()
 
-    if (query && items && items.length === 0) {
+    if (query && hits && hits.length === 0) {
         return <CommandEmpty>No items found.</CommandEmpty>
     }
 
     if (!query) {
         return (
             <CommandGroup heading='Suggestions'>
-                {items &&
-                    items.map((hit: Hit) => (
+                {hits &&
+                    hits.map((hit: Hit) => (
                         <CommandItem
                             key={hit.objectID}
                             onSelect={() => {
@@ -126,7 +126,7 @@ const Hits = (
         <>
             <CommandGroup heading='Results'>
                 {query &&
-                    items.map((hit: Hit) => (
+                    hits.map((hit: Hit) => (
                         <CommandItem
                             key={hit.objectID}
                             onSelect={() => {

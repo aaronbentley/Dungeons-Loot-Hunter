@@ -1,5 +1,5 @@
 import { pathsMap } from '@/assets/data/types'
-import algoliasearch from 'algoliasearch'
+import { algoliasearch } from 'algoliasearch'
 import { SanityDocumentStub } from 'next-sanity'
 import { NextRequest, NextResponse } from 'next/server'
 import indexer from 'sanity-algolia'
