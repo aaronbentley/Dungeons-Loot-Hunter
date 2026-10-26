@@ -11,7 +11,7 @@ export const locate: DocumentLocationResolver = (params, context) => {
 
     const doc$ = context.documentStore.listenQuery(
         `*[_id == $id][0]{slug,title}`,
-        params,
+        { id: params.id },
         { perspective: 'previewDrafts' }
     )
 
