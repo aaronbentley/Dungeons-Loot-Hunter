@@ -58,35 +58,51 @@ const Privacy = () => (
                 user experience.
             </PageSectionDescription>
 
-            <Typography variant='h3'>Google AdSense</Typography>
+            <Typography variant='h3'>Analytics</Typography>
             <PageSectionDescription>
-                We use Google AdSense to display personalized advertisements.
-                Google AdSense may collect certain information about your visit,
-                such as your IP address, device type, and browsing behavior, to
-                provide personalized ads.
-            </PageSectionDescription>
-            <PageSectionDescription>
-                Please refer to{' '}
+                We use{' '}
                 <a
-                    href='https://policies.google.com/privacy'
-                    title='View Google Privacy Policy'
+                    href='https://vercel.com/docs/analytics/privacy-policy'
+                    title='View Vercel Web Analytics privacy policy'
                     target='_blank'
                     className='font-medium text-primary underline underline-offset-4 transition-colors duration-200 hover:text-indigo-500'>
-                    Google&apos;s
+                    Vercel Web Analytics
                 </a>{' '}
-                Privacy Policy for more information on how they handle this
-                data.
+                to count page views. It does not use cookies, and it does not
+                identify you or track you across other websites. We only see
+                aggregated figures such as the pages visited, referring sites,
+                country, browser and device type.
             </PageSectionDescription>
 
-            <Typography variant='h3'>Cookies</Typography>
+            <Typography variant='h3'>Search</Typography>
             <PageSectionDescription>
-                We use cookies to enhance your experience on our website.
-                Cookies are small pieces of data stored on your device that help
-                us track and analyze usage patterns.
+                Site search is provided by{' '}
+                <a
+                    href='https://www.algolia.com/policies/privacy/'
+                    title='View Algolia privacy policy'
+                    target='_blank'
+                    className='font-medium text-primary underline underline-offset-4 transition-colors duration-200 hover:text-indigo-500'>
+                    Algolia
+                </a>
+                . When you search, your search terms and the results you select
+                are sent to Algolia with a random, temporary identifier so we
+                can improve search results. This identifier is not stored on
+                your device and is not linked to you.
+            </PageSectionDescription>
+        </PageSection>
+
+        <PageSection className='md:py-10 w-full'>
+            <PageSectionHeading>Cookies & Local Storage</PageSectionHeading>
+            <PageSectionDescription>
+                We do not use cookies to track you, and we do not show
+                advertising.
             </PageSectionDescription>
             <PageSectionDescription>
-                You can configure your browser to refuse cookies, but some
-                features of the website may not function properly as a result.
+                The only thing we store on your device is your light or dark
+                theme preference, which is saved in your browser&apos;s local
+                storage so the site looks the way you left it. It never leaves
+                your device, and you can clear it at any time from your
+                browser settings.
             </PageSectionDescription>
         </PageSection>
 
@@ -104,10 +120,7 @@ const Privacy = () => (
                 <Typography variant='li'>
                     Analyze and enhance our website&apos;s performance
                 </Typography>
-                <Typography variant='li'>
-                    To display personalized advertisements through Google
-                    AdSense
-                </Typography>
+                <Typography variant='li'>Improve our search results</Typography>
             </Typography>
         </PageSection>
 
@@ -118,6 +131,12 @@ const Privacy = () => (
             <PageSectionDescription>
                 We do not sell, trade, or rent your personal information to
                 third parties.
+            </PageSectionDescription>
+            <PageSectionDescription>
+                We only share information with the service providers that run
+                this website: Vercel (hosting and analytics) and Algolia
+                (search). They process it on our behalf and only to provide
+                their services to us.
             </PageSectionDescription>
         </PageSection>
 
@@ -162,7 +181,7 @@ const Privacy = () => (
 
         <PageSection className='md:py-10 w-full'>
             <PageSectionDescription>
-                Last updated: January, 2024
+                Last updated: October, 2026
             </PageSectionDescription>
         </PageSection>
     </div>

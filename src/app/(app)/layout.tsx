@@ -13,7 +13,6 @@ import type { Metadata, Viewport } from 'next'
 // import { draftMode } from 'next/headers'
 import { VisualEditing } from 'next-sanity'
 import { draftMode } from 'next/headers'
-import Script from 'next/script'
 import { Suspense } from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '../../../tailwind.config'
@@ -62,15 +61,6 @@ const AppRootLayout = ({ children }: { children: React.ReactNode }) => {
                     'overflow-x-hidden'
                 ])}>
                 <Preconnect />
-                {process.env.NODE_ENV === 'production' && (
-                    <Script
-                        async
-                        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process
-                            .env.GOOGLE_ADSENSE_ID!}`}
-                        strategy='beforeInteractive'
-                        crossOrigin='anonymous'
-                    />
-                )}
                 <ThemeProvider
                     attribute='class'
                     defaultTheme='system'
